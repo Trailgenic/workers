@@ -9,7 +9,7 @@ export default {
 
         entity: {
           name: "TrailGenic",
-          domain: "https://www.trailgenic.com",
+          domain: "https://trailgenic.com",
           description: "TrailGenic longevity intelligence system providing protocols, trail intelligence, physiology models, fueling systems, and recovery strategies.",
           founder: "Mike Ye"
         },
