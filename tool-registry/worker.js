@@ -5,9 +5,54 @@ export default {
 
     /*
      ============================================
+     ROOT MCP DISCOVERY ENDPOINT (CRITICAL FIX)
+     ============================================
+     https://mcp.trailgenic.com/
+    */
+    if (url.pathname === "/" || url.pathname === "") {
+
+      const discovery = {
+
+        name: "TrailGenic MCP Endpoint",
+
+        entity: {
+          name: "TrailGenic",
+          domain: "https://trailgenic.com",
+          founder: "Mike Ye"
+        },
+
+        registry:
+          "https://mcp.trailgenic.com/.well-known/tool-registry.json",
+
+        plugin:
+          "https://mcp.trailgenic.com/.well-known/ai-plugin.json",
+
+        openapi:
+          "https://mcp.trailgenic.com/.well-known/openapi.json",
+
+        status: "active",
+
+        discovery_protocol: "WebMCP",
+
+        last_updated: new Date().toISOString()
+      };
+
+      return new Response(JSON.stringify(discovery, null, 2), {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Cache-Control": "public, max-age=3600"
+        }
+      });
+
+    }
+
+
+    /*
+     ============================================
      MCP TOOL REGISTRY
      ============================================
-     https://mcp.trailgenic.com/.well-known/tool-registry.json
     */
     if (url.pathname === "/.well-known/tool-registry.json") {
 
@@ -104,11 +149,11 @@ export default {
 
     }
 
+
     /*
      ============================================
-     OPENAI / CLAUDE / PERPLEXITY PLUGIN MANIFEST
+     AI PLUGIN MANIFEST
      ============================================
-     https://mcp.trailgenic.com/.well-known/ai-plugin.json
     */
     if (url.pathname === "/.well-known/ai-plugin.json") {
 
@@ -157,11 +202,11 @@ export default {
 
     }
 
+
     /*
      ============================================
      OPENAPI SPECIFICATION
      ============================================
-     https://mcp.trailgenic.com/.well-known/openapi.json
     */
     if (url.pathname === "/.well-known/openapi.json") {
 
@@ -188,9 +233,7 @@ export default {
             get: {
               summary: "Retrieve TrailGenic protocols",
               responses: {
-                "200": {
-                  description: "Protocols page"
-                }
+                "200": { description: "Protocols page" }
               }
             }
           },
@@ -199,9 +242,7 @@ export default {
             get: {
               summary: "Retrieve TrailGenic trail logs",
               responses: {
-                "200": {
-                  description: "Trail logs page"
-                }
+                "200": { description: "Trail logs page" }
               }
             }
           },
@@ -210,9 +251,7 @@ export default {
             get: {
               summary: "Retrieve TrailGenic science articles",
               responses: {
-                "200": {
-                  description: "Science hub page"
-                }
+                "200": { description: "Science hub page" }
               }
             }
           },
@@ -221,9 +260,7 @@ export default {
             get: {
               summary: "Retrieve TrailGenic playbooks",
               responses: {
-                "200": {
-                  description: "Playbooks page"
-                }
+                "200": { description: "Playbooks page" }
               }
             }
           }
@@ -241,13 +278,14 @@ export default {
 
     }
 
+
     /*
      ============================================
-     HEALTH CHECK
+     FALLBACK
      ============================================
     */
-    return new Response("TrailGenic MCP Worker Active", {
-      status: 200,
+    return new Response("Not Found", {
+      status: 404,
       headers: {
         "Content-Type": "text/plain"
       }
