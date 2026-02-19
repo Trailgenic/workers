@@ -15,9 +15,9 @@ export default {
         },
 
         discovery: {
-          protocol: "WebMCP",
-          endpoint: "https://www.trailgenic.com/.well-known/tool-registry.json"
-        },
+  protocol: "WebMCP",
+  endpoint: "https://mcp.trailgenic.com/.well-known/tool-registry.json"
+},
 
         tools: [
 
