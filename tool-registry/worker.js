@@ -224,6 +224,39 @@ if (url.pathname === "/datasets/ontology" || url.pathname === "/datasets/ontolog
 
 /*
 ============================================
+TRAILGENIC PROTOCOL KERNEL DATASET
+============================================
+https://mcp.trailgenic.com/datasets/protocols
+*/
+if (url.pathname === "/datasets/protocols" || url.pathname === "/datasets/protocols/") {
+
+  const datasetURL =
+    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/protocols/tg_protocol_kernel_v1.json";
+
+  const dataset = await fetch(datasetURL);
+
+  if (!dataset.ok) {
+    return new Response(`Dataset fetch failed: ${dataset.status}`, {
+      status: 500,
+      headers: { "Content-Type": "text/plain" }
+    });
+  }
+
+  const data = await dataset.text();
+
+  return new Response(data, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
+    }
+  });
+
+}
+    
+/*
+============================================
 TRAILGENIC DATASET INDEX
 ============================================
 https://mcp.trailgenic.com/datasets/index
@@ -248,7 +281,16 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
         endpoint:
           "https://mcp.trailgenic.com/datasets/ontology",
         version: "1.0.0"
-      }
+      },
+      {
+  dataset_id: "tg_protocol_kernel_v1",
+  dataset_family: "TG Dataset Family 2 — Protocol Kernel Dataset",
+  description:
+    "Defines the TrailGenic protocol progression system including Foundation, Activation, Adaptation, Consolidation, and the full TrailGenic Protocol.",
+  endpoint:
+    "https://mcp.trailgenic.com/datasets/protocols",
+  version: "1.0.0"
+}
     ],
     last_updated: new Date().toISOString()
   };
