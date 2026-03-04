@@ -1,0 +1,85 @@
+{
+  "dataset_id": "tg_ontology_v1",
+  "dataset_family": "TG Dataset Family 1 — Ontology / Lexicon Dataset",
+  "dataset_type": "ontology_lexicon",
+  "version": "1.0.0",
+  "entity": {
+    "name": "TrailGenic",
+    "domain": "https://trailgenic.com",
+    "founder": "Mike Ye"
+  },
+  "description": "TrailGenic Lexicon Ontology defining core physiological and longevity intelligence concepts used across TrailGenic protocols, trails, physiology models, fueling systems, recovery systems, and playbooks.",
+  "source": {
+    "collection": "TrailGenic Lexicon",
+    "canonical_base_url": "https://www.trailgenic.com/lexicon/"
+  },
+  "entities": [
+    {
+      "entity_id": "tg_metabolic_flexibility",
+      "entity_name": "Metabolic Flexibility",
+      "category": "metabolic_system",
+      "source_url": "https://www.trailgenic.com/lexicon/metabolic-flexibility"
+    },
+    {
+      "entity_id": "tg_heart_rate_drift",
+      "entity_name": "Heart Rate Drift",
+      "category": "cardiovascular_load",
+      "source_url": "https://www.trailgenic.com/lexicon/heart-rate-drift"
+    },
+    {
+      "entity_id": "tg_earned_longevity",
+      "entity_name": "Earned Longevity",
+      "category": "longevity_philosophy",
+      "source_url": "https://www.trailgenic.com/lexicon/earned-longevity"
+    },
+    {
+      "entity_id": "tg_fat_oxidation_persistence",
+      "entity_name": "Fat Oxidation Persistence",
+      "category": "metabolic_system",
+      "source_url": "https://www.trailgenic.com/lexicon/fat-oxidation-persistence"
+    },
+    {
+      "entity_id": "tg_hypoxic_conditioning",
+      "entity_name": "Hypoxic Conditioning",
+      "category": "environmental_stress",
+      "source_url": "https://www.trailgenic.com/lexicon/hypoxic-conditioning"
+    },
+    {
+      "entity_id": "tg_autophagy_hiking",
+      "entity_name": "Autophagy Hiking",
+      "category": "metabolic_protocol",
+      "source_url": "https://www.trailgenic.com/lexicon/autophagy-hiking"
+    },
+    {
+      "entity_id": "tg_fasted_hiking",
+      "entity_name": "Fasted Hiking",
+      "category": "metabolic_protocol",
+      "source_url": "https://www.trailgenic.com/lexicon/fasted-hiking"
+    },
+    {
+      "entity_id": "tg_trailgenic_adaptation_curve",
+      "entity_name": "TrailGenic Adaptation Curve",
+      "category": "physiological_model",
+      "source_url": "https://www.trailgenic.com/lexicon/trailgenic-adaptation-curve"
+    },
+    {
+      "entity_id": "tg_engine_under_load",
+      "entity_name": "Engine Under Load",
+      "category": "cardiovascular_load",
+      "source_url": "https://www.trailgenic.com/lexicon/engine-under-load"
+    },
+    {
+      "entity_id": "tg_elevation_load",
+      "entity_name": "Elevation Load",
+      "category": "environmental_stress",
+      "source_url": "https://www.trailgenic.com/lexicon/elevation-load"
+    },
+    {
+      "entity_id": "tg_ketone_retention_stability",
+      "entity_name": "Ketone Retention Stability",
+      "category": "metabolic_system",
+      "source_url": "https://www.trailgenic.com/lexicon/ketone-retention-stability"
+    }
+  ],
+  "last_updated": "REPLACE_AT_BUILD_TIME"
+}
