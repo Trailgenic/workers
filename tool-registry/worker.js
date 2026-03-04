@@ -193,7 +193,7 @@ https://mcp.trailgenic.com/datasets/ontology
 if (url.pathname === "/datasets/ontology") {
 
   const datasetURL =
-    "https://raw.githubusercontent.com/trailgenic/trailgenic-workers/main/workers/datasets/ontology/tg_ontology_v1.json";
+    "https://raw.githubusercontent.com/trailgenic/trailgenic-workers/main/datasets/ontology/tg_ontology_v1.json";
 
   const dataset = await fetch(datasetURL);
 
