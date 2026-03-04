@@ -211,6 +211,54 @@ if (url.pathname === "/datasets/ontology") {
 }
 
     /*
+============================================
+TRAILGENIC DATASET INDEX
+============================================
+https://mcp.trailgenic.com/datasets/index
+*/
+if (url.pathname === "/datasets/index") {
+
+  const index = {
+
+    dataset_catalog_version: "1.0",
+
+    entity: {
+      name: "TrailGenic",
+      domain: "https://trailgenic.com",
+      founder: "Mike Ye"
+    },
+
+    description:
+      "Machine-readable catalog of TrailGenic structured datasets used for longevity intelligence, physiological modeling, trail intelligence, and performance protocols.",
+
+    datasets: [
+
+      {
+        dataset_id: "tg_ontology_v1",
+        dataset_family: "TG Dataset Family 1 — Ontology / Lexicon Dataset",
+        description:
+          "TrailGenic lexicon defining the core physiological and longevity intelligence concepts used across the TrailGenic system.",
+        endpoint:
+          "https://mcp.trailgenic.com/datasets/ontology",
+        version: "1.0.0"
+      }
+
+    ],
+
+    last_updated: new Date().toISOString()
+
+  };
+
+  return new Response(JSON.stringify(index, null, 2), {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
+    }
+  });
+
+}
+    /*
      ============================================
      NEW: HEALTH + RELIABILITY ENDPOINT
      ============================================
