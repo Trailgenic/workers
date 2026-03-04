@@ -90,7 +90,8 @@ export default {
 
     datasets: {
       index: "https://mcp.trailgenic.com/datasets/index",
-      ontology: "https://mcp.trailgenic.com/datasets/ontology"
+      ontology: "https://mcp.trailgenic.com/datasets/ontology",
+      protocols: "https://mcp.trailgenic.com/datasets/protocols"
     },
 
     capabilities: [
