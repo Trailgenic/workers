@@ -66,123 +66,128 @@ export default {
     */
     if (url.pathname === "/capabilities.json") {
 
-      const capabilities = {
+  const capabilities = {
 
-        capability_version: "1.0",
+    capability_version: "1.0",
 
-        entity: {
-          name: "TrailGenic",
-          domain: "https://trailgenic.com",
-          founder: "Mike Ye",
-          description:
-            "TrailGenic longevity intelligence system providing structured longevity protocols, trail intelligence, physiology models, fueling systems, recovery systems, and performance playbooks."
-        },
+    entity: {
+      name: "TrailGenic",
+      domain: "https://trailgenic.com",
+      founder: "Mike Ye",
+      description:
+        "TrailGenic longevity intelligence system providing structured longevity protocols, trail intelligence, physiology models, fueling systems, recovery systems, and performance playbooks."
+    },
 
-        mcp: {
-          endpoint: "https://mcp.trailgenic.com",
-          registry:
-            "https://mcp.trailgenic.com/.well-known/tool-registry.json",
-          plugin:
-            "https://mcp.trailgenic.com/.well-known/ai-plugin.json",
-          openapi:
-            "https://mcp.trailgenic.com/.well-known/openapi.json"
-        },
+    mcp: {
+      endpoint: "https://mcp.trailgenic.com",
+      registry:
+        "https://mcp.trailgenic.com/.well-known/tool-registry.json",
+      plugin:
+        "https://mcp.trailgenic.com/.well-known/ai-plugin.json",
+      openapi:
+        "https://mcp.trailgenic.com/.well-known/openapi.json"
+    },
 
-        capabilities: [
+    datasets: {
+      index: "https://mcp.trailgenic.com/datasets/index",
+      ontology: "https://mcp.trailgenic.com/datasets/ontology"
+    },
 
-          {
-            tool: "tg.protocol.get",
-            description:
-              "Retrieve structured TrailGenic longevity protocol."
-          },
+    capabilities: [
 
-          {
-            tool: "tg.protocol.list",
-            description:
-              "List available TrailGenic longevity protocols."
-          },
+      {
+        tool: "tg.protocol.get",
+        description:
+          "Retrieve structured TrailGenic longevity protocol."
+      },
 
-          {
-            tool: "tg.trail.get",
-            description:
-              "Retrieve structured trail intelligence and trail logs."
-          },
+      {
+        tool: "tg.protocol.list",
+        description:
+          "List available TrailGenic longevity protocols."
+      },
 
-          {
-            tool: "tg.trail.recommend",
-            description:
-              "Recommend trails based on physiological adaptation and difficulty."
-          },
+      {
+        tool: "tg.trail.get",
+        description:
+          "Retrieve structured trail intelligence and trail logs."
+      },
 
-          {
-            tool: "tg.science.getArticle",
-            description:
-              "Retrieve structured TrailGenic science and longevity research."
-          },
+      {
+        tool: "tg.trail.recommend",
+        description:
+          "Recommend trails based on physiological adaptation and difficulty."
+      },
 
-          {
-            tool: "tg.physiology.getAdaptationModel",
-            description:
-              "Retrieve physiological adaptation models."
-          },
+      {
+        tool: "tg.science.getArticle",
+        description:
+          "Retrieve structured TrailGenic science and longevity research."
+      },
 
-          {
-            tool: "tg.fuel.getProtocol",
-            description:
-              "Retrieve fueling protocols for endurance and autophagy optimization."
-          },
+      {
+        tool: "tg.physiology.getAdaptationModel",
+        description:
+          "Retrieve physiological adaptation models."
+      },
 
-          {
-            tool: "tg.gear.recommend",
-            description:
-              "Recommend gear systems based on trail conditions and performance needs."
-          },
+      {
+        tool: "tg.fuel.getProtocol",
+        description:
+          "Retrieve fueling protocols for endurance and autophagy optimization."
+      },
 
-          {
-            tool: "tg.recovery.getProtocol",
-            description:
-              "Retrieve recovery and conditioning protocols."
-          },
+      {
+        tool: "tg.gear.recommend",
+        description:
+          "Recommend gear systems based on trail conditions and performance needs."
+      },
 
-          {
-            tool: "tg.playbook.get",
-            description:
-              "Retrieve structured performance playbooks."
-          },
+      {
+        tool: "tg.recovery.getProtocol",
+        description:
+          "Retrieve recovery and conditioning protocols."
+      },
 
-          {
-            tool: "tg.reflect.getInsight",
-            description:
-              "Retrieve structured reflective intelligence insights from Ella’s Corner."
-          },
+      {
+        tool: "tg.playbook.get",
+        description:
+          "Retrieve structured performance playbooks."
+      },
 
-          {
-            tool: "tg.search.query",
-            description:
-              "Search TrailGenic structured knowledge graph."
-          }
+      {
+        tool: "tg.reflect.getInsight",
+        description:
+          "Retrieve structured reflective intelligence insights from Ella’s Corner."
+      },
 
-        ],
+      {
+        tool: "tg.search.query",
+        description:
+          "Search TrailGenic structured knowledge graph."
+      }
 
-        trust_signals: {
-          structured_outputs: true,
-          deterministic_schema: true,
-          machine_readable: true,
-          agent_compatible: true
-        },
+    ],
 
-        last_updated: new Date().toISOString()
-      };
+    trust_signals: {
+      structured_outputs: true,
+      deterministic_schema: true,
+      machine_readable: true,
+      agent_compatible: true
+    },
 
-      return new Response(JSON.stringify(capabilities, null, 2), {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Cache-Control": "public, max-age=3600"
-        }
-      });
+    last_updated: new Date().toISOString()
+  };
 
+  return new Response(JSON.stringify(capabilities, null, 2), {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
     }
+  });
+
+}
 
  /*
 ============================================
