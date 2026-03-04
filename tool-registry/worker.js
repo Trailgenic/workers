@@ -33,6 +33,9 @@ export default {
         capabilities:
           "https://mcp.trailgenic.com/capabilities.json",
 
+        datasets:
+          "https://mcp.trailgenic.com/datasets/index",
+        
         health:
           "https://mcp.trailgenic.com/health",
 
@@ -181,6 +184,31 @@ export default {
 
     }
 
+    /*
+============================================
+TRAILGENIC ONTOLOGY DATASET
+============================================
+https://mcp.trailgenic.com/datasets/ontology
+*/
+if (url.pathname === "/datasets/ontology") {
+
+  const datasetURL =
+    "https://raw.githubusercontent.com/trailgenic/trailgenic-workers/main/workers/datasets/ontology/tg_ontology_v1.json";
+
+  const dataset = await fetch(datasetURL);
+
+  const data = await dataset.text();
+
+  return new Response(data, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
+    }
+  });
+
+}
 
     /*
      ============================================
