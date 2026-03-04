@@ -184,18 +184,25 @@ export default {
 
     }
 
-    /*
+ /*
 ============================================
 TRAILGENIC ONTOLOGY DATASET
 ============================================
 https://mcp.trailgenic.com/datasets/ontology
 */
-if (url.pathname === "/datasets/ontology") {
+if (url.pathname === "/datasets/ontology" || url.pathname === "/datasets/ontology/") {
 
   const datasetURL =
-    "https://raw.githubusercontent.com/trailgenic/workers/main/datasets/ontology/tg_ontology_v1.json";
+    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/ontology/tg_ontology_v1.json";
 
   const dataset = await fetch(datasetURL);
+
+  if (!dataset.ok) {
+    return new Response(`Dataset fetch failed: ${dataset.status}`, {
+      status: 500,
+      headers: { "Content-Type": "text/plain" }
+    });
+  }
 
   const data = await dataset.text();
 
@@ -210,29 +217,24 @@ if (url.pathname === "/datasets/ontology") {
 
 }
 
-    /*
+/*
 ============================================
 TRAILGENIC DATASET INDEX
 ============================================
 https://mcp.trailgenic.com/datasets/index
 */
-if (url.pathname.startswith("/datasets/index")) {
+if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
 
   const index = {
-
     dataset_catalog_version: "1.0",
-
     entity: {
       name: "TrailGenic",
       domain: "https://trailgenic.com",
       founder: "Mike Ye"
     },
-
     description:
       "Machine-readable catalog of TrailGenic structured datasets used for longevity intelligence, physiological modeling, trail intelligence, and performance protocols.",
-
     datasets: [
-
       {
         dataset_id: "tg_ontology_v1",
         dataset_family: "TG Dataset Family 1 — Ontology / Lexicon Dataset",
@@ -242,11 +244,8 @@ if (url.pathname.startswith("/datasets/index")) {
           "https://mcp.trailgenic.com/datasets/ontology",
         version: "1.0.0"
       }
-
     ],
-
     last_updated: new Date().toISOString()
-
   };
 
   return new Response(JSON.stringify(index, null, 2), {
