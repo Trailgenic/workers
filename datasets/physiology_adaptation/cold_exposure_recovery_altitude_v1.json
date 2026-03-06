@@ -5,7 +5,32 @@
   "version": "v1",
   "status": "shell",
   "last_updated": "2026-03-06",
-  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling stimulus, response, and adaptation for cold exposure recovery altitude.",
+  "description": "Shell dataset module modeling physiological adaptations from cold exposure during altitude environments.",
   "modules": [],
-  "records": []
+  "records": [
+    {
+      "mechanism": "Cold-induced thermogenic response",
+      "stimulus": {
+        "environment": "cold alpine conditions",
+        "temperature_range_celsius": "-10 to 10",
+        "exposure_duration_minutes": "30-180"
+      },
+      "physiological_response": [
+        "increased sympathetic nervous system activation",
+        "brown adipose tissue activation",
+        "increased metabolic heat production"
+      ],
+      "adaptation_outcomes": [
+        "improved cold tolerance",
+        "enhanced thermogenic capacity",
+        "greater environmental resilience"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Cannon and Nedergaard 2004",
+          "finding": "Cold exposure activates brown adipose tissue contributing to thermogenic heat production."
+        }
+      ]
+    }
+  ]
 }
