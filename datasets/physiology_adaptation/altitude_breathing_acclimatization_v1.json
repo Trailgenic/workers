@@ -5,7 +5,32 @@
   "version": "v1",
   "status": "shell",
   "last_updated": "2026-03-06",
-  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling stimulus, response, and adaptation for altitude breathing acclimatization.",
+  "description": "Shell dataset module modeling respiratory acclimatization responses to altitude exposure.",
   "modules": [],
-  "records": []
+  "records": [
+    {
+      "mechanism": "Hypoxic ventilatory response",
+      "stimulus": {
+        "environment": "reduced atmospheric oxygen pressure",
+        "altitude_range_meters": "2000-4500",
+        "exposure_duration_hours": "6-72"
+      },
+      "physiological_response": [
+        "increased ventilation rate",
+        "increased breathing depth",
+        "respiratory alkalosis development"
+      ],
+      "adaptation_outcomes": [
+        "improved oxygen uptake efficiency",
+        "improved tolerance to hypoxic environments",
+        "enhanced endurance performance during altitude exposure"
+      ],
+      "supporting_science": [
+        {
+          "citation": "West 2004",
+          "finding": "Ventilatory responses increase during early altitude exposure to compensate for reduced oxygen availability."
+        }
+      ]
+    }
+  ]
 }
