@@ -41,7 +41,7 @@ This science-derived dataset family is intended to model stimulus, response, and
 
 Physiology adaptation module endpoints:
 
-- https://mcp.trailgenic.com/datasets/physiology-adaptation/seven_day_aftereffect
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/seven-day-aftereffect
 - https://mcp.trailgenic.com/datasets/physiology-adaptation/fasted-autophagy
 - https://mcp.trailgenic.com/datasets/physiology-adaptation/altitude-adaptation
 - https://mcp.trailgenic.com/datasets/physiology-adaptation/altitude-breathing-acclimatization
