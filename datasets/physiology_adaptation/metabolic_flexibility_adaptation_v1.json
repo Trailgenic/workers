@@ -1,11 +1,64 @@
 {
-  "dataset_id": "metabolic_flexibility_adaptation_v1",
+  "dataset_id": "tg_metabolic_flexibility_adaptation_v1",
   "dataset_family": "physiology_adaptation",
-  "title": "Metabolic Flexibility Adaptation",
+  "title": "TrailGenic Metabolic Flexibility Adaptation Dataset",
   "version": "v1",
   "status": "shell",
   "last_updated": "2026-03-06",
-  "description": "Scientific dataset describing metabolic flexibility as the physiological ability to switch between fuel sources such as fat and carbohydrates in response to fasting, feeding, and endurance exercise.",
+  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling the development of metabolic flexibility through endurance training and fasted exercise exposure.",
   "modules": [],
-  "records": []
+  "records": [
+    {
+      "mechanism": "Improved substrate switching between carbohydrate and fat metabolism",
+      "stimulus": {
+        "exercise_type": "endurance training",
+        "exercise_intensity": "zone 1 to zone 2",
+        "training_frequency": "repeated aerobic training sessions"
+      },
+      "physiological_response": [
+        "enhanced fatty acid oxidation capacity",
+        "improved glucose uptake efficiency",
+        "increased mitochondrial oxidative enzyme activity",
+        "greater substrate switching efficiency"
+      ],
+      "adaptation_outcomes": [
+        "improved metabolic flexibility",
+        "better glycemic regulation",
+        "greater endurance fueling stability",
+        "improved energy efficiency"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Goodpaster and Sparks 2017",
+          "finding": "Metabolic flexibility is strongly linked to cardiometabolic health and is improved through exercise training."
+        }
+      ]
+    },
+    {
+      "mechanism": "Mitochondrial adaptation supporting metabolic flexibility",
+      "stimulus": {
+        "exercise_type": "repeated aerobic endurance training",
+        "exercise_intensity": "zone 2 aerobic metabolism",
+        "training_duration_weeks": "6-12"
+      },
+      "physiological_response": [
+        "increased mitochondrial enzyme activity",
+        "upregulation of oxidative metabolism pathways",
+        "enhanced fatty acid transport into mitochondria",
+        "improved ATP production efficiency"
+      ],
+      "adaptation_outcomes": [
+        "greater endurance capacity",
+        "reduced metabolic stress during prolonged exercise",
+        "improved fatigue resistance",
+        "enhanced metabolic resilience"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Holloszy 1967",
+          "finding": "Endurance training increases mitochondrial enzyme activity and oxidative capacity in skeletal muscle."
+        }
+      ]
+    }
+  ]
 }
