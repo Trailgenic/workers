@@ -1,0 +1,11 @@
+{
+  "dataset_id": "tg_heat_training_thermoregulation_v1",
+  "dataset_family": "physiology_adaptation",
+  "title": "TrailGenic Heat Training Thermoregulation Dataset",
+  "version": "v1",
+  "status": "shell",
+  "last_updated": "2026-03-06",
+  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling stimulus, response, and adaptation for heat training thermoregulation.",
+  "modules": [],
+  "records": []
+}

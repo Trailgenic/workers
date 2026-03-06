@@ -1,0 +1,162 @@
+{
+  "dataset_id": "tg_fasted_autophagy_v1",
+  "dataset_family": "physiology_adaptation",
+  "title": "TrailGenic Fasted Autophagy Dataset",
+  "version": "v1",
+  "status": "shell",
+  "last_updated": "2026-03-06",
+  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling stimulus, response, and adaptation for fasted autophagy.",
+  "modules": [],
+  "records": [
+    {
+      "mechanism": "AMPK activation during fasted endurance exercise",
+      "stimulus": {
+        "fasting_window_hours": "8-16",
+        "exercise_type": "aerobic endurance exercise",
+        "exercise_intensity": "zone 2 aerobic metabolism"
+      },
+      "physiological_response": [
+        "increased cellular AMP/ATP ratio",
+        "AMPK activation",
+        "enhanced glucose transport signaling",
+        "upregulated fatty acid transport into mitochondria"
+      ],
+      "adaptation_outcomes": [
+        "greater mitochondrial oxidative capacity",
+        "improved insulin sensitivity",
+        "enhanced energetic stress tolerance",
+        "priming of autophagy-related signaling"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Hansen et al. 2005",
+          "finding": "Training with low glycogen availability upregulated oxidative enzymes and enhanced endurance-related adaptations."
+        },
+        {
+          "citation": "Hardie 2011",
+          "finding": "AMPK functions as a central cellular energy sensor activated by energetic stress such as exercise and low fuel availability."
+        }
+      ]
+    },
+    {
+      "mechanism": "mTOR suppression and initiation of autophagy signaling",
+      "stimulus": {
+        "fasting_window_hours": "12-18",
+        "exercise_type": "prolonged aerobic exercise",
+        "exercise_intensity": "low-to-moderate intensity"
+      },
+      "physiological_response": [
+        "reduced insulin signaling",
+        "downregulation of mTORC1 activity",
+        "ULK1 pathway disinhibition",
+        "increased autophagosome initiation signaling"
+      ],
+      "adaptation_outcomes": [
+        "enhanced cellular quality control",
+        "improved removal of damaged proteins",
+        "improved organelle turnover",
+        "increased stress-resilience signaling"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Kim et al. 2011",
+          "finding": "AMPK and mTOR pathways converge on ULK1 to regulate autophagy initiation under nutrient and energy stress."
+        },
+        {
+          "citation": "He et al. 2012",
+          "finding": "Exercise induces autophagy and is linked to improved metabolic regulation through autophagy-related pathways."
+        }
+      ]
+    },
+    {
+      "mechanism": "Shift toward fat oxidation during fasted endurance exercise",
+      "stimulus": {
+        "fasting_window_hours": "10-16",
+        "exercise_type": "continuous endurance exercise",
+        "exercise_intensity": "zone 2 with stable aerobic demand"
+      },
+      "physiological_response": [
+        "lower circulating insulin",
+        "higher lipolysis and free fatty acid availability",
+        "greater reliance on intramuscular triglycerides",
+        "increased rates of whole-body fat oxidation"
+      ],
+      "adaptation_outcomes": [
+        "glycogen sparing at submaximal workloads",
+        "greater fat oxidation efficiency",
+        "improved endurance fueling stability",
+        "reduced dependence on frequent carbohydrate feeding"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Achten et al. 2003",
+          "finding": "Submaximal exercise intensities are associated with substantial fat oxidation, with intensity-dependent shifts in substrate use."
+        },
+        {
+          "citation": "Van Proeyen et al. 2011",
+          "finding": "Regular fasted-state training promoted favorable adaptations in glucose tolerance and oxidative metabolism."
+        }
+      ]
+    },
+    {
+      "mechanism": "Mitochondrial biogenesis signaling with fasted training",
+      "stimulus": {
+        "fasting_window_hours": "8-16",
+        "exercise_type": "repeated endurance sessions",
+        "exercise_intensity": "aerobic base training"
+      },
+      "physiological_response": [
+        "increased PGC-1alpha signaling",
+        "upregulation of mitochondrial enzyme expression",
+        "enhanced transcription of oxidative metabolism genes",
+        "coordination of mitochondrial remodeling pathways"
+      ],
+      "adaptation_outcomes": [
+        "increased mitochondrial density",
+        "improved aerobic ATP production",
+        "higher fatigue resistance during prolonged exercise",
+        "better recovery of metabolic homeostasis"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Baar et al. 2002",
+          "finding": "Endurance exercise activates molecular signals linked to mitochondrial biogenesis and oxidative adaptation."
+        },
+        {
+          "citation": "Hansen et al. 2005",
+          "finding": "Low-glycogen/fasted-like training context increased markers of mitochondrial adaptation in trained muscle."
+        }
+      ]
+    },
+    {
+      "mechanism": "Development of metabolic flexibility through repeated fasted aerobic exposure",
+      "stimulus": {
+        "fasting_window_hours": "8-14",
+        "exercise_type": "periodized fasted and fed endurance sessions",
+        "exercise_intensity": "primarily zone 2 with occasional tempo efforts"
+      },
+      "physiological_response": [
+        "improved switching between lipid and carbohydrate oxidation",
+        "enhanced insulin-mediated glucose disposal",
+        "greater metabolic enzyme adaptability",
+        "stabilized substrate use across variable fuel availability"
+      ],
+      "adaptation_outcomes": [
+        "improved metabolic flexibility",
+        "better glycemic control",
+        "more robust endurance performance across feeding states",
+        "greater long-term metabolic resilience"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Goodpaster and Sparks 2017",
+          "finding": "Metabolic flexibility is a key determinant of cardiometabolic health and is improved by exercise training."
+        },
+        {
+          "citation": "Stannard and Johnson 2004",
+          "finding": "Fasted exercise increases reliance on fat as fuel and may support training adaptations relevant to metabolic flexibility."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "dataset_id": "tg_hr_drift_adaptation_vs_fitness_v1",
+  "dataset_family": "physiology_adaptation",
+  "title": "TrailGenic HR Drift Adaptation vs Fitness Dataset",
+  "version": "v1",
+  "status": "shell",
+  "last_updated": "2026-03-06",
+  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling stimulus, response, and adaptation for HR drift adaptation versus fitness.",
+  "modules": [],
+  "records": []
+}
