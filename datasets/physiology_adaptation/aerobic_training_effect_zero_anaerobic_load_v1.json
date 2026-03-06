@@ -5,7 +5,32 @@
   "version": "v1",
   "status": "shell",
   "last_updated": "2026-03-06",
-  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling stimulus, response, and adaptation for aerobic training effect with zero anaerobic load.",
+  "description": "Shell dataset module modeling endurance adaptations achieved through predominantly aerobic training with minimal anaerobic stress.",
   "modules": [],
-  "records": []
+  "records": [
+    {
+      "mechanism": "Aerobic mitochondrial adaptation from low intensity training",
+      "stimulus": {
+        "exercise_intensity": "zone 1-2 aerobic metabolism",
+        "exercise_duration_minutes": "60-300",
+        "training_frequency": "multiple weekly sessions"
+      },
+      "physiological_response": [
+        "mitochondrial enzyme upregulation",
+        "increased capillary density",
+        "improved oxygen delivery"
+      ],
+      "adaptation_outcomes": [
+        "greater aerobic endurance",
+        "improved metabolic efficiency",
+        "reduced fatigue during long-duration activity"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Seiler 2010",
+          "finding": "High volumes of low intensity training drive aerobic adaptation in endurance athletes."
+        }
+      ]
+    }
+  ]
 }
