@@ -5,7 +5,64 @@
   "version": "v1",
   "status": "shell",
   "last_updated": "2026-03-06",
-  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling stimulus, response, and adaptation for HR drift adaptation versus fitness.",
+  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling cardiovascular drift behavior during prolonged aerobic endurance activity.",
   "modules": [],
-  "records": []
+  "records": [
+    {
+      "mechanism": "Cardiovascular drift during prolonged aerobic exercise",
+      "stimulus": {
+        "exercise_type": "prolonged endurance exercise",
+        "duration_minutes": "60-300",
+        "exercise_intensity": "zone 2 aerobic metabolism"
+      },
+      "physiological_response": [
+        "gradual increase in heart rate over time",
+        "reduction in stroke volume",
+        "increased reliance on cardiovascular compensation",
+        "elevated sympathetic nervous system activity"
+      ],
+      "adaptation_outcomes": [
+        "improved cardiovascular stability during endurance exercise",
+        "reduced heart rate drift over time",
+        "greater aerobic efficiency",
+        "improved endurance sustainability"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Coyle and Gonzalez-Alonso 2001",
+          "finding": "Cardiovascular drift during prolonged exercise is associated with reductions in stroke volume and increased heart rate."
+        },
+        {
+          "citation": "Decorte et al. 2012",
+          "finding": "Heart rate drift can serve as a practical marker of endurance efficiency and aerobic fitness."
+        }
+      ]
+    },
+    {
+      "mechanism": "Thermoregulatory contribution to cardiovascular drift",
+      "stimulus": {
+        "exercise_type": "endurance exercise in warm conditions",
+        "temperature": "20-35C",
+        "exercise_intensity": "low to moderate intensity"
+      },
+      "physiological_response": [
+        "increased skin blood flow",
+        "elevated sweat rate",
+        "reduced central blood volume",
+        "increased cardiovascular strain"
+      ],
+      "adaptation_outcomes": [
+        "improved thermoregulatory efficiency",
+        "reduced cardiovascular strain during heat exposure",
+        "greater endurance stability in warm environments",
+        "enhanced exercise tolerance"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Gonzalez-Alonso et al. 1997",
+          "finding": "Thermoregulatory demands contribute significantly to cardiovascular drift during prolonged exercise."
+        }
+      ]
+    }
+  ]
 }
