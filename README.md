@@ -41,21 +41,21 @@ This science-derived dataset family is intended to model stimulus, response, and
 
 Physiology adaptation module endpoints:
 
-- https://mcp.trailgenic.com/datasets/physiology-adaptation/seven_day_aftereffect_v1.json
-- https://mcp.trailgenic.com/datasets/physiology-adaptation/fasted-autophagy_v1.json
-- https://mcp.trailgenic.com/datasets/physiology-adaptation/altitude-adaptation_v1.json
-- https://mcp.trailgenic.com/datasets/physiology-adaptation/altitude-breathing-acclimatization_v1.json
-- https://mcp.trailgenic.com/datasets/physiology-adaptation/electrolytes-physiological-stability_v1.json
-- https://mcp.trailgenic.com/datasets/physiology-adaptation/cold-exposure-recovery-altitude_v1.json
-- https://mcp.trailgenic.com/datasets/physiology-adaptation/deep-cold-protocols_v1.json
-- https://mcp.trailgenic.com/datasets/physiology-adaptation/heat-training-thermoregulation_v1.json
-- https://mcp.trailgenic.com/datasets/physiology-adaptation/hr-drift-adaptation-vs-fitness_v1.json
-- https://mcp.trailgenic.com/datasets/physiology-adaptation/altitude-terrain-physiology-comparison_v1.json
-- https://mcp.trailgenic.com/datasets/physiology-adaptation/aerobic-training-effect-zero-anaerobic-load_v1.json
-- https://mcp.trailgenic.com/datasets/physiology-adaptation/eccentric-load-stress-inversion_v1.json
-- https://mcp.trailgenic.com/datasets/physiology-adaptation/sleep-science-endurance_v1.json
-- https://mcp.trailgenic.com/datasets/physiology-adaptation/overextension-fasted-hiking_v1.json
-- https://mcp.trailgenic.com/datasets/physiology-adaptation/metabolic-flexibility-adaptation_v1.json
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/seven_day_aftereffect
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/fasted-autophagy
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/altitude-adaptation
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/altitude-breathing-acclimatization
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/electrolytes-physiological-stability
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/cold-exposure-recovery-altitude
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/deep-cold-protocols
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/heat-training-thermoregulation
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/hr-drift-adaptation-vs-fitness
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/altitude-terrain-physiology-comparison
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/aerobic-training-effect-zero-anaerobic-load
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/eccentric-load-stress-inversion
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/sleep-science-endurance
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/overextension-fasted-hiking
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/metabolic-flexibility-adaptation
 
 Additional datasets will expand the TrailGenic longevity intelligence model over time.
 
