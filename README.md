@@ -34,6 +34,11 @@ https://mcp.trailgenic.com/datasets/ontology
 Protocol Kernel Dataset (TG Dataset Family 2)  
 https://mcp.trailgenic.com/datasets/protocols
 
+Physiology Adaptation Dataset (TG Dataset Family 3)  
+https://mcp.trailgenic.com/datasets/physiology-adaptation
+
+This science-derived dataset family is intended to model stimulus, response, and adaptation mechanisms. The shell scaffold has been created and structured population is pending.
+
 Additional datasets will expand the TrailGenic longevity intelligence model over time.
 
 ---
