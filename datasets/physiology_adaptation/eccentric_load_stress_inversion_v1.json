@@ -5,7 +5,32 @@
   "version": "v1",
   "status": "shell",
   "last_updated": "2026-03-06",
-  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling stimulus, response, and adaptation for eccentric load stress inversion.",
+  "description": "Shell dataset module modeling eccentric muscular stress and adaptation during downhill endurance activity.",
   "modules": [],
-  "records": []
+  "records": [
+    {
+      "mechanism": "Eccentric muscle loading during downhill movement",
+      "stimulus": {
+        "terrain_type": "downhill mountain terrain",
+        "exercise_type": "hiking descent",
+        "grade_percent": "10-25"
+      },
+      "physiological_response": [
+        "high eccentric muscular contraction",
+        "microtears in muscle fibers",
+        "inflammatory response"
+      ],
+      "adaptation_outcomes": [
+        "improved muscular resilience",
+        "reduced muscle damage in repeated exposure",
+        "greater downhill movement efficiency"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Proske and Morgan 2001",
+          "finding": "Eccentric contractions cause muscle damage but stimulate protective adaptations with repeated exposure."
+        }
+      ]
+    }
+  ]
 }
