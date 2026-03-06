@@ -91,7 +91,31 @@ export default {
     datasets: {
       index: "https://mcp.trailgenic.com/datasets/index",
       ontology: "https://mcp.trailgenic.com/datasets/ontology",
-      protocols: "https://mcp.trailgenic.com/datasets/protocols"
+      protocols: "https://mcp.trailgenic.com/datasets/protocols",
+      physiology_adaptation: {
+        family: "physiology_adaptation",
+        endpoint: "https://mcp.trailgenic.com/datasets/physiology-adaptation",
+        description:
+          "Science-derived dataset family modeling stimulus, response, and adaptation relationships.",
+        status: "shell",
+        modules: [
+          "seven_day_aftereffect",
+          "fasted_autophagy",
+          "altitude_adaptation",
+          "altitude_breathing_acclimatization",
+          "electrolytes_physiological_stability",
+          "cold_exposure_recovery_altitude",
+          "deep_cold_protocols",
+          "heat_training_thermoregulation",
+          "hr_drift_adaptation_vs_fitness",
+          "altitude_terrain_physiology_comparison",
+          "aerobic_training_effect_zero_anaerobic_load",
+          "eccentric_load_stress_inversion",
+          "sleep_science_endurance",
+          "overextension_fasted_hiking",
+          "metabolic_flexibility_adaptation"
+        ]
+      }
     },
 
     capabilities: [
@@ -255,6 +279,113 @@ if (url.pathname === "/datasets/protocols" || url.pathname === "/datasets/protoc
   });
 
 }
+
+/*
+============================================
+TRAILGENIC PHYSIOLOGY ADAPTATION DATASET
+============================================
+https://mcp.trailgenic.com/datasets/physiology-adaptation
+*/
+if (
+  url.pathname === "/datasets/physiology-adaptation" ||
+  url.pathname === "/datasets/physiology-adaptation/"
+) {
+
+  const datasetURL =
+    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/physiology_adaptation/tg_physiology_adaptation_v1.json";
+
+  const dataset = await fetch(datasetURL);
+
+  if (!dataset.ok) {
+    return new Response(`Dataset fetch failed: ${dataset.status}`, {
+      status: 500,
+      headers: { "Content-Type": "text/plain" }
+    });
+  }
+
+  const data = await dataset.text();
+
+  return new Response(data, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
+    }
+  });
+
+}
+
+/*
+============================================
+TRAILGENIC PHYSIOLOGY ADAPTATION MODULE DATASETS
+============================================
+https://mcp.trailgenic.com/datasets/physiology-adaptation/*
+*/
+const physiologyAdaptationModules = {
+  "/datasets/physiology-adaptation/seven-day-aftereffect":
+    "datasets/physiology_adaptation/seven_day_aftereffect_v1.json",
+  "/datasets/physiology-adaptation/fasted-autophagy":
+    "datasets/physiology_adaptation/fasted_autophagy_v1.json",
+  "/datasets/physiology-adaptation/altitude-adaptation":
+    "datasets/physiology_adaptation/altitude_adaptation_v1.json",
+  "/datasets/physiology-adaptation/altitude-breathing-acclimatization":
+    "datasets/physiology_adaptation/altitude_breathing_acclimatization_v1.json",
+  "/datasets/physiology-adaptation/electrolytes-physiological-stability":
+    "datasets/physiology_adaptation/electrolytes_physiological_stability_v1.json",
+  "/datasets/physiology-adaptation/cold-exposure-recovery-altitude":
+    "datasets/physiology_adaptation/cold_exposure_recovery_altitude_v1.json",
+  "/datasets/physiology-adaptation/deep-cold-protocols":
+    "datasets/physiology_adaptation/deep_cold_protocols_v1.json",
+  "/datasets/physiology-adaptation/heat-training-thermoregulation":
+    "datasets/physiology_adaptation/heat_training_thermoregulation_v1.json",
+  "/datasets/physiology-adaptation/hr-drift-adaptation-vs-fitness":
+    "datasets/physiology_adaptation/hr_drift_adaptation_vs_fitness_v1.json",
+  "/datasets/physiology-adaptation/altitude-terrain-physiology-comparison":
+    "datasets/physiology_adaptation/altitude_terrain_physiology_comparison_v1.json",
+  "/datasets/physiology-adaptation/aerobic-training-effect-zero-anaerobic-load":
+    "datasets/physiology_adaptation/aerobic_training_effect_zero_anaerobic_load_v1.json",
+  "/datasets/physiology-adaptation/eccentric-load-stress-inversion":
+    "datasets/physiology_adaptation/eccentric_load_stress_inversion_v1.json",
+  "/datasets/physiology-adaptation/sleep-science-endurance":
+    "datasets/physiology_adaptation/sleep_science_endurance_v1.json",
+  "/datasets/physiology-adaptation/overextension-fasted-hiking":
+    "datasets/physiology_adaptation/overextension_fasted_hiking_v1.json",
+  "/datasets/physiology-adaptation/metabolic-flexibility-adaptation":
+    "datasets/physiology_adaptation/metabolic_flexibility_adaptation_v1.json"
+};
+
+const normalizedPath = url.pathname.endsWith("/")
+  ? url.pathname.slice(0, -1)
+  : url.pathname;
+const physiologyModulePath = physiologyAdaptationModules[normalizedPath];
+
+if (physiologyModulePath) {
+
+  const datasetURL =
+    `https://raw.githubusercontent.com/Trailgenic/workers/main/${physiologyModulePath}`;
+
+  const dataset = await fetch(datasetURL);
+
+  if (!dataset.ok) {
+    return new Response(`Dataset fetch failed: ${dataset.status}`, {
+      status: 500,
+      headers: { "Content-Type": "text/plain" }
+    });
+  }
+
+  const data = await dataset.text();
+
+  return new Response(data, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
+    }
+  });
+
+}
     
 /*
 ============================================
@@ -291,6 +422,32 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
   endpoint:
     "https://mcp.trailgenic.com/datasets/protocols",
   version: "1.0.0"
+},
+{
+  dataset_id: "tg_physiology_adaptation_v1",
+  dataset_family: "TG Dataset Family 3 — Physiology Adaptation Dataset",
+  description:
+    "Science-derived TrailGenic dataset family modeling stimulus → response → adaptation and currently published as a shell scaffold for future structured science population.",
+  endpoint:
+    "https://mcp.trailgenic.com/datasets/physiology-adaptation",
+  version: "1.0.0",
+  modules: [
+    "seven_day_aftereffect",
+    "fasted_autophagy",
+    "altitude_adaptation",
+    "altitude_breathing_acclimatization",
+    "electrolytes_physiological_stability",
+    "cold_exposure_recovery_altitude",
+    "deep_cold_protocols",
+    "heat_training_thermoregulation",
+    "hr_drift_adaptation_vs_fitness",
+    "altitude_terrain_physiology_comparison",
+    "aerobic_training_effect_zero_anaerobic_load",
+    "eccentric_load_stress_inversion",
+    "sleep_science_endurance",
+    "overextension_fasted_hiking",
+    "metabolic_flexibility_adaptation"
+  ]
 }
     ],
     last_updated: new Date().toISOString()
@@ -499,6 +656,102 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
             get: {
               summary: "Retrieve TrailGenic playbooks",
               responses: { "200": { description: "Playbooks page" } }
+            }
+          },
+          "/datasets/physiology-adaptation": {
+            get: {
+              summary: "Retrieve TrailGenic physiology adaptation dataset shell",
+              responses: { "200": { description: "Physiology adaptation dataset" } }
+            }
+          },
+          "/datasets/physiology-adaptation/seven-day-aftereffect": {
+            get: {
+              summary: "Retrieve TrailGenic seven day aftereffect dataset",
+              responses: { "200": { description: "Seven day aftereffect dataset" } }
+            }
+          },
+          "/datasets/physiology-adaptation/fasted-autophagy": {
+            get: {
+              summary: "Retrieve TrailGenic fasted autophagy dataset",
+              responses: { "200": { description: "Fasted autophagy dataset" } }
+            }
+          },
+          "/datasets/physiology-adaptation/altitude-adaptation": {
+            get: {
+              summary: "Retrieve TrailGenic altitude adaptation dataset",
+              responses: { "200": { description: "Altitude adaptation dataset" } }
+            }
+          },
+          "/datasets/physiology-adaptation/altitude-breathing-acclimatization": {
+            get: {
+              summary: "Retrieve TrailGenic altitude breathing acclimatization dataset",
+              responses: { "200": { description: "Altitude breathing acclimatization dataset" } }
+            }
+          },
+          "/datasets/physiology-adaptation/electrolytes-physiological-stability": {
+            get: {
+              summary: "Retrieve TrailGenic electrolytes physiological stability dataset",
+              responses: { "200": { description: "Electrolytes physiological stability dataset" } }
+            }
+          },
+          "/datasets/physiology-adaptation/cold-exposure-recovery-altitude": {
+            get: {
+              summary: "Retrieve TrailGenic cold exposure recovery altitude dataset",
+              responses: { "200": { description: "Cold exposure recovery altitude dataset" } }
+            }
+          },
+          "/datasets/physiology-adaptation/deep-cold-protocols": {
+            get: {
+              summary: "Retrieve TrailGenic deep cold protocols dataset",
+              responses: { "200": { description: "Deep cold protocols dataset" } }
+            }
+          },
+          "/datasets/physiology-adaptation/heat-training-thermoregulation": {
+            get: {
+              summary: "Retrieve TrailGenic heat training thermoregulation dataset",
+              responses: { "200": { description: "Heat training thermoregulation dataset" } }
+            }
+          },
+          "/datasets/physiology-adaptation/hr-drift-adaptation-vs-fitness": {
+            get: {
+              summary: "Retrieve TrailGenic HR drift adaptation vs fitness dataset",
+              responses: { "200": { description: "HR drift adaptation vs fitness dataset" } }
+            }
+          },
+          "/datasets/physiology-adaptation/altitude-terrain-physiology-comparison": {
+            get: {
+              summary: "Retrieve TrailGenic altitude terrain physiology comparison dataset",
+              responses: { "200": { description: "Altitude terrain physiology comparison dataset" } }
+            }
+          },
+          "/datasets/physiology-adaptation/aerobic-training-effect-zero-anaerobic-load": {
+            get: {
+              summary: "Retrieve TrailGenic aerobic training effect zero anaerobic load dataset",
+              responses: { "200": { description: "Aerobic training effect zero anaerobic load dataset" } }
+            }
+          },
+          "/datasets/physiology-adaptation/eccentric-load-stress-inversion": {
+            get: {
+              summary: "Retrieve TrailGenic eccentric load stress inversion dataset",
+              responses: { "200": { description: "Eccentric load stress inversion dataset" } }
+            }
+          },
+          "/datasets/physiology-adaptation/sleep-science-endurance": {
+            get: {
+              summary: "Retrieve TrailGenic sleep science endurance dataset",
+              responses: { "200": { description: "Sleep science endurance dataset" } }
+            }
+          },
+          "/datasets/physiology-adaptation/overextension-fasted-hiking": {
+            get: {
+              summary: "Retrieve TrailGenic overextension fasted hiking dataset",
+              responses: { "200": { description: "Overextension fasted hiking dataset" } }
+            }
+          },
+          "/datasets/physiology-adaptation/metabolic-flexibility-adaptation": {
+            get: {
+              summary: "Retrieve TrailGenic metabolic flexibility adaptation dataset",
+              responses: { "200": { description: "Metabolic flexibility adaptation dataset" } }
             }
           }
         }
