@@ -5,7 +5,64 @@
   "version": "v1",
   "status": "shell",
   "last_updated": "2026-03-06",
-  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling stimulus, response, and adaptation for heat training thermoregulation.",
+  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling thermoregulatory adaptation from repeated exercise in hot environments.",
   "modules": [],
-  "records": []
+  "records": [
+    {
+      "mechanism": "Heat acclimation through repeated endurance exposure",
+      "stimulus": {
+        "exercise_type": "aerobic endurance training",
+        "environment": "warm to hot conditions",
+        "temperature": "25-40C"
+      },
+      "physiological_response": [
+        "increased plasma volume expansion",
+        "earlier onset of sweating",
+        "increased sweat rate",
+        "improved skin blood flow regulation"
+      ],
+      "adaptation_outcomes": [
+        "improved thermoregulatory efficiency",
+        "lower core temperature during exercise",
+        "reduced cardiovascular strain",
+        "improved endurance performance in heat"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Périard et al. 2015",
+          "finding": "Heat acclimation improves thermoregulatory control and cardiovascular stability during exercise in hot environments."
+        },
+        {
+          "citation": "Sawka et al. 2011",
+          "finding": "Heat adaptation improves sweating efficiency and reduces physiological strain during exercise."
+        }
+      ]
+    },
+    {
+      "mechanism": "Cardiovascular adaptations to repeated heat stress",
+      "stimulus": {
+        "exercise_type": "repeated endurance sessions in warm environments",
+        "duration_minutes": "60-180",
+        "temperature": "25-35C"
+      },
+      "physiological_response": [
+        "plasma volume expansion",
+        "improved stroke volume maintenance",
+        "reduced heart rate at submaximal workloads",
+        "improved peripheral circulation"
+      ],
+      "adaptation_outcomes": [
+        "greater cardiovascular stability",
+        "reduced heart rate drift in warm environments",
+        "improved endurance tolerance",
+        "enhanced heat resilience"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Lorenzo et al. 2010",
+          "finding": "Heat acclimation improves cardiovascular function and endurance performance."
+        }
+      ]
+    }
+  ]
 }
