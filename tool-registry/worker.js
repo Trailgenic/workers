@@ -91,7 +91,14 @@ export default {
     datasets: {
       index: "https://mcp.trailgenic.com/datasets/index",
       ontology: "https://mcp.trailgenic.com/datasets/ontology",
-      protocols: "https://mcp.trailgenic.com/datasets/protocols"
+      protocols: "https://mcp.trailgenic.com/datasets/protocols",
+      physiology_adaptation: {
+        family: "physiology_adaptation",
+        endpoint: "https://mcp.trailgenic.com/datasets/physiology-adaptation",
+        description:
+          "Science-derived dataset family modeling stimulus, response, and adaptation relationships.",
+        status: "shell"
+      }
     },
 
     capabilities: [
@@ -255,6 +262,42 @@ if (url.pathname === "/datasets/protocols" || url.pathname === "/datasets/protoc
   });
 
 }
+
+/*
+============================================
+TRAILGENIC PHYSIOLOGY ADAPTATION DATASET
+============================================
+https://mcp.trailgenic.com/datasets/physiology-adaptation
+*/
+if (
+  url.pathname === "/datasets/physiology-adaptation" ||
+  url.pathname === "/datasets/physiology-adaptation/"
+) {
+
+  const datasetURL =
+    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/physiology_adaptation/tg_physiology_adaptation_v1.json";
+
+  const dataset = await fetch(datasetURL);
+
+  if (!dataset.ok) {
+    return new Response(`Dataset fetch failed: ${dataset.status}`, {
+      status: 500,
+      headers: { "Content-Type": "text/plain" }
+    });
+  }
+
+  const data = await dataset.text();
+
+  return new Response(data, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
+    }
+  });
+
+}
     
 /*
 ============================================
@@ -290,6 +333,15 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
     "Defines the TrailGenic protocol progression system including Foundation, Activation, Adaptation, Consolidation, and the full TrailGenic Protocol.",
   endpoint:
     "https://mcp.trailgenic.com/datasets/protocols",
+  version: "1.0.0"
+},
+{
+  dataset_id: "tg_physiology_adaptation_v1",
+  dataset_family: "TG Dataset Family 3 — Physiology Adaptation Dataset",
+  description:
+    "Science-derived TrailGenic dataset family modeling stimulus → response → adaptation and currently published as a shell scaffold for future structured science population.",
+  endpoint:
+    "https://mcp.trailgenic.com/datasets/physiology-adaptation",
   version: "1.0.0"
 }
     ],
@@ -499,6 +551,12 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
             get: {
               summary: "Retrieve TrailGenic playbooks",
               responses: { "200": { description: "Playbooks page" } }
+            }
+          },
+          "/datasets/physiology-adaptation": {
+            get: {
+              summary: "Retrieve TrailGenic physiology adaptation dataset shell",
+              responses: { "200": { description: "Physiology adaptation dataset" } }
             }
           }
         }

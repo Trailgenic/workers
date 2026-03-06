@@ -1,0 +1,11 @@
+{
+  "dataset_id": "tg_aerobic_training_effect_zero_anaerobic_load_v1",
+  "dataset_family": "physiology_adaptation",
+  "title": "TrailGenic Aerobic Training Effect Zero Anaerobic Load Dataset",
+  "version": "v1",
+  "status": "shell",
+  "last_updated": "2026-03-06",
+  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling stimulus, response, and adaptation for aerobic training effect with zero anaerobic load.",
+  "modules": [],
+  "records": []
+}
