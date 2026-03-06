@@ -1,11 +1,112 @@
 {
   "dataset_id": "tg_overextension_fasted_hiking_v1",
   "dataset_family": "physiology_adaptation",
-  "title": "TrailGenic Overextension Fasted Hiking Dataset",
+  "title": "TrailGenic Overextension Fasted Hiking Safety Dataset",
   "version": "v1",
   "status": "shell",
   "last_updated": "2026-03-06",
-  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling stimulus, response, and adaptation for overextension fasted hiking.",
+  "description": "Shell dataset module modeling physiological risk factors and safety considerations when endurance activity is performed in a fasted metabolic state for extended durations.",
   "modules": [],
-  "records": []
+  "records": [
+    {
+      "mechanism": "Hypoglycemia risk during prolonged fasted endurance activity",
+      "stimulus": {
+        "fasting_window_hours": "12-24",
+        "exercise_type": "prolonged endurance hiking",
+        "exercise_duration_hours": "4-10"
+      },
+      "physiological_response": [
+        "reduced circulating glucose availability",
+        "increased reliance on hepatic glucose production",
+        "elevated cortisol signaling",
+        "increased perceived fatigue and dizziness"
+      ],
+      "adaptation_outcomes": [
+        "improved awareness of fueling thresholds",
+        "development of pacing discipline during fasted endurance activity",
+        "improved metabolic resilience when training stress is managed appropriately"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Jeukendrup 2017",
+          "finding": "Prolonged endurance activity without adequate carbohydrate availability increases risk of hypoglycemia and fatigue."
+        }
+      ]
+    },
+    {
+      "mechanism": "Excessive cortisol and stress response from prolonged energy deficit",
+      "stimulus": {
+        "fasting_window_hours": "16-24",
+        "exercise_duration_hours": "5-12",
+        "exercise_intensity": "moderate endurance activity"
+      },
+      "physiological_response": [
+        "increased cortisol secretion",
+        "elevated sympathetic nervous system activation",
+        "increased perceived exertion",
+        "reduced recovery efficiency"
+      ],
+      "adaptation_outcomes": [
+        "recognition of safe duration limits for fasted endurance activity",
+        "improved training periodization strategies",
+        "improved balance between metabolic stress and recovery"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Hackney 2006",
+          "finding": "Prolonged endurance exercise can elevate cortisol levels and increase physiological stress responses."
+        }
+      ]
+    },
+    {
+      "mechanism": "Dehydration and electrolyte imbalance during fasted endurance exposure",
+      "stimulus": {
+        "exercise_type": "prolonged hiking or endurance activity",
+        "exercise_duration_hours": "4-10",
+        "environment": "variable outdoor terrain and temperature"
+      },
+      "physiological_response": [
+        "fluid loss through sweat",
+        "sodium depletion",
+        "reduced plasma volume",
+        "increased cardiovascular strain"
+      ],
+      "adaptation_outcomes": [
+        "improved hydration awareness",
+        "integration of electrolyte strategies during fasted endurance training",
+        "greater physiological stability during long-duration efforts"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Sawka et al. 2007",
+          "finding": "Fluid and electrolyte balance are critical for maintaining physiological stability during prolonged endurance exercise."
+        }
+      ]
+    },
+    {
+      "mechanism": "Overtraining risk from repeated high-duration fasted endurance sessions",
+      "stimulus": {
+        "training_pattern": "frequent long-duration fasted endurance activity",
+        "recovery_interval_days": "insufficient recovery periods",
+        "exercise_duration_hours": "4-10"
+      },
+      "physiological_response": [
+        "accumulated physiological fatigue",
+        "elevated resting heart rate",
+        "reduced training performance",
+        "impaired recovery"
+      ],
+      "adaptation_outcomes": [
+        "improved awareness of recovery requirements",
+        "integration of structured recovery periods",
+        "development of sustainable endurance training strategies"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Meeusen et al. 2013",
+          "finding": "Insufficient recovery between endurance sessions can lead to overtraining syndrome and impaired physiological adaptation."
+        }
+      ]
+    }
+  ]
 }
