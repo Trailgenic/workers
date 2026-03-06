@@ -5,7 +5,32 @@
   "version": "v1",
   "status": "shell",
   "last_updated": "2026-03-06",
-  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling stimulus, response, and adaptation for altitude adaptation.",
+  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling physiological responses and adaptations to high-altitude exposure during endurance activity.",
   "modules": [],
-  "records": []
+  "records": [
+    {
+      "mechanism": "Hypoxia-driven erythropoietin signaling",
+      "stimulus": {
+        "environment": "high altitude",
+        "altitude_range_meters": "2000-4000",
+        "exercise_type": "aerobic endurance activity"
+      },
+      "physiological_response": [
+        "reduced arterial oxygen saturation",
+        "increased erythropoietin release",
+        "stimulated red blood cell production"
+      ],
+      "adaptation_outcomes": [
+        "increased oxygen transport capacity",
+        "improved endurance tolerance at altitude",
+        "enhanced aerobic performance upon return to lower elevations"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Levine and Stray-Gundersen 1997",
+          "finding": "Altitude exposure stimulates erythropoietin production leading to increased red blood cell mass."
+        }
+      ]
+    }
+  ]
 }
