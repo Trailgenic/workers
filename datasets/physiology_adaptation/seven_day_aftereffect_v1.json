@@ -1,38 +1,102 @@
 {
-  "dataset_id": "tg_phys_seven_day_aftereffect_v1",
+  "dataset_id": "tg_seven_day_aftereffect_v1",
   "dataset_family": "physiology_adaptation",
-  "module": "seven_day_aftereffect",
-  "title": "Seven Day Aftereffect Adaptation Model",
+  "title": "TrailGenic Seven Day Aftereffect Dataset",
   "version": "v1",
+  "status": "shell",
   "last_updated": "2026-03-06",
-  "description": "Models the extended physiological adaptation window observed after long-duration endurance stimulus such as high elevation hiking or prolonged aerobic stress.",
-
-  "stimulus": [
-    "long duration endurance activity",
-    "high elevation exposure",
-    "glycogen depletion",
-    "extended Zone 2 effort"
-  ],
-
-  "response": [
-    "elevated mitochondrial signaling",
-    "increased fat oxidation",
-    "improved aerobic efficiency",
-    "enhanced metabolic flexibility"
-  ],
-
-  "adaptation": [
-    "improved endurance capacity",
-    "lower heart rate drift",
-    "higher fat utilization",
-    "improved recovery efficiency"
-  ],
-
-  "application": [
-    "TrailGenic endurance hikes",
-    "weekly endurance training cycles",
-    "longevity metabolic conditioning"
-  ],
-
-  "records": []
+  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling extended endurance adaptation following high-duration aerobic stimulus.",
+  "modules": [],
+  "records": [
+    {
+      "mechanism": "Extended mitochondrial signaling following prolonged endurance stimulus",
+      "stimulus": {
+        "exercise_type": "long-duration endurance activity",
+        "duration_hours": "4-10",
+        "exercise_intensity": "zone 1 to zone 2 aerobic metabolism"
+      },
+      "physiological_response": [
+        "increased AMPK signaling following prolonged energy stress",
+        "elevated PGC-1alpha transcription signaling",
+        "continued mitochondrial remodeling signaling post-exercise",
+        "increased oxidative enzyme expression"
+      ],
+      "adaptation_outcomes": [
+        "enhanced mitochondrial density",
+        "improved endurance efficiency in subsequent sessions",
+        "greater fatigue resistance",
+        "enhanced long-term aerobic capacity"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Egan and Zierath 2013",
+          "finding": "Exercise activates molecular signaling pathways including AMPK and PGC-1alpha which regulate mitochondrial biogenesis."
+        },
+        {
+          "citation": "Baar et al. 2002",
+          "finding": "Endurance exercise induces transcriptional responses that promote mitochondrial adaptation and oxidative metabolism."
+        }
+      ]
+    },
+    {
+      "mechanism": "Elevated fat oxidation capacity following glycogen depletion",
+      "stimulus": {
+        "exercise_type": "extended endurance exercise",
+        "duration_hours": "3-8",
+        "exercise_intensity": "sustained aerobic workload"
+      },
+      "physiological_response": [
+        "increased reliance on fatty acid oxidation",
+        "upregulation of lipid transport proteins",
+        "increased intramuscular triglyceride utilization",
+        "increased mitochondrial fatty acid oxidation capacity"
+      ],
+      "adaptation_outcomes": [
+        "greater fat oxidation efficiency",
+        "reduced dependence on glycogen during submaximal exercise",
+        "improved endurance fueling stability",
+        "enhanced metabolic flexibility"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Holloszy and Coyle 1984",
+          "finding": "Endurance training enhances skeletal muscle oxidative capacity and fat utilization during prolonged exercise."
+        },
+        {
+          "citation": "Achten and Jeukendrup 2004",
+          "finding": "Fat oxidation during endurance exercise increases with training status and aerobic adaptation."
+        }
+      ]
+    },
+    {
+      "mechanism": "Post-exercise endurance adaptation window",
+      "stimulus": {
+        "exercise_type": "high-volume endurance training",
+        "duration_hours": "4-10",
+        "exercise_intensity": "predominantly aerobic"
+      },
+      "physiological_response": [
+        "prolonged metabolic signaling following endurance activity",
+        "increased protein synthesis related to mitochondrial enzymes",
+        "elevated insulin sensitivity",
+        "enhanced substrate transport into muscle cells"
+      ],
+      "adaptation_outcomes": [
+        "improved metabolic efficiency in subsequent training sessions",
+        "greater endurance stability across weekly training cycles",
+        "improved recovery of metabolic homeostasis",
+        "enhanced aerobic training response"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Coffey and Hawley 2007",
+          "finding": "Exercise triggers molecular responses that persist post-exercise and influence adaptation to endurance training."
+        },
+        {
+          "citation": "Hawley et al. 2014",
+          "finding": "Training adaptations occur through cumulative molecular signaling responses to repeated endurance exercise."
+        }
+      ]
+    }
+  ]
 }
