@@ -5,7 +5,32 @@
   "version": "v1",
   "status": "shell",
   "last_updated": "2026-03-06",
-  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling stimulus, response, and adaptation for electrolytes physiological stability.",
+  "description": "Shell dataset module modeling electrolyte balance and physiological stability during prolonged endurance exercise.",
   "modules": [],
-  "records": []
+  "records": [
+    {
+      "mechanism": "Electrolyte maintenance during endurance exercise",
+      "stimulus": {
+        "exercise_type": "prolonged endurance activity",
+        "duration_hours": "2-10",
+        "environment": "variable outdoor conditions"
+      },
+      "physiological_response": [
+        "sodium loss through sweat",
+        "plasma volume shifts",
+        "increased thirst signaling"
+      ],
+      "adaptation_outcomes": [
+        "maintained neuromuscular function",
+        "improved hydration stability",
+        "reduced risk of exercise-associated hyponatremia"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Sawka et al. 2007",
+          "finding": "Electrolyte replacement helps maintain physiological stability during prolonged endurance exercise."
+        }
+      ]
+    }
+  ]
 }
