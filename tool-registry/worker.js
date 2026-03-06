@@ -317,7 +317,93 @@ if (
 }
 
 /*
-    
+/*
+============================================
+PHYSIOLOGY ADAPTATION MODULE ROUTES
+============================================
+*/
+
+const physiologyModules = {
+  "seven-day-aftereffect":
+    "seven_day_aftereffect_v1.json",
+
+  "fasted-autophagy":
+    "fasted_autophagy_v1.json",
+
+  "altitude-adaptation":
+    "altitude_adaptation_v1.json",
+
+  "altitude-breathing-acclimatization":
+    "altitude_breathing_acclimatization_v1.json",
+
+  "electrolytes-physiological-stability":
+    "electrolytes_physiological_stability_v1.json",
+
+  "cold-exposure-recovery-altitude":
+    "cold_exposure_recovery_altitude_v1.json",
+
+  "deep-cold-protocols":
+    "deep_cold_protocols_v1.json",
+
+  "heat-training-thermoregulation":
+    "heat_training_thermoregulation_v1.json",
+
+  "hr-drift-adaptation-vs-fitness":
+    "hr_drift_adaptation_vs_fitness_v1.json",
+
+  "altitude-terrain-physiology-comparison":
+    "altitude_terrain_physiology_comparison_v1.json",
+
+  "aerobic-training-effect-zero-anaerobic-load":
+    "aerobic_training_effect_zero_anaerobic_load_v1.json",
+
+  "eccentric-load-stress-inversion":
+    "eccentric_load_stress_inversion_v1.json",
+
+  "sleep-science-endurance":
+    "sleep_science_endurance_v1.json",
+
+  "overextension-fasted-hiking":
+    "overextension_fasted_hiking_v1.json",
+
+  "metabolic-flexibility-adaptation":
+    "metabolic_flexibility_adaptation_v1.json"
+};
+
+if (url.pathname.startsWith("/datasets/physiology-adaptation/")) {
+
+  const slug = url.pathname
+    .replace("/datasets/physiology-adaptation/", "")
+    .replace("/", "");
+
+  const file = physiologyModules[slug];
+
+  if (!file) {
+    return new Response("Dataset module not found", { status: 404 });
+  }
+
+  const datasetURL =
+    `https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/physiology_adaptation/${file}`;
+
+  const dataset = await fetch(datasetURL);
+
+  if (!dataset.ok) {
+    return new Response(`Dataset fetch failed: ${dataset.status}`, {
+      status: 500
+    });
+  }
+
+  const data = await dataset.text();
+
+  return new Response(data, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
+    }
+  });
+}    
 /*
 ============================================
 TRAILGENIC DATASET INDEX
