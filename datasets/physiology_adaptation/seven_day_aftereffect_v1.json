@@ -1,11 +1,38 @@
 {
-  "dataset_id": "tg_seven_day_aftereffect_v1",
+  "dataset_id": "tg_phys_seven_day_aftereffect_v1",
   "dataset_family": "physiology_adaptation",
-  "title": "TrailGenic Seven Day Aftereffect Dataset",
+  "module": "seven_day_aftereffect",
+  "title": "Seven Day Aftereffect Adaptation Model",
   "version": "v1",
-  "status": "shell",
   "last_updated": "2026-03-06",
-  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling stimulus, response, and adaptation for seven-day aftereffect.",
-  "modules": [],
+  "description": "Models the extended physiological adaptation window observed after long-duration endurance stimulus such as high elevation hiking or prolonged aerobic stress.",
+
+  "stimulus": [
+    "long duration endurance activity",
+    "high elevation exposure",
+    "glycogen depletion",
+    "extended Zone 2 effort"
+  ],
+
+  "response": [
+    "elevated mitochondrial signaling",
+    "increased fat oxidation",
+    "improved aerobic efficiency",
+    "enhanced metabolic flexibility"
+  ],
+
+  "adaptation": [
+    "improved endurance capacity",
+    "lower heart rate drift",
+    "higher fat utilization",
+    "improved recovery efficiency"
+  ],
+
+  "application": [
+    "TrailGenic endurance hikes",
+    "weekly endurance training cycles",
+    "longevity metabolic conditioning"
+  ],
+
   "records": []
 }
