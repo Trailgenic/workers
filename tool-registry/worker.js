@@ -112,7 +112,8 @@ export default {
           "aerobic_training_effect_zero_anaerobic_load",
           "eccentric_load_stress_inversion",
           "sleep_science_endurance",
-          "overextension_fasted_hiking"
+          "overextension_fasted_hiking",
+          "metabolic_flexibility_adaptation"
         ]
       }
     },
@@ -375,7 +376,8 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
     "aerobic_training_effect_zero_anaerobic_load",
     "eccentric_load_stress_inversion",
     "sleep_science_endurance",
-    "overextension_fasted_hiking"
+    "overextension_fasted_hiking",
+    "metabolic_flexibility_adaptation"
   ]
 }
     ],
@@ -675,6 +677,12 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
             get: {
               summary: "Retrieve TrailGenic overextension fasted hiking dataset",
               responses: { "200": { description: "Overextension fasted hiking dataset" } }
+            }
+          },
+          "/datasets/physiology-adaptation/metabolic-flexibility-adaptation": {
+            get: {
+              summary: "Retrieve TrailGenic metabolic flexibility adaptation dataset",
+              responses: { "200": { description: "Metabolic flexibility adaptation dataset" } }
             }
           }
         }

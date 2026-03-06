@@ -55,6 +55,7 @@ Physiology adaptation module endpoints:
 - https://mcp.trailgenic.com/datasets/physiology-adaptation/eccentric-load-stress-inversion
 - https://mcp.trailgenic.com/datasets/physiology-adaptation/sleep-science-endurance
 - https://mcp.trailgenic.com/datasets/physiology-adaptation/overextension-fasted-hiking
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/metabolic-flexibility-adaptation
 
 Additional datasets will expand the TrailGenic longevity intelligence model over time.
 
