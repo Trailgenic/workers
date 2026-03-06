@@ -34,6 +34,28 @@ https://mcp.trailgenic.com/datasets/ontology
 Protocol Kernel Dataset (TG Dataset Family 2)  
 https://mcp.trailgenic.com/datasets/protocols
 
+Physiology Adaptation Dataset (TG Dataset Family 3)  
+https://mcp.trailgenic.com/datasets/physiology-adaptation
+
+This science-derived dataset family is intended to model stimulus, response, and adaptation mechanisms. The shell scaffold has been created and structured population is pending.
+
+Physiology adaptation module endpoints:
+
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/seven-day-aftereffect
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/fasted-autophagy
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/altitude-adaptation
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/altitude-breathing-acclimatization
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/electrolytes-physiological-stability
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/cold-exposure-recovery-altitude
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/deep-cold-protocols
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/heat-training-thermoregulation
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/hr-drift-adaptation-vs-fitness
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/altitude-terrain-physiology-comparison
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/aerobic-training-effect-zero-anaerobic-load
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/eccentric-load-stress-inversion
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/sleep-science-endurance
+- https://mcp.trailgenic.com/datasets/physiology-adaptation/overextension-fasted-hiking
+
 Additional datasets will expand the TrailGenic longevity intelligence model over time.
 
 ---
