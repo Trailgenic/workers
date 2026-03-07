@@ -1,0 +1,11 @@
+{
+  "name": "trailgenic-root-discovery",
+  "main": "worker.js",
+  "compatibility_date": "2026-02-18",
+  "routes": [
+    {
+      "pattern": "trailgenic.com/.well-known/*",
+      "zone_name": "trailgenic.com"
+    }
+  ]
+}
