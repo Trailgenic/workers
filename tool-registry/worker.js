@@ -4,7 +4,7 @@ export default {
     const url = new URL(request.url);
 
     if (
-      url.hostname === "trailgenic.com" &&
+      ["trailgenic.com", "www.trailgenic.com"].includes(url.hostname) &&
       url.pathname === "/.well-known/tool-registry.json"
     ) {
 
