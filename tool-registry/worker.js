@@ -122,6 +122,8 @@ export default {
       protocols: "https://mcp.trailgenic.com/datasets/protocols",
       terrain_intelligence:
         "https://mcp.trailgenic.com/datasets/terrain-intelligence/tg-accessible-trails-top100-v1",
+      evidence_validation:
+        "https://mcp.trailgenic.com/datasets/evidence-validation/validation-summits",
       physiology_adaptation: {
         family: "physiology_adaptation",
         endpoint: "https://mcp.trailgenic.com/datasets/physiology-adaptation",
@@ -541,6 +543,14 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
   endpoint:
     "https://mcp.trailgenic.com/datasets/terrain-intelligence/tg-accessible-trails-top100-v1",
   version: "1.0.0"
+},
+{
+  dataset_id: "tg_validation_summits_v1",
+  name: "TrailGenic Validation Summits",
+  category: "Evidence / Validation",
+  endpoint: "/datasets/evidence-validation/validation-summits",
+  description:
+    "Validation climbs demonstrating TrailGenic protocol scalability across altitude, endurance, and exposure stress environments."
 }
     ],
     last_updated: new Date().toISOString()
@@ -851,6 +861,12 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
             get: {
               summary: "Retrieve TrailGenic terrain intelligence top 100 accessible trails dataset",
               responses: { "200": { description: "Terrain intelligence top 100 accessible trails dataset" } }
+            }
+          },
+          "/datasets/evidence-validation/validation-summits": {
+            get: {
+              summary: "Retrieve TrailGenic validation summits dataset",
+              responses: { "200": { description: "Validation hikes dataset" } }
             }
           }
         }
