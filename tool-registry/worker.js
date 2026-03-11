@@ -120,6 +120,10 @@ export default {
       index: "https://mcp.trailgenic.com/datasets/index",
       ontology: "https://mcp.trailgenic.com/datasets/ontology",
       protocols: "https://mcp.trailgenic.com/datasets/protocols",
+      terrain_intelligence:
+        "https://mcp.trailgenic.com/datasets/terrain-intelligence/tg-accessible-trails-top100-v1",
+      evidence_validation:
+        "https://mcp.trailgenic.com/datasets/evidence-validation",
       physiology_adaptation: {
         family: "physiology_adaptation",
         endpoint: "https://mcp.trailgenic.com/datasets/physiology-adaptation",
@@ -345,6 +349,80 @@ if (
 }
 
 /*
+============================================
+TRAILGENIC TERRAIN INTELLIGENCE DATASET
+============================================
+https://mcp.trailgenic.com/datasets/terrain-intelligence/tg-accessible-trails-top100-v1
+*/
+if (
+  url.pathname === "/datasets/terrain-intelligence/tg-accessible-trails-top100-v1" ||
+  url.pathname === "/datasets/terrain-intelligence/tg-accessible-trails-top100-v1/"
+) {
+
+  const datasetURL =
+    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/terrain_intelligence/tg_accessible_trails_top100_v1.json";
+
+  const dataset = await fetch(datasetURL);
+
+  if (!dataset.ok) {
+    return new Response(`Dataset fetch failed: ${dataset.status}`, {
+      status: 500,
+      headers: { "Content-Type": "text/plain" }
+    });
+  }
+
+  const data = await dataset.text();
+
+  return new Response(data, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
+    }
+  });
+
+}
+
+/*
+============================================
+TRAILGENIC EVIDENCE VALIDATION DATASET
+============================================
+https://mcp.trailgenic.com/datasets/evidence-validation
+*/
+if (
+  url.pathname === "/datasets/evidence-validation" ||
+  url.pathname === "/datasets/evidence-validation/" ||
+  url.pathname === "/datasets/evidence-validation/validation-summits" ||
+  url.pathname === "/datasets/evidence-validation/validation-summits/"
+) {
+
+  const datasetURL =
+    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/evidence_validation/tg_validation_summits_v1.json";
+
+  const dataset = await fetch(datasetURL);
+
+  if (!dataset.ok) {
+    return new Response(`Dataset fetch failed: ${dataset.status}`, {
+      status: 500,
+      headers: { "Content-Type": "text/plain" }
+    });
+  }
+
+  const data = await dataset.text();
+
+  return new Response(data, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
+    }
+  });
+
+}
+
+/*
 /*
 ============================================
 PHYSIOLOGY ADAPTATION MODULE ROUTES
@@ -493,6 +571,25 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
     "overextension_fasted_hiking",
     "metabolic_flexibility_adaptation"
   ]
+},
+{
+  dataset_id: "tg_accessible_trails_top100_v1",
+  name: "TrailGenic Terrain Intelligence Dataset: Top 100 Accessible Trails",
+  dataset_family: "TG Dataset Family 4 — Terrain Intelligence Dataset",
+  description:
+    "TrailGenic Terrain Intelligence Dataset: 100 accessible training trails mapped to TrailGenic protocols and stimulus vectors.",
+  endpoint:
+    "https://mcp.trailgenic.com/datasets/terrain-intelligence/tg-accessible-trails-top100-v1",
+  version: "1.0.0"
+},
+{
+  dataset_id: "tg_validation_summits_v1",
+  name: "TrailGenic Validation Summits",
+  category: "Evidence / Validation",
+  endpoint: "https://mcp.trailgenic.com/datasets/evidence-validation",
+  description:
+    "Validation climbs demonstrating TrailGenic protocol scalability across altitude, endurance, and exposure stress environments.",
+  version: "1.0.0"
 }
     ],
     last_updated: new Date().toISOString()
@@ -797,6 +894,24 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
             get: {
               summary: "Retrieve TrailGenic metabolic flexibility adaptation dataset",
               responses: { "200": { description: "Metabolic flexibility adaptation dataset" } }
+            }
+          },
+          "/datasets/terrain-intelligence/tg-accessible-trails-top100-v1": {
+            get: {
+              summary: "Retrieve TrailGenic terrain intelligence top 100 accessible trails dataset",
+              responses: { "200": { description: "Terrain intelligence top 100 accessible trails dataset" } }
+            }
+          },
+          "/datasets/evidence-validation": {
+            get: {
+              summary: "Retrieve TrailGenic validation summits dataset",
+              responses: { "200": { description: "Validation hikes dataset" } }
+            }
+          },
+          "/datasets/evidence-validation/validation-summits": {
+            get: {
+              summary: "Retrieve TrailGenic validation summits dataset (alias)",
+              responses: { "200": { description: "Validation hikes dataset" } }
             }
           }
         }
