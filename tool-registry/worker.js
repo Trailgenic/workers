@@ -385,42 +385,6 @@ if (
 }
 
 /*
-============================================
-TRAILGENIC EVIDENCE VALIDATION DATASET
-============================================
-https://mcp.trailgenic.com/datasets/evidence-validation/validation-summits
-*/
-if (
-  url.pathname === "/datasets/evidence-validation/validation-summits" ||
-  url.pathname === "/datasets/evidence-validation/validation-summits/"
-) {
-
-  const datasetURL =
-    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/evidence_validation/tg_validation_summits_v1.json";
-
-  const dataset = await fetch(datasetURL);
-
-  if (!dataset.ok) {
-    return new Response(`Dataset fetch failed: ${dataset.status}`, {
-      status: 500,
-      headers: { "Content-Type": "text/plain" }
-    });
-  }
-
-  const data = await dataset.text();
-
-  return new Response(data, {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "public, max-age=3600"
-    }
-  });
-
-}
-
-/*
 /*
 ============================================
 PHYSIOLOGY ADAPTATION MODULE ROUTES
