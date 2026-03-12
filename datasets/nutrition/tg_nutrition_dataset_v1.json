@@ -1,0 +1,9 @@
+{
+  "dataset_id": "tg_nutrition_dataset_v1",
+  "dataset_family": "TG Dataset Family 5 — Nutrition Dataset",
+  "version": "1.0.0",
+  "status": "placeholder",
+  "description": "TrailGenic nutrition dataset v1 placeholder ready for final population.",
+  "records": [],
+  "last_updated": "2026-03-12"
+}
