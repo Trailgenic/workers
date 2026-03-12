@@ -70,6 +70,8 @@ Nutrition dataset routes:
 - https://mcp.trailgenic.com/datasets/nutrition
 - https://mcp.trailgenic.com/datasets/nutrition/schema
 
+The nutrition dataset provides canonical food records, TrailGenic fuel classification, protocol-level mapping, and longevity/metabolic/performance scoring with a companion machine-readable schema.
+
 ---
 
 ## Entity Identity

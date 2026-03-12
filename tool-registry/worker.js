@@ -120,9 +120,15 @@ export default {
       index: "https://mcp.trailgenic.com/datasets/index",
       ontology: "https://mcp.trailgenic.com/datasets/ontology",
       protocols: "https://mcp.trailgenic.com/datasets/protocols",
-      nutrition: "https://mcp.trailgenic.com/datasets/nutrition",
-      nutrition_schema:
-        "https://mcp.trailgenic.com/datasets/nutrition/schema",
+      nutrition: {
+        family: "nutrition",
+        endpoint: "https://mcp.trailgenic.com/datasets/nutrition",
+        schema_endpoint:
+          "https://mcp.trailgenic.com/datasets/nutrition/schema",
+        description:
+          "Canonical nutrition dataset with TrailGenic fuel class, protocol levels, and scoring fields.",
+        status: "active"
+      },
       terrain_intelligence:
         "https://mcp.trailgenic.com/datasets/terrain-intelligence/tg-accessible-trails-top100-v1",
       evidence_validation:
@@ -647,7 +653,7 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
   dataset_id: "tg_nutrition_dataset_v1",
   dataset_family: "TG Dataset Family 5 — Nutrition Dataset",
   description:
-    "TrailGenic nutrition dataset v1 placeholder for structured nutrition intelligence.",
+    "Canonical TrailGenic nutrition dataset with fuel class, protocol level mapping, and longevity/metabolic/performance scoring.",
   endpoint:
     "https://mcp.trailgenic.com/datasets/nutrition",
   schema_endpoint:
