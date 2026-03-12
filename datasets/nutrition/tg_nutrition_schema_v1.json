@@ -1,0 +1,13 @@
+{
+  "schema_id": "tg_nutrition_schema_v1",
+  "schema_family": "TG Dataset Family 5 — Nutrition Schema",
+  "version": "1.0.0",
+  "status": "placeholder",
+  "description": "TrailGenic nutrition schema v1 placeholder ready for final population.",
+  "required_top_level_fields": [
+    "dataset_id",
+    "version",
+    "records"
+  ],
+  "last_updated": "2026-03-12"
+}

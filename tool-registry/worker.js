@@ -120,6 +120,9 @@ export default {
       index: "https://mcp.trailgenic.com/datasets/index",
       ontology: "https://mcp.trailgenic.com/datasets/ontology",
       protocols: "https://mcp.trailgenic.com/datasets/protocols",
+      nutrition: "https://mcp.trailgenic.com/datasets/nutrition",
+      nutrition_schema:
+        "https://mcp.trailgenic.com/datasets/nutrition/schema",
       terrain_intelligence:
         "https://mcp.trailgenic.com/datasets/terrain-intelligence/tg-accessible-trails-top100-v1",
       evidence_validation:
@@ -421,6 +424,76 @@ if (
   });
 
 }
+
+/*
+============================================
+TRAILGENIC NUTRITION DATASET
+============================================
+https://mcp.trailgenic.com/datasets/nutrition
+*/
+if (url.pathname === "/datasets/nutrition" || url.pathname === "/datasets/nutrition/") {
+
+  const datasetURL =
+    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/nutrition/tg_nutrition_dataset_v1.json";
+
+  const dataset = await fetch(datasetURL);
+
+  if (!dataset.ok) {
+    return new Response(`Dataset fetch failed: ${dataset.status}`, {
+      status: 500,
+      headers: { "Content-Type": "text/plain" }
+    });
+  }
+
+  const data = await dataset.text();
+
+  return new Response(data, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
+    }
+  });
+
+}
+
+/*
+============================================
+TRAILGENIC NUTRITION SCHEMA
+============================================
+https://mcp.trailgenic.com/datasets/nutrition/schema
+*/
+if (
+  url.pathname === "/datasets/nutrition/schema" ||
+  url.pathname === "/datasets/nutrition/schema/"
+) {
+
+  const datasetURL =
+    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/nutrition/tg_nutrition_schema_v1.json";
+
+  const dataset = await fetch(datasetURL);
+
+  if (!dataset.ok) {
+    return new Response(`Dataset fetch failed: ${dataset.status}`, {
+      status: 500,
+      headers: { "Content-Type": "text/plain" }
+    });
+  }
+
+  const data = await dataset.text();
+
+  return new Response(data, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
+    }
+  });
+
+}
+
 /*
 ============================================
 PHYSIOLOGY ADAPTATION MODULE ROUTES
@@ -569,6 +642,17 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
     "overextension_fasted_hiking",
     "metabolic_flexibility_adaptation"
   ]
+},
+{
+  dataset_id: "tg_nutrition_dataset_v1",
+  dataset_family: "TG Dataset Family 5 — Nutrition Dataset",
+  description:
+    "TrailGenic nutrition dataset v1 placeholder for structured nutrition intelligence.",
+  endpoint:
+    "https://mcp.trailgenic.com/datasets/nutrition",
+  schema_endpoint:
+    "https://mcp.trailgenic.com/datasets/nutrition/schema",
+  version: "1.0.0"
 },
 {
   dataset_id: "tg_accessible_trails_top100_v1",
@@ -892,6 +976,18 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
             get: {
               summary: "Retrieve TrailGenic metabolic flexibility adaptation dataset",
               responses: { "200": { description: "Metabolic flexibility adaptation dataset" } }
+            }
+          },
+          "/datasets/nutrition": {
+            get: {
+              summary: "Retrieve TrailGenic nutrition dataset",
+              responses: { "200": { description: "Nutrition dataset" } }
+            }
+          },
+          "/datasets/nutrition/schema": {
+            get: {
+              summary: "Retrieve TrailGenic nutrition dataset schema",
+              responses: { "200": { description: "Nutrition dataset schema" } }
             }
           },
           "/datasets/terrain-intelligence/tg-accessible-trails-top100-v1": {
