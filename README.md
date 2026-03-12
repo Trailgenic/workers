@@ -37,6 +37,12 @@ https://mcp.trailgenic.com/datasets/protocols
 Physiology Adaptation Dataset (TG Dataset Family 3)  
 https://mcp.trailgenic.com/datasets/physiology-adaptation
 
+Nutrition Dataset (TG Dataset Family 5)  
+https://mcp.trailgenic.com/datasets/nutrition
+
+Nutrition Schema (TG Dataset Family 5)  
+https://mcp.trailgenic.com/datasets/nutrition/schema
+
 This science-derived dataset family is intended to model stimulus, response, and adaptation mechanisms. The shell scaffold has been created and structured population is pending.
 
 Physiology adaptation module endpoints:
@@ -58,6 +64,13 @@ Physiology adaptation module endpoints:
 - https://mcp.trailgenic.com/datasets/physiology-adaptation/metabolic-flexibility-adaptation
 
 Additional datasets will expand the TrailGenic longevity intelligence model over time.
+
+Nutrition dataset routes:
+
+- https://mcp.trailgenic.com/datasets/nutrition
+- https://mcp.trailgenic.com/datasets/nutrition/schema
+
+The nutrition dataset provides canonical food records, TrailGenic fuel classification, protocol-level mapping, and longevity/metabolic/performance scoring with a companion machine-readable schema.
 
 ---
 
