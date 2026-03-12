@@ -1,13 +1,57 @@
 {
   "schema_id": "tg_nutrition_schema_v1",
+  "schema_name": "TrailGenic Nutrition Dataset Schema",
   "schema_family": "TG Dataset Family 5 — Nutrition Schema",
   "version": "1.0.0",
-  "status": "placeholder",
-  "description": "TrailGenic nutrition schema v1 placeholder ready for final population.",
-  "required_top_level_fields": [
-    "dataset_id",
-    "version",
-    "records"
+  "status": "active",
+  "description": "Canonical schema for TrailGenic nutrition dataset records.",
+  "dataset_id": "tg_nutrition_dataset_v1",
+  "last_updated": "2026-03-12",
+  "fields": [
+    { "name": "food_id", "type": "string", "required": true, "description": "TrailGenic canonical food identifier." },
+    { "name": "food_name", "type": "string", "required": true, "description": "Display name of the food item." },
+    { "name": "food_category", "type": "string", "required": true, "description": "Source food category label." },
+    {
+      "name": "tg_fuel_class",
+      "type": "string",
+      "required": true,
+      "description": "TrailGenic fuel classification for protocol targeting.",
+      "allowed_values": ["glycogen", "electrolyte", "neutral", "fat_adaptation"]
+    },
+    { "name": "calories", "type": "number", "required": false, "description": "Calories per source nutrition entry basis." },
+    { "name": "carbs", "type": "number", "required": false, "description": "Carbohydrates in grams." },
+    { "name": "fat", "type": "number", "required": false, "description": "Fat in grams." },
+    { "name": "protein", "type": "number", "required": false, "description": "Protein in grams." },
+    { "name": "fiber", "type": "number", "required": false, "description": "Fiber in grams." },
+    { "name": "sodium", "type": "number", "required": false, "description": "Sodium amount in milligrams." },
+    { "name": "potassium", "type": "number", "required": false, "description": "Potassium amount in milligrams." },
+    { "name": "magnesium", "type": "number", "required": false, "description": "Magnesium amount in milligrams." },
+    { "name": "electrolyte_density", "type": "number", "required": false, "description": "Composite electrolyte density score from source dataset." },
+    { "name": "protocol_levels", "type": "array<number>", "required": false, "description": "TrailGenic protocol levels where this food is applicable." },
+    { "name": "source_fdc_id", "type": "integer", "required": false, "description": "USDA FDC source identifier." },
+    {
+      "name": "tg_food_role",
+      "type": "string",
+      "required": true,
+      "description": "Primary TrailGenic nutrition role.",
+      "allowed_values": ["anchor", "support"]
+    },
+    { "name": "tg_longevity_score", "type": "integer", "required": true, "description": "TrailGenic longevity score (1-5)." },
+    { "name": "tg_metabolic_score", "type": "integer", "required": true, "description": "TrailGenic metabolic score (1-5)." },
+    { "name": "tg_performance_score", "type": "integer", "required": true, "description": "TrailGenic performance score (1-5)." }
   ],
-  "last_updated": "2026-03-12"
+  "score_definitions": {
+    "scale": {
+      "1": "poor",
+      "2": "weak",
+      "3": "moderate",
+      "4": "good",
+      "5": "excellent"
+    },
+    "scores": {
+      "tg_longevity_score": "Expected longevity-supportive impact based on nutrient profile and TrailGenic heuristics.",
+      "tg_metabolic_score": "Expected metabolic support profile for adaptation and stability.",
+      "tg_performance_score": "Expected performance support profile for training and protocol execution."
+    }
+  }
 }
