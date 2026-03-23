@@ -539,22 +539,6 @@ if (
 }
 
 /*
-============================================
-TRAILGENIC ELECTROLYTES V1 DATASET
-============================================
-https://mcp.trailgenic.com/datasets/electrolytes_v1.json
-*/
-if (
-  url.pathname === "/datasets/electrolytes_v1.json" ||
-  url.pathname === "/datasets/electrolytes_v1.json/" ||
-  url.pathname === "/datasets/electrolytes_v1" ||
-  url.pathname === "/datasets/electrolytes_v1/"
-) {
-
-  const datasetURL =
-    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/electrolytes_v1.json";
-
-  const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
 
   if (!dataset.ok) {
     return new Response(`Dataset fetch failed: ${dataset.status}`, {
