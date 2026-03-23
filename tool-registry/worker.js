@@ -539,6 +539,28 @@ if (
 }
 
 /*
+
+  if (!dataset.ok) {
+    return new Response(`Dataset fetch failed: ${dataset.status}`, {
+      status: 500,
+      headers: { "Content-Type": "text/plain" }
+    });
+  }
+
+  const data = await dataset.text();
+
+  return new Response(data, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
+    }
+  });
+
+}
+
+/*
 ============================================
 PHYSIOLOGY ADAPTATION MODULE ROUTES
 ============================================
@@ -703,6 +725,13 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
   description: "TrailGenic nutrition intelligence dataset with protocol mapping and metabolic scoring",
   path: "/datasets/nutrition_v1.json",
   type: "nutrition",
+  version: "1.0"
+},
+{
+  name: "electrolytes_v1",
+  description: "TrailGenic electrolyte product dataset with protocol mapping and metabolic scoring",
+  path: "/datasets/electrolytes_v1.json",
+  type: "hydration",
   version: "1.0"
 },
 {
@@ -1045,6 +1074,12 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
             get: {
               summary: "Retrieve TrailGenic nutrition_v1 dataset",
               responses: { "200": { description: "nutrition_v1 dataset" } }
+            }
+          },
+          "/datasets/electrolytes_v1.json": {
+            get: {
+              summary: "Retrieve TrailGenic electrolytes_v1 dataset",
+              responses: { "200": { description: "electrolytes_v1 dataset" } }
             }
           },
           "/datasets/terrain-intelligence/tg-accessible-trails-top100-v1": {

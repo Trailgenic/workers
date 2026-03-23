@@ -1,0 +1,2726 @@
+[
+  {
+    "id": "lmnt_recharge_electrolyte_drink_mix",
+    "product_name": "LMNT Recharge Electrolyte Drink Mix",
+    "brand": "LMNT",
+    "category": "zero_sugar_high_sodium",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 5,
+      "metabolic": 5,
+      "performance": 4
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "fasting"
+    ],
+    "use_cases": [
+      "fasted_hiking",
+      "heat_exposure",
+      "high_sweat_loss"
+    ],
+    "description": "High-sodium zero-sugar stick pack"
+  },
+  {
+    "id": "nuun_sport_electrolyte_tablets",
+    "product_name": "Nuun Sport Electrolyte Tablets",
+    "brand": "Nuun",
+    "category": "tablet_or_chew",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "tablet",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "convenience"
+    ],
+    "use_cases": [
+      "convenience",
+      "lightweight"
+    ],
+    "description": "Effervescent tablet for daily hydration"
+  },
+  {
+    "id": "nuun_rest_tablets",
+    "product_name": "Nuun Rest Tablets",
+    "brand": "Nuun",
+    "category": "tablet_or_chew",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 2
+    },
+    "form": "tablet",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "convenience"
+    ],
+    "use_cases": [
+      "convenience",
+      "lightweight"
+    ],
+    "description": "Tablets with magnesium for relaxation"
+  },
+  {
+    "id": "nuun_vitamins_tablets",
+    "product_name": "Nuun Vitamins Tablets",
+    "brand": "Nuun",
+    "category": "tablet_or_chew",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "tablet",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "convenience"
+    ],
+    "use_cases": [
+      "convenience",
+      "lightweight"
+    ],
+    "description": "Vitamin-enhanced electrolyte tablets"
+  },
+  {
+    "id": "nuun_immunity_tablets",
+    "product_name": "Nuun Immunity Tablets",
+    "brand": "Nuun",
+    "category": "tablet_or_chew",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "tablet",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "convenience"
+    ],
+    "use_cases": [
+      "convenience",
+      "lightweight"
+    ],
+    "description": "Tablets with zinc and electrolytes for immune support"
+  },
+  {
+    "id": "nuun_endurance_drink_mix",
+    "product_name": "Nuun Endurance Drink Mix",
+    "brand": "Nuun",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 5
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "Powder mix with carbs for endurance hydration"
+  },
+  {
+    "id": "skratch_labs_sport_hydration_drink_mix",
+    "product_name": "Skratch Labs Sport Hydration Drink Mix",
+    "brand": "Skratch Labs",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 5
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "Carb-electrolyte mix for sport hydration"
+  },
+  {
+    "id": "skratch_labs_hyper_hydration_mix",
+    "product_name": "Skratch Labs Hyper Hydration Mix",
+    "brand": "Skratch Labs",
+    "category": "zero_sugar_high_sodium",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 5,
+      "metabolic": 5,
+      "performance": 4
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "fasting"
+    ],
+    "use_cases": [
+      "fasted_hiking",
+      "heat_exposure",
+      "high_sweat_loss"
+    ],
+    "description": "Very high-sodium mix for extreme sweat losses"
+  },
+  {
+    "id": "skratch_labs_super_high_carb_drink_mix",
+    "product_name": "Skratch Labs Super High-Carb Drink Mix",
+    "brand": "Skratch Labs",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 2,
+      "metabolic": 1,
+      "performance": 5
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "High-carbohydrate fueling mix with electrolytes"
+  },
+  {
+    "id": "skratch_labs_anytime_hydration_drink_mix",
+    "product_name": "Skratch Labs Anytime Hydration Drink Mix",
+    "brand": "Skratch Labs",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Low-calorie daily hydration powder"
+  },
+  {
+    "id": "liquid_iv_hydration_multiplier",
+    "product_name": "Liquid I.V. Hydration Multiplier",
+    "brand": "Liquid I.V.",
+    "category": "ors_style",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "recovery"
+    ],
+    "use_cases": [
+      "recovery",
+      "dehydration"
+    ],
+    "description": "ORS-style powder stick for rapid rehydration"
+  },
+  {
+    "id": "liquid_iv_sugar_free_hydration_multiplier",
+    "product_name": "Liquid I.V. Sugar-Free Hydration Multiplier",
+    "brand": "Liquid I.V.",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Zero-sugar hydration stick"
+  },
+  {
+    "id": "liquid_iv_hydration_multiplier_plus_probiotics",
+    "product_name": "Liquid I.V. Hydration Multiplier + Probiotics",
+    "brand": "Liquid I.V.",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Hydration stick with added probiotics"
+  },
+  {
+    "id": "liquid_iv_energy_multiplier",
+    "product_name": "Liquid I.V. Energy Multiplier",
+    "brand": "Liquid I.V.",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 3,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Hydration and energy mix with caffeine"
+  },
+  {
+    "id": "liquid_iv_immune_support",
+    "product_name": "Liquid I.V. Immune Support",
+    "brand": "Liquid I.V.",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Vitamin-C fortified hydration stick"
+  },
+  {
+    "id": "liquid_iv_kids_hydration_multiplier",
+    "product_name": "Liquid I.V. Kids Hydration Multiplier",
+    "brand": "Liquid I.V.",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 2
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Kid-friendly hydration powder"
+  },
+  {
+    "id": "pedialyte_electrolyte_powder",
+    "product_name": "Pedialyte Electrolyte Powder",
+    "brand": "Pedialyte",
+    "category": "ors_style",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "recovery"
+    ],
+    "use_cases": [
+      "recovery",
+      "dehydration"
+    ],
+    "description": "Oral rehydration powder packets"
+  },
+  {
+    "id": "pedialyte_electrolyte_drink",
+    "product_name": "Pedialyte Electrolyte Drink",
+    "brand": "Pedialyte",
+    "category": "ors_style",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "liquid",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "recovery"
+    ],
+    "use_cases": [
+      "recovery",
+      "dehydration"
+    ],
+    "description": "Ready-to-drink ORS beverage"
+  },
+  {
+    "id": "pedialyte_advancedcare_plus_powder",
+    "product_name": "Pedialyte AdvancedCare Plus Powder",
+    "brand": "Pedialyte",
+    "category": "ors_style",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "recovery"
+    ],
+    "use_cases": [
+      "recovery",
+      "dehydration"
+    ],
+    "description": "Enhanced ORS powder with extra electrolytes"
+  },
+  {
+    "id": "pedialyte_sport_powder",
+    "product_name": "Pedialyte Sport Powder",
+    "brand": "Pedialyte",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 4
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "Athlete-oriented ORS with added carbs"
+  },
+  {
+    "id": "pedialyte_immune_support_powder",
+    "product_name": "Pedialyte Immune Support Powder",
+    "brand": "Pedialyte",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "ORS powder with immune support ingredients"
+  },
+  {
+    "id": "precision_hydration_ph_1000_drink_mix",
+    "product_name": "Precision Hydration PH 1000 Drink Mix",
+    "brand": "Precision Hydration",
+    "category": "zero_sugar_high_sodium",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 5,
+      "metabolic": 5,
+      "performance": 4
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "fasting"
+    ],
+    "use_cases": [
+      "fasted_hiking",
+      "heat_exposure",
+      "high_sweat_loss"
+    ],
+    "description": "High-sodium drink mix for heavy sweaters"
+  },
+  {
+    "id": "precision_hydration_ph_1500_drink_mix",
+    "product_name": "Precision Hydration PH 1500 Drink Mix",
+    "brand": "Precision Hydration",
+    "category": "zero_sugar_high_sodium",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 5,
+      "metabolic": 5,
+      "performance": 4
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "fasting"
+    ],
+    "use_cases": [
+      "fasted_hiking",
+      "heat_exposure",
+      "high_sweat_loss"
+    ],
+    "description": "Very high-sodium mix for extreme needs"
+  },
+  {
+    "id": "precision_hydration_ph_500_drink_mix",
+    "product_name": "Precision Hydration PH 500 Drink Mix",
+    "brand": "Precision Hydration",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Moderate sodium drink mix for daily use"
+  },
+  {
+    "id": "precision_hydration_ph_1500_tablets",
+    "product_name": "Precision Hydration PH 1500 Tablets",
+    "brand": "Precision Hydration",
+    "category": "tablet_or_chew",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 4
+    },
+    "form": "tablet",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "convenience"
+    ],
+    "use_cases": [
+      "convenience",
+      "lightweight"
+    ],
+    "description": "High-sodium effervescent tablets"
+  },
+  {
+    "id": "precision_fuel_30_drink_mix",
+    "product_name": "Precision Fuel 30 Drink Mix",
+    "brand": "Precision Hydration",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 5
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "Carb-rich drink mix with electrolytes (30 g carbs)"
+  },
+  {
+    "id": "precision_fuel_90_drink_mix",
+    "product_name": "Precision Fuel 90 Drink Mix",
+    "brand": "Precision Hydration",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 2,
+      "metabolic": 1,
+      "performance": 5
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "High-carb (90 g) fueling drink with electrolytes"
+  },
+  {
+    "id": "redmond_re_lyte_electrolyte_mix",
+    "product_name": "Redmond Re-Lyte Electrolyte Mix",
+    "brand": "Redmond",
+    "category": "zero_sugar_high_sodium",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 5,
+      "metabolic": 5,
+      "performance": 4
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "fasting"
+    ],
+    "use_cases": [
+      "fasted_hiking",
+      "heat_exposure",
+      "high_sweat_loss"
+    ],
+    "description": "Sugar-free high-sodium hydration powder"
+  },
+  {
+    "id": "redmond_re_lyte_immunity_mix",
+    "product_name": "Redmond Re-Lyte Immunity Mix",
+    "brand": "Redmond",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Electrolyte mix with immunity support"
+  },
+  {
+    "id": "redmond_re_lyte_hydration_caps",
+    "product_name": "Redmond Re-Lyte Hydration Caps",
+    "brand": "Redmond",
+    "category": "tablet_or_chew",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "tablet",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "convenience"
+    ],
+    "use_cases": [
+      "convenience",
+      "lightweight"
+    ],
+    "description": "Capsule form for on-the-go electrolyte replacement"
+  },
+  {
+    "id": "dripdrop_ors_electrolyte_powder",
+    "product_name": "DripDrop ORS Electrolyte Powder",
+    "brand": "DripDrop",
+    "category": "ors_style",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "recovery"
+    ],
+    "use_cases": [
+      "recovery",
+      "dehydration"
+    ],
+    "description": "Medical-grade ORS powder packets"
+  },
+  {
+    "id": "sos_hydration_drink_mix",
+    "product_name": "SOS Hydration Drink Mix",
+    "brand": "SOS Hydration",
+    "category": "ors_style",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "recovery"
+    ],
+    "use_cases": [
+      "recovery",
+      "dehydration"
+    ],
+    "description": "Low-calorie ORS formulation"
+  },
+  {
+    "id": "tailwind_endurance_fuel",
+    "product_name": "Tailwind Endurance Fuel",
+    "brand": "Tailwind",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 5
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "All-in-one endurance fuel with carbs and electrolytes"
+  },
+  {
+    "id": "tailwind_recovery_drink_mix",
+    "product_name": "Tailwind Recovery Drink Mix",
+    "brand": "Tailwind",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 4
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "Recovery mix with protein and electrolytes"
+  },
+  {
+    "id": "tailwind_rapid_hydration",
+    "product_name": "Tailwind Rapid Hydration",
+    "brand": "Tailwind",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Stick pack for quick daily hydration"
+  },
+  {
+    "id": "tailwind_endurance_fuel_stick_pack",
+    "product_name": "Tailwind Endurance Fuel Stick Pack",
+    "brand": "Tailwind",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 5
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "Single-serve endurance fuel sticks"
+  },
+  {
+    "id": "ultima_replenisher_electrolyte_powder",
+    "product_name": "Ultima Replenisher Electrolyte Powder",
+    "brand": "Ultima",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Sugar-free electrolyte powder"
+  },
+  {
+    "id": "ultima_replenisher_stick_pack",
+    "product_name": "Ultima Replenisher Stick Pack",
+    "brand": "Ultima",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Single-serve electrolyte packets"
+  },
+  {
+    "id": "gatorade_thirst_quencher_powder_mix",
+    "product_name": "Gatorade Thirst Quencher Powder Mix",
+    "brand": "Gatorade",
+    "category": "mainstream_sports_hydration",
+    "protocol_levels": [
+      2,
+      3
+    ],
+    "scores": {
+      "longevity": 1,
+      "metabolic": 1,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "sports_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Classic sports drink powder"
+  },
+  {
+    "id": "gatorade_thirst_quencher_drink",
+    "product_name": "Gatorade Thirst Quencher Drink",
+    "brand": "Gatorade",
+    "category": "mainstream_sports_hydration",
+    "protocol_levels": [
+      2,
+      3
+    ],
+    "scores": {
+      "longevity": 1,
+      "metabolic": 1,
+      "performance": 3
+    },
+    "form": "liquid",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "sports_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Ready-to-drink sports beverage"
+  },
+  {
+    "id": "gatorade_zero_powder_packets",
+    "product_name": "Gatorade Zero Powder Packets",
+    "brand": "Gatorade",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 3,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Zero-sugar powder packets"
+  },
+  {
+    "id": "gatorade_zero_bottles",
+    "product_name": "Gatorade Zero Bottles",
+    "brand": "Gatorade",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 3,
+      "performance": 3
+    },
+    "form": "liquid",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Zero-sugar ready-to-drink sports drink"
+  },
+  {
+    "id": "gatorade_endurance_formula",
+    "product_name": "Gatorade Endurance Formula",
+    "brand": "Gatorade",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 2,
+      "metabolic": 2,
+      "performance": 5
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "High-sodium endurance drink mix"
+  },
+  {
+    "id": "gatorlyte_rapid_rehydration_beverage",
+    "product_name": "Gatorlyte Rapid Rehydration Beverage",
+    "brand": "Gatorade",
+    "category": "zero_sugar_high_sodium",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 5,
+      "performance": 4
+    },
+    "form": "liquid",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "fasting"
+    ],
+    "use_cases": [
+      "fasted_hiking",
+      "heat_exposure",
+      "high_sweat_loss"
+    ],
+    "description": "High-electrolyte low-sugar beverage"
+  },
+  {
+    "id": "propel_powder_packets",
+    "product_name": "Propel Powder Packets",
+    "brand": "Propel",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 3,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Lightly flavored electrolyte powder"
+  },
+  {
+    "id": "propel_bottled_water",
+    "product_name": "Propel Bottled Water",
+    "brand": "Propel",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 3,
+      "performance": 3
+    },
+    "form": "liquid",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Electrolyte water without sugar"
+  },
+  {
+    "id": "propel_immune_support_powder_packets",
+    "product_name": "Propel Immune Support Powder Packets",
+    "brand": "Propel",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 3,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Powder packets with added immune support"
+  },
+  {
+    "id": "saltstick_caps",
+    "product_name": "SaltStick Caps",
+    "brand": "SaltStick",
+    "category": "tablet_or_chew",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 4
+    },
+    "form": "tablet",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "convenience"
+    ],
+    "use_cases": [
+      "convenience",
+      "lightweight"
+    ],
+    "description": "Electrolyte capsules for athletes"
+  },
+  {
+    "id": "saltstick_fastchews",
+    "product_name": "SaltStick FastChews",
+    "brand": "SaltStick",
+    "category": "tablet_or_chew",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 4
+    },
+    "form": "tablet",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "convenience"
+    ],
+    "use_cases": [
+      "convenience",
+      "lightweight"
+    ],
+    "description": "Chewable electrolyte tablets"
+  },
+  {
+    "id": "saltstick_drinkmix",
+    "product_name": "SaltStick DrinkMix",
+    "brand": "SaltStick",
+    "category": "zero_sugar_high_sodium",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 5,
+      "metabolic": 5,
+      "performance": 4
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "fasting"
+    ],
+    "use_cases": [
+      "fasted_hiking",
+      "heat_exposure",
+      "high_sweat_loss"
+    ],
+    "description": "Sugar-free high-sodium powder"
+  },
+  {
+    "id": "gu_hydration_drink_mix",
+    "product_name": "GU Hydration Drink Mix",
+    "brand": "GU",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 5
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "Carb-electrolyte drink for endurance"
+  },
+  {
+    "id": "gu_roctane_energy_drink_mix",
+    "product_name": "GU Roctane Energy Drink Mix",
+    "brand": "GU",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 5
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "High-carb endurance drink with extra amino acids"
+  },
+  {
+    "id": "gu_hydration_tablets",
+    "product_name": "GU Hydration Tablets",
+    "brand": "GU",
+    "category": "tablet_or_chew",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "tablet",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "convenience"
+    ],
+    "use_cases": [
+      "convenience",
+      "lightweight"
+    ],
+    "description": "Effervescent electrolyte tablets"
+  },
+  {
+    "id": "bodybio_e_lyte_electrolyte_concentrate",
+    "product_name": "BodyBio E-Lyte Electrolyte Concentrate",
+    "brand": "BodyBio",
+    "category": "zero_sugar_high_sodium",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 5,
+      "metabolic": 5,
+      "performance": 3
+    },
+    "form": "concentrate",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "fasting"
+    ],
+    "use_cases": [
+      "fasted_hiking",
+      "heat_exposure",
+      "high_sweat_loss"
+    ],
+    "description": "Concentrated liquid electrolyte drops"
+  },
+  {
+    "id": "bodybio_e_lyte_sport_drink_mix",
+    "product_name": "BodyBio E-Lyte Sport Drink Mix",
+    "brand": "BodyBio",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Powder mix with electrolytes and minerals"
+  },
+  {
+    "id": "gnarly_hydrate_electrolyte_mix",
+    "product_name": "Gnarly Hydrate Electrolyte Mix",
+    "brand": "Gnarly Nutrition",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "B-vitamin enriched electrolyte powder"
+  },
+  {
+    "id": "gnarly_fuel2o",
+    "product_name": "Gnarly Fuel2O",
+    "brand": "Gnarly Nutrition",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 5
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "All-in-one fueling drink with carbs and electrolytes"
+  },
+  {
+    "id": "cure_hydration_mix",
+    "product_name": "Cure Hydration Mix",
+    "brand": "Cure",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Plant-based hydration powder"
+  },
+  {
+    "id": "hydrant_rapid_hydration_mix",
+    "product_name": "Hydrant Rapid Hydration Mix",
+    "brand": "Hydrant",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Rapid hydration powder with balanced electrolytes"
+  },
+  {
+    "id": "hydrant_immunity_mix",
+    "product_name": "Hydrant Immunity Mix",
+    "brand": "Hydrant",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Hydration powder with zinc and vitamin C"
+  },
+  {
+    "id": "hydrant_energy_mix",
+    "product_name": "Hydrant Energy Mix",
+    "brand": "Hydrant",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Hydration powder with caffeine"
+  },
+  {
+    "id": "kinderlyte_oral_electrolyte_solution",
+    "product_name": "Kinderlyte Oral Electrolyte Solution",
+    "brand": "Kinderlyte",
+    "category": "ors_style",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "liquid",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "recovery"
+    ],
+    "use_cases": [
+      "recovery",
+      "dehydration"
+    ],
+    "description": "Ready-to-drink ORS solution"
+  },
+  {
+    "id": "kinderlyte_powder_packs",
+    "product_name": "Kinderlyte Powder Packs",
+    "brand": "Kinderlyte",
+    "category": "ors_style",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "recovery"
+    ],
+    "use_cases": [
+      "recovery",
+      "dehydration"
+    ],
+    "description": "Powder packets of oral rehydration solution"
+  },
+  {
+    "id": "lyteshow_liquid_concentrate",
+    "product_name": "LyteShow Liquid Concentrate",
+    "brand": "LyteShow",
+    "category": "zero_sugar_high_sodium",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 5,
+      "metabolic": 5,
+      "performance": 3
+    },
+    "form": "concentrate",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "fasting"
+    ],
+    "use_cases": [
+      "fasted_hiking",
+      "heat_exposure",
+      "high_sweat_loss"
+    ],
+    "description": "Concentrated liquid electrolyte drops"
+  },
+  {
+    "id": "lytecaps_electrolyte_capsules",
+    "product_name": "LyteCaps Electrolyte Capsules",
+    "brand": "LyteShow",
+    "category": "tablet_or_chew",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "tablet",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "convenience"
+    ],
+    "use_cases": [
+      "convenience",
+      "lightweight"
+    ],
+    "description": "Electrolyte capsules for supplementing sodium"
+  },
+  {
+    "id": "key_nutrients_electrolyte_recovery_plus",
+    "product_name": "Key Nutrients Electrolyte Recovery Plus",
+    "brand": "Key Nutrients",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Zero-sugar electrolyte powder with vitamins"
+  },
+  {
+    "id": "kaged_hydra_charge",
+    "product_name": "Kaged Hydra-Charge",
+    "brand": "Kaged",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Flavored electrolyte powder with antioxidants"
+  },
+  {
+    "id": "keto_chow_daily_minerals",
+    "product_name": "Keto Chow Daily Minerals",
+    "brand": "Keto Chow",
+    "category": "zero_sugar_high_sodium",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 5,
+      "metabolic": 5,
+      "performance": 3
+    },
+    "form": "concentrate",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "fasting"
+    ],
+    "use_cases": [
+      "fasted_hiking",
+      "heat_exposure",
+      "high_sweat_loss"
+    ],
+    "description": "Concentrated mineral drops for keto diets"
+  },
+  {
+    "id": "dr_bergs_electrolyte_powder",
+    "product_name": "Dr. Berg's Electrolyte Powder",
+    "brand": "Dr. Berg",
+    "category": "zero_sugar_high_sodium",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 5,
+      "metabolic": 5,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "fasting"
+    ],
+    "use_cases": [
+      "fasted_hiking",
+      "heat_exposure",
+      "high_sweat_loss"
+    ],
+    "description": "High-potassium electrolyte powder"
+  },
+  {
+    "id": "hydralyte_electrolyte_powder",
+    "product_name": "Hydralyte Electrolyte Powder",
+    "brand": "Hydralyte",
+    "category": "ors_style",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "recovery"
+    ],
+    "use_cases": [
+      "recovery",
+      "dehydration"
+    ],
+    "description": "Oral rehydration solution powder"
+  },
+  {
+    "id": "cytomax_sports_drink_mix",
+    "product_name": "Cytomax Sports Drink Mix",
+    "brand": "Cytomax",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 5
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "Sports drink mix with carbs and electrolytes"
+  },
+  {
+    "id": "accelerade_sports_drink_mix",
+    "product_name": "Accelerade Sports Drink Mix",
+    "brand": "Accelerade",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 2,
+      "metabolic": 2,
+      "performance": 4
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "4:1 carb-protein sports drink"
+  },
+  {
+    "id": "powerade_powder_mix",
+    "product_name": "Powerade Powder Mix",
+    "brand": "Powerade",
+    "category": "mainstream_sports_hydration",
+    "protocol_levels": [
+      2,
+      3
+    ],
+    "scores": {
+      "longevity": 1,
+      "metabolic": 1,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "sports_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Classic sports drink powder mix"
+  },
+  {
+    "id": "powerade_zero_sugar_drink",
+    "product_name": "Powerade Zero Sugar Drink",
+    "brand": "Powerade",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 3,
+      "performance": 3
+    },
+    "form": "liquid",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Zero-sugar ready-to-drink sports drink"
+  },
+  {
+    "id": "bodyarmor_sports_drink",
+    "product_name": "BodyArmor Sports Drink",
+    "brand": "BodyArmor",
+    "category": "mainstream_sports_hydration",
+    "protocol_levels": [
+      2,
+      3
+    ],
+    "scores": {
+      "longevity": 2,
+      "metabolic": 1,
+      "performance": 3
+    },
+    "form": "liquid",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "sports_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Sports drink with coconut water and electrolytes"
+  },
+  {
+    "id": "bodyarmor_lyte_sports_drink",
+    "product_name": "BodyArmor Lyte Sports Drink",
+    "brand": "BodyArmor",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "liquid",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Low-calorie version of BodyArmor sports drink"
+  },
+  {
+    "id": "prime_hydration_drink",
+    "product_name": "Prime Hydration Drink",
+    "brand": "Prime",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 2,
+      "metabolic": 2,
+      "performance": 2
+    },
+    "form": "liquid",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Trendy ready-to-drink hydration beverage"
+  },
+  {
+    "id": "prime_hydration_stick_packs",
+    "product_name": "Prime Hydration Stick Packs",
+    "brand": "Prime",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 2,
+      "metabolic": 2,
+      "performance": 2
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Powdered version of Prime drink"
+  },
+  {
+    "id": "waterboy_hydration_powder",
+    "product_name": "Waterboy Hydration Powder",
+    "brand": "Waterboy",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 2
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Hangover-focused hydration powder"
+  },
+  {
+    "id": "electrolit_hydration_beverage",
+    "product_name": "Electrolit Hydration Beverage",
+    "brand": "Electrolit",
+    "category": "ors_style",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "liquid",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "recovery"
+    ],
+    "use_cases": [
+      "recovery",
+      "dehydration"
+    ],
+    "description": "ORS-style ready-to-drink beverage"
+  },
+  {
+    "id": "sqwincher_powder_pack",
+    "product_name": "Sqwincher Powder Pack",
+    "brand": "Sqwincher",
+    "category": "mainstream_sports_hydration",
+    "protocol_levels": [
+      2,
+      3
+    ],
+    "scores": {
+      "longevity": 1,
+      "metabolic": 1,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "sports_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Industrial strength sports drink powder"
+  },
+  {
+    "id": "sqwincher_zero_qwik_stik",
+    "product_name": "Sqwincher Zero Qwik Stik",
+    "brand": "Sqwincher",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 3,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Zero-sugar single-serve stick packs"
+  },
+  {
+    "id": "nectar_electrolyte_powder",
+    "product_name": "Nectar Electrolyte Powder",
+    "brand": "Nectar",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "All-natural electrolyte powder"
+  },
+  {
+    "id": "hoist_iv_level_hydration_drink",
+    "product_name": "HOIST IV-Level Hydration Drink",
+    "brand": "HOIST",
+    "category": "ors_style",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "liquid",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "recovery"
+    ],
+    "use_cases": [
+      "recovery",
+      "dehydration"
+    ],
+    "description": "IV-level ready-to-drink hydration"
+  },
+  {
+    "id": "electrolyte_stamina_power_pak",
+    "product_name": "Electrolyte Stamina Power Pak",
+    "brand": "Trace Minerals",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Electrolyte powder with vitamins and minerals"
+  },
+  {
+    "id": "vitalyte_electrolyte_replacement_mix",
+    "product_name": "Vitalyte Electrolyte Replacement Mix",
+    "brand": "Vitalyte",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 5
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "Classic endurance drink mix"
+  },
+  {
+    "id": "hammer_nutrition_endurolytes_fizz",
+    "product_name": "Hammer Nutrition Endurolytes Fizz",
+    "brand": "Hammer Nutrition",
+    "category": "tablet_or_chew",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 4
+    },
+    "form": "tablet",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "convenience"
+    ],
+    "use_cases": [
+      "convenience",
+      "lightweight"
+    ],
+    "description": "Effervescent electrolyte tablet"
+  },
+  {
+    "id": "hammer_nutrition_heed_sports_drink",
+    "product_name": "Hammer Nutrition HEED Sports Drink",
+    "brand": "Hammer Nutrition",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 5
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "Complex-carb sports drink with electrolytes"
+  },
+  {
+    "id": "science_in_sport_go_electrolyte_mix",
+    "product_name": "Science in Sport GO Electrolyte Mix",
+    "brand": "Science in Sport",
+    "category": "endurance_carb_electrolyte",
+    "protocol_levels": [
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 5
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "endurance"
+    ],
+    "use_cases": [
+      "long_endurance",
+      "glycogen_support"
+    ],
+    "description": "Carbohydrate-electrolyte drink mix"
+  },
+  {
+    "id": "science_in_sport_go_hydro_tablets",
+    "product_name": "Science in Sport GO Hydro Tablets",
+    "brand": "Science in Sport",
+    "category": "tablet_or_chew",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "tablet",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "convenience"
+    ],
+    "use_cases": [
+      "convenience",
+      "lightweight"
+    ],
+    "description": "Low-calorie effervescent tablets"
+  },
+  {
+    "id": "nakedade_hydration_mix",
+    "product_name": "Nakedade Hydration Mix",
+    "brand": "Naked Nutrition",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Simple ingredient electrolyte powder"
+  },
+  {
+    "id": "nooma_organic_electrolyte_drink",
+    "product_name": "Nooma Organic Electrolyte Drink",
+    "brand": "Nooma",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 3,
+      "performance": 3
+    },
+    "form": "liquid",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Organic sports drink with coconut water"
+  },
+  {
+    "id": "revitalyte_electrolyte_powder",
+    "product_name": "Revitalyte Electrolyte Powder",
+    "brand": "Revitalyte",
+    "category": "ors_style",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 2,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "recovery"
+    ],
+    "use_cases": [
+      "recovery",
+      "dehydration"
+    ],
+    "description": "Hangover recovery electrolyte powder"
+  },
+  {
+    "id": "revitalyte_electrolyte_drink",
+    "product_name": "Revitalyte Electrolyte Drink",
+    "brand": "Revitalyte",
+    "category": "ors_style",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 2,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "liquid",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "recovery"
+    ],
+    "use_cases": [
+      "recovery",
+      "dehydration"
+    ],
+    "description": "Ready-to-drink electrolyte solution for rapid recovery"
+  },
+  {
+    "id": "vita_coco_coconut_water",
+    "product_name": "Vita Coco Coconut Water",
+    "brand": "Vita Coco",
+    "category": "mainstream_sports_hydration",
+    "protocol_levels": [
+      2,
+      3
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 2,
+      "performance": 3
+    },
+    "form": "liquid",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "sports_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Natural coconut water with electrolytes"
+  },
+  {
+    "id": "trace_minerals_concentrace_mineral_drops",
+    "product_name": "Trace Minerals ConcenTrace Mineral Drops",
+    "brand": "Trace Minerals",
+    "category": "zero_sugar_high_sodium",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "scores": {
+      "longevity": 5,
+      "metabolic": 5,
+      "performance": 3
+    },
+    "form": "concentrate",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "fasting"
+    ],
+    "use_cases": [
+      "fasted_hiking",
+      "heat_exposure",
+      "high_sweat_loss"
+    ],
+    "description": "Concentrated trace mineral drops"
+  },
+  {
+    "id": "biosteel_sports_hydration_mix",
+    "product_name": "BioSteel Sports Hydration Mix",
+    "brand": "BioSteel",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Sugar-free hydration powder used by athletes"
+  },
+  {
+    "id": "biosteel_sports_drink",
+    "product_name": "BioSteel Sports Drink",
+    "brand": "BioSteel",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 4,
+      "metabolic": 4,
+      "performance": 3
+    },
+    "form": "liquid",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Ready-to-drink sugar-free sports beverage"
+  },
+  {
+    "id": "camelbak_elixir_electrolyte_tablets",
+    "product_name": "CamelBak Elixir Electrolyte Tablets",
+    "brand": "CamelBak",
+    "category": "tablet_or_chew",
+    "protocol_levels": [
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 3,
+      "performance": 3
+    },
+    "form": "tablet",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "convenience"
+    ],
+    "use_cases": [
+      "convenience",
+      "lightweight"
+    ],
+    "description": "Effervescent tablets sold at outdoor retailers"
+  },
+  {
+    "id": "zipfizz_healthy_energy_and_hydration_drink_mix",
+    "product_name": "Zipfizz Healthy Energy & Hydration Drink Mix",
+    "brand": "Zipfizz",
+    "category": "balanced_daily_hydration",
+    "protocol_levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "scores": {
+      "longevity": 3,
+      "metabolic": 3,
+      "performance": 3
+    },
+    "form": "powder",
+    "tags": [
+      "electrolyte",
+      "hydration",
+      "daily_hydration"
+    ],
+    "use_cases": [
+      "daily_hydration"
+    ],
+    "description": "Energy drink mix with vitamins and electrolytes"
+  }
+]
