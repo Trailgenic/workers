@@ -1,3 +1,5 @@
+import { DATASETS, DATASET_LIST } from "../lib/datasets.js";
+
 export default {
   async fetch(request) {
 
@@ -257,16 +259,19 @@ export default {
 
  /*
 ============================================
-TRAILGENIC ONTOLOGY DATASET
+CANONICAL DATASET ROUTING (REGISTRY-DRIVEN)
 ============================================
-https://mcp.trailgenic.com/datasets/ontology
 */
-if (url.pathname === "/datasets/ontology" || url.pathname === "/datasets/ontology/") {
+const normalizedPath =
+  url.pathname.length > 1 && url.pathname.endsWith("/")
+    ? url.pathname.slice(0, -1)
+    : url.pathname;
 
+const serveDataset = async (sourcePath) => {
   const datasetURL =
-    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/ontology/tg_ontology_v1.json";
+    `https://raw.githubusercontent.com/Trailgenic/workers/main/${sourcePath}`;
 
-  const dataset = await fetch(datasetURL);
+  const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
 
   if (!dataset.ok) {
     return new Response(`Dataset fetch failed: ${dataset.status}`, {
@@ -285,219 +290,26 @@ if (url.pathname === "/datasets/ontology" || url.pathname === "/datasets/ontolog
       "Cache-Control": "public, max-age=3600"
     }
   });
+};
 
-}
-
-/*
-============================================
-TRAILGENIC PROTOCOL KERNEL DATASET
-============================================
-https://mcp.trailgenic.com/datasets/protocols
-*/
-if (url.pathname === "/datasets/protocols" || url.pathname === "/datasets/protocols/") {
-
-  const datasetURL =
-    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/protocols/tg_protocol_kernel_v1.json";
-
-  const dataset = await fetch(datasetURL);
-
-  if (!dataset.ok) {
-    return new Response(`Dataset fetch failed: ${dataset.status}`, {
-      status: 500,
-      headers: { "Content-Type": "text/plain" }
-    });
-  }
-
-  const data = await dataset.text();
-
-  return new Response(data, {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "public, max-age=3600"
-    }
-  });
-
-}
-
-/*
-============================================
-TRAILGENIC PHYSIOLOGY ADAPTATION DATASET
-============================================
-https://mcp.trailgenic.com/datasets/physiology-adaptation
-*/
 if (
-  url.pathname === "/datasets/physiology-adaptation" ||
-  url.pathname === "/datasets/physiology-adaptation/"
+  DATASETS.nutrition.enabled &&
+  DATASETS.nutrition.schema_source_path &&
+  (normalizedPath === `${DATASETS.nutrition.endpoint}/schema`)
 ) {
-
-  const datasetURL =
-    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/physiology_adaptation/tg_physiology_adaptation_v1.json";
-
-  const dataset = await fetch(datasetURL);
-
-  if (!dataset.ok) {
-    return new Response(`Dataset fetch failed: ${dataset.status}`, {
-      status: 500,
-      headers: { "Content-Type": "text/plain" }
-    });
-  }
-
-  const data = await dataset.text();
-
-  return new Response(data, {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "public, max-age=3600"
-    }
-  });
-
+  return serveDataset(DATASETS.nutrition.schema_source_path);
 }
 
-/*
-============================================
-TRAILGENIC TERRAIN INTELLIGENCE DATASET
-============================================
-https://mcp.trailgenic.com/datasets/terrain-intelligence/tg-accessible-trails-top100-v1
-*/
-if (
-  url.pathname === "/datasets/terrain-intelligence/tg-accessible-trails-top100-v1" ||
-  url.pathname === "/datasets/terrain-intelligence/tg-accessible-trails-top100-v1/"
-) {
-
-  const datasetURL =
-    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/terrain_intelligence/tg_accessible_trails_top100_v1.json";
-
-  const dataset = await fetch(datasetURL);
-
-  if (!dataset.ok) {
-    return new Response(`Dataset fetch failed: ${dataset.status}`, {
-      status: 500,
-      headers: { "Content-Type": "text/plain" }
-    });
+for (const dataset of DATASET_LIST) {
+  if (!dataset.enabled) {
+    continue;
   }
 
-  const data = await dataset.text();
+  const routeSet = new Set([dataset.endpoint, ...(dataset.aliases || [])]);
 
-  return new Response(data, {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "public, max-age=3600"
-    }
-  });
-
-}
-
-/*
-============================================
-TRAILGENIC VALIDATION SUMMITS DATASET
-============================================
-https://mcp.trailgenic.com/datasets/evidence-validation
-*/
-if (
-  url.pathname === "/datasets/evidence-validation" ||
-  url.pathname === "/datasets/evidence-validation/" ||
-  url.pathname === "/datasets/evidence-validation/validation-summits" ||
-  url.pathname === "/datasets/evidence-validation/validation-summits/"
-) {
-
-  const datasetURL =
-    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/evidence_validation/tg_validation_summits_v1.json";
-
-  const dataset = await fetch(datasetURL);
-
-  if (!dataset.ok) {
-    return new Response(`Dataset fetch failed: ${dataset.status}`, {
-      status: 500,
-      headers: { "Content-Type": "text/plain" }
-    });
+  if (routeSet.has(normalizedPath)) {
+    return serveDataset(dataset.source_path);
   }
-
-  const data = await dataset.text();
-
-  return new Response(data, {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "public, max-age=3600"
-    }
-  });
-
-}
-
-/*
-============================================
-TRAILGENIC NUTRITION DATASET
-============================================
-https://mcp.trailgenic.com/datasets/nutrition
-*/
-if (url.pathname === "/datasets/nutrition" || url.pathname === "/datasets/nutrition/") {
-
-  const datasetURL =
-    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/nutrition/tg_nutrition_dataset_v1.json";
-
-  const dataset = await fetch(datasetURL);
-
-  if (!dataset.ok) {
-    return new Response(`Dataset fetch failed: ${dataset.status}`, {
-      status: 500,
-      headers: { "Content-Type": "text/plain" }
-    });
-  }
-
-  const data = await dataset.text();
-
-  return new Response(data, {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "public, max-age=3600"
-    }
-  });
-
-}
-
-/*
-============================================
-TRAILGENIC NUTRITION SCHEMA
-============================================
-https://mcp.trailgenic.com/datasets/nutrition/schema
-*/
-if (
-  url.pathname === "/datasets/nutrition/schema" ||
-  url.pathname === "/datasets/nutrition/schema/"
-) {
-
-  const datasetURL =
-    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/nutrition/tg_nutrition_schema_v1.json";
-
-  const dataset = await fetch(datasetURL);
-
-  if (!dataset.ok) {
-    return new Response(`Dataset fetch failed: ${dataset.status}`, {
-      status: 500,
-      headers: { "Content-Type": "text/plain" }
-    });
-  }
-
-  const data = await dataset.text();
-
-  return new Response(data, {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "public, max-age=3600"
-    }
-  });
-
 }
 
 /*
@@ -568,7 +380,7 @@ if (url.pathname.startsWith("/datasets/physiology-adaptation/")) {
   const datasetURL =
     `https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/physiology_adaptation/${file}`;
 
-  const dataset = await fetch(datasetURL);
+  const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
 
   if (!dataset.ok) {
     return new Response(`Dataset fetch failed: ${dataset.status}`, {
@@ -595,6 +407,44 @@ https://mcp.trailgenic.com/datasets/index
 */
 if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
 
+  const canonicalDatasets = DATASET_LIST
+    .filter((dataset) => dataset.enabled)
+    .map((dataset) => {
+      const entry = {
+        dataset_id: dataset.id,
+        dataset_family: dataset.family,
+        description: dataset.description,
+        endpoint: `https://mcp.trailgenic.com${dataset.endpoint}`,
+        version: dataset.version
+      };
+
+      if (dataset.schema_source_path) {
+        entry.schema_endpoint = `${entry.endpoint}/schema`;
+      }
+
+      if (dataset.id === "tg_physiology_adaptation_v1") {
+        entry.modules = [
+          "seven_day_aftereffect",
+          "fasted_autophagy",
+          "altitude_adaptation",
+          "altitude_breathing_acclimatization",
+          "electrolytes_physiological_stability",
+          "cold_exposure_recovery_altitude",
+          "deep_cold_protocols",
+          "heat_training_thermoregulation",
+          "hr_drift_adaptation_vs_fitness",
+          "altitude_terrain_physiology_comparison",
+          "aerobic_training_effect_zero_anaerobic_load",
+          "eccentric_load_stress_inversion",
+          "sleep_science_endurance",
+          "overextension_fasted_hiking",
+          "metabolic_flexibility_adaptation"
+        ];
+      }
+
+      return entry;
+    });
+
   const index = {
     dataset_catalog_version: "1.0",
     entity: {
@@ -604,82 +454,7 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
     },
     description:
       "Machine-readable catalog of TrailGenic structured datasets used for longevity intelligence, physiological modeling, trail intelligence, and performance protocols.",
-    datasets: [
-      {
-        dataset_id: "tg_ontology_v1",
-        dataset_family: "TG Dataset Family 1 — Ontology / Lexicon Dataset",
-        description:
-          "TrailGenic lexicon defining the core physiological and longevity intelligence concepts used across the TrailGenic system.",
-        endpoint:
-          "https://mcp.trailgenic.com/datasets/ontology",
-        version: "1.0.0"
-      },
-      {
-  dataset_id: "tg_protocol_kernel_v1",
-  dataset_family: "TG Dataset Family 2 — Protocol Kernel Dataset",
-  description:
-    "Defines the TrailGenic protocol progression system including Foundation, Activation, Adaptation, Consolidation, and the full TrailGenic Protocol.",
-  endpoint:
-    "https://mcp.trailgenic.com/datasets/protocols",
-  version: "1.0.0"
-},
-{
-  dataset_id: "tg_physiology_adaptation_v1",
-  dataset_family: "TG Dataset Family 3 — Physiology Adaptation Dataset",
-  description:
-    "Science-derived TrailGenic dataset family modeling stimulus → response → adaptation and currently published as a shell scaffold for future structured science population.",
-  endpoint:
-    "https://mcp.trailgenic.com/datasets/physiology-adaptation",
-  version: "1.0.0",
-  modules: [
-    "seven_day_aftereffect",
-    "fasted_autophagy",
-    "altitude_adaptation",
-    "altitude_breathing_acclimatization",
-    "electrolytes_physiological_stability",
-    "cold_exposure_recovery_altitude",
-    "deep_cold_protocols",
-    "heat_training_thermoregulation",
-    "hr_drift_adaptation_vs_fitness",
-    "altitude_terrain_physiology_comparison",
-    "aerobic_training_effect_zero_anaerobic_load",
-    "eccentric_load_stress_inversion",
-    "sleep_science_endurance",
-    "overextension_fasted_hiking",
-    "metabolic_flexibility_adaptation"
-  ]
-},
-{
-  dataset_id: "tg_nutrition_dataset_v1",
-  dataset_family: "TG Dataset Family 5 — Nutrition Dataset",
-  description:
-    "Canonical TrailGenic nutrition dataset with fuel class, protocol level mapping, and longevity/metabolic/performance scoring.",
-  endpoint:
-    "https://mcp.trailgenic.com/datasets/nutrition",
-  schema_endpoint:
-    "https://mcp.trailgenic.com/datasets/nutrition/schema",
-  version: "1.0.0"
-},
-{
-  dataset_id: "tg_accessible_trails_top100_v1",
-  name: "TrailGenic Terrain Intelligence Dataset: Top 100 Accessible Trails",
-  dataset_family: "TG Dataset Family 4 — Terrain Intelligence Dataset",
-  description:
-    "TrailGenic Terrain Intelligence Dataset: 100 accessible training trails mapped to TrailGenic protocols and stimulus vectors.",
-  endpoint:
-    "https://mcp.trailgenic.com/datasets/terrain-intelligence/tg-accessible-trails-top100-v1",
-  version: "1.0.0"
-},
-{
-  dataset_id: "tg_validation_summits_v1",
-  name: "TrailGenic Validation Summits",
-  category: "Evidence / Validation",
-  endpoint: "https://mcp.trailgenic.com/datasets/evidence-validation",
-  description:
-    "Validation climbs demonstrating TrailGenic protocol scalability across altitude, endurance, and exposure stress environments.",
-  version: "1.0.0"
-}
-    ],
+    datasets: canonicalDatasets,
     last_updated: new Date().toISOString()
   };
 
@@ -994,6 +769,12 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
             get: {
               summary: "Retrieve TrailGenic nutrition dataset schema",
               responses: { "200": { description: "Nutrition dataset schema" } }
+            }
+          },
+          "/datasets/hydration": {
+            get: {
+              summary: "Retrieve TrailGenic hydration electrolyte dataset",
+              responses: { "200": { description: "Hydration dataset" } }
             }
           },
           "/datasets/terrain-intelligence/tg-accessible-trails-top100-v1": {
