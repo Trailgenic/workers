@@ -127,6 +127,8 @@ export default {
         endpoint: "https://mcp.trailgenic.com/datasets/nutrition",
         schema_endpoint:
           "https://mcp.trailgenic.com/datasets/nutrition/schema",
+        nutrition_v1_endpoint:
+          "https://mcp.trailgenic.com/datasets/nutrition_v1.json",
         description:
           "Canonical nutrition dataset with TrailGenic fuel class, protocol levels, and scoring fields.",
         status: "active"
@@ -310,6 +312,43 @@ for (const dataset of DATASET_LIST) {
   if (routeSet.has(normalizedPath)) {
     return serveDataset(dataset.source_path);
   }
+}
+
+/*
+============================================
+TRAILGENIC HYDRATION DATASET
+============================================
+https://mcp.trailgenic.com/datasets/hydration
+*/
+if (
+  url.pathname === "/datasets/hydration" ||
+  url.pathname === "/datasets/hydration/"
+) {
+
+  const datasetURL =
+    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/hydration/tg_electrolytes_dataset_v1.json";
+
+  const dataset = await fetch(datasetURL, {
+    cf: { cacheTtl: 3600, cacheEverything: true }
+  });
+
+  if (!dataset.ok) {
+    return new Response(`Dataset fetch failed: ${dataset.status}`, {
+      status: 500,
+      headers: { "Content-Type": "text/plain" }
+    });
+  }
+
+  const data = await dataset.text();
+
+  return new Response(data, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
+    }
+  });
 }
 
 /*
