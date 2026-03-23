@@ -43,11 +43,8 @@ https://mcp.trailgenic.com/datasets/nutrition
 Nutrition Schema (TG Dataset Family 5)  
 https://mcp.trailgenic.com/datasets/nutrition/schema
 
-Nutrition Intelligence Dataset v1  
-https://mcp.trailgenic.com/datasets/nutrition_v1.json
-
-Electrolytes Dataset v1  
-https://mcp.trailgenic.com/datasets/electrolytes_v1.json
+Hydration Dataset (TG Dataset Family 6)  
+https://mcp.trailgenic.com/datasets/hydration
 
 This science-derived dataset family is intended to model stimulus, response, and adaptation mechanisms. The shell scaffold has been created and structured population is pending.
 
@@ -75,8 +72,7 @@ Nutrition dataset routes:
 
 - https://mcp.trailgenic.com/datasets/nutrition
 - https://mcp.trailgenic.com/datasets/nutrition/schema
-- https://mcp.trailgenic.com/datasets/nutrition_v1.json
-- https://mcp.trailgenic.com/datasets/electrolytes_v1.json
+- https://mcp.trailgenic.com/datasets/hydration
 
 The nutrition dataset provides canonical food records, TrailGenic fuel classification, protocol-level mapping, and longevity/metabolic/performance scoring with a companion machine-readable schema.
 
