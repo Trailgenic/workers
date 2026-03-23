@@ -125,6 +125,8 @@ export default {
         endpoint: "https://mcp.trailgenic.com/datasets/nutrition",
         schema_endpoint:
           "https://mcp.trailgenic.com/datasets/nutrition/schema",
+        nutrition_v1_endpoint:
+          "https://mcp.trailgenic.com/datasets/nutrition_v1.json",
         description:
           "Canonical nutrition dataset with TrailGenic fuel class, protocol levels, and scoring fields.",
         status: "active"
@@ -266,7 +268,7 @@ if (url.pathname === "/datasets/ontology" || url.pathname === "/datasets/ontolog
   const datasetURL =
     "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/ontology/tg_ontology_v1.json";
 
-  const dataset = await fetch(datasetURL);
+  const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
 
   if (!dataset.ok) {
     return new Response(`Dataset fetch failed: ${dataset.status}`, {
@@ -299,7 +301,7 @@ if (url.pathname === "/datasets/protocols" || url.pathname === "/datasets/protoc
   const datasetURL =
     "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/protocols/tg_protocol_kernel_v1.json";
 
-  const dataset = await fetch(datasetURL);
+  const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
 
   if (!dataset.ok) {
     return new Response(`Dataset fetch failed: ${dataset.status}`, {
@@ -335,7 +337,7 @@ if (
   const datasetURL =
     "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/physiology_adaptation/tg_physiology_adaptation_v1.json";
 
-  const dataset = await fetch(datasetURL);
+  const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
 
   if (!dataset.ok) {
     return new Response(`Dataset fetch failed: ${dataset.status}`, {
@@ -371,7 +373,7 @@ if (
   const datasetURL =
     "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/terrain_intelligence/tg_accessible_trails_top100_v1.json";
 
-  const dataset = await fetch(datasetURL);
+  const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
 
   if (!dataset.ok) {
     return new Response(`Dataset fetch failed: ${dataset.status}`, {
@@ -409,7 +411,7 @@ if (
   const datasetURL =
     "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/evidence_validation/tg_validation_summits_v1.json";
 
-  const dataset = await fetch(datasetURL);
+  const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
 
   if (!dataset.ok) {
     return new Response(`Dataset fetch failed: ${dataset.status}`, {
@@ -442,7 +444,7 @@ if (url.pathname === "/datasets/nutrition" || url.pathname === "/datasets/nutrit
   const datasetURL =
     "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/nutrition/tg_nutrition_dataset_v1.json";
 
-  const dataset = await fetch(datasetURL);
+  const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
 
   if (!dataset.ok) {
     return new Response(`Dataset fetch failed: ${dataset.status}`, {
@@ -478,7 +480,79 @@ if (
   const datasetURL =
     "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/nutrition/tg_nutrition_schema_v1.json";
 
-  const dataset = await fetch(datasetURL);
+  const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
+
+  if (!dataset.ok) {
+    return new Response(`Dataset fetch failed: ${dataset.status}`, {
+      status: 500,
+      headers: { "Content-Type": "text/plain" }
+    });
+  }
+
+  const data = await dataset.text();
+
+  return new Response(data, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
+    }
+  });
+
+}
+
+/*
+============================================
+TRAILGENIC NUTRITION V1 DATASET
+============================================
+https://mcp.trailgenic.com/datasets/nutrition_v1.json
+*/
+if (
+  url.pathname === "/datasets/nutrition_v1.json" ||
+  url.pathname === "/datasets/nutrition_v1"
+) {
+
+  const datasetURL =
+    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/nutrition_v1.json";
+
+  const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
+
+  if (!dataset.ok) {
+    return new Response(`Dataset fetch failed: ${dataset.status}`, {
+      status: 500,
+      headers: { "Content-Type": "text/plain" }
+    });
+  }
+
+  const data = await dataset.text();
+
+  return new Response(data, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
+    }
+  });
+
+}
+
+/*
+============================================
+TRAILGENIC ELECTROLYTES V1 DATASET
+============================================
+https://mcp.trailgenic.com/datasets/electrolytes_v1.json
+*/
+if (
+  url.pathname === "/datasets/electrolytes_v1.json" ||
+  url.pathname === "/datasets/electrolytes_v1"
+) {
+
+  const datasetURL =
+    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/electrolytes_v1.json";
+
+  const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
 
   if (!dataset.ok) {
     return new Response(`Dataset fetch failed: ${dataset.status}`, {
@@ -568,7 +642,7 @@ if (url.pathname.startsWith("/datasets/physiology-adaptation/")) {
   const datasetURL =
     `https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/physiology_adaptation/${file}`;
 
-  const dataset = await fetch(datasetURL);
+  const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
 
   if (!dataset.ok) {
     return new Response(`Dataset fetch failed: ${dataset.status}`, {
@@ -659,6 +733,20 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
   schema_endpoint:
     "https://mcp.trailgenic.com/datasets/nutrition/schema",
   version: "1.0.0"
+},
+{
+  name: "nutrition_v1",
+  description: "TrailGenic nutrition intelligence dataset with protocol mapping and metabolic scoring",
+  path: "/datasets/nutrition_v1.json",
+  type: "nutrition",
+  version: "1.0"
+},
+{
+  name: "electrolytes_v1",
+  description: "TrailGenic electrolyte product dataset with protocol mapping and metabolic scoring",
+  path: "/datasets/electrolytes_v1.json",
+  type: "hydration",
+  version: "1.0"
 },
 {
   dataset_id: "tg_accessible_trails_top100_v1",
@@ -994,6 +1082,18 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
             get: {
               summary: "Retrieve TrailGenic nutrition dataset schema",
               responses: { "200": { description: "Nutrition dataset schema" } }
+            }
+          },
+          "/datasets/nutrition_v1.json": {
+            get: {
+              summary: "Retrieve TrailGenic nutrition_v1 dataset",
+              responses: { "200": { description: "nutrition_v1 dataset" } }
+            }
+          },
+          "/datasets/electrolytes_v1.json": {
+            get: {
+              summary: "Retrieve TrailGenic electrolytes_v1 dataset",
+              responses: { "200": { description: "electrolytes_v1 dataset" } }
             }
           },
           "/datasets/terrain-intelligence/tg-accessible-trails-top100-v1": {
