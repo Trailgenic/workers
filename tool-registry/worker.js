@@ -505,6 +505,20 @@ if (
 /*
 ============================================
 TRAILGENIC HYDRATION DATASET
+============================================
+https://mcp.trailgenic.com/datasets/hydration
+*/
+if (
+  url.pathname === "/datasets/hydration" ||
+  url.pathname === "/datasets/hydration/"
+) {
+
+  const datasetURL =
+    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/hydration/tg_electrolytes_dataset_v1.json";
+
+  const dataset = await fetch(datasetURL, {
+    cf: { cacheTtl: 3600, cacheEverything: true }
+  });
 
   if (!dataset.ok) {
     return new Response(`Dataset fetch failed: ${dataset.status}`, {
@@ -523,7 +537,6 @@ TRAILGENIC HYDRATION DATASET
       "Cache-Control": "public, max-age=3600"
     }
   });
-
 }
 
 /*
