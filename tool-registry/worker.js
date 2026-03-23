@@ -514,7 +514,7 @@ if (
 ) {
 
   const datasetURL =
-    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/nutrition_v1.json";
+    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/nutrition/tg_nutrition_dataset_v1.json";
 
   const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
 
