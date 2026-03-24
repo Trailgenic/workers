@@ -6,6 +6,34 @@
   "status": "active",
   "last_updated": "2026-03-24",
   "description": "Dataset module for TrailGenic physiology adaptation modeling stimulus, response, and adaptation for heart-rate drift.",
+  "source_article": "https://www.trailgenic.com/science/trailgenic-vs-population-age-adjusted-hr-drift",
+  "related_urls": [
+    {
+      "type": "science",
+      "title": "HR Drift — Adaptation vs Fitness",
+      "url": "https://www.trailgenic.com/science/hr-drift-adaptation-vs-fitness"
+    },
+    {
+      "type": "lexicon",
+      "title": "Heart Rate Drift",
+      "url": "https://www.trailgenic.com/lexicon/heart-rate-drift"
+    },
+    {
+      "type": "protocol",
+      "title": "Trailgenic Foundation Protocol v1",
+      "url": "https://www.trailgenic.com/protocols/trailgenic-foundation-protocol-v1"
+    },
+    {
+      "type": "science",
+      "title": "Electrolytes — Physiological Stability System",
+      "url": "https://www.trailgenic.com/science/electrolytes-physiological-stability-system"
+    }
+  ],
+  "related_datasets": [
+    "tg_protocol_kernel_v1",
+    "tg_electrolytes_dataset_v1",
+    "tg_physiology_adaptation_v1"
+  ],
   "records": [
     {
       "mechanism": "Heart-rate drift inversion under sustained load indicates preserved stroke volume and reduced relative cardiovascular strain during prolonged efforts.",
