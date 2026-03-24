@@ -226,6 +226,10 @@ export default {
       },
 
       {
+  "tool": "tg.hydration.getElectrolyteGuide",
+  "description": "Retrieve TrailGenic electrolyte guidance, protocol mapping, and metabolic scoring from the hydration dataset."
+},
+      {
         tool: "tg.reflect.getInsight",
         description:
           "Retrieve structured reflective intelligence insights from Ella’s Corner."
