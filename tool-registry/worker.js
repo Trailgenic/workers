@@ -387,7 +387,7 @@ const physiologyModules = {
     "heat_training_thermoregulation_v1.json",
 
   "hr-drift-adaptation-vs-fitness":
-    "hr_drift_adaptation_vs_fitness_v1.json",
+    "hr_drift_adaptation_v1.json",
 
   "altitude-terrain-physiology-comparison":
     "altitude_terrain_physiology_comparison_v1.json",
