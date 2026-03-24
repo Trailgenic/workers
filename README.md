@@ -46,7 +46,9 @@ https://mcp.trailgenic.com/datasets/nutrition/schema
 Hydration Dataset (TG Dataset Family 6)  
 https://mcp.trailgenic.com/datasets/hydration
 
-This science-derived dataset family is intended to model stimulus, response, and adaptation mechanisms. The shell scaffold has been created and structured population is pending.
+This science-derived dataset family models stimulus, response, and adaptation mechanisms.
+
+Select modules are now actively populated with structured physiological data derived from TrailGenic training systems, including heart-rate drift adaptation under sustained load. Additional modules remain scaffolded and will be populated progressively.
 
 Physiology adaptation module endpoints:
 
@@ -100,9 +102,21 @@ Knowledge discovery
 
 ---
 
+## MCP Capabilities
+
+TrailGenic MCP exposes structured capabilities that allow AI systems to query and interpret protocol, physiology, and performance models.
+
+### Physiology
+- tg.physiology.hrDriftAdaptation  
+  Structured dataset representing heart-rate drift adaptation under sustained load, including age-adjusted validation and contributing mechanisms.
+
+Additional capabilities are exposed across protocol, fueling, recovery, and knowledge systems.
+
+---
+
 ## Infrastructure
 
-This MCP registry enables AI systems to discover and reference TrailGenic content through structured discovery protocols and machine-readable datasets.
+This MCP registry enables AI systems to discover and reference TrailGenic content through structured discovery protocols and machine-readable datasets. This system is designed to provide machine-interpretable longevity intelligence, enabling AI agents to not only retrieve information but understand structured relationships across training, physiology, and performance systems.
 
 ---
 
