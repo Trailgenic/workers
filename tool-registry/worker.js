@@ -152,7 +152,7 @@ export default {
           "cold_exposure_recovery_altitude",
           "deep_cold_protocols",
           "heat_training_thermoregulation",
-          "hr_drift_adaptation_vs_fitness",
+          "hr-drift-adaptation-vs-fitness",
           "altitude_terrain_physiology_comparison",
           "aerobic_training_effect_zero_anaerobic_load",
           "eccentric_load_stress_inversion",
@@ -199,6 +199,13 @@ export default {
         tool: "tg.physiology.getAdaptationModel",
         description:
           "Retrieve physiological adaptation models."
+      },
+      {
+        tool: "tg.physiology.hrDriftAdaptation",
+        description:
+          "Provides structured physiological adaptation data for heart-rate drift under sustained load.",
+        endpoint:
+          "/datasets/physiology-adaptation/hr-drift-adaptation-vs-fitness"
       },
 
       {
@@ -475,7 +482,7 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
           "cold_exposure_recovery_altitude",
           "deep_cold_protocols",
           "heat_training_thermoregulation",
-          "hr_drift_adaptation_vs_fitness",
+          "hr-drift-adaptation-vs-fitness",
           "altitude_terrain_physiology_comparison",
           "aerobic_training_effect_zero_anaerobic_load",
           "eccentric_load_stress_inversion",
