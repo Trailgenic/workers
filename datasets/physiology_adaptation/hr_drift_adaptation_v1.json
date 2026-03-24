@@ -1,0 +1,175 @@
+{
+  "dataset_id": "tg_hr_drift_adaptation_v1",
+  "dataset_family": "physiology_adaptation",
+  "title": "TrailGenic HR Drift Adaptation Dataset",
+  "version": "v1",
+  "status": "active",
+  "last_updated": "2026-03-24",
+  "description": "Dataset module for TrailGenic physiology adaptation modeling stimulus, response, and adaptation for heart-rate drift.",
+  "records": [
+    {
+      "mechanism": "Heart-rate drift inversion under sustained load indicates preserved stroke volume and reduced relative cardiovascular strain during prolonged efforts.",
+      "stimulus": {
+        "subject_age_years": 52,
+        "high_load_sessions": 15,
+        "foundation_sessions": 7,
+        "session_context": "sustained aerobic mountain load",
+        "observed_avg_hr_bpm": 128,
+        "observed_max_hr_bpm": 156.5,
+        "observed_hr_drift_percent": -5.7,
+        "population_baseline_hr_drift_percent_range": "+5 to +8"
+      },
+      "physiological_response": [
+        "Heart rate decreased relative to maintained external workload across session progression.",
+        "Observed drift direction opposed expected positive cardiovascular drift under prolonged load.",
+        "Cardiovascular demand remained stable despite cumulative duration and terrain stress.",
+        "Pattern is compatible with improved central hemodynamic efficiency."
+      ],
+      "adaptation_outcomes": [
+        "Higher tolerance to prolonged submaximal load with reduced cardiac strain.",
+        "Improved durability of aerobic output under sustained environmental stress.",
+        "Increased confidence in progression toward higher-duration protocol blocks.",
+        "Objective signal of favorable endurance adaptation trajectory."
+      ],
+      "supporting_science": [
+        {
+          "citation": "Coyle and González-Alonso 2001",
+          "finding": "Cardiovascular drift during prolonged exercise is linked to progressive reductions in stroke volume and altered thermoregulatory/hemodynamic load."
+        },
+        {
+          "citation": "Achten and Jeukendrup 2003",
+          "finding": "Submaximal endurance intensity domains support stable aerobic metabolism and provide interpretable heart-rate dynamics for adaptation tracking."
+        }
+      ]
+    },
+    {
+      "mechanism": "Age-adjusted heart-rate validation confirms training intensity within expected physiological range and supports interpretation of drift metrics as adaptation signals rather than overreaching artifacts.",
+      "stimulus": {
+        "subject_age_years": 52,
+        "haskell_fox_hrmax_bpm": 168,
+        "tanaka_hrmax_bpm": 171.6,
+        "expected_hrmax_range_with_sd_bpm": "~156 to ~184 (±10 to ±12 bpm variance)",
+        "observed_avg_hr_bpm": 128,
+        "observed_max_hr_bpm": 156.5,
+        "validation_method": "dual-model age-adjusted HRmax comparison with acknowledged inter-individual variance"
+      },
+      "physiological_response": [
+        "Average and peak heart rates remained within age-adjusted expected bounds.",
+        "No abnormal supramaximal heart-rate excursions were observed.",
+        "Observed intensity profile aligns with controlled aerobic-to-tempo loading.",
+        "Drift interpretation is strengthened by physiologically plausible intensity placement."
+      ],
+      "adaptation_outcomes": [
+        "Higher confidence in session safety and cardiovascular appropriateness.",
+        "Improved calibration of intensity zones for future progression blocks.",
+        "Reduced risk of misclassifying adaptive drift responses as pathological responses.",
+        "Stronger comparability across repeated protocol sessions."
+      ],
+      "supporting_science": [
+        {
+          "citation": "Haskell and Fox 1970",
+          "finding": "The 220-age equation provides a practical population-level estimate of maximal heart rate with recognized individual variance."
+        },
+        {
+          "citation": "Tanaka, Monahan, and Seals 2001",
+          "finding": "The 208-0.7×age model refines age-predicted HRmax estimation and emphasizes substantial inter-individual spread around predicted values."
+        }
+      ]
+    },
+    {
+      "mechanism": "Fasted, fat-adapted training increases reliance on lipid oxidation and reduces glycogen-dependent cardiovascular cost at sustained workloads.",
+      "stimulus": {
+        "training_state": "periodized fasted aerobic sessions",
+        "metabolic_target": "fat-adaptation and substrate flexibility",
+        "observed_hr_drift_percent": -5.7,
+        "comparison_reference": "positive-drift baseline +5 to +8 under prolonged load"
+      },
+      "physiological_response": [
+        "Improved substrate utilization stability during prolonged aerobic demand.",
+        "Lower progressive heart-rate escalation at constant or comparable workload.",
+        "Reduced dependence on rapid carbohydrate turnover during long efforts.",
+        "Enhanced tolerance to extended low-to-moderate intensity work."
+      ],
+      "adaptation_outcomes": [
+        "Greater metabolic efficiency during prolonged endurance sessions.",
+        "Improved endurance consistency under variable fueling windows.",
+        "Lower cardiovascular volatility across high-load aerobic blocks.",
+        "Improved readiness for higher-duration protocol phases."
+      ],
+      "supporting_science": [
+        {
+          "citation": "Stannard and Johnson 2004",
+          "finding": "Fasted exercise increases fat oxidation during endurance work and may support metabolic adaptations relevant to substrate flexibility."
+        },
+        {
+          "citation": "Van Proeyen et al. 2011",
+          "finding": "Repeated fasted-state endurance training can improve metabolic regulation and oxidative adaptation markers."
+        }
+      ]
+    },
+    {
+      "mechanism": "Electrolyte-supported plasma volume regulation and neuromuscular stability attenuate positive cardiovascular drift during prolonged exertion.",
+      "stimulus": {
+        "hydration_strategy": "electrolyte-guided hydration integrated with endurance sessions",
+        "expected_risk_without_support": "progressive positive HR drift from fluid/electrolyte loss",
+        "observed_hr_drift_percent": -5.7,
+        "session_profile": "repeated high-load and foundation exposures"
+      },
+      "physiological_response": [
+        "Reduced hemodynamic instability over prolonged activity duration.",
+        "Improved maintenance of cardiovascular control under cumulative stress.",
+        "Attenuation of dehydration-associated rise in relative cardiac effort.",
+        "More stable internal load signatures across comparable sessions."
+      ],
+      "adaptation_outcomes": [
+        "Improved cardiovascular stability in heat and long-duration contexts.",
+        "Lower probability of drift-related performance decay late in sessions.",
+        "Improved repeatability of endurance session quality.",
+        "Stronger integration of hydration control with protocol execution."
+      ],
+      "supporting_science": [
+        {
+          "citation": "Sawka et al. 2007",
+          "finding": "Hydration status and electrolyte balance materially influence cardiovascular and thermoregulatory function during prolonged exercise."
+        },
+        {
+          "citation": "Cheuvront and Kenefick 2014",
+          "finding": "Body water deficits increase cardiovascular strain and reduce endurance performance, supporting hydration-mediated drift control."
+        }
+      ]
+    },
+    {
+      "mechanism": "Foundation-to-high-load continuity builds progressive autonomic and cardiovascular resilience, enabling stable heart-rate behavior as workload complexity increases.",
+      "stimulus": {
+        "foundation_sessions": 7,
+        "high_load_sessions": 15,
+        "progression_model": "sequenced base conditioning followed by sustained high-load exposure",
+        "observed_avg_hr_bpm": 128,
+        "observed_max_hr_bpm": 156.5,
+        "observed_hr_drift_percent": -5.7
+      },
+      "physiological_response": [
+        "Improved transfer of base aerobic conditioning to higher external load demands.",
+        "Stable cardiovascular control preserved across progression phases.",
+        "Reduced internal-load escalation despite increased training stress density.",
+        "Consistent drift behavior supports continuity of adaptation across protocol tiers."
+      ],
+      "adaptation_outcomes": [
+        "Validated readiness for sustained advanced protocol workloads.",
+        "Improved longitudinal continuity between foundational and high-load training blocks.",
+        "Lower risk of abrupt cardiovascular destabilization with progression.",
+        "Clear structured signal for ongoing periodized endurance advancement."
+      ],
+      "supporting_science": [
+        {
+          "citation": "Seiler 2010",
+          "finding": "Endurance development is supported by structured progression that anchors higher-intensity load on robust aerobic base conditioning."
+        },
+        {
+          "citation": "Plews et al. 2013",
+          "finding": "Heart-rate-derived internal load metrics are useful for monitoring adaptation continuity and guiding endurance progression decisions."
+        }
+      ]
+    }
+  ]
+}
