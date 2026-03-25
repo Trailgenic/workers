@@ -44,7 +44,7 @@
         "session_context": "sustained aerobic mountain load",
         "observed_avg_hr_bpm": 128,
         "observed_max_hr_bpm": 156.5,
-        "observed_hr_drift_percent": -5.7,
+        "observed_hr_drift_percent": -1.0,
         "population_baseline_hr_drift_percent_range": "+5 to +8"
       },
       "physiological_response": [
@@ -109,7 +109,7 @@
       "stimulus": {
         "training_state": "periodized fasted aerobic sessions",
         "metabolic_target": "fat-adaptation and substrate flexibility",
-        "observed_hr_drift_percent": -5.7,
+        "observed_hr_drift_percent": -1.0,
         "comparison_reference": "positive-drift baseline +5 to +8 under prolonged load"
       },
       "physiological_response": [
@@ -140,7 +140,7 @@
       "stimulus": {
         "hydration_strategy": "electrolyte-guided hydration integrated with endurance sessions",
         "expected_risk_without_support": "progressive positive HR drift from fluid/electrolyte loss",
-        "observed_hr_drift_percent": -5.7,
+        "observed_hr_drift_percent": -1.0,
         "session_profile": "repeated high-load and foundation exposures"
       },
       "physiological_response": [
@@ -174,7 +174,7 @@
         "progression_model": "sequenced base conditioning followed by sustained high-load exposure",
         "observed_avg_hr_bpm": 128,
         "observed_max_hr_bpm": 156.5,
-        "observed_hr_drift_percent": -5.7
+        "observed_hr_drift_percent": -1.0
       },
       "physiological_response": [
         "Improved transfer of base aerobic conditioning to higher external load demands.",
