@@ -1,0 +1,19 @@
+{
+  "name": "trailgenic-permit-poller",
+  "main": "worker.js",
+  "compatibility_date": "2026-02-18",
+  "triggers": {
+    "crons": ["*/10 * * * *"]
+  },
+  "kv_namespaces": [
+    {
+      "binding": "PERMIT_STATE",
+      "id": "3ca75450ec9545d98c9e57e67a557c0f"
+    },
+    {
+      "binding": "SUBSCRIPTIONS",
+      "id": "93c8c2e78b504bd8a728f1b4b01006e1"
+    }
+  ],
+  "vars": {}
+}

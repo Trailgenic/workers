@@ -313,6 +313,14 @@ if (
   return serveDataset(DATASETS.nutrition.schema_source_path);
 }
 
+if (
+  DATASETS.permits.enabled &&
+  DATASETS.permits.schema_source_path &&
+  (normalizedPath === `${DATASETS.permits.endpoint}/schema`)
+) {
+  return serveDataset(DATASETS.permits.schema_source_path);
+}
+
 for (const dataset of DATASET_LIST) {
   if (!dataset.enabled) {
     continue;
@@ -338,6 +346,43 @@ if (
 
   const datasetURL =
     "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/hydration/tg_electrolytes_dataset_v1.json";
+
+  const dataset = await fetch(datasetURL, {
+    cf: { cacheTtl: 3600, cacheEverything: true }
+  });
+
+  if (!dataset.ok) {
+    return new Response(`Dataset fetch failed: ${dataset.status}`, {
+      status: 500,
+      headers: { "Content-Type": "text/plain" }
+    });
+  }
+
+  const data = await dataset.text();
+
+  return new Response(data, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
+    }
+  });
+}
+
+/*
+============================================
+TRAILGENIC PERMITS DATASET
+============================================
+https://mcp.trailgenic.com/datasets/permits
+*/
+if (
+  url.pathname === "/datasets/permits" ||
+  url.pathname === "/datasets/permits/"
+) {
+
+  const datasetURL =
+    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/permits/tg_permits_dataset_v1.json";
 
   const dataset = await fetch(datasetURL, {
     cf: { cacheTtl: 3600, cacheEverything: true }
