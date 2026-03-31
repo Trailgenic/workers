@@ -1,0 +1,512 @@
+{
+  "dataset_id": "tg_permits_dataset_v1",
+  "dataset_family": "TG Dataset Family 7 — Permits Dataset",
+  "version": "1.0.0",
+  "status": "active",
+  "description": "Extreme scarcity wilderness permit intelligence with release windows, rules, and TrailGenic demand markers.",
+  "record_count": 8,
+  "fields": [
+    "permit_id",
+    "name",
+    "rec_gov_facility_id",
+    "permit_type",
+    "location",
+    "scarcity_tier",
+    "quota_daily",
+    "group_size_max",
+    "release_calendar",
+    "rules",
+    "scarcity",
+    "trailgenic",
+    "agent_actions"
+  ],
+  "last_updated": "2026-03-31",
+  "records": [
+    {
+      "permit_id": "rec_gov_445860_day_use",
+      "name": "Mt. Whitney Day Use",
+      "rec_gov_facility_id": "445860",
+      "permit_type": "day_use",
+      "location": {
+        "park": "Inyo National Forest (Mt. Whitney Zone)",
+        "state": "CA",
+        "lat": 36.5786,
+        "lon": -118.2923,
+        "elevation_summit_ft": 14505,
+        "elevation_trailhead_ft": 8360
+      },
+      "scarcity_tier": "extreme",
+      "quota_daily": 100,
+      "group_size_max": 15,
+      "release_calendar": {
+        "lottery_open": "02-01",
+        "lottery_close": "03-01",
+        "lottery_results": "03-15",
+        "claim_deadline": "04-21",
+        "walkup_opens": "05-01",
+        "season_start": "05-01",
+        "season_end": "11-01"
+      },
+      "rules": {
+        "bear_canister_required": true,
+        "wag_bag_required": true,
+        "consecutive_permits_allowed": false,
+        "fee_per_person_usd": 15,
+        "no_show_deadline_hours": 24,
+        "self_issue_available": false
+      },
+      "scarcity": {
+        "tier": "extreme",
+        "scarcity_score": 99,
+        "lottery_odds_pct": 25.0,
+        "avg_sellout_minutes_post_release": 2,
+        "historical_cancellation_rate_pct": 12,
+        "best_days_to_monitor": ["Tuesday", "Wednesday", "Thursday"],
+        "peak_dates": ["07-04", "07-05", "08-15", "09-01"]
+      },
+      "trailgenic": {
+        "physiological_demand": "extreme",
+        "elevation_gain_ft": 6100,
+        "round_trip_miles": 21.5,
+        "altitude_exposure": "high",
+        "fasted_compatible": false,
+        "recommended_acclimation_days": 3,
+        "longevity_risk_factors": ["altitude_stress", "acute_hypoxia", "dehydration", "musculoskeletal_load"]
+      },
+      "agent_actions": {
+        "can_query_availability": true,
+        "can_subscribe_webhook": true,
+        "can_transact": false,
+        "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445860_day_use/availability",
+        "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445860_day_use/subscribe",
+        "booking_url": "https://www.recreation.gov/permits/445860"
+      }
+    },
+    {
+      "permit_id": "rec_gov_445860_overnight",
+      "name": "Mt. Whitney Overnight",
+      "rec_gov_facility_id": "445860",
+      "permit_type": "overnight",
+      "location": {
+        "park": "Inyo National Forest (Mt. Whitney Zone)",
+        "state": "CA",
+        "lat": 36.5786,
+        "lon": -118.2923,
+        "elevation_summit_ft": 14505,
+        "elevation_trailhead_ft": 8360
+      },
+      "scarcity_tier": "extreme",
+      "quota_daily": 60,
+      "group_size_max": 15,
+      "release_calendar": {
+        "lottery_open": "02-01",
+        "lottery_close": "03-01",
+        "lottery_results": "03-15",
+        "claim_deadline": "04-21",
+        "walkup_opens": "05-01",
+        "season_start": "05-01",
+        "season_end": "11-01"
+      },
+      "rules": {
+        "bear_canister_required": true,
+        "wag_bag_required": true,
+        "consecutive_permits_allowed": false,
+        "fee_per_person_usd": 15,
+        "no_show_deadline_hours": 24,
+        "self_issue_available": false
+      },
+      "scarcity": {
+        "tier": "extreme",
+        "scarcity_score": 100,
+        "lottery_odds_pct": 18.0,
+        "avg_sellout_minutes_post_release": 1,
+        "historical_cancellation_rate_pct": 10,
+        "best_days_to_monitor": ["Tuesday", "Wednesday"],
+        "peak_dates": ["07-04", "07-05", "08-10", "09-01"]
+      },
+      "trailgenic": {
+        "physiological_demand": "extreme",
+        "elevation_gain_ft": 6100,
+        "round_trip_miles": 21.5,
+        "altitude_exposure": "high",
+        "fasted_compatible": false,
+        "recommended_acclimation_days": 3,
+        "longevity_risk_factors": ["sleep_at_altitude", "acute_hypoxia", "cold_stress", "musculoskeletal_load"]
+      },
+      "agent_actions": {
+        "can_query_availability": true,
+        "can_subscribe_webhook": true,
+        "can_transact": false,
+        "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445860_overnight/availability",
+        "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445860_overnight/subscribe",
+        "booking_url": "https://www.recreation.gov/permits/445860"
+      }
+    },
+    {
+      "permit_id": "rec_gov_234652_day_use",
+      "name": "Half Dome Day Hike",
+      "rec_gov_facility_id": "234652",
+      "permit_type": "day_use",
+      "location": {
+        "park": "Yosemite National Park",
+        "state": "CA",
+        "lat": 37.7459,
+        "lon": -119.5332,
+        "elevation_summit_ft": 8844,
+        "elevation_trailhead_ft": 4035
+      },
+      "scarcity_tier": "extreme",
+      "quota_daily": 225,
+      "group_size_max": 6,
+      "release_calendar": {
+        "lottery_open": "03-01",
+        "lottery_close": "03-31",
+        "lottery_results": "04-15",
+        "claim_deadline": "04-30",
+        "walkup_opens": "05-01",
+        "season_start": "05-20",
+        "season_end": "10-15"
+      },
+      "rules": {
+        "bear_canister_required": false,
+        "wag_bag_required": false,
+        "consecutive_permits_allowed": false,
+        "fee_per_person_usd": 10,
+        "no_show_deadline_hours": 24,
+        "self_issue_available": false
+      },
+      "scarcity": {
+        "tier": "extreme",
+        "scarcity_score": 98,
+        "lottery_odds_pct": 32.0,
+        "avg_sellout_minutes_post_release": 3,
+        "historical_cancellation_rate_pct": 14,
+        "best_days_to_monitor": ["Monday", "Tuesday"],
+        "peak_dates": ["06-15", "07-04", "08-03", "09-01"]
+      },
+      "trailgenic": {
+        "physiological_demand": "extreme",
+        "elevation_gain_ft": 4800,
+        "round_trip_miles": 14.0,
+        "altitude_exposure": "moderate",
+        "fasted_compatible": false,
+        "recommended_acclimation_days": 1,
+        "longevity_risk_factors": ["heat_load", "dehydration", "long_duration_exertion", "slip_fall_exposure"]
+      },
+      "agent_actions": {
+        "can_query_availability": true,
+        "can_subscribe_webhook": true,
+        "can_transact": false,
+        "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_234652_day_use/availability",
+        "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_234652_day_use/subscribe",
+        "booking_url": "https://www.recreation.gov/permits/234652"
+      }
+    },
+    {
+      "permit_id": "rec_gov_233358_overnight",
+      "name": "Enchantments",
+      "rec_gov_facility_id": "233358",
+      "permit_type": "overnight",
+      "location": {
+        "park": "Alpine Lakes Wilderness (Okanogan-Wenatchee National Forest)",
+        "state": "WA",
+        "lat": 47.4652,
+        "lon": -120.8203,
+        "elevation_summit_ft": 9406,
+        "elevation_trailhead_ft": 3400
+      },
+      "scarcity_tier": "extreme",
+      "quota_daily": 24,
+      "group_size_max": 8,
+      "release_calendar": {
+        "lottery_open": "02-15",
+        "lottery_close": "03-01",
+        "lottery_results": "03-15",
+        "claim_deadline": "03-31",
+        "walkup_opens": "05-15",
+        "season_start": "05-15",
+        "season_end": "10-31"
+      },
+      "rules": {
+        "bear_canister_required": false,
+        "wag_bag_required": false,
+        "consecutive_permits_allowed": false,
+        "fee_per_person_usd": 10,
+        "no_show_deadline_hours": 24,
+        "self_issue_available": false
+      },
+      "scarcity": {
+        "tier": "extreme",
+        "scarcity_score": 99,
+        "lottery_odds_pct": 7.0,
+        "avg_sellout_minutes_post_release": 1,
+        "historical_cancellation_rate_pct": 9,
+        "best_days_to_monitor": ["Tuesday", "Wednesday"],
+        "peak_dates": ["07-04", "07-20", "08-10", "09-01"]
+      },
+      "trailgenic": {
+        "physiological_demand": "extreme",
+        "elevation_gain_ft": 4500,
+        "round_trip_miles": 18.0,
+        "altitude_exposure": "moderate",
+        "fasted_compatible": false,
+        "recommended_acclimation_days": 1,
+        "longevity_risk_factors": ["cold_nights", "musculoskeletal_load", "weather_volatility", "stream_crossings"]
+      },
+      "agent_actions": {
+        "can_query_availability": true,
+        "can_subscribe_webhook": true,
+        "can_transact": false,
+        "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_233358_overnight/availability",
+        "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_233358_overnight/subscribe",
+        "booking_url": "https://www.recreation.gov/permits/233358"
+      },
+      "facility_id_verified": false
+    },
+    {
+      "permit_id": "rec_gov_445856_day_use",
+      "name": "Angels Landing",
+      "rec_gov_facility_id": "445856",
+      "permit_type": "day_use",
+      "location": {
+        "park": "Zion National Park",
+        "state": "UT",
+        "lat": 37.2692,
+        "lon": -112.9507,
+        "elevation_summit_ft": 5790,
+        "elevation_trailhead_ft": 4360
+      },
+      "scarcity_tier": "extreme",
+      "quota_daily": 640,
+      "group_size_max": 6,
+      "release_calendar": {
+        "lottery_open": "01-01",
+        "lottery_close": "01-20",
+        "lottery_results": "01-25",
+        "claim_deadline": "01-31",
+        "walkup_opens": "01-01",
+        "season_start": "01-01",
+        "season_end": "12-31"
+      },
+      "rules": {
+        "bear_canister_required": false,
+        "wag_bag_required": false,
+        "consecutive_permits_allowed": true,
+        "fee_per_person_usd": 6,
+        "no_show_deadline_hours": 0,
+        "self_issue_available": false
+      },
+      "scarcity": {
+        "tier": "extreme",
+        "scarcity_score": 96,
+        "lottery_odds_pct": 38.0,
+        "avg_sellout_minutes_post_release": 5,
+        "historical_cancellation_rate_pct": 16,
+        "best_days_to_monitor": ["Monday", "Tuesday", "Wednesday"],
+        "peak_dates": ["03-20", "05-27", "10-10", "11-25"]
+      },
+      "trailgenic": {
+        "physiological_demand": "extreme",
+        "elevation_gain_ft": 1488,
+        "round_trip_miles": 5.4,
+        "altitude_exposure": "low",
+        "fasted_compatible": true,
+        "recommended_acclimation_days": 0,
+        "longevity_risk_factors": ["heat_load", "exposure_risk", "crowding_stress", "fall_hazard"]
+      },
+      "agent_actions": {
+        "can_query_availability": true,
+        "can_subscribe_webhook": true,
+        "can_transact": false,
+        "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445856_day_use/availability",
+        "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445856_day_use/subscribe",
+        "booking_url": "https://www.recreation.gov/permits/445856"
+      },
+      "facility_id_verified": false
+    },
+    {
+      "permit_id": "rec_gov_445859_overnight",
+      "name": "John Muir Trail",
+      "rec_gov_facility_id": "445859",
+      "permit_type": "overnight",
+      "location": {
+        "park": "Sierra Nevada (Yosemite to Mount Whitney Corridor)",
+        "state": "CA",
+        "lat": 37.7326,
+        "lon": -119.5586,
+        "elevation_summit_ft": 14505,
+        "elevation_trailhead_ft": 4035
+      },
+      "scarcity_tier": "extreme",
+      "quota_daily": 45,
+      "group_size_max": 15,
+      "release_calendar": {
+        "lottery_open": "01-15",
+        "lottery_close": "02-28",
+        "lottery_results": "03-15",
+        "claim_deadline": "03-31",
+        "walkup_opens": "04-24",
+        "season_start": "04-24",
+        "season_end": "10-31"
+      },
+      "rules": {
+        "bear_canister_required": true,
+        "wag_bag_required": false,
+        "consecutive_permits_allowed": false,
+        "fee_per_person_usd": 10,
+        "no_show_deadline_hours": 24,
+        "self_issue_available": false
+      },
+      "scarcity": {
+        "tier": "extreme",
+        "scarcity_score": 100,
+        "lottery_odds_pct": 10.0,
+        "avg_sellout_minutes_post_release": 1,
+        "historical_cancellation_rate_pct": 8,
+        "best_days_to_monitor": ["Tuesday", "Wednesday"],
+        "peak_dates": ["06-20", "07-10", "08-01", "09-01"]
+      },
+      "trailgenic": {
+        "physiological_demand": "extreme",
+        "elevation_gain_ft": 47000,
+        "round_trip_miles": 211.0,
+        "altitude_exposure": "high",
+        "fasted_compatible": false,
+        "recommended_acclimation_days": 3,
+        "longevity_risk_factors": ["multiday_energy_deficit", "sleep_at_altitude", "dehydration", "cumulative_load"]
+      },
+      "agent_actions": {
+        "can_query_availability": true,
+        "can_subscribe_webhook": true,
+        "can_transact": false,
+        "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445859_overnight/availability",
+        "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445859_overnight/subscribe",
+        "booking_url": "https://www.recreation.gov/permits/445859"
+      },
+      "facility_id_verified": false,
+      "permit_note": "Covers Yosemite wilderness entry only, not full trail."
+    },
+    {
+      "permit_id": "rec_gov_234628_day_use",
+      "name": "The Wave (Coyote Buttes North)",
+      "rec_gov_facility_id": "234628",
+      "permit_type": "day_use",
+      "location": {
+        "park": "Paria Canyon-Vermilion Cliffs Wilderness",
+        "state": "AZ",
+        "lat": 36.9959,
+        "lon": -112.0065,
+        "elevation_summit_ft": 5200,
+        "elevation_trailhead_ft": 4800
+      },
+      "scarcity_tier": "extreme",
+      "quota_daily": 64,
+      "group_size_max": 6,
+      "release_calendar": {
+        "lottery_open": "01-01",
+        "lottery_close": "01-31",
+        "lottery_results": "02-01",
+        "claim_deadline": "02-14",
+        "walkup_opens": "01-01",
+        "season_start": "01-01",
+        "season_end": "12-31"
+      },
+      "rules": {
+        "bear_canister_required": false,
+        "wag_bag_required": false,
+        "consecutive_permits_allowed": true,
+        "fee_per_person_usd": 7,
+        "no_show_deadline_hours": 0,
+        "self_issue_available": false
+      },
+      "scarcity": {
+        "tier": "extreme",
+        "scarcity_score": 100,
+        "lottery_odds_pct": 4.0,
+        "avg_sellout_minutes_post_release": 1,
+        "historical_cancellation_rate_pct": 6,
+        "best_days_to_monitor": ["Tuesday", "Wednesday", "Thursday"],
+        "peak_dates": ["03-15", "04-10", "10-10", "11-01"]
+      },
+      "trailgenic": {
+        "physiological_demand": "extreme",
+        "elevation_gain_ft": 1200,
+        "round_trip_miles": 6.4,
+        "altitude_exposure": "low",
+        "fasted_compatible": true,
+        "recommended_acclimation_days": 0,
+        "longevity_risk_factors": ["heat_load", "route_finding_stress", "flash_flood_risk", "sun_exposure"]
+      },
+      "agent_actions": {
+        "can_query_availability": true,
+        "can_subscribe_webhook": true,
+        "can_transact": false,
+        "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_234628_day_use/availability",
+        "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_234628_day_use/subscribe",
+        "booking_url": "https://www.recreation.gov/permits/234628"
+      },
+      "facility_id_verified": false
+    },
+    {
+      "permit_id": "rec_gov_445858_overnight",
+      "name": "Grand Canyon Rim-to-Rim Overnight",
+      "rec_gov_facility_id": "445858",
+      "permit_type": "overnight",
+      "location": {
+        "park": "Grand Canyon National Park",
+        "state": "AZ",
+        "lat": 36.057,
+        "lon": -112.1438,
+        "elevation_summit_ft": 8241,
+        "elevation_trailhead_ft": 2480
+      },
+      "scarcity_tier": "extreme",
+      "quota_daily": 180,
+      "group_size_max": 11,
+      "release_calendar": {
+        "lottery_open": "01-01",
+        "lottery_close": "01-20",
+        "lottery_results": "01-25",
+        "claim_deadline": "01-31",
+        "walkup_opens": "01-01",
+        "season_start": "01-01",
+        "season_end": "12-31"
+      },
+      "rules": {
+        "bear_canister_required": false,
+        "wag_bag_required": false,
+        "consecutive_permits_allowed": false,
+        "fee_per_person_usd": 12,
+        "no_show_deadline_hours": 24,
+        "self_issue_available": false
+      },
+      "scarcity": {
+        "tier": "extreme",
+        "scarcity_score": 97,
+        "lottery_odds_pct": 22.0,
+        "avg_sellout_minutes_post_release": 4,
+        "historical_cancellation_rate_pct": 11,
+        "best_days_to_monitor": ["Tuesday", "Wednesday", "Sunday"],
+        "peak_dates": ["04-15", "05-10", "10-05", "10-20"]
+      },
+      "trailgenic": {
+        "physiological_demand": "extreme",
+        "elevation_gain_ft": 10500,
+        "round_trip_miles": 42.0,
+        "altitude_exposure": "moderate",
+        "fasted_compatible": false,
+        "recommended_acclimation_days": 1,
+        "longevity_risk_factors": ["heat_load", "overnight_recovery_strain", "electrolyte_loss", "musculoskeletal_load"]
+      },
+      "agent_actions": {
+        "can_query_availability": true,
+        "can_subscribe_webhook": true,
+        "can_transact": false,
+        "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445858_overnight/availability",
+        "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445858_overnight/subscribe",
+        "booking_url": "https://www.recreation.gov/permits/445858"
+      },
+      "facility_id_verified": false
+    }
+  ]
+}
