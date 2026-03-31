@@ -48,7 +48,7 @@
         "season_end": "11-01"
       },
       "rules": {
-        "bear_canister_required": false,
+        "bear_canister_required": true,
         "wag_bag_required": true,
         "consecutive_permits_allowed": false,
         "fee_per_person_usd": 15,
@@ -260,7 +260,8 @@
         "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_233358_overnight/availability",
         "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_233358_overnight/subscribe",
         "booking_url": "https://www.recreation.gov/permits/233358"
-      }
+      },
+      "facility_id_verified": false
     },
     {
       "permit_id": "rec_gov_445856_day_use",
@@ -320,7 +321,8 @@
         "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445856_day_use/availability",
         "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445856_day_use/subscribe",
         "booking_url": "https://www.recreation.gov/permits/445856"
-      }
+      },
+      "facility_id_verified": false
     },
     {
       "permit_id": "rec_gov_445859_overnight",
@@ -380,7 +382,9 @@
         "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445859_overnight/availability",
         "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445859_overnight/subscribe",
         "booking_url": "https://www.recreation.gov/permits/445859"
-      }
+      },
+      "facility_id_verified": false,
+      "permit_note": "Covers Yosemite wilderness entry only, not full trail."
     },
     {
       "permit_id": "rec_gov_234628_day_use",
@@ -440,7 +444,8 @@
         "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_234628_day_use/availability",
         "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_234628_day_use/subscribe",
         "booking_url": "https://www.recreation.gov/permits/234628"
-      }
+      },
+      "facility_id_verified": false
     },
     {
       "permit_id": "rec_gov_445858_overnight",
@@ -500,7 +505,8 @@
         "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445858_overnight/availability",
         "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445858_overnight/subscribe",
         "booking_url": "https://www.recreation.gov/permits/445858"
-      }
+      },
+      "facility_id_verified": false
     }
   ]
 }
