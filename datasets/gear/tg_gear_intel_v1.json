@@ -1,26 +1,1876 @@
 {
-  "id": "tg.gear.intel",
-  "version": "v1",
-  "title": "TrailGenic Gear Intelligence Dataset",
-  "description": "Hiking gear scored through the TrailGenic longevity lens. Fasted high-altitude performance metrics. Public review signal rescored for metabolic load, altitude readiness, recovery impact, and longevity protocol fit.",
-  "methodology": "Public review synthesis (OutdoorGearLab, REI, Reddit r/ultralight). TG scores reflect longevity-protocol weighting, not consumer average.",
-  "pillar": [
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "TrailGenic Backpacks Intelligence Dataset",
+  "description": "Gear scored through TrailGenic longevity lens. Fasted high-altitude performance metrics.",
+  "dateCreated": "2026-04-05T00:13:07.074Z",
+  "creator": {
+    "@type": "Organization",
+    "@id": "https://trailgenic.com/#organization"
+  },
+  "keywords": [
+    "hiking gear",
+    "longevity",
     "fasted hiking",
-    "high-altitude training",
-    "electrolyte control",
-    "measured recovery"
+    "altitude performance",
+    "TrailGenic"
   ],
-  "last_updated": "2026-04-04",
-  "dataset_date": "2026-Q2",
-  "categories": [
-    "Backpacks",
-    "Trail Shoes",
-    "Insulation",
-    "Trekking Poles",
-    "Electrolytes",
-    "Hydration",
-    "Shell / Rain",
-    "Headlamps"
-  ],
-  "products": []
+  "hasPart": [
+    {
+      "@type": "Product",
+      "name": "Salomon ADV Skin 12 Hydration Vest",
+      "category": "Backpacks",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "340g base weight, body-mapped compression eliminates bounce"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 82,
+          "description": "Seamless chest panels reduce chafing, breathable back minimizes heat retention"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 86,
+          "description": "Excellent thermoregulation, accessible hydration without pack removal"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 84,
+          "description": "12L capacity at 340g delivers strong weight-to-volume ratio"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 78,
+          "description": "Lightweight materials show wear at high-friction points after 200+ miles"
+        }
+      ],
+      "description": "The ADV Skin 12 delivers exceptional metabolic efficiency for fasted alpine sessions with minimal bounce penalty and seamless hydration access. Durability concerns emerge with heavy use, but the thermal management and weight profile support extended high-altitude efforts."
+    },
+    {
+      "@type": "Product",
+      "name": "Salomon ADV Skin 5 Hydration Vest",
+      "category": "Backpacks",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "260g base weight, tight body integration minimizes bounce penalty"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 85,
+          "description": "Chest placement keeps hydration accessible during oxygen debt"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 78,
+          "description": "Elastic compression aids circulation but can create pressure points"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 86,
+          "description": "Robust stretch fabric withstands alpine brush, zipper failures rare"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 82,
+          "description": "5L capacity at sub-300g delivers strong weight-to-volume ratio"
+        }
+      ],
+      "description": "The ADV Skin 5's body-hugging design excels in fasted alpine sessions where hydration access under load is critical. Compression fit supports circulation during recovery phases but sizing precision is essential to avoid metabolic penalties from restriction."
+    },
+    {
+      "@type": "Product",
+      "name": "Osprey Talon 22",
+      "category": "Backpacks",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 75,
+          "description": "1lb 9oz base weight decent but hip belt adds dead load"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 82,
+          "description": "Excellent ventilation through AirScape back panel"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 78,
+          "description": "Osprey build quality proven but light materials show wear"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 68,
+          "description": "22L capacity limits multi-day fasted protocols"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 61,
+          "description": "Hip belt creates pressure points during extended carries"
+        }
+      ],
+      "description": "Solid day-hiking platform with exceptional back ventilation for altitude work, but 22L capacity constrains extended fasted protocols requiring overnight gear. The AirScape suspension excels in thermoregulation but hip belt becomes liability on loaded alpine carries."
+    },
+    {
+      "@type": "Product",
+      "name": "Osprey Stratos 36",
+      "category": "Backpacks",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 68,
+          "description": "3.3lb weight acceptable but suspension system adds dead load"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 85,
+          "description": "Tensioned mesh back panel excels in high-exertion breathability"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 88,
+          "description": "Robust build quality, multiple alpine season reports"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 72,
+          "description": "Feature-to-weight ratio decent for 36L but not ultralight optimized"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 64,
+          "description": "Hip belt padding adequate but shoulder straps create pressure points under load"
+        }
+      ],
+      "description": "The Stratos 36 delivers exceptional thermoregulation through its suspended mesh system, crucial for fasted high-altitude sessions where overheating accelerates glycogen depletion. However, at 3.3 pounds, it carries metabolic penalty versus ultralight alternatives for the longevity-focused hiker prioritizing efficiency over convenience features."
+    },
+    {
+      "@type": "Product",
+      "name": "Hyperlite Mountain Gear 3400 Southwest",
+      "category": "Backpacks",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "2.3lb base weight minimizes oxygen debt at altitude"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 91,
+          "description": "Exceptional capacity-to-weight ratio for loaded alpine carries"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 82,
+          "description": "Dyneema construction breathes well, minimal back panel insulation"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 78,
+          "description": "Dyneema tear resistance high, but seam stress points reported"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 80,
+          "description": "Frameless design eliminates pressure points when properly loaded"
+        }
+      ],
+      "description": "The 3400 Southwest excels in metabolic efficiency with its sub-2.5lb weight carrying 55L capacity, critical for fasted high-altitude sessions where every gram compounds oxygen debt. However, the frameless design demands precise load distribution and core engagement, making it less forgiving during glycogen-depleted states."
+    },
+    {
+      "@type": "Product",
+      "name": "Gossamer Gear Mariposa 60",
+      "category": "Backpacks",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "2.0 lb base weight minimal dead load penalty"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 92,
+          "description": "Exceptional weight-to-volume ratio for alpine carry"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 78,
+          "description": "Good ventilation but limited rigid structure for steep terrain"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 82,
+          "description": "Proven fabric reliability, some hardware wear concerns"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 75,
+          "description": "Minimal padding requires load management for circulation"
+        }
+      ],
+      "description": "Outstanding metabolic efficiency at 2.0 lbs with excellent load transfer for fasted sessions up to 25 miles. Hip belt and shoulder design promote circulation during extended alpine carries, though requires careful packing discipline above treeline."
+    },
+    {
+      "@type": "Product",
+      "name": "Zpacks Arc Haul Ultra 60L",
+      "category": "Backpacks",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 91,
+          "description": "19.7oz frameless design minimizes dead weight penalty"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 89,
+          "description": "Exceptional weight-to-volume ratio for alpine carries"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 82,
+          "description": "Breathable back panel, minimal insulation traps"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 75,
+          "description": "Dyneema strong but requires careful handling on granite"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 78,
+          "description": "Frameless can create pressure points on long sessions"
+        }
+      ],
+      "description": "The Arc Haul Ultra excels at metabolic efficiency for fasted alpine sessions, with industry-leading weight savings that translate to measurably reduced energy expenditure above 10,000ft. The frameless design demands proper packing discipline but rewards practitioners with unmatched load-to-weight performance for longevity-focused mountain sessions."
+    },
+    {
+      "@type": "Product",
+      "name": "Nathan Pinnacle 12L Race Vest",
+      "category": "Backpacks",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "355g weight with exceptional bounce control"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 92,
+          "description": "Superior ventilation through perforated back panel"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 78,
+          "description": "Soft flask positioning reduces shoulder fatigue"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 85,
+          "description": "12L capacity at sub-400g delivers strong ratio"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 76,
+          "description": "Hydrapack components solid but vest fabric shows wear"
+        }
+      ],
+      "description": "The Pinnacle 12L excels as a fasted alpine vest with minimal bounce and exceptional thermoregulation through perforated panels. Weight-to-capacity ratio and integrated hydration system make it ideal for 4-6 hour high-altitude sessions."
+    },
+    {
+      "@type": "Product",
+      "name": "New Balance Fresh Foam X Hierro v8",
+      "category": "Trail Shoes",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 68,
+          "description": "10.5oz per shoe adds dead weight penalty for fasted sessions"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 85,
+          "description": "Fresh Foam X midsole excels at impact absorption on technical descents"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 72,
+          "description": "Breathable upper but limited ventilation under high exertion loads"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 78,
+          "description": "Vibram MegaGrip outsole proven reliable but toe box shows wear patterns"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 54,
+          "description": "Weight-to-protection ratio suboptimal for loaded alpine carries"
+        }
+      ],
+      "description": "Hierro v8 delivers superior impact protection for recovery-focused sessions but carries metabolic penalty during fasted climbs above 12,000ft. The Fresh Foam X platform excels in technical terrain where joint preservation outweighs weight considerations."
+    },
+    {
+      "@type": "Product",
+      "name": "Salomon Sense Ride 5",
+      "category": "Trail Shoes",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 78,
+          "description": "290g weight decent, but energy return limited on technical climbs"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 82,
+          "description": "Breathable mesh performs well above treeline, thermoregulation solid"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 68,
+          "description": "Contagrip outsole reliable but midsole compresses after 300+ alpine miles"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 75,
+          "description": "Weight-to-protection ratio acceptable for loaded carries up to 30lbs"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 71,
+          "description": "Decent foot fatigue management but minimal impact protection on descents"
+        }
+      ],
+      "description": "Solid mid-tier performer for fasted alpine sessions with adequate breathability and reasonable weight penalty. Durability concerns emerge past 300 miles of high-altitude technical terrain, limiting long-term protocol value."
+    },
+    {
+      "@type": "Product",
+      "name": "Altra Lone Peak 8",
+      "category": "Trail Shoes",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "Zero-drop geometry promotes efficient fasted stride mechanics"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 85,
+          "description": "Wide toe box prevents compression-related circulation issues"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 79,
+          "description": "Breathable upper but limited insulation for high-altitude temperature swings"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 82,
+          "description": "Improved outsole compound handles alpine rock abuse better than LP7"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 87,
+          "description": "9.8oz per shoe delivers exceptional weight-to-protection ratio"
+        }
+      ],
+      "description": "The LP8's zero-drop platform and natural foot positioning excel in fasted state biomechanics where proprioception is heightened. The wide toe box prevents the circulation compromise that kills performance during extended alpine efforts above tree line."
+    },
+    {
+      "@type": "Product",
+      "name": "Hoka Speedgoat 6",
+      "category": "Trail Shoes",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 68,
+          "description": "10.9oz weight penalty vs minimal alternatives"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 85,
+          "description": "Maximal cushioning reduces impact stress significantly"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 72,
+          "description": "Breathability adequate, heel lockdown compromised when fatigued"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 78,
+          "description": "Vibram Megagrip outsole proven on technical terrain"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 58,
+          "description": "Weight-to-protection ratio unfavorable for loaded carries"
+        }
+      ],
+      "description": "Maximal cushioning philosophy conflicts with fasted efficiency demands but delivers superior recovery benefits for high-volume alpine training blocks. Weight penalty becomes pronounced during loaded ascents above treeline when metabolic reserves are depleted."
+    },
+    {
+      "@type": "Product",
+      "name": "Brooks Cascadia 17",
+      "category": "Trail Shoes",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 68,
+          "description": "11.2oz weight penalty vs ultralight options"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 75,
+          "description": "Adequate breathability, moderate thermal retention"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 82,
+          "description": "Rock plate + reinforced upper handle alpine abuse"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 71,
+          "description": "Cushioned but uneven pressure distribution"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 64,
+          "description": "Weight-to-protection ratio suboptimal for loaded carries"
+        }
+      ],
+      "description": "Cascadia 17 prioritizes durability over metabolic efficiency, creating dead weight during fasted ascents where every ounce compounds energy drain. The protective platform works for technical terrain but fails the longevity protocol's weight economy test."
+    },
+    {
+      "@type": "Product",
+      "name": "La Sportiva Bushido III",
+      "category": "Trail Shoes",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "295g weight with aggressive lug pattern reduces energy cost on technical terrain"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 82,
+          "description": "Breathable upper performs well in fasted state, moderate insulation retention"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 89,
+          "description": "FriXion XT outsole and reinforced toe rand show excellent alpine wear resistance"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 85,
+          "description": "Weight-to-grip ratio optimized for loaded alpine approaches"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 76,
+          "description": "Firm midsole transfers impact effectively but may stress calves on long descents"
+        }
+      ],
+      "description": "Bushido III excels in fasted alpine conditions where technical grip outweighs cushioning comfort. The aggressive outsole and lightweight build reduce metabolic penalty on extended technical terrain, though recovery demands increase with firmer platform."
+    },
+    {
+      "@type": "Product",
+      "name": "Saucony Peregrine 14",
+      "category": "Trail Shoes",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 81,
+          "description": "9.8oz weight with efficient PWRRUN foam reduces energy cost per step"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 78,
+          "description": "Breathable upper performs well but insulation lacking above treeline"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 72,
+          "description": "PWRTRAC outsole shows premature wear on sharp alpine granite"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 79,
+          "description": "Weight-to-protection ratio solid for loaded alpine approaches"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 74,
+          "description": "Adequate midsole cushioning but narrow toe box creates pressure points"
+        }
+      ],
+      "description": "The Peregrine 14 delivers efficient metabolic performance for fasted alpine sessions with its lightweight PWRRUN platform, but durability concerns emerge on extended high-altitude granite scrambles. Best suited for moderate alpine terrain where weight savings outweigh rock protection needs."
+    },
+    {
+      "@type": "Product",
+      "name": "Topo Athletic MTN Racer 3",
+      "category": "Trail Shoes",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 89,
+          "description": "295g weight with efficient toe-off mechanics"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 86,
+          "description": "Breathable upper maintains thermoregulation above 10k"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 78,
+          "description": "Vibram outsole solid but midsole compression noted 400+ miles"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 85,
+          "description": "Excellent weight-to-protection ratio for alpine carries"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 81,
+          "description": "Wide toe box reduces pressure points during long sessions"
+        }
+      ],
+      "description": "MTN Racer 3 delivers exceptional metabolic efficiency with its lightweight build and natural foot positioning that reduces energy cost during fasted alpine sessions. The wide toe box and breathable construction align well with extended high-altitude efforts, though midsole longevity becomes questionable beyond 400 miles of loaded carries."
+    },
+    {
+      "@type": "Product",
+      "name": "Arc'teryx Cerium SL Hoody",
+      "category": "Insulation",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "275g weight exceptional for warmth delivered"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 86,
+          "description": "Excellent breathability under exertion, quick thermal adjustment"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 82,
+          "description": "Zero pressure points, maintains circulation during rest"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 78,
+          "description": "Down migration issues after heavy use, shell puncture prone"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 90,
+          "description": "Compresses to tennis ball, unmatched warmth-to-weight ratio"
+        }
+      ],
+      "description": "Premium choice for fasted alpine ascents where every gram matters and thermal regulation is critical above treeline. Down migration and fragility require careful handling but thermal performance justifies the tradeoff for serious altitude work."
+    },
+    {
+      "@type": "Product",
+      "name": "Patagonia Micro Puff Hoody",
+      "category": "Insulation",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "10.8oz weight exceptional for warmth delivered"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 85,
+          "description": "Breathable synthetic maintains performance when damp"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 82,
+          "description": "Compresses small, high warmth-to-weight ratio"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 79,
+          "description": "Face fabric delicate but PlumaFill holds structure well"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 86,
+          "description": "Excellent thermoregulation prevents overheating cycles"
+        }
+      ],
+      "description": "Outstanding metabolic efficiency makes this ideal for fasted ascents where every ounce matters above treeline. Synthetic fill maintains critical warmth performance when working hard in variable alpine conditions."
+    },
+    {
+      "@type": "Product",
+      "name": "Patagonia Nano Puff Hoody",
+      "category": "Insulation",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 78,
+          "description": "12.8oz carries well, minimal bulk penalty"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 71,
+          "description": "Good thermal recovery but synthetic retention limits"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 76,
+          "description": "Breathable during ascent, maintains warmth when wet"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 73,
+          "description": "Mid-weight for synthetic, compresses adequately"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 72,
+          "description": "DWR requires maintenance, face fabric shows wear"
+        }
+      ],
+      "description": "Solid synthetic option for fasted alpine sessions where moisture management trumps weight savings. The 60g PrimaLoft Gold synthetic fill maintains thermal output during high-exertion ascents better than down alternatives, though weight-to-warmth ratio penalizes longer carries."
+    },
+    {
+      "@type": "Product",
+      "name": "Outdoor Research Helium Down Hoody",
+      "category": "Insulation",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 89,
+          "description": "7.8oz packable, minimal motion restriction"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 85,
+          "description": "800FP down, breathable pertex shell"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 92,
+          "description": "Exceptional warmth-to-weight ratio"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 68,
+          "description": "Ultralight shell prone to snags, careful handling required"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 82,
+          "description": "Non-restrictive cut aids circulation, light compression"
+        }
+      ],
+      "description": "Outstanding metabolic efficiency for fasted alpine sessions with 800FP down delivering critical warmth at sub-8oz weight penalty. Shell durability requires field discipline but thermal performance per gram is exceptional for altitude work."
+    },
+    {
+      "@type": "Product",
+      "name": "Montbell Plasma 1000 Down Jacket",
+      "category": "Insulation",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 95,
+          "description": "2.5oz weight exceptional for warmth output"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 98,
+          "description": "Best-in-class weight-to-warmth ratio"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 88,
+          "description": "1000-fill loft maintains at altitude, compressible"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 78,
+          "description": "Ultralight shell requires careful handling"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 85,
+          "description": "Minimal bulk aids circulation when layering"
+        }
+      ],
+      "description": "The Plasma 1000 delivers unmatched thermal efficiency per gram, critical for fasted alpine ascents where every ounce impacts metabolic cost. Ultra-high fill power maintains loft in thin air, though delicate construction demands field discipline."
+    },
+    {
+      "@type": "Product",
+      "name": "Western Mountaineering Flash Jacket",
+      "category": "Insulation",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 89,
+          "description": "13.5oz for 850+ fill creates minimal dead-load penalty"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 87,
+          "description": "Pertex Quantum shell breathes well during fasted exertion above treeline"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 82,
+          "description": "Premium construction but delicate shell requires care in alpine environments"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 88,
+          "description": "Exceptional warmth-to-weight ratio justifies pack space allocation"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 81,
+          "description": "Efficient thermal regulation supports post-session recovery protocols"
+        }
+      ],
+      "description": "Elite warmth-to-weight performer that excels in fasted alpine conditions where metabolic heat production is compromised. The breathable shell design prevents overheating during high-output ascents while maintaining thermal efficiency during rest phases."
+    },
+    {
+      "@type": "Product",
+      "name": "Black Diamond Distance Carbon Z Poles",
+      "category": "Trekking Poles",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 89,
+          "description": "Sub-16oz pair reduces swing weight significantly on long fasted ascents"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 85,
+          "description": "Z-Pole folding system enables quick stowage during technical scrambles"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 78,
+          "description": "Carbon fiber prone to impact damage but excellent fatigue resistance"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 92,
+          "description": "Outstanding weight-to-function ratio at 15.5oz for pair"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 82,
+          "description": "FlickLock Pro reduces hand strain, cork grips manage moisture well"
+        }
+      ],
+      "description": "Exceptional metabolic efficiency tool for fasted alpine sessions where every gram compounds over 8+ hour efforts. The rapid fold mechanism supports TrailGenic's variable-load protocols but carbon construction requires careful handling in technical terrain."
+    },
+    {
+      "@type": "Product",
+      "name": "Black Diamond Distance FLZ Carbon Poles",
+      "category": "Trekking Poles",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 85,
+          "description": "15.5oz pair significantly reduces arm fatigue on long ascents"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 82,
+          "description": "Carbon construction handles thermal cycling well above treeline"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 68,
+          "description": "FlickLock mechanism prone to failure under heavy alpine loads"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 88,
+          "description": "Excellent weight-to-strength ratio for ultralight alpine carry"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 75,
+          "description": "Good grip ergonomics reduce hand/wrist strain over multi-day sessions"
+        }
+      ],
+      "description": "Excellent metabolic efficiency for fasted alpine sessions with class-leading weight savings, but FlickLock reliability issues emerge under sustained high-altitude loading. Carbon construction excels in thermal management above 10,000ft but demands careful handling during technical descents."
+    },
+    {
+      "@type": "Product",
+      "name": "Leki Micro Vario Carbon Poles",
+      "category": "Trekking Poles",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "16oz pair reduces arm fatigue at altitude"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 85,
+          "description": "Carbon absorbs shock, maintains grip in thin air"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 82,
+          "description": "Speed lock proven reliable, carbon flexes vs breaks"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 79,
+          "description": "Collapsible design good for alpine versatility"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 86,
+          "description": "Excellent shock absorption reduces joint stress"
+        }
+      ],
+      "description": "Carbon construction and 16oz weight deliver measurable metabolic efficiency during fasted alpine sessions above 10K feet. Speed lock mechanism maintains reliability under load while collapsible design adapts to varied terrain without pack penalties."
+    },
+    {
+      "@type": "Product",
+      "name": "Gossamer Gear LT5 Carbon Poles",
+      "category": "Trekking Poles",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 91,
+          "description": "8.8oz pair significantly reduces swing weight fatigue"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 89,
+          "description": "Exceptional weight-to-function for loaded alpine carries"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 72,
+          "description": "Carbon fiber concerns in technical terrain, twist-lock failures reported"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 85,
+          "description": "Minimal hand/arm fatigue preserves energy at elevation"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 87,
+          "description": "Reduced upper body stress improves post-session recovery"
+        }
+      ],
+      "description": "These poles excel in the fasted high-altitude context where every ounce of energy conservation matters—the ultralight design meaningfully reduces cumulative fatigue over long ascents. However, the carbon construction introduces reliability concerns that could compromise safety during extended alpine sessions."
+    },
+    {
+      "@type": "Product",
+      "name": "REI Co-op Flash Carbon Trekking Poles",
+      "category": "Trekking Poles",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 78,
+          "description": "17oz pair saves energy vs heavier poles"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 85,
+          "description": "Strong weight-to-function for multi-day alpine"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 68,
+          "description": "Cork grips perform well in cold, limited hand positions"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 65,
+          "description": "Carbon construction vulnerable to lateral impacts"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 72,
+          "description": "Adjustable straps reduce wrist strain over long sessions"
+        }
+      ],
+      "description": "Solid metabolic efficiency for fasted alpine work with excellent weight-to-strength ratio. Carbon construction trades ultimate durability for energy savings over extended high-altitude sessions."
+    },
+    {
+      "@type": "Product",
+      "name": "LMNT Electrolyte Packets",
+      "category": "Electrolytes",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Electrolyte/Nutrition Score",
+          "value": 92,
+          "description": "2300mg sodium, 400mg potassium, zero sugar - ideal for fasted state"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "No glucose spike during fasted sessions, rapid absorption"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 82,
+          "description": "High sodium content counters altitude-induced losses effectively"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 85,
+          "description": "Packets survive pack compression, dissolves fully in cold water"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 78,
+          "description": "4.6g per packet reasonable for electrolyte density delivered"
+        }
+      ],
+      "description": "LMNT delivers the cleanest electrolyte profile for fasted alpine work with its 5:1 sodium-to-potassium ratio mimicking sweat losses without metabolic disruption. The zero-carb formula prevents insulin response during fasted sessions while providing sufficient sodium replacement for high-altitude mineral depletion."
+    },
+    {
+      "@type": "Product",
+      "name": "ReLyte Electrolyte Mix",
+      "category": "Electrolytes",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Electrolyte/Nutrition Score",
+          "value": 88,
+          "description": "Clean sodium/potassium ratio, no artificial additives"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 85,
+          "description": "Zero sugar supports fasted state metabolic efficiency"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 82,
+          "description": "Magnesium content aids oxygen utilization at elevation"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Longevity Protocol Fit",
+          "value": 83,
+          "description": "Aligns with fasted training and electrolyte control pillars"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 81,
+          "description": "Balanced mineral profile supports cellular recovery"
+        }
+      ],
+      "description": "ReLyte's unrefined sea salt base and balanced mineral profile make it exceptionally compatible with fasted high-altitude protocols. The absence of artificial sweeteners and clean sodium-to-potassium ratio supports sustained performance during extended alpine sessions without metabolic disruption."
+    },
+    {
+      "@type": "Product",
+      "name": "Precision Hydration PH 1000",
+      "category": "Electrolytes",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Electrolyte/Nutrition Score",
+          "value": 92,
+          "description": "1000mg sodium targets fasted depletion rates"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "Minimal carbs prevent insulin disruption"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 82,
+          "description": "High sodium concentration supports altitude acclimatization"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 85,
+          "description": "Prevents cramping and maintains cellular hydration"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Longevity Protocol Fit",
+          "value": 87,
+          "description": "Designed for sustained electrolyte balance without metabolic interference"
+        }
+      ],
+      "description": "PH 1000's high sodium concentration directly addresses the electrolyte depletion patterns seen in fasted alpine sessions, with minimal metabolic disruption from added sugars. The formulation aligns with longevity protocols requiring sustained mineral balance without breaking ketotic states."
+    },
+    {
+      "@type": "Product",
+      "name": "Precision Hydration PH 1500",
+      "category": "Electrolytes",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Electrolyte/Nutrition Score",
+          "value": 92,
+          "description": "1500mg sodium optimized for fasted sessions"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "minimal carbs preserve ketotic state"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 82,
+          "description": "high sodium counters altitude-induced losses"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 78,
+          "description": "prevents cramping but requires careful timing"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 85,
+          "description": "concentrated powder, minimal pack penalty"
+        }
+      ],
+      "description": "PH 1500's high sodium concentration aligns perfectly with fasted alpine demands where traditional sports drinks fail. The minimal carb profile maintains metabolic flexibility while preventing the electrolyte crashes common above treeline."
+    },
+    {
+      "@type": "Product",
+      "name": "Nuun Sport Tablets",
+      "category": "Electrolytes",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Electrolyte/Nutrition Score",
+          "value": 75,
+          "description": "Balanced Na/K ratio, minimal sugar"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 78,
+          "description": "Fast absorption without digestive load"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 68,
+          "description": "Adequate hydration support above 10K"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Longevity Protocol Fit",
+          "value": 74,
+          "description": "Compatible with fasted protocols"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 70,
+          "description": "Tablets can crumble in pack"
+        }
+      ],
+      "description": "Solid electrolyte foundation for fasted alpine sessions with 360mg sodium and clean mineral profile that won't disrupt ketosis. Tablet format presents durability concerns in loaded packs but dissolves consistently even in cold mountain water."
+    },
+    {
+      "@type": "Product",
+      "name": "SaltStick Fastchews",
+      "category": "Electrolytes",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Electrolyte/Nutrition Score",
+          "value": 78,
+          "description": "2:1 sodium:potassium ratio solid for fasted sessions"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 85,
+          "description": "Fast absorption without GI stress during exertion"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 72,
+          "description": "Adequate mineral replacement for high-altitude sweat losses"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 68,
+          "description": "Chewable format vulnerable to heat/moisture degradation"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 75,
+          "description": "Dense electrolyte delivery per gram carried"
+        }
+      ],
+      "description": "SaltStick Fastchews deliver reliable mineral replacement with minimal metabolic disruption during fasted alpine sessions. The 215mg sodium per tab supports sustained performance above treeline, though chewable format requires careful pack storage in variable conditions."
+    },
+    {
+      "@type": "Product",
+      "name": "Salomon Soft Flask 500ml",
+      "category": "Hydration",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "25g weight, compresses to eliminate dead space"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 85,
+          "description": "High-flow bite valve maintains performance at altitude"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 78,
+          "description": "TPU construction solid but valve requires maintenance"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 84,
+          "description": "Excellent weight-to-capacity ratio for alpine carry"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Longevity Protocol Fit",
+          "value": 80,
+          "description": "Clean hydration compatible with fasted state protocols"
+        }
+      ],
+      "description": "Outstanding metabolic efficiency with collapsible design that eliminates pack slosh and dead weight as you drink. The high-flow valve system maintains consistent hydration delivery even during intense fasted alpine sessions above treeline."
+    },
+    {
+      "@type": "Product",
+      "name": "Salomon Soft Flask 250ml",
+      "category": "Hydration",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "22g weight, collapsible design eliminates dead volume burden"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 82,
+          "description": "TPU construction maintains flow rate in cold, bite valve reliable sub-freezing"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 89,
+          "description": "Superior weight-to-volume ratio, packs flat when empty"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 78,
+          "description": "TPU material prone to punctures but valve mechanism highly reliable"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Longevity Protocol Fit",
+          "value": 85,
+          "description": "Excellent for electrolyte dosing, quick refill supports extended fasted sessions"
+        }
+      ],
+      "description": "Exceptional metabolic efficiency for alpine fasted protocols with minimal weight penalty and superior pack integration. Valve reliability at altitude outweighs puncture vulnerability for dedicated longevity practitioners."
+    },
+    {
+      "@type": "Product",
+      "name": "Hydrapak Softflask 500ml",
+      "category": "Hydration",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 89,
+          "description": "35g weight, compressible design reduces pack bulk"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 82,
+          "description": "High flow rate maintains hydration pace at elevation"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 78,
+          "description": "TPU construction robust but valve prone to wear"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 91,
+          "description": "Excellent weight-to-volume ratio for alpine carry"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 85,
+          "description": "Easy one-handed operation reduces strain during movement"
+        }
+      ],
+      "description": "Outstanding weight efficiency and compressible design make this ideal for fasted alpine sessions where every gram matters. The high-flow valve supports rapid rehydration needs during altitude-induced dehydration phases, though valve durability requires field monitoring."
+    },
+    {
+      "@type": "Product",
+      "name": "Platypus SoftBottle 1L",
+      "category": "Hydration",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 89,
+          "description": "34g weight reduces pack penalty significantly"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 81,
+          "description": "Wide mouth enables rapid hydration during short stops"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 78,
+          "description": "Puncture-resistant but requires careful handling on sharp terrain"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 92,
+          "description": "Exceptional weight-to-volume ratio, compacts when empty"
+        }
+      ],
+      "description": "Outstanding metabolic efficiency for fasted alpine sessions where every gram matters. The collapsible design eliminates dead space penalty while maintaining rapid refill capability during brief feeding windows."
+    },
+    {
+      "@type": "Product",
+      "name": "Sawyer Squeeze Water Filter System",
+      "category": "Hydration",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "3oz system weight, minimal squeeze effort at altitude"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 92,
+          "description": "100,000 gallon filter life, freeze-thaw resilience"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 78,
+          "description": "Flow rate drops 15-20% above 12k feet, manageable"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 85,
+          "description": "Superior weight-to-function vs pump filters"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Longevity Protocol Fit",
+          "value": 82,
+          "description": "Enables extended fasted sessions without water anxiety"
+        }
+      ],
+      "description": "The Squeeze delivers exceptional metabolic efficiency for fasted alpine sessions with its 3oz weight and squeeze-to-drink operation that maintains hydration momentum. Field durability is outstanding with proper backflushing, though flow rate degradation above 12,000 feet requires patience during high-exertion refills."
+    },
+    {
+      "@type": "Product",
+      "name": "Arc'teryx Norvan SL Hoody",
+      "category": "Shell / Rain",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 91,
+          "description": "Exceptionally light at 120g, minimal motion restriction"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 88,
+          "description": "Outstanding breathability, rapid moisture transfer above treeline"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 76,
+          "description": "Minimal pressure points, though basic fit adjustability"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 92,
+          "description": "Best-in-class weight-to-protection ratio for alpine emergency shell"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 72,
+          "description": "Ultralite fabric trades durability for weight savings"
+        }
+      ],
+      "description": "The Norvan SL excels as a fasted high-altitude emergency shell with industry-leading weight and breathability metrics that maintain core temperature regulation during intensive ascents. However, the ultralight construction requires careful handling and isn't suitable as a primary weather protection system for extended alpine exposure."
+    },
+    {
+      "@type": "Product",
+      "name": "Arc'teryx Wind Jacket",
+      "category": "Shell / Rain",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 85,
+          "description": "Sub-200g weight minimizes dead load penalty"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 88,
+          "description": "Excellent breathability prevents overheating during fasted exertion"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 65,
+          "description": "Limited thermal regulation for post-session cooling protocols"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 75,
+          "description": "Tyono 20 fabric prone to snags on technical terrain"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 82,
+          "description": "High function-to-weight ratio for alpine minimalism"
+        }
+      ],
+      "description": "Exceptional metabolic efficiency for fasted high-altitude sessions with superior breathability preventing glycogen-depleting overheating. However, limited weather protection range restricts its utility in comprehensive alpine longevity protocols."
+    },
+    {
+      "@type": "Product",
+      "name": "Patagonia Houdini Jacket",
+      "category": "Shell / Rain",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "1.2oz weight exceptional for alpine carry efficiency"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 62,
+          "description": "Wind protection solid but breathability limited under exertion"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 92,
+          "description": "Stuff-sack size and weight ratio outstanding for emergency layer"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 58,
+          "description": "15D ripstop tears easily on rock contact points"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Longevity Protocol Fit",
+          "value": 65,
+          "description": "Wind shell function supports thermoregulation but rain protection minimal"
+        }
+      ],
+      "description": "Ultra-minimal emergency wind shell that excels in weight-conscious alpine protocols but fails as primary weather protection above treeline. Best deployed as packable backup layer for sudden weather shifts during fasted ascents."
+    },
+    {
+      "@type": "Product",
+      "name": "Outdoor Research Helium Rain Jacket",
+      "category": "Shell / Rain",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 88,
+          "description": "6.4oz minimizes dead load penalty"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 75,
+          "description": "Light fabric reduces energy cost but limited ventilation"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 68,
+          "description": "Adequate breathability, lacks pit zips for high-output ascents"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 52,
+          "description": "Thin 2.5L fabric shows wear at high-friction zones"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 78,
+          "description": "Packable design reduces gear stress, minimal pressure points"
+        }
+      ],
+      "description": "Exceptional weight-to-function ratio makes this ideal for fasted alpine sessions where every gram counts. Durability limitations require careful deployment in technical terrain, but thermal regulation supports sustained metabolic efficiency."
+    },
+    {
+      "@type": "Product",
+      "name": "Black Diamond Liquid Point Shell",
+      "category": "Shell / Rain",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 75,
+          "description": "Moderate weight penalty but efficient alpine cut"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 85,
+          "description": "Excellent breathability under fasted exertion above treeline"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 68,
+          "description": "3L construction solid but seam integrity concerns in alpine abuse"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 70,
+          "description": "Good post-session thermal regulation, articulated design"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Longevity Protocol Fit",
+          "value": 62,
+          "description": "Weather protection strong but lacks cold exposure optimization"
+        }
+      ],
+      "description": "Solid alpine shell for fasted high-altitude work with exceptional breathability during sustained climbs, but durability concerns limit confidence for multi-season longevity protocols. Best suited for moderate alpine objectives rather than extended expedition use."
+    },
+    {
+      "@type": "Product",
+      "name": "Montbell Versalite Rain Jacket",
+      "category": "Shell / Rain",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 89,
+          "description": "6.7oz weight exceptional for alpine efficiency"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 82,
+          "description": "Solid breathability but pit zips would enhance"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 79,
+          "description": "20D face fabric adequate for most alpine use"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 91,
+          "description": "Outstanding weight-to-protection ratio"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 78,
+          "description": "Good fit reduces hot spots during long sessions"
+        }
+      ],
+      "description": "The Versalite delivers exceptional metabolic efficiency at 6.7oz while maintaining adequate storm protection for fasted alpine sessions. Weight savings directly translate to reduced energy expenditure during multi-hour altitude gains."
+    },
+    {
+      "@type": "Product",
+      "name": "Black Diamond Spot 400",
+      "category": "Headlamps",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 78,
+          "description": "86g weight acceptable for output, but bounces slightly during fast ascents"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 82,
+          "description": "Maintains brightness in cold, red mode preserves night vision for dawn starts"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 88,
+          "description": "IPX8 rating proven in alpine conditions, battery contacts resist corrosion"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 65,
+          "description": "Weight-to-lumen ratio decent but not ultralight category"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 58,
+          "description": "Strap creates pressure points during extended night sessions"
+        }
+      ],
+      "description": "Solid workhorse for fasted dawn starts and night descents above treeline, with reliable cold-weather performance that won't fail during extended alpine sessions. Weight penalty is justified by durability, but strap comfort becomes limiting factor on 12+ hour pushes."
+    },
+    {
+      "@type": "Product",
+      "name": "Black Diamond Storm 500",
+      "category": "Headlamps",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "110g weight acceptable for 500-lumen output, minimal neck strain"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 92,
+          "description": "IPX7 rating handles condensation/precipitation above treeline consistently"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 86,
+          "description": "PowerTap tech and robust housing survive alpine temperature swings"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 78,
+          "description": "Comfortable headband but battery weight creates pressure points on long sessions"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 82,
+          "description": "Weight justified by reliability and lumen output for technical terrain"
+        }
+      ],
+      "description": "Storm 500 delivers consistent high-output illumination critical for pre-dawn alpine starts and technical descents in compromised metabolic states. The PowerTap dimming feature preserves night vision adaptation while maintaining sufficient lumens for route-finding during fasted sessions above 10,000ft."
+    },
+    {
+      "@type": "Product",
+      "name": "Petzl Actik Core",
+      "category": "Headlamps",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 89,
+          "description": "75g total weight, minimal neck strain during extended sessions"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 78,
+          "description": "Elastic headband distributes pressure well, no hot spots after 12+ hour sessions"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 87,
+          "description": "Red mode preserves night vision, consistent output in sub-freezing temps"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 82,
+          "description": "IPX4 rated, impact resistant housing survives alpine conditions"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 85,
+          "description": "Rechargeable core eliminates battery weight penalty on multi-day sessions"
+        }
+      ],
+      "description": "The Actik Core delivers exceptional metabolic efficiency with its lightweight profile and red-mode night vision preservation critical for fasted dawn starts. Rechargeable design eliminates the dead weight of spare batteries on extended alpine protocols."
+    },
+    {
+      "@type": "Product",
+      "name": "Petzl Swift RL",
+      "category": "Headlamps",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "100g weight minimal neck strain during extended sessions"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 92,
+          "description": "Reactive lighting adapts to hypoxic vision changes automatically"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 78,
+          "description": "USB charging vulnerable but housing withstands alpine conditions"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 85,
+          "description": "Weight-to-lumen ratio excellent for multi-day protocols"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 82,
+          "description": "Red light mode preserves circadian rhythm for measured recovery"
+        }
+      ],
+      "description": "The reactive lighting technology eliminates cognitive load of manual brightness adjustment during fasted ascents when decision-making is compromised. Red light preservation of night vision critical for dawn starts in longevity protocols."
+    },
+    {
+      "@type": "Product",
+      "name": "Fenix HM65R-T",
+      "category": "Headlamps",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Metabolic Load",
+          "value": 88,
+          "description": "104g weight with dual light design minimizes neck strain during extended sessions"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Altitude Readiness",
+          "value": 85,
+          "description": "Proven thermal stability and beam consistency above 12,000ft in cold conditions"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Field Durability",
+          "value": 89,
+          "description": "IPX8 rating with robust construction survives alpine moisture and temperature cycling"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Pack Weight Economics",
+          "value": 82,
+          "description": "Weight justified by dual beam versatility and USB-C rechargeable eliminating spare batteries"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Recovery Impact",
+          "value": 78,
+          "description": "Balanced weight distribution reduces post-session neck tension in fasted state"
+        }
+      ],
+      "description": "The HM65R-T delivers exceptional alpine performance with its dual-beam system proving invaluable during fasted dawn starts and technical night sections above treeline. The USB-C rechargeable design eliminates battery weight penalties while maintaining consistent output in sub-freezing conditions."
+    }
+  ]
 }
