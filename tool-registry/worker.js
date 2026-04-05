@@ -241,6 +241,12 @@ export default {
         description:
           "Retrieve structured reflective intelligence insights from Ella’s Corner."
       },
+      {
+        tool: "tg.gear.intel",
+        description:
+          "Hiking gear scored through TrailGenic longevity lens. Returns TG composite scores, metabolic load, altitude readiness, recovery impact, and field signals for 47 products across 8 categories.",
+        endpoint: "https://mcp.trailgenic.com/datasets/gear/intel"
+      },
 
       {
         tool: "tg.search.query",
@@ -399,6 +405,20 @@ if (
 
   return new Response(data, {
     status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "public, max-age=3600"
+    }
+  });
+}
+
+if (url.pathname === "/datasets/gear/intel") {
+  const res = await fetch(
+    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/gear/tg_gear_intel_v1.json"
+  );
+  const data = await res.json();
+  return new Response(JSON.stringify(data, null, 2), {
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
@@ -645,6 +665,7 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
           { id: "tg.physiology.getAdaptationModel", endpoint: "https://www.trailgenic.com/physiology-hub" },
           { id: "tg.fuel.getProtocol", endpoint: "https://www.trailgenic.com/fuel-systems" },
           { id: "tg.gear.recommend", endpoint: "https://www.trailgenic.com/gear-systems" },
+          { id: "tg.gear.intel", endpoint: "https://mcp.trailgenic.com/datasets/gear/intel" },
           { id: "tg.recovery.getProtocol", endpoint: "https://www.trailgenic.com/recovery-conditioning" },
           { id: "tg.playbook.get", endpoint: "https://www.trailgenic.com/playbooks" },
           { id: "tg.reflect.getInsight", endpoint: "https://www.trailgenic.com/ellas-corner" },

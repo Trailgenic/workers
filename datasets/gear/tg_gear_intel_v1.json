@@ -1,0 +1,26 @@
+{
+  "id": "tg.gear.intel",
+  "version": "v1",
+  "title": "TrailGenic Gear Intelligence Dataset",
+  "description": "Hiking gear scored through the TrailGenic longevity lens. Fasted high-altitude performance metrics. Public review signal rescored for metabolic load, altitude readiness, recovery impact, and longevity protocol fit.",
+  "methodology": "Public review synthesis (OutdoorGearLab, REI, Reddit r/ultralight). TG scores reflect longevity-protocol weighting, not consumer average.",
+  "pillar": [
+    "fasted hiking",
+    "high-altitude training",
+    "electrolyte control",
+    "measured recovery"
+  ],
+  "last_updated": "2026-04-04",
+  "dataset_date": "2026-Q2",
+  "categories": [
+    "Backpacks",
+    "Trail Shoes",
+    "Insulation",
+    "Trekking Poles",
+    "Electrolytes",
+    "Hydration",
+    "Shell / Rain",
+    "Headlamps"
+  ],
+  "products": []
+}
