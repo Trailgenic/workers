@@ -1,0 +1,6 @@
+{
+  "status": "pending",
+  "dataset_id": "tg_longevity_validation_v1",
+  "note": "Field validation records will be populated after editorial publication.",
+  "endpoint": "https://mcp.trailgenic.com/datasets/longevity/validation"
+}

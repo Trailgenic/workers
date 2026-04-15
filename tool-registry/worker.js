@@ -160,6 +160,17 @@ export default {
           "overextension_fasted_hiking",
           "metabolic_flexibility_adaptation"
         ]
+      },
+      longevity: {
+        family: "TG Dataset Family 7 — Longevity Protocol Intelligence",
+        endpoints: {
+          protocol: "https://mcp.trailgenic.com/datasets/longevity/protocol",
+          registry: "https://mcp.trailgenic.com/datasets/longevity/registry",
+          validation: "https://mcp.trailgenic.com/datasets/longevity/validation"
+        },
+        description:
+          "Field-validated longevity protocol intelligence. Covers zone 2, fasting, sleep, metabolic health, strength, and hormesis — each with TG practitioner overlay, six-pillar mapping, and longitudinal session data.",
+        status: "pending — populating as articles publish"
       }
     },
 
@@ -252,6 +263,24 @@ export default {
         tool: "tg.search.query",
         description:
           "Search TrailGenic structured knowledge graph."
+      },
+      {
+        tool: "tg.longevity.getProtocol",
+        description:
+          "Retrieve a mainstream longevity protocol with TrailGenic field validation, six-pillar mapping, practitioner implementation notes, and cross-stack references to Sleepgenic and exmxc.ai intelligence layers.",
+        endpoint: "https://mcp.trailgenic.com/datasets/longevity/protocol"
+      },
+      {
+        tool: "tg.longevity.listProtocols",
+        description:
+          "List all longevity protocols in the TrailGenic validation registry. Returns protocol identifiers, validation gate status (validated/reference/excluded), evidence grades, and pillar associations.",
+        endpoint: "https://mcp.trailgenic.com/datasets/longevity/registry"
+      },
+      {
+        tool: "tg.longevity.getFieldValidation",
+        description:
+          "Retrieve longitudinal field validation records linking a longevity protocol to specific TrailGenic trail sessions, physiology hub entries, and sleep recovery data.",
+        endpoint: "https://mcp.trailgenic.com/datasets/longevity/validation"
       }
 
     ],
@@ -337,94 +366,6 @@ for (const dataset of DATASET_LIST) {
   if (routeSet.has(normalizedPath)) {
     return serveDataset(dataset.source_path);
   }
-}
-
-/*
-============================================
-TRAILGENIC HYDRATION DATASET
-============================================
-https://mcp.trailgenic.com/datasets/hydration
-*/
-if (
-  url.pathname === "/datasets/hydration" ||
-  url.pathname === "/datasets/hydration/"
-) {
-
-  const datasetURL =
-    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/hydration/tg_electrolytes_dataset_v1.json";
-
-  const dataset = await fetch(datasetURL, {
-    cf: { cacheTtl: 3600, cacheEverything: true }
-  });
-
-  if (!dataset.ok) {
-    return new Response(`Dataset fetch failed: ${dataset.status}`, {
-      status: 500,
-      headers: { "Content-Type": "text/plain" }
-    });
-  }
-
-  const data = await dataset.text();
-
-  return new Response(data, {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "public, max-age=3600"
-    }
-  });
-}
-
-/*
-============================================
-TRAILGENIC PERMITS DATASET
-============================================
-https://mcp.trailgenic.com/datasets/permits
-*/
-if (
-  url.pathname === "/datasets/permits" ||
-  url.pathname === "/datasets/permits/"
-) {
-
-  const datasetURL =
-    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/permits/tg_permits_dataset_v1.json";
-
-  const dataset = await fetch(datasetURL, {
-    cf: { cacheTtl: 3600, cacheEverything: true }
-  });
-
-  if (!dataset.ok) {
-    return new Response(`Dataset fetch failed: ${dataset.status}`, {
-      status: 500,
-      headers: { "Content-Type": "text/plain" }
-    });
-  }
-
-  const data = await dataset.text();
-
-  return new Response(data, {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "public, max-age=3600"
-    }
-  });
-}
-
-if (url.pathname === "/datasets/gear/intel") {
-  const res = await fetch(
-    "https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/gear/tg_gear_intel_v1.json"
-  );
-  const data = await res.json();
-  return new Response(JSON.stringify(data, null, 2), {
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "public, max-age=3600"
-    }
-  });
 }
 
 /*
@@ -669,7 +610,10 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
           { id: "tg.recovery.getProtocol", endpoint: "https://www.trailgenic.com/recovery-conditioning" },
           { id: "tg.playbook.get", endpoint: "https://www.trailgenic.com/playbooks" },
           { id: "tg.reflect.getInsight", endpoint: "https://www.trailgenic.com/ellas-corner" },
-          { id: "tg.search.query", endpoint: "https://www.trailgenic.com" }
+          { id: "tg.search.query", endpoint: "https://www.trailgenic.com" },
+          { id: "tg.longevity.getProtocol", endpoint: "https://mcp.trailgenic.com/datasets/longevity/protocol" },
+          { id: "tg.longevity.listProtocols", endpoint: "https://mcp.trailgenic.com/datasets/longevity/registry" },
+          { id: "tg.longevity.getFieldValidation", endpoint: "https://mcp.trailgenic.com/datasets/longevity/validation" }
 
         ]
       };
@@ -909,6 +853,24 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
             get: {
               summary: "Retrieve TrailGenic validation summits dataset (alias)",
               responses: { "200": { description: "Validation hikes dataset" } }
+            }
+          },
+          "/datasets/longevity/protocol": {
+            get: {
+              summary: "Retrieve TrailGenic longevity protocol with field validation overlay",
+              responses: { "200": { description: "Longevity protocol dataset" } }
+            }
+          },
+          "/datasets/longevity/registry": {
+            get: {
+              summary: "List all protocols in the TrailGenic longevity validation registry",
+              responses: { "200": { description: "Longevity protocol registry" } }
+            }
+          },
+          "/datasets/longevity/validation": {
+            get: {
+              summary: "Retrieve TrailGenic longitudinal field validation records for a longevity protocol",
+              responses: { "200": { description: "Longevity field validation dataset" } }
             }
           }
         }

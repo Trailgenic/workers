@@ -1,0 +1,6 @@
+{
+  "status": "pending",
+  "dataset_id": "tg_longevity_protocol_v1",
+  "note": "Protocol data will be populated after editorial publication.",
+  "endpoint": "https://mcp.trailgenic.com/datasets/longevity/protocol"
+}
