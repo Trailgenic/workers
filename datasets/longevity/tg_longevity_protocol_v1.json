@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "dataset_id": "tg_longevity_protocol_v1",
-  "dataset_family": "TG Dataset Family 7 — Longevity Protocol Intelligence",
+  "dataset_family": "TG Dataset Family 7 \u2014 Longevity Protocol Intelligence",
   "description": "TrailGenic longevity protocol records. Each record contains mainstream scientific consensus, TG field validation overlay, six-pillar mapping, and practitioner implementation guidance. Populated incrementally as articles publish.",
   "authority": {
     "practitioner": "https://mikeye.com/#person",
@@ -15,10 +15,10 @@
       "category": "cardiovascular",
       "article_url": "https://www.trailgenic.com/longevity/zone-2-cardio-what-fasted-altitude-training-reveals-about-longevitys-most-important-exercise",
       "mainstream_consensus": {
-        "summary": "Zone 2 training — sustained aerobic effort at low-to-moderate intensity — drives mitochondrial biogenesis, fat oxidation, and metabolic flexibility. Researchers such as Iñigo San Millán have established Zone 2 as the threshold for maximal mitochondrial and metabolic adaptation. In mainstream longevity frameworks, it is treated as the foundation of durable cardiovascular fitness, with VO2max as the strongest single predictor of longevity.",
+        "summary": "Zone 2 training \u2014 sustained aerobic effort at low-to-moderate intensity \u2014 drives mitochondrial biogenesis, fat oxidation, and metabolic flexibility. Researchers such as I\u00f1igo San Mill\u00e1n have established Zone 2 as the threshold for maximal mitochondrial and metabolic adaptation. In mainstream longevity frameworks, it is treated as the foundation of durable cardiovascular fitness, with VO2max as the strongest single predictor of longevity.",
         "key_sources": [
           {
-            "author": "Iñigo San Millán",
+            "author": "I\u00f1igo San Mill\u00e1n",
             "institution": "University of Colorado",
             "contribution": "Established Zone 2 as the primary threshold for mitochondrial and metabolic adaptation; popularized zone-based training for longevity and performance populations"
           },
@@ -48,9 +48,12 @@
           "foundation_sessions": 7,
           "high_intensity_sessions": 17,
           "instrumentation_note": "Garmin GPS + HRV tracking across most recent 17 high-intensity sessions and 7 foundation sessions. Prior 30 sessions documented via trail logs without HRV instrumentation. Field findings expected to hold across full 47-session dataset.",
-          "altitude_range_ft": [3235, 10849],
+          "altitude_range_ft": [
+            3235,
+            10849
+          ],
           "peaks_represented": [
-            "Mount Baldy (10,064–10,080 ft)",
+            "Mount Baldy (10,064\u201310,080 ft)",
             "San Jacinto via Marion Mountain (10,849 ft)",
             "Mount Wilson via Sturtevant Falls (5,762 ft)",
             "Mount Wilson via Little Santa Anita (5,694 ft)",
@@ -59,28 +62,64 @@
           ],
           "population_comparison": {
             "matched_scenario": "HIGH_LOAD",
-            "population_avg_hr_range_bpm": [140, 160],
-            "population_max_hr_range_bpm": [170, 190],
-            "population_hr_drift_range_pct": [5.0, 8.0],
-            "population_duration_range_min": [120, 300],
-            "population_elevation_gain_range_ft": [1500, 4000],
+            "population_avg_hr_range_bpm": [
+              140,
+              160
+            ],
+            "population_max_hr_range_bpm": [
+              170,
+              190
+            ],
+            "population_hr_drift_range_pct": [
+              5.0,
+              8.0
+            ],
+            "population_duration_range_min": [
+              120,
+              300
+            ],
+            "population_elevation_gain_range_ft": [
+              1500,
+              4000
+            ],
             "tg_avg_hr_bpm": 127.9,
-            "tg_avg_hr_range_bpm": [123, 132],
+            "tg_avg_hr_range_bpm": [
+              123,
+              132
+            ],
             "tg_max_hr_bpm": 156.6,
-            "tg_max_hr_range_bpm": [150, 165],
+            "tg_max_hr_range_bpm": [
+              150,
+              165
+            ],
             "tg_hr_drift_pct_mean": -0.9,
-            "tg_hr_drift_range_pct": [-9.2, 1.0],
-            "tg_duration_range_min": [264, 434],
-            "tg_elevation_gain_range_ft": [3235, 5049],
+            "tg_hr_drift_range_pct": [
+              -9.2,
+              1.0
+            ],
+            "tg_duration_range_min": [
+              264,
+              434
+            ],
+            "tg_elevation_gain_range_ft": [
+              3235,
+              5049
+            ],
             "age_adjustment_factor": 0.884,
-            "age_adjusted_avg_hr_range_bpm": [124, 141],
-            "age_adjusted_max_hr_range_bpm": [150, 168],
+            "age_adjusted_avg_hr_range_bpm": [
+              124,
+              141
+            ],
+            "age_adjusted_max_hr_range_bpm": [
+              150,
+              168
+            ],
             "population_comparison_findings": [
-              "Average HR is 12–32 bpm BELOW population HIGH_LOAD range in all 17 sessions (pop: 140–160 bpm; TG mean: 127.9 bpm) despite elevation gain exceeding population high-load ceiling in 13 of 17 sessions",
-              "Max HR is BELOW population HIGH_LOAD range in all 17 sessions (pop: 170–190 bpm; TG mean: 156.6 bpm); falls WITHIN age-adjusted range (150–168 bpm) in all 17 sessions",
-              "HR drift runs in the opposite direction of the population: population HIGH_LOAD expects +5–8% positive drift; TG mean is -0.9% with 15 of 17 sessions negative",
-              "Duration exceeds population HIGH_LOAD ceiling (300 min) in 11 of 17 sessions — TG sessions run longer than population high-load benchmarks while producing lower cardiac cost",
-              "Elevation gain exceeds population HIGH_LOAD ceiling (4,000 ft) in 13 of 17 sessions — TG operates above population load parameters across the primary terrain stress dimension"
+              "Average HR is 12\u201332 bpm BELOW population HIGH_LOAD range in all 17 sessions (pop: 140\u2013160 bpm; TG mean: 127.9 bpm) despite elevation gain exceeding population high-load ceiling in 13 of 17 sessions",
+              "Max HR is BELOW population HIGH_LOAD range in all 17 sessions (pop: 170\u2013190 bpm; TG mean: 156.6 bpm); falls WITHIN age-adjusted range (150\u2013168 bpm) in all 17 sessions",
+              "HR drift runs in the opposite direction of the population: population HIGH_LOAD expects +5\u20138% positive drift; TG mean is -0.9% with 15 of 17 sessions negative",
+              "Duration exceeds population HIGH_LOAD ceiling (300 min) in 11 of 17 sessions \u2014 TG sessions run longer than population high-load benchmarks while producing lower cardiac cost",
+              "Elevation gain exceeds population HIGH_LOAD ceiling (4,000 ft) in 13 of 17 sessions \u2014 TG operates above population load parameters across the primary terrain stress dimension"
             ]
           },
           "engine_stability": {
@@ -91,41 +130,124 @@
             "anaerobic_spillover_exceptions": 4,
             "anaerobic_spillover_exception_max": 0.3,
             "hr_drift_negative_sessions": 15,
-            "hr_drift_range_pct": [-9.2, 1.0],
+            "hr_drift_range_pct": [
+              -9.2,
+              1.0
+            ],
             "engine_stability_score_mean": 8.7,
-            "engine_stability_score_range": [8, 10],
+            "engine_stability_score_range": [
+              8,
+              10
+            ],
             "engine_stability_score_peak": 10,
-            "peak_session": "Hike 17 — Marion Mountain to San Jacinto, 434 min, 10,849 ft, novel route, 37–55°F — lowest avg HR in dataset (125 bpm), near-zero anaerobic spillover (0.1), perfect Engine Stability Score of 10"
+            "peak_session": "Hike 17 \u2014 Marion Mountain to San Jacinto, 434 min, 10,849 ft, novel route, 37\u201355\u00b0F \u2014 lowest avg HR in dataset (125 bpm), near-zero anaerobic spillover (0.1), perfect Engine Stability Score of 10"
           },
           "cardiac_efficiency_progression": {
-            "hikes_1_2": { "avg_hr_bpm": [131, 132], "max_hr_bpm": [161, 164], "hr_drift_pct": [-8.4, -9.2], "cardiac_score": [7.0, 8.5] },
-            "hikes_3_10": { "avg_hr_bpm_range": [123, 130], "max_hr_bpm_range": [150, 157], "hr_drift_pct_range": [-5.0, -6.0], "cardiac_score": 9.0 },
-            "hikes_11_15": { "avg_hr_bpm_range": [126, 130], "max_hr_bpm_range": [153, 165], "hr_drift_pct_range": [-0.5, -5.8], "cardiac_score_range": [8.5, 9.0] },
-            "hikes_16_17": { "avg_hr_bpm_range": [125, 129], "max_hr_bpm_range": [155, 159], "hr_drift_pct_range": [-0.5, -0.8], "cardiac_score_range": [9.0, 9.5] },
+            "hikes_1_2": {
+              "avg_hr_bpm": [
+                131,
+                132
+              ],
+              "max_hr_bpm": [
+                161,
+                164
+              ],
+              "hr_drift_pct": [
+                -8.4,
+                -9.2
+              ],
+              "cardiac_score": [
+                7.0,
+                8.5
+              ]
+            },
+            "hikes_3_10": {
+              "avg_hr_bpm_range": [
+                123,
+                130
+              ],
+              "max_hr_bpm_range": [
+                150,
+                157
+              ],
+              "hr_drift_pct_range": [
+                -5.0,
+                -6.0
+              ],
+              "cardiac_score": 9.0
+            },
+            "hikes_11_15": {
+              "avg_hr_bpm_range": [
+                126,
+                130
+              ],
+              "max_hr_bpm_range": [
+                153,
+                165
+              ],
+              "hr_drift_pct_range": [
+                -0.5,
+                -5.8
+              ],
+              "cardiac_score_range": [
+                8.5,
+                9.0
+              ]
+            },
+            "hikes_16_17": {
+              "avg_hr_bpm_range": [
+                125,
+                129
+              ],
+              "max_hr_bpm_range": [
+                155,
+                159
+              ],
+              "hr_drift_pct_range": [
+                -0.5,
+                -0.8
+              ],
+              "cardiac_score_range": [
+                9.0,
+                9.5
+              ]
+            },
             "vo2max_ml_kg_min": 46,
-            "vo2max_change": "stable throughout — efficiency gains are pacing- and recovery-driven, not aerobic-capacity-driven"
+            "vo2max_change": "stable throughout \u2014 efficiency gains are pacing- and recovery-driven, not aerobic-capacity-driven"
           },
           "foundation_phase": {
             "sessions": 7,
             "avg_duration_min": 58.1,
             "avg_distance_mi": 3.17,
             "zone_1_pct_avg": 91.7,
-            "avg_hr_range_bpm": [102, 111],
-            "population_foundation_avg_hr_range_bpm": [110, 130],
-            "age_adjusted_foundation_avg_hr_range_bpm": [97, 115],
-            "hr_drift_range_pct": [3.3, 7.9],
+            "avg_hr_range_bpm": [
+              102,
+              111
+            ],
+            "population_foundation_avg_hr_range_bpm": [
+              110,
+              130
+            ],
+            "age_adjusted_foundation_avg_hr_range_bpm": [
+              97,
+              115
+            ],
+            "hr_drift_range_pct": [
+              3.3,
+              7.9
+            ],
             "recovery_flag": "ready in all 7 sessions",
             "outcome": "Confirmed aerobic readiness before high-intensity phase. HR declining session over session, metabolic flexibility progressed from Stable to Strong by Sessions 3 and 5."
           },
           "key_findings": [
-            "ENGINE_STABLE in all 17 high-intensity sessions without exception — the cardiovascular and metabolic engine does not degrade under any tested condition in the dataset",
+            "ENGINE_STABLE in all 17 high-intensity sessions without exception \u2014 the cardiovascular and metabolic engine does not degrade under any tested condition in the dataset",
             "Average HR consistently below population HIGH_LOAD range despite operating above population load parameters in elevation gain and duration",
-            "HR drift runs opposite to population expectation: negative trend in 15 of 17 sessions vs population expectation of +5–8% positive drift",
-            "Cardiac efficiency improved across the full 17-session span: avg HR dropped from 131–132 bpm (early) to 125 bpm (Hike 17) while route demands reached new extremes",
-            "VO2max held stable at 46 ml/kg/min — gains are driven by pacing efficiency and recovery adaptation, not aerobic capacity increase",
+            "HR drift runs opposite to population expectation: negative trend in 15 of 17 sessions vs population expectation of +5\u20138% positive drift",
+            "Cardiac efficiency improved across the full 17-session span: avg HR dropped from 131\u2013132 bpm (early) to 125 bpm (Hike 17) while route demands reached new extremes",
+            "VO2max held stable at 46 ml/kg/min \u2014 gains are driven by pacing efficiency and recovery adaptation, not aerobic capacity increase",
             "Foundation phase validation confirmed: 7 sessions of Zone 1-dominant flat-terrain work established aerobic readiness before mountain load was applied"
           ],
-          "tg_differentiation": "Mainstream Zone 2 protocols treat Zone 2 as a static heart rate target calibrated to sea-level, controlled conditions. TrailGenic reframes Zone 2 as an adaptation state: the capacity to remain metabolically stable when stressors compound — altitude hypoxia, fasted glycogen depletion, extended duration, thermal extremes, and terrain complexity simultaneously. The TG dataset demonstrates this through progressive cardiac efficiency improvement across 17 sessions of escalating demand: as routes became harder, longer, higher, and colder, cardiac cost per unit of work declined. The engine did not merely hold — it improved. This pattern is invisible to standard zone-compliance tracking and only becomes measurable when load is systematically increased while cardiac output is measured continuously."
+          "tg_differentiation": "Mainstream Zone 2 protocols treat Zone 2 as a static heart rate target calibrated to sea-level, controlled conditions. TrailGenic reframes Zone 2 as an adaptation state: the capacity to remain metabolically stable when stressors compound \u2014 altitude hypoxia, fasted glycogen depletion, extended duration, thermal extremes, and terrain complexity simultaneously. The TG dataset demonstrates this through progressive cardiac efficiency improvement across 17 sessions of escalating demand: as routes became harder, longer, higher, and colder, cardiac cost per unit of work declined. The engine did not merely hold \u2014 it improved. This pattern is invisible to standard zone-compliance tracking and only becomes measurable when load is systematically increased while cardiac output is measured continuously."
         },
         "data_links": [
           "https://trailgenic.com/physiology",
@@ -133,7 +255,7 @@
         ]
       },
       "recovery_findings": {
-        "summary": "Post-hike recovery follows a quantifiable arc. For the first 15 sessions, Day 1 post-hike sleep universally sacrificed overall quality for deep-sleep tissue repair. Hikes 16 and 17 broke this pattern — the first sessions where the system absorbed extreme stress and returned to suprabaseline within 48 hours.",
+        "summary": "Post-hike recovery follows a quantifiable arc. For the first 15 sessions, Day 1 post-hike sleep universally sacrificed overall quality for deep-sleep tissue repair. Hikes 16 and 17 broke this pattern \u2014 the first sessions where the system absorbed extreme stress and returned to suprabaseline within 48 hours.",
         "universal_pattern_hikes_1_to_15": {
           "day_1_quality_tag": "QUALITY_POOR in 13 of 15 sessions (2 nights unavailable)",
           "day_1_autonomic_tag": "AUTONOMIC_STRAINED in all 15 sessions",
@@ -146,59 +268,127 @@
           "interpretation": "The body prioritizes deep-sleep tissue repair on post-hike night at the expense of overall sleep quality and REM. A universal pattern across all 15 pre-inflection sessions."
         },
         "recovery_inflection_hike_16": {
-          "session_description": "Ski Hut to Baldy via Devil's Backbone — 9.8 mi, 310 min, 10,080 ft, familiar route",
+          "session_description": "Ski Hut to Baldy via Devil's Backbone \u2014 9.8 mi, 310 min, 10,080 ft, familiar route",
           "day_1_resting_hr_bpm": 58,
           "day_1_hrv": 32,
           "day_1_deep_sleep_min": 113,
-          "day_1_autonomic_tag": "STABLE — first occurrence in dataset",
+          "day_1_autonomic_tag": "STABLE \u2014 first occurrence in dataset",
           "day_2_sleep_score": 87,
           "day_2_rem_min": 100,
           "day_2_hrv": 42,
           "day_2_resting_hr_bpm": 55,
-          "day_2_status": "AUTONOMIC_RESTORED — first full 48-hour recovery to suprabaseline in dataset"
+          "day_2_status": "AUTONOMIC_RESTORED \u2014 first full 48-hour recovery to suprabaseline in dataset"
         },
         "recovery_inflection_confirmed_hike_17": {
-          "session_description": "Marion Mountain to San Jacinto — 12.75 mi, 434 min, 10,849 ft, novel route, 37–55°F, cold and wind",
+          "session_description": "Marion Mountain to San Jacinto \u2014 12.75 mi, 434 min, 10,849 ft, novel route, 37\u201355\u00b0F, cold and wind",
           "day_1_hrv": 38,
           "day_1_hrv_delta_from_pre_hike": 0,
           "day_1_rem_min": 92,
           "day_1_awakenings_min": 12,
           "day_1_quality_tag": "QUALITY_HIGH",
-          "day_1_autonomic_tag": "STABLE — zero HRV suppression, first in dataset",
+          "day_1_autonomic_tag": "STABLE \u2014 zero HRV suppression, first in dataset",
           "day_2_hrv": 44,
           "day_2_resting_hr_bpm": 57,
           "day_2_overnight_stress": 15,
           "day_2_respiratory_rate": 15,
           "day_2_skin_temp_change_f": -0.7,
-          "day_2_status": "AUTONOMIC_RESTORED — new all-time HRV record, surpassing Hike 16",
-          "significance": "The most demanding session in the dataset — longest duration, highest altitude, novel route, extreme mechanical load, cold conditions — produced the cleanest recovery architecture ever recorded. The inflection first observed on Hike 16 is confirmed durable on a materially harder session."
+          "day_2_status": "AUTONOMIC_RESTORED \u2014 new all-time HRV record, surpassing Hike 16",
+          "significance": "The most demanding session in the dataset \u2014 longest duration, highest altitude, novel route, extreme mechanical load, cold conditions \u2014 produced the cleanest recovery architecture ever recorded. The inflection first observed on Hike 16 is confirmed durable on a materially harder session."
         },
         "recovery_data_table": {
-          "columns": ["metric", "pre_hike_median", "hikes_1_15_day1_median", "hikes_1_15_day2_median", "hike_16_day1", "hike_16_day2", "hike_17_day1", "hike_17_day2"],
+          "columns": [
+            "metric",
+            "pre_hike_median",
+            "hikes_1_15_day1_median",
+            "hikes_1_15_day2_median",
+            "hike_16_day1",
+            "hike_16_day2",
+            "hike_17_day1",
+            "hike_17_day2"
+          ],
           "rows": [
-            ["resting_hr_bpm", 57, "63–65", "57–62", 58, 55, 60, 57],
-            ["overnight_hrv", 36, "24–27", "30–36", 32, 42, 38, 44],
-            ["deep_sleep_min", 72, "60–85", "50–78", 113, 93, 82, 53],
-            ["rem_min", 72, "13–43", "19–50", 52, 100, 92, 81],
-            ["sleep_score", null, "42–66", "55–70", 64, 87, 86, 84],
-            ["autonomic_tag", "STABLE", "STRAINED (14/14)", "STABLE (best prior)", "STABLE", "RESTORED", "STABLE", "RESTORED"]
+            [
+              "resting_hr_bpm",
+              57,
+              "63\u201365",
+              "57\u201362",
+              58,
+              55,
+              60,
+              57
+            ],
+            [
+              "overnight_hrv",
+              36,
+              "24\u201327",
+              "30\u201336",
+              32,
+              42,
+              38,
+              44
+            ],
+            [
+              "deep_sleep_min",
+              72,
+              "60\u201385",
+              "50\u201378",
+              113,
+              93,
+              82,
+              53
+            ],
+            [
+              "rem_min",
+              72,
+              "13\u201343",
+              "19\u201350",
+              52,
+              100,
+              92,
+              81
+            ],
+            [
+              "sleep_score",
+              null,
+              "42\u201366",
+              "55\u201370",
+              64,
+              87,
+              86,
+              84
+            ],
+            [
+              "autonomic_tag",
+              "STABLE",
+              "STRAINED (14/14)",
+              "STABLE (best prior)",
+              "STABLE",
+              "RESTORED",
+              "STABLE",
+              "RESTORED"
+            ]
           ]
         }
       },
       "pillar_mapping": {
-        "primary": ["altitude_adaptation"],
-        "secondary": ["fasted_hiking", "measured_recovery"],
-        "integration_note": "Zone 2 in the TG system requires four pillars functioning together. Foundation establishes aerobic control before high-load adaptation is introduced. Fasted Hiking changes the fuel environment, deepening fat oxidation signal. Altitude Adaptation forces efficiency under hypoxic stress. Measured Recovery — tracked via HRV, resting HR, and sleep architecture — is the confirmation signal that adaptation is consolidating. The recovery inflection on Hikes 16–17 is the measurable proof that all pillars are integrating correctly."
+        "primary": [
+          "altitude_adaptation"
+        ],
+        "secondary": [
+          "fasted_hiking",
+          "measured_recovery"
+        ],
+        "integration_note": "Zone 2 in the TG system requires four pillars functioning together. Foundation establishes aerobic control before high-load adaptation is introduced. Fasted Hiking changes the fuel environment, deepening fat oxidation signal. Altitude Adaptation forces efficiency under hypoxic stress. Measured Recovery \u2014 tracked via HRV, resting HR, and sleep architecture \u2014 is the confirmation signal that adaptation is consolidating. The recovery inflection on Hikes 16\u201317 is the measurable proof that all pillars are integrating correctly."
       },
       "practitioner_protocol": {
-        "tg_implementation": "Begin with a true Foundation phase — flat terrain, controlled duration (~58 min), Zone 1 dominant, boring enough for the system to stabilize. Confirm aerobic readiness before introducing mountain load: look for declining avg HR session over session, controlled drift, and ready recovery flag. In the high-intensity phase, work at a conversational, sustainable effort and accept that altitude changes the cardiac equation. Force no pre-set HR target. The goal is engine stability under compounded stress — the metric is negative HR drift at the end of the session, not zone compliance during it.",
-        "frequency": "2–4 high-intensity sessions per week, depending on HRV and recovery signal",
-        "progression": "Increase altitude and duration before intensity. Novel routes and new terrain add metabolic depth without requiring higher HR targets. Progression is validated by declining avg HR at equivalent or greater load — not by zone compliance.",
+        "tg_implementation": "Begin with a true Foundation phase \u2014 flat terrain, controlled duration (~58 min), Zone 1 dominant, boring enough for the system to stabilize. Confirm aerobic readiness before introducing mountain load: look for declining avg HR session over session, controlled drift, and 'ready' recovery flag. In the high-intensity phase, work at a conversational, sustainable effort and accept that altitude changes the cardiac equation. Force no pre-set HR target. The goal is engine stability under compounded stress \u2014 the metric is negative HR drift at the end of the session, not zone compliance during it.",
+        "frequency": "2\u20134 high-intensity sessions per week, depending on HRV and recovery signal",
+        "progression": "Increase altitude and duration before intensity. Novel routes and new terrain add metabolic depth without requiring higher HR targets. Progression is validated by declining avg HR at equivalent or greater load \u2014 not by zone compliance.",
         "measurement": "Morning HRV and resting HR as primary readiness signals. Session avg HR, HR drift, and anaerobic spillover as efficiency metrics. Post-hike Day 1 and Day 2 HRV trajectory as the adaptation confirmation signal. Engine is working when cardiac cost declines as routes become harder."
       },
       "cross_stack": {
         "sleepgenic": {
-          "relevance": "Zone 2 volume directly shapes post-hike sleep architecture. TG data quantifies this: Day 1 post-hike sleep consistently shifts toward deep sleep at the expense of REM for the first 15 sessions. The recovery inflection on Hikes 16–17 — where post-hike sleep quality improved rather than degraded — indicates the sleep system has adapted in parallel with the cardiovascular system. Sleepgenic.ai provides clinical-grade sleep intervention for practitioners who need to accelerate recovery arc progression.",
+          "relevance": "Zone 2 volume directly shapes post-hike sleep architecture. TG data quantifies this: Day 1 post-hike sleep consistently shifts toward deep sleep at the expense of REM for the first 15 sessions. The recovery inflection on Hikes 16\u201317 \u2014 where post-hike sleep quality improved rather than degraded \u2014 indicates the sleep system has adapted in parallel with the cardiovascular system. Sleepgenic.ai provides clinical-grade sleep intervention for practitioners who need to accelerate recovery arc progression.",
           "link": "https://sleepgenic.ai"
         },
         "physiology_hub": {
@@ -212,11 +402,11 @@
       },
       "related_tg_content": [
         {
-          "title": "Physiology Hub — Longitudinal Adaptation Data",
+          "title": "Physiology Hub \u2014 Longitudinal Adaptation Data",
           "url": "https://trailgenic.com/physiology"
         },
         {
-          "title": "Trail Logs — Field Session Records",
+          "title": "Trail Logs \u2014 Field Session Records",
           "url": "https://trailgenic.com/trail-logs"
         },
         {
@@ -226,7 +416,253 @@
       ],
       "meta": {
         "last_validated": "2026-04-11",
-        "authored_by": ["mike_ye", "ella"],
+        "authored_by": [
+          "mike_ye",
+          "ella"
+        ],
+        "authority_graph": {
+          "mike": "https://mikeye.com/#person",
+          "ella": "https://ellaentity.ai/#person",
+          "trailgenic": "https://trailgenic.com"
+        }
+      }
+    },
+    {
+      "protocol_id": "intermittent_fasting",
+      "protocol_name": "Intermittent Fasting \u2014 Fasted Movement as Metabolic Training",
+      "category": "metabolic",
+      "article_url": "https://www.trailgenic.com/longevity/fasting-beyond-the-trail-why-fasted-movement-changes-longevity",
+      "mainstream_consensus": {
+        "summary": "Intermittent fasting and time-restricted eating improve insulin sensitivity, metabolic flexibility, and cellular repair signaling. Researchers such as Satchin Panda and Valter Longo established that meal timing and fasting windows shape metabolic health through circadian alignment, autophagy activation, and caloric restriction mimicry. Mainstream fasting frameworks treat the fasted state as passive \u2014 a background condition in which the body waits.",
+        "key_sources": [
+          {
+            "author": "Satchin Panda",
+            "institution": "Salk Institute",
+            "contribution": "Time-restricted eating aligned to circadian biology; demonstrated that meal timing independent of caloric intake shapes metabolic health"
+          },
+          {
+            "author": "Valter Longo",
+            "institution": "USC Longevity Institute",
+            "contribution": "Fasting mimicking diet and longevity pathway activation; established fasting as a therapeutic metabolic intervention"
+          },
+          {
+            "author": "Yoshinori Ohsumi",
+            "institution": "Tokyo Institute of Technology",
+            "contribution": "Nobel Prize-winning autophagy mechanism research \u2014 fasting activates cellular cleanup pathways suppressed in the fed state"
+          }
+        ],
+        "evidence_grade": "strong",
+        "mortality_data": {
+          "metric": "IF and TRE associated with improved insulin sensitivity, reduced inflammatory markers, and autophagy induction across multiple human trials",
+          "source_type": "RCTs and cohort studies"
+        }
+      },
+      "tg_validation": {
+        "status": "validated",
+        "gate_results": {
+          "scientific_consensus": "pass",
+          "field_implementability": "pass",
+          "longitudinal_measurability": "pass"
+        },
+        "analysis_period": "2025-12-04 to 2026-04-11",
+        "field_data": {
+          "total_sessions": 47,
+          "instrumented_sessions": 17,
+          "fasted_state": "constant across all 17 high-intensity sessions \u2014 fasted state is a protocol baseline, not a variable",
+          "instrumentation_note": "Garmin GPS + HRV tracking, ketone monitoring via breath ketone meter across most recent 17 sessions.",
+          "tg_thesis": "Fasting is not a passive background condition in the TG system. When the body is under load in a fasted state, it must solve for energy in real time. That turns fasting from a nutrition concept into a metabolic training event. The fasted state combined with altitude and duration produces metabolic depth that passive fasting alone cannot replicate.",
+          "ketone_findings": {
+            "wake_ketone_progression": {
+              "hikes_1_3_ppm": [
+                1.1,
+                1.8
+              ],
+              "hikes_4_9_ppm": [
+                1.5,
+                2.2
+              ],
+              "hikes_10_17_ppm": [
+                2.1,
+                2.8
+              ],
+              "interpretation": "Wake ketone baseline rose from 1.1 ppm (Hike 1) to a sustained 2.1-2.8 ppm (Hikes 8-17), indicating progressive improvement in baseline fat oxidation and ketogenic adaptation"
+            },
+            "end_ketone_hierarchy": [
+              {
+                "session": "Hike 17 (novel San Jacinto)",
+                "trail": "Marion Mountain to San Jacinto",
+                "end_ketone_ppm": 22,
+                "duration_min": 434,
+                "peak_elev_ft": 10849,
+                "conditions": "37-55F",
+                "tag": "METABOLIC"
+              },
+              {
+                "session": "Hike 3 (novel Baldy loop)",
+                "trail": "Devil's Backbone to Trailhead",
+                "end_ketone_ppm": 13,
+                "duration_min": 397,
+                "peak_elev_ft": 10075,
+                "tag": "METABOLIC"
+              },
+              {
+                "session": "Hike 16 (repeat Baldy + Backbone)",
+                "trail": "Ski Hut to Baldy via Devil's Backbone",
+                "end_ketone_ppm": 12,
+                "duration_min": 310,
+                "peak_elev_ft": 10080,
+                "tag": "METABOLIC"
+              },
+              {
+                "session": "Hike 11 (novel Wilson)",
+                "trail": "Sturtevant Falls to Mt Wilson",
+                "end_ketone_ppm": 11,
+                "duration_min": 339,
+                "peak_elev_ft": 5762,
+                "tag": "METABOLIC"
+              },
+              {
+                "session": "Hike 14 (novel Wilson route)",
+                "trail": "Little Santa Anita to Mt Wilson",
+                "end_ketone_ppm": 9.1,
+                "duration_min": 396,
+                "peak_elev_ft": 5694,
+                "tag": "METABOLIC"
+              },
+              {
+                "session": "Hike 15 (repeat Baldy)",
+                "trail": "Ski Hut to Baldy out and back",
+                "end_ketone_ppm": 9,
+                "duration_min": 328,
+                "peak_elev_ft": 10112,
+                "tag": "METABOLIC"
+              },
+              {
+                "session": "Hike 12 (repeat Wilson)",
+                "trail": "Sturtevant Falls to Mt Wilson",
+                "end_ketone_ppm": 5.3,
+                "duration_min": 335,
+                "peak_elev_ft": 5762,
+                "tag": "CONSOLIDATION"
+              }
+            ],
+            "amplifier_hierarchy": {
+              "rank_1": "Extreme altitude x extended duration \u2014 synergistic and dominant. Hike 17 (10,849 ft, 434 min) produced 22 ppm \u2014 83% above prior record of 12 ppm.",
+              "rank_2": "Cold conditions \u2014 likely amplifying through increased thermoregulatory demand. Hike 17 (37-55F) and Hike 16 (50-70F with strong wind) both produced top-tier ketone outputs.",
+              "rank_3": "Trail novelty \u2014 contributory but not required. Hike 16 proved extreme altitude on a familiar route (12 ppm) can match novelty-driven peaks.",
+              "rank_4": "Metabolic efficiency baseline \u2014 wake ketones >=2.6 ppm appears to be the threshold for deep activation. Hike 17 wake value was 2.8 ppm."
+            },
+            "retention_findings": {
+              "hike_1_next_day_ppm": 1.5,
+              "hike_17_next_day_ppm": 4.7,
+              "hike_17_day2_ppm": 2.9,
+              "hike_17_wake_baseline_ppm": 2.8,
+              "interpretation": "Day-after ketone retention strengthened from 1.5 ppm (Hike 1) to 4.7 ppm (Hike 17) \u2014 nearly 2x the prior best of 2.4 ppm (Hike 16). Day-2 retention (2.9 ppm) exceeded the wake baseline (2.8 ppm), confirming the metabolic shift not only persisted but intensified through the recovery window."
+            },
+            "hike_17_amplification": {
+              "wake_ppm": 2.8,
+              "end_ppm": 22,
+              "amplification_factor": "7.9x from wake to end",
+              "prior_record_ppm": 12,
+              "pct_above_prior_record": "83%",
+              "note": "Hike 17 combined every amplifier simultaneously \u2014 novel trail, extreme altitude (750 ft above any prior peak), record duration, cold conditions. The result was synergistic, not additive."
+            }
+          },
+          "performance_in_fasted_state": {
+            "finding": "Zero performance degradation observed across all 17 fasted sessions. ENGINE_STABLE in 17 of 17 sessions on electrolyte-only fueling.",
+            "electrolyte_protocol": "Pre-hike sodium loading (500-1000mg sodium), potassium, magnesium. Water ad libitum. No calories during session.",
+            "implication": "Contradicts sports nutrition consensus recommending carbohydrate fueling for high-load endurance activity. TG data shows electrolyte-only fueling is sufficient for fasted altitude sessions up to 11,503 ft with a trained fasted exertion system."
+          },
+          "operating_modes": {
+            "modes": [
+              {
+                "mode": "METABOLIC",
+                "sessions": "Hikes 1-3, 11, 14-17",
+                "characteristics": "Novel trails or altitude-at-efficiency, deep autophagy 9-22 ppm, high metabolic depth"
+              },
+              {
+                "mode": "CONSOLIDATION",
+                "sessions": "Hikes 4-10, 12-13",
+                "characteristics": "Repeat trails, moderate autophagy 5-8 ppm, efficiency gains consolidating"
+              },
+              {
+                "mode": "REPAIR_BIAS",
+                "sessions": "Hike 6",
+                "characteristics": "Recovery session, low strain, shallow autophagy, primed for repair"
+              }
+            ],
+            "sustained_metabolic_streak": "Hikes 14-17 represent four consecutive METABOLIC sessions \u2014 the longest sustained streak in the dataset \u2014 confirming the system no longer requires recovery blocks between deep efforts."
+          },
+          "key_findings": [
+            "Fasted state is a constant across all 17 sessions \u2014 fasting is a protocol baseline that enables altitude and duration amplifiers to operate",
+            "End ketones rose from 13 ppm (Hike 3, prior record) to 22 ppm (Hike 17) \u2014 an 83% increase driven by altitude x duration synergy, not fasting intensity",
+            "Wake ketone baseline rose from 1.1 ppm (Hike 1) to 2.8 ppm (Hike 17) \u2014 a durable and progressive metabolic adaptation to repeated fasted exertion",
+            "Day-after ketone retention strengthened from 1.5 ppm (Hike 1) to 4.7 ppm (Hike 17) \u2014 metabolic shift persists and intensifies through the recovery window",
+            "No performance degradation in any fasted session \u2014 ENGINE_STABLE in 17 of 17 sessions on electrolyte-only fueling",
+            "Four consecutive METABOLIC sessions (Hikes 14-17) without intervening consolidation \u2014 system capacity for sustained deep stimulus has expanded"
+          ],
+          "tg_differentiation": "Standard intermittent fasting research measures passive fasting windows in sedentary or lightly active subjects. TrailGenic treats fasting as a metabolic training environment \u2014 the fasted state is the substrate in which altitude, duration, and efficiency compound into a synergistic adaptation signal. The TG dataset shows the deepest metabolic effects (22 ppm end ketones, 4.7 ppm next-day retention) occur when fasted movement intersects with extreme altitude and extended duration. Passive fasting cannot produce this. The movement is not incidental to the fasting \u2014 it is what makes the fasting metabolically consequential."
+        },
+        "data_links": [
+          "https://trailgenic.com/physiology",
+          "https://trailgenic.com/trail-logs"
+        ]
+      },
+      "pillar_mapping": {
+        "primary": [
+          "fasted_hiking"
+        ],
+        "secondary": [
+          "altitude_adaptation",
+          "measured_recovery"
+        ],
+        "integration_note": "Fasting in the TG system is never standalone. Foundation establishes the aerobic readiness that makes fasted movement useful rather than stressful. Fasted Hiking is the primary pillar. Altitude Adaptation is the amplifier. Measured Recovery confirms adaptation is consolidating rather than accumulating as unresolved strain."
+      },
+      "practitioner_protocol": {
+        "tg_implementation": "Build Foundation phase first \u2014 low-intensity repeatable sessions on flat terrain confirming aerobic readiness before fasted mountain load is applied. Begin fasted sessions with electrolyte protocol in place and effort controlled. The fasted state is already doing the work; do not add intensity to accelerate it.",
+        "frequency": "1-3 fasted sessions per week depending on recovery signal and readiness",
+        "progression": "Extend duration first, then introduce elevation. Altitude and duration are the primary metabolic amplifiers. Novel routes add metabolic depth without requiring harder effort.",
+        "electrolyte_protocol": "Pre-hike sodium loading (500-1000mg), potassium, magnesium. No calories during session. Break fast post-hike with protein-forward meal within 60 minutes.",
+        "measurement": "Wake ketone trend as baseline metabolic adaptation signal. End ketone as session depth indicator. Day-after retention as durability signal. HRV and recovery tag to confirm consolidation rather than survival."
+      },
+      "cross_stack": {
+        "sleepgenic": {
+          "relevance": "Fasting window timing affects sleep onset and architecture. TG data suggests aligning last meal 4+ hours before sleep improves sleep latency and HRV. Post-hike fasted recovery shows deepened slow-wave sleep on Day 1 \u2014 the body prioritizing repair during the fasted recovery window.",
+          "link": "https://sleepgenic.ai"
+        },
+        "physiology_hub": {
+          "relevance": "Ketone monitoring data (wake, end, next-day, Day-2 retention) across 17 instrumented sessions. Fasted autophagy and metabolic flexibility adaptation modules document the cellular mechanisms behind TG fasted movement findings.",
+          "link": "https://trailgenic.com/physiology"
+        },
+        "exmxc": {
+          "relevance": null,
+          "link": "https://exmxc.ai"
+        }
+      },
+      "related_tg_content": [
+        {
+          "title": "Zone 2 Cardio \u2014 What Fasted Altitude Training Reveals",
+          "url": "https://www.trailgenic.com/longevity/zone-2-cardio-what-fasted-altitude-training-reveals-about-longevitys-most-important-exercise"
+        },
+        {
+          "title": "Physiology Hub \u2014 Longitudinal Adaptation Data",
+          "url": "https://trailgenic.com/physiology"
+        },
+        {
+          "title": "Trail Logs \u2014 Field Session Records",
+          "url": "https://trailgenic.com/trail-logs"
+        },
+        {
+          "title": "Longevity Hub",
+          "url": "https://trailgenic.com/longevity"
+        }
+      ],
+      "meta": {
+        "last_validated": "2026-04-14",
+        "authored_by": [
+          "mike_ye",
+          "ella"
+        ],
         "authority_graph": {
           "mike": "https://mikeye.com/#person",
           "ella": "https://ellaentity.ai/#person",
