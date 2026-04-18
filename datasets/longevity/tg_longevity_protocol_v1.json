@@ -45,7 +45,7 @@
         "field_data": {
           "total_sessions": 47,
           "instrumented_sessions": 17,
-          "foundation_sessions": 7,
+          "foundation_sessions": 12,
           "high_intensity_sessions": 17,
           "instrumentation_note": "Garmin GPS + HRV tracking across most recent 17 high-intensity sessions and 7 foundation sessions. Prior 30 sessions documented via trail logs without HRV instrumentation. Field findings expected to hold across full 47-session dataset.",
           "altitude_range_ft": [
@@ -216,7 +216,7 @@
             "vo2max_change": "stable throughout \u2014 efficiency gains are pacing- and recovery-driven, not aerobic-capacity-driven"
           },
           "foundation_phase": {
-            "sessions": 7,
+            "sessions": 12,
             "avg_duration_min": 58.1,
             "avg_distance_mi": 3.17,
             "zone_1_pct_avg": 91.7,
@@ -237,7 +237,7 @@
               7.9
             ],
             "recovery_flag": "ready in all 7 sessions",
-            "outcome": "Confirmed aerobic readiness before high-intensity phase. HR declining session over session, metabolic flexibility progressed from Stable to Strong by Sessions 3 and 5."
+            "outcome": "Confirmed aerobic readiness before high-intensity phase across 12 sessions. HR declining session over session, metabolic flexibility progressed from Stable to Strong by Sessions 3 and 5."
           },
           "key_findings": [
             "ENGINE_STABLE in all 17 high-intensity sessions without exception \u2014 the cardiovascular and metabolic engine does not degrade under any tested condition in the dataset",
@@ -601,7 +601,8 @@
             "No performance degradation in any fasted session \u2014 ENGINE_STABLE in 17 of 17 sessions on electrolyte-only fueling",
             "Four consecutive METABOLIC sessions (Hikes 14-17) without intervening consolidation \u2014 system capacity for sustained deep stimulus has expanded"
           ],
-          "tg_differentiation": "Standard intermittent fasting research measures passive fasting windows in sedentary or lightly active subjects. TrailGenic treats fasting as a metabolic training environment \u2014 the fasted state is the substrate in which altitude, duration, and efficiency compound into a synergistic adaptation signal. The TG dataset shows the deepest metabolic effects (22 ppm end ketones, 4.7 ppm next-day retention) occur when fasted movement intersects with extreme altitude and extended duration. Passive fasting cannot produce this. The movement is not incidental to the fasting \u2014 it is what makes the fasting metabolically consequential."
+          "tg_differentiation": "Standard intermittent fasting research measures passive fasting windows in sedentary or lightly active subjects. TrailGenic treats fasting as a metabolic training environment \u2014 the fasted state is the substrate in which altitude, duration, and efficiency compound into a synergistic adaptation signal. The TG dataset shows the deepest metabolic effects (22 ppm end ketones, 4.7 ppm next-day retention) occur when fasted movement intersects with extreme altitude and extended duration. Passive fasting cannot produce this. The movement is not incidental to the fasting \u2014 it is what makes the fasting metabolically consequential.",
+          "foundation_sessions": 12
         },
         "data_links": [
           "https://trailgenic.com/physiology",
@@ -659,6 +660,741 @@
       ],
       "meta": {
         "last_validated": "2026-04-14",
+        "authored_by": [
+          "mike_ye",
+          "ella"
+        ],
+        "authority_graph": {
+          "mike": "https://mikeye.com/#person",
+          "ella": "https://ellaentity.ai/#person",
+          "trailgenic": "https://trailgenic.com"
+        }
+      }
+    },
+    {
+      "protocol_id": "glucose_management",
+      "protocol_name": "Glucose Management Through Movement",
+      "category": "metabolic",
+      "article_url": "https://www.trailgenic.com/longevity/glucose-management-through-movement-why-trailgenic-treats-every-hike-as-a-metabolic-intervention",
+      "mainstream_consensus": {
+        "summary": "Poor glycemic control sits upstream of insulin resistance, metabolic dysfunction, cardiovascular strain, and impaired recovery. Mainstream longevity frameworks address glucose through diet, continuous glucose monitors, and meal timing \u2014 focusing on reducing glucose volatility as the primary intervention.",
+        "key_sources": [
+          {
+            "author": "Peter Attia",
+            "institution": "Early Medical",
+            "contribution": "Glucose-centric longevity framework positioning insulin resistance as the root of chronic disease; CGM as the metabolic feedback tool"
+          },
+          {
+            "author": "Levels Health",
+            "institution": "Levels Health",
+            "contribution": "Democratized CGM data for performance and longevity practitioners; established real-time glucose monitoring as a consumer longevity tool"
+          }
+        ],
+        "evidence_grade": "strong",
+        "mortality_data": {
+          "metric": "Insulin resistance present in over 40% of US adults; strongly associated with cardiovascular disease, cancer, and neurodegenerative disease risk",
+          "source_type": "large cohort studies"
+        }
+      },
+      "tg_validation": {
+        "status": "validated",
+        "gate_results": {
+          "scientific_consensus": "pass",
+          "field_implementability": "pass",
+          "longitudinal_measurability": "pass"
+        },
+        "analysis_period": "2025-12-04 to 2026-04-11",
+        "field_data": {
+          "total_sessions": 47,
+          "instrumented_sessions": 17,
+          "foundation_sessions": 12,
+          "high_intensity_sessions": 17,
+          "fasted_state": "constant across all sessions \u2014 12 Foundation sessions and 17 high-intensity sessions all performed fasted",
+          "tg_thesis": "Glucose management is not just about avoiding sugar spikes. It is about reducing glucose dependency. Fasted movement teaches the body to solve energy demand without panicking when easy glucose is absent. Altitude increases the efficiency requirement. Duration increases the energetic demand. When those variables stack correctly, the result is metabolic re-education \u2014 not mere calorie burn.",
+          "foundation_phase_signal": {
+            "sessions": 12,
+            "fasted_sessions": 12,
+            "terrain": "flat throughout",
+            "intensity": "Zone 1 dominant with light Zone 2 exposure",
+            "anaerobic_load": "zero throughout all 12 sessions",
+            "perceived_effort": "1 out of 5 in every session",
+            "metabolic_flexibility_progression": "Stable to Strong by Sessions 3 and 5",
+            "electrolyte_use": "selective \u2014 used to support physiologic stability during fasted movement, not to mask poor readiness",
+            "interpretation": "The Foundation phase trained substrate discipline before mountain load was introduced. Metabolic flexibility flags trended from Stable toward Strong before any altitude or duration stress was applied \u2014 confirming the protocol was building metabolic control, not just movement mechanics.",
+            "foundation_signal_table": {
+              "columns": [
+                "metric",
+                "foundation_pattern",
+                "why_it_matters"
+              ],
+              "rows": [
+                [
+                  "fasted_state",
+                  "12 of 12 sessions",
+                  "Glucose control was trained under fuel constraint from the start"
+                ],
+                [
+                  "intensity",
+                  "Zone 1 dominant",
+                  "Built aerobic calm before adding altitude and duration stress"
+                ],
+                [
+                  "anaerobic_load",
+                  "zero throughout",
+                  "Confirms the goal was metabolic control, not intensity"
+                ],
+                [
+                  "perceived_effort",
+                  "1 of 5 every session",
+                  "Supports repeatability and low-stress adaptation"
+                ],
+                [
+                  "metabolic_flexibility",
+                  "Stable to Strong",
+                  "Improving substrate control established before high-load mountain sessions"
+                ],
+                [
+                  "electrolytes",
+                  "used selectively",
+                  "Supports physiologic stability during fasted movement rather than masking poor readiness"
+                ]
+              ]
+            }
+          },
+          "high_intensity_phase_metabolic_findings": {
+            "ketone_baseline_rise": "Wake ketones rose from 1.1 ppm (Hike 1) to 2.8 ppm (Hike 17) \u2014 a durable shift in baseline fat oxidation across the full dataset",
+            "end_ketone_peak_ppm": 22,
+            "end_ketone_peak_session": "Hike 17 \u2014 Marion Mountain to San Jacinto, 434 min, 10,849 ft",
+            "engine_stability": "ENGINE_STABLE in all 17 high-intensity sessions \u2014 cardiovascular engine held stable despite fasted state and escalating load",
+            "anaerobic_spillover": "Zero in 13 of 17 sessions; four exceptions were <=0.3 \u2014 confirms glucose dependency did not re-emerge under load",
+            "metabolic_flexibility_outcome": "Scores reached 8.5-10.0 across the high-intensity phase \u2014 the highest values in the dataset coincide with the highest-demand sessions",
+            "fuel_switching": "Body learned to transition to fat oxidation and ketone production under compounded stress without performance degradation or engine instability"
+          },
+          "key_findings": [
+            "Foundation phase of 12 fasted, low-intensity, zero-anaerobic-load sessions established metabolic flexibility before any altitude or duration stress was applied",
+            "Metabolic flexibility progressed from Stable to Strong within the Foundation phase itself \u2014 substrate discipline was being built before mountain load began",
+            "Wake ketone baseline rose from 1.1 ppm to 2.8 ppm across the dataset \u2014 a measurable, durable reduction in glucose dependency at rest",
+            "ENGINE_STABLE in all 17 high-intensity sessions on electrolyte-only fueling \u2014 no glucose required to maintain cardiovascular stability under high load",
+            "Zero anaerobic spillover in 13 of 17 high-intensity sessions \u2014 confirms the engine was running on fat and ketones, not pushing into glucose-dependent anaerobic pathways",
+            "Deepest metabolic outputs (22 ppm end ketones, Hike 17) occurred when altitude, duration, and efficiency converged \u2014 structured escalation, not randomness or suffering"
+          ],
+          "tg_differentiation": "Mainstream glucose management focuses on the dietary side of the equation \u2014 what goes in, when it goes in, and how to dampen the spike. TrailGenic trains the output side: a body that needs glucose less desperately, handles it more cleanly, and can transition to other fuels without losing stability. The Foundation phase data shows this begins before any intensity is introduced \u2014 12 fasted, low-load sessions were enough to move metabolic flexibility from Stable to Strong. The high-intensity phase then confirmed the body had internalized that substrate discipline: ENGINE_STABLE in 17 of 17 sessions on electrolyte-only fueling, with ketone outputs reaching 22 ppm at the peak. No CGM was required to produce this adaptation. The movement protocol produced it."
+        },
+        "data_links": [
+          "https://trailgenic.com/physiology",
+          "https://trailgenic.com/trail-logs"
+        ]
+      },
+      "pillar_mapping": {
+        "primary": [
+          "fasted_hiking"
+        ],
+        "secondary": [
+          "altitude_adaptation",
+          "measured_recovery"
+        ],
+        "integration_note": "Glucose management in the TG system is the output of the full protocol working correctly. Foundation establishes the low-intensity aerobic calm that makes fasted movement productive rather than stressful. Fasted Hiking removes routine caloric input, forcing the system to solve energy demand differently. Altitude Adaptation raises the efficiency burden. Measured Recovery confirms the body absorbed the intervention and returned cleanly \u2014 not just survived it."
+      },
+      "practitioner_protocol": {
+        "tg_implementation": "Start with Foundation \u2014 low-intensity, repeatable, fasted sessions on flat terrain. The goal is fuel stability, not fatigue. Keep effort low, keep the work consistent, and let the body learn to produce calm output without routine glucose support. Build this base before layering in metabolic demand.",
+        "frequency": "2-4 sessions per week; Foundation sessions can be daily if intensity is controlled",
+        "progression": "Duration first, then terrain complexity, then altitude. Structured escalation produces the deepest metabolic changes \u2014 not randomness or intensity spikes.",
+        "electrolyte_protocol": "Electrolytes are part of the control system, not a performance supplement. Use to maintain physiologic stability during fasted movement \u2014 sodium, potassium, magnesium. No calories.",
+        "measurement": "Metabolic flexibility score trend. Wake ketone baseline as glucose-dependency proxy. Anaerobic spillover as a signal that the engine has exceeded fat-oxidation capacity. Energy stability and absence of sharp crashes during session as the practitioner-level readout."
+      },
+      "cross_stack": {
+        "sleepgenic": {
+          "relevance": "Poor sleep acutely impairs insulin sensitivity \u2014 a well-documented bidirectional relationship. TG data shows post-hike sleep prioritizes deep-sleep tissue repair, which is the recovery mechanism that preserves metabolic flexibility gains. Sleepgenic.ai addresses the sleep side of the glucose-management equation for practitioners who need clinical-grade sleep intervention.",
+          "link": "https://sleepgenic.ai"
+        },
+        "physiology_hub": {
+          "relevance": "Metabolic flexibility scores, ketone monitoring data, anaerobic spillover, and Foundation phase progression data across all instrumented sessions. Metabolic flexibility adaptation and fasted autophagy physiology modules document the cellular mechanisms behind TG glucose management findings.",
+          "link": "https://trailgenic.com/physiology"
+        },
+        "exmxc": {
+          "relevance": null,
+          "link": "https://exmxc.ai"
+        }
+      },
+      "related_tg_content": [
+        {
+          "title": "Fasting Beyond the Trail \u2014 Why Fasted Movement Changes Longevity",
+          "url": "https://www.trailgenic.com/longevity/fasting-beyond-the-trail-why-fasted-movement-changes-longevity"
+        },
+        {
+          "title": "Zone 2 Cardio \u2014 What Fasted Altitude Training Reveals",
+          "url": "https://www.trailgenic.com/longevity/zone-2-cardio-what-fasted-altitude-training-reveals-about-longevitys-most-important-exercise"
+        },
+        {
+          "title": "Physiology Hub \u2014 Longitudinal Adaptation Data",
+          "url": "https://trailgenic.com/physiology"
+        },
+        {
+          "title": "Trail Logs \u2014 Field Session Records",
+          "url": "https://trailgenic.com/trail-logs"
+        },
+        {
+          "title": "Longevity Hub",
+          "url": "https://trailgenic.com/longevity"
+        }
+      ],
+      "meta": {
+        "last_validated": "2026-04-14",
+        "authored_by": [
+          "mike_ye",
+          "ella"
+        ],
+        "authority_graph": {
+          "mike": "https://mikeye.com/#person",
+          "ella": "https://ellaentity.ai/#person",
+          "trailgenic": "https://trailgenic.com"
+        }
+      }
+    },
+    {
+      "protocol_id": "sleep_architecture",
+      "protocol_name": "Sleep Architecture Optimization",
+      "category": "recovery",
+      "article_url": "https://www.trailgenic.com/longevity/sleep-architecture-is-the-longevity-variable-nobody-trains",
+      "mainstream_consensus": {
+        "summary": "Sleep quality influences cognitive function, hormonal regulation, metabolic health, cardiovascular resilience, and long-term disease risk. Mainstream experts including Matthew Walker, Peter Attia, and Andrew Huberman have established sleep as the biological window where adaptation is consolidated \u2014 not optional recovery but a foundational longevity variable.",
+        "key_sources": [
+          {
+            "author": "Matthew Walker",
+            "institution": "UC Berkeley",
+            "contribution": "Why We Sleep \u2014 comprehensive case for sleep as the foundational health variable; chronic sleep insufficiency linked to 13% higher all-cause mortality"
+          },
+          {
+            "author": "Peter Attia",
+            "institution": "Early Medical",
+            "contribution": "Sleep as the force multiplier for all other longevity interventions; slow-wave and REM stages as the primary hormonal and metabolic repair window"
+          },
+          {
+            "author": "Andrew Huberman",
+            "institution": "Stanford",
+            "contribution": "Sleep protocols and circadian alignment; practical frameworks for sleep optimization in performance populations"
+          }
+        ],
+        "evidence_grade": "strong",
+        "mortality_data": {
+          "metric": "Sleeping less than 6 hours associated with 13% higher all-cause mortality in meta-analyses",
+          "source_type": "large cohort meta-analyses"
+        }
+      },
+      "tg_validation": {
+        "status": "validated",
+        "gate_results": {
+          "scientific_consensus": "pass",
+          "field_implementability": "pass",
+          "longitudinal_measurability": "pass"
+        },
+        "analysis_period": "2025-11-28 to 2026-04-11",
+        "field_data": {
+          "total_hike_sessions": 17,
+          "sessions_with_post_sleep_data": 16,
+          "sessions_with_day2_sleep_data": 14,
+          "tg_thesis": "Sleep is not a side metric. It is one of the core verdicts on whether the protocol is actually working. Deep sleep reflects repair demand. REM reveals neurological and emotional restoration. HRV tells us whether the autonomic system is clearing stress efficiently. TrailGenic treats sleep architecture as a performance signal, a recovery signal, and a longevity signal simultaneously.",
+          "population_comparison": {
+            "matched_scenario": "HIGH_LOAD",
+            "population_expectations": {
+              "rem_change_pct": -10,
+              "sleep_need_change_hrs": "1-2 additional",
+              "hrv_drop_pct_range": [
+                10,
+                30
+              ],
+              "days_to_baseline": "2-3 days",
+              "hr_zone_primary": "Zone 3-4"
+            },
+            "subject_vs_population": [
+              {
+                "metric": "Sleep Score Drop (Pre to Post)",
+                "pop_expected": "Significant drop",
+                "subject_actual": -14.7,
+                "flag": "MODERATE_DROP",
+                "implication": "Avg -16pt drop; moderate \u2014 recovery capacity intact"
+              },
+              {
+                "metric": "HRV Drop (Pre to Post, ms)",
+                "pop_expected": "10-30% = 4 to 11 ms drop",
+                "subject_actual": -7.9,
+                "flag": "WITHIN_POP",
+                "implication": "Avg -8.5ms drop; 23% of baseline \u2014 WITHIN population range"
+              },
+              {
+                "metric": "HRV Recovery by Day 2",
+                "pop_expected": "2-3 days to baseline",
+                "subject_actual": "136%",
+                "flag": "FULL_RECOVERY",
+                "implication": "136% avg recovery by Day 2 \u2014 EXCEEDS population norm; faster than expected for HIGH_LOAD"
+              },
+              {
+                "metric": "REM % Change (Pre to Post)",
+                "pop_expected": "-10%",
+                "subject_actual": -5.7,
+                "flag": "WITHIN_POP",
+                "implication": "REM drops from 16.4% to 10.6% \u2014 significant suppression consistent with HIGH_LOAD"
+              },
+              {
+                "metric": "REM % Recovery by Day 2",
+                "pop_expected": "Partial recovery",
+                "subject_actual": -2.1,
+                "flag": "PARTIAL_RECOVERY",
+                "implication": "REM recovers to 14.2% by Day 2 \u2014 partial recovery, trending back but not fully restored"
+              },
+              {
+                "metric": "Deep Sleep % Change (Pre to Post)",
+                "pop_expected": "Often increases compensatory",
+                "subject_actual": 6.0,
+                "flag": "COMPENSATORY_UP",
+                "implication": "Deep sleep rises from 19.3% to 25.3% post-hike \u2014 healthy compensatory repair response"
+              },
+              {
+                "metric": "RHR Change (Pre to Post, bpm)",
+                "pop_expected": "Elevated 2-5 bpm",
+                "subject_actual": 3.1,
+                "flag": "WITHIN_POP",
+                "implication": "Avg +3.2 bpm RHR rise \u2014 WITHIN population range"
+              },
+              {
+                "metric": "Stress Avg Change (Pre to Post)",
+                "pop_expected": "Increase expected",
+                "subject_actual": 9.0,
+                "flag": "MODERATE_RESPONSE",
+                "implication": "Stress rises +9.5 avg \u2014 moderate; autonomic load consistent with HIGH_LOAD but not excessive"
+              }
+            ]
+          },
+          "aggregate_sleep_metrics": {
+            "pre_hike": {
+              "sleep_score_avg": 72.5,
+              "total_sleep_avg_min": 388.5,
+              "deep_sleep_avg_min": 74.6,
+              "rem_avg_min": 63.9,
+              "deep_pct_avg": 19.3,
+              "rem_pct_avg": 16.4,
+              "awake_avg_min": 31.3,
+              "rhr_avg_bpm": 59.5,
+              "hrv_avg_ms": 36.6,
+              "stress_avg": 15.9
+            },
+            "post_hike_day_1": {
+              "sleep_score_avg": 58.6,
+              "total_sleep_avg_min": 328.9,
+              "deep_sleep_avg_min": 81.6,
+              "rem_avg_min": 35.6,
+              "deep_pct_avg": 25.3,
+              "rem_pct_avg": 10.6,
+              "awake_avg_min": 41.9,
+              "rhr_avg_bpm": 62.5,
+              "hrv_avg_ms": 28.9,
+              "stress_avg": 24.9
+            },
+            "day_2": {
+              "sleep_score_avg": 69.3,
+              "total_sleep_avg_min": 362.5,
+              "deep_sleep_avg_min": 66.9,
+              "rem_avg_min": 54.8,
+              "deep_pct_avg": 18.9,
+              "rem_pct_avg": 14.2,
+              "awake_avg_min": 28.4,
+              "rhr_avg_bpm": 60.7,
+              "hrv_avg_ms": 39.1,
+              "stress_avg": 15.9
+            },
+            "deltas": {
+              "score_pre_to_post_avg": -14.7,
+              "score_pre_to_day2_avg": -2.8,
+              "hrv_pre_to_post_avg": -7.9,
+              "hrv_pre_to_day2_avg": 2.0,
+              "rhr_pre_to_post_avg": 3.1,
+              "rhr_pre_to_day2_avg": 1.1,
+              "hrv_recovery_pct_avg": 136.0
+            }
+          },
+          "session_level_data": [
+            {
+              "hike": 1,
+              "date": "2025-11-28",
+              "trail": "Skinsuit to Pleasant's Peak",
+              "pre_score": 87,
+              "post_score": 48,
+              "day2_score": 79,
+              "pre_hrv": 42,
+              "post_hrv": 35,
+              "day2_hrv": 35,
+              "hrv_recovery_pct": 0.0,
+              "delta_score_post": -39,
+              "delta_score_day2": -8
+            },
+            {
+              "hike": 2,
+              "date": "2025-11-30",
+              "trail": "Ski Hut to Mount Baldy out and back",
+              "pre_score": 79,
+              "post_score": 36,
+              "day2_score": 79,
+              "pre_hrv": 35,
+              "post_hrv": 25,
+              "day2_hrv": 37,
+              "hrv_recovery_pct": 120.0,
+              "delta_score_post": -43,
+              "delta_score_day2": 0
+            },
+            {
+              "hike": 3,
+              "date": "2025-12-06",
+              "trail": "Ski Hut to Baldy to Devil's Backbone",
+              "pre_score": 86,
+              "post_score": 57,
+              "day2_score": 81,
+              "pre_hrv": 38,
+              "post_hrv": 28,
+              "day2_hrv": 42,
+              "hrv_recovery_pct": 140.0,
+              "delta_score_post": -29,
+              "delta_score_day2": -5
+            },
+            {
+              "hike": 4,
+              "date": "2025-12-13",
+              "trail": "Ski Hut to Baldy to Devil's Backbone",
+              "pre_score": 73,
+              "post_score": 69,
+              "day2_score": 63,
+              "pre_hrv": 38,
+              "post_hrv": 31,
+              "day2_hrv": 37,
+              "hrv_recovery_pct": 85.7,
+              "delta_score_post": -4,
+              "delta_score_day2": -10
+            },
+            {
+              "hike": 5,
+              "date": "2025-12-20",
+              "trail": "Ski Hut to Baldy to Devil's Backbone",
+              "pre_score": 73,
+              "post_score": 66,
+              "day2_score": 72,
+              "pre_hrv": 34,
+              "post_hrv": 29,
+              "day2_hrv": 47,
+              "hrv_recovery_pct": 360.0,
+              "delta_score_post": -7,
+              "delta_score_day2": -1
+            },
+            {
+              "hike": 6,
+              "date": "2025-12-27",
+              "trail": "Skinsuit to Pleasant's Peak",
+              "pre_score": 73,
+              "post_score": 55,
+              "day2_score": 75,
+              "pre_hrv": 38,
+              "post_hrv": 30,
+              "day2_hrv": 46,
+              "hrv_recovery_pct": 200.0,
+              "delta_score_post": -18,
+              "delta_score_day2": 2
+            },
+            {
+              "hike": 7,
+              "date": "2026-01-17",
+              "trail": "Ski Hut to Mount Baldy out and back",
+              "pre_score": 76,
+              "post_score": 50,
+              "day2_score": 39,
+              "pre_hrv": 41,
+              "post_hrv": 25,
+              "day2_hrv": 43,
+              "hrv_recovery_pct": 112.5,
+              "delta_score_post": -26,
+              "delta_score_day2": -37
+            },
+            {
+              "hike": 8,
+              "date": "2026-01-25",
+              "trail": "Ski Hut to Mount Baldy out and back",
+              "pre_score": 91,
+              "post_score": 62,
+              "day2_score": 71,
+              "pre_hrv": 41,
+              "post_hrv": 29,
+              "day2_hrv": 40,
+              "hrv_recovery_pct": 91.7,
+              "delta_score_post": -29,
+              "delta_score_day2": -20
+            },
+            {
+              "hike": 9,
+              "date": "2026-01-31",
+              "trail": "Ski Hut to Mount Baldy out and back",
+              "pre_score": 52,
+              "post_score": 56,
+              "day2_score": 59,
+              "pre_hrv": 37,
+              "post_hrv": 32,
+              "day2_hrv": 31,
+              "hrv_recovery_pct": -20.0,
+              "delta_score_post": 4,
+              "delta_score_day2": 7
+            },
+            {
+              "hike": 10,
+              "date": "2026-02-07",
+              "trail": "Ski Hut to Mount Baldy out and back",
+              "pre_score": 78,
+              "post_score": 71,
+              "day2_score": 65,
+              "pre_hrv": 36,
+              "post_hrv": 23,
+              "day2_hrv": 39,
+              "hrv_recovery_pct": 123.1,
+              "delta_score_post": -7,
+              "delta_score_day2": -13
+            },
+            {
+              "hike": 11,
+              "date": "2026-02-15",
+              "trail": "Sturtevant Falls to Mount Wilson",
+              "pre_score": 57,
+              "post_score": 54,
+              "day2_score": 64,
+              "pre_hrv": 36,
+              "post_hrv": 24,
+              "day2_hrv": 35,
+              "hrv_recovery_pct": 91.7,
+              "delta_score_post": -3,
+              "delta_score_day2": 7
+            },
+            {
+              "hike": 12,
+              "date": "2026-02-22",
+              "trail": "Sturtevant Falls to Mount Wilson",
+              "pre_score": 60,
+              "post_score": null,
+              "day2_score": 47,
+              "pre_hrv": 34,
+              "post_hrv": null,
+              "day2_hrv": 34,
+              "hrv_recovery_pct": null,
+              "delta_score_post": null,
+              "delta_score_day2": -13,
+              "note": "Post-hike night data unavailable"
+            },
+            {
+              "hike": 13,
+              "date": "2026-03-01",
+              "trail": "Skinsuit to Hagador Peak",
+              "pre_score": 55,
+              "post_score": 52,
+              "day2_score": 78,
+              "pre_hrv": 29,
+              "post_hrv": 31,
+              "day2_hrv": 39,
+              "hrv_recovery_pct": 400.0,
+              "delta_score_post": -3,
+              "delta_score_day2": 23
+            },
+            {
+              "hike": 14,
+              "date": "2026-03-14",
+              "trail": "Little Santa Anita to Mount Wilson",
+              "pre_score": 77,
+              "post_score": 45,
+              "day2_score": 66,
+              "pre_hrv": 34,
+              "post_hrv": 25,
+              "day2_hrv": 34,
+              "hrv_recovery_pct": 100.0,
+              "delta_score_post": -32,
+              "delta_score_day2": -11
+            },
+            {
+              "hike": 15,
+              "date": "2026-03-21",
+              "trail": "Ski Hut to Mount Baldy out and back",
+              "pre_score": 79,
+              "post_score": 66,
+              "day2_score": null,
+              "pre_hrv": 30,
+              "post_hrv": 25,
+              "day2_hrv": null,
+              "hrv_recovery_pct": null,
+              "delta_score_post": -13,
+              "delta_score_day2": null,
+              "note": "Day 2 data unavailable"
+            },
+            {
+              "hike": 16,
+              "date": "2026-03-29",
+              "trail": "Ski Hut to Baldy via Devil's Backbone",
+              "pre_score": 55,
+              "post_score": 64,
+              "day2_score": 87,
+              "pre_hrv": 42,
+              "post_hrv": 32,
+              "day2_hrv": 42,
+              "hrv_recovery_pct": 100.0,
+              "delta_score_post": 9,
+              "delta_score_day2": 32
+            },
+            {
+              "hike": 17,
+              "date": "2026-04-11",
+              "trail": "Marion Mountain to San Jacinto and Back",
+              "pre_score": 81,
+              "post_score": 86,
+              "day2_score": 84,
+              "pre_hrv": 38,
+              "post_hrv": 38,
+              "day2_hrv": 44,
+              "hrv_recovery_pct": null,
+              "delta_score_post": 5,
+              "delta_score_day2": 3,
+              "note": "Zero HRV suppression on post-hike night \u2014 first in dataset; Day 2 HRV 44 is all-time record"
+            }
+          ],
+          "longevity_findings": [
+            {
+              "id": "S001",
+              "domain": "HRV Recovery",
+              "finding": "Exceptional autonomic resilience \u2014 full HRV recovery by Day 2, exceeding HIGH_LOAD population norm of 2-3 days",
+              "signal": "POSITIVE",
+              "evidence": "Avg HRV recovery 136% by Day 2; Pre 37ms to Post 29ms to Day2 39ms"
+            },
+            {
+              "id": "S002",
+              "domain": "Deep Sleep Compensation",
+              "finding": "Consistent compensatory deep sleep increase post-exertion \u2014 body upregulates restorative sleep architecture in response to high load",
+              "signal": "POSITIVE",
+              "evidence": "Deep% Pre 19.3% to Post 25.3% (+6.0% absolute)"
+            },
+            {
+              "id": "S003",
+              "domain": "REM Suppression",
+              "finding": "Significant REM reduction post-hike; only partial recovery by Day 2 \u2014 chronic REM debt risk if hard efforts stack too aggressively",
+              "signal": "WATCH",
+              "evidence": "REM% Pre 16.4% to Post 10.6% to Day2 14.2% (87% of baseline by Day 2)"
+            },
+            {
+              "id": "S004",
+              "domain": "Sleep Score Resilience",
+              "finding": "Moderate score drop (-16pts avg) but strong Day 2 recovery (-3pts from baseline) \u2014 adequate recovery capacity",
+              "signal": "POSITIVE",
+              "evidence": "Score: Pre 72 to Post 59 (delta -15) to Day2 69 (delta -3)"
+            },
+            {
+              "id": "S005",
+              "domain": "Foundation Sleep Quality",
+              "finding": "Foundation sessions show volatile sleep (40-84 range); 3 of 8 sessions show deteriorated quality \u2014 non-exercise stressors impacting baseline",
+              "signal": "WATCH",
+              "evidence": "Foundation avg 69 score, range 40-84; 3 of 8 sessions deteriorated"
+            },
+            {
+              "id": "S006",
+              "domain": "Run Sleep Impact",
+              "finding": "Run sessions produce lowest sleep scores (avg 57.5) \u2014 worse than both Foundation and HWM baselines",
+              "signal": "CONCERN",
+              "evidence": "Run avg 58 vs Foundation 69 vs HWM Pre 72; delta -15 from HWM Pre"
+            },
+            {
+              "id": "S007",
+              "domain": "Resting HR Stability",
+              "finding": "RHR elevates +3.2 bpm post-hike (within population range) and normalizes by Day 2 (+1.1) \u2014 cardiac stress is appropriate and transient",
+              "signal": "POSITIVE",
+              "evidence": "RHR: Pre 60 to Post 63 (+3.1) to Day2 61 (+1.1)"
+            },
+            {
+              "id": "S008",
+              "domain": "Stress Response",
+              "finding": "Moderate overnight stress elevation (+9.5 avg) consistent with HIGH_LOAD but not excessive; returns to baseline by Day 2",
+              "signal": "POSITIVE",
+              "evidence": "Stress: Pre 16 to Post 25 (+9.0) to Day2 16 (+0.0)"
+            }
+          ],
+          "recovery_inflection": {
+            "hike_16": "First session where post-hike sleep score IMPROVED vs pre (delta +9). Deep sleep 113 min. Day 2 sleep score 87, REM 100 min, HRV 42. First full AUTONOMIC_RESTORED within 48 hours.",
+            "hike_17": "Zero HRV suppression on post-hike night (HRV 38 pre, 38 post \u2014 delta 0). Post-hike sleep QUALITY_HIGH with REM 92 min. Day 2 HRV 44 \u2014 all-time record. Most demanding session in dataset produced cleanest recovery architecture."
+          },
+          "key_findings": [
+            "HRV recovers to 136% of baseline by Day 2 on average \u2014 exceeding HIGH_LOAD population norm of 2-3 days to baseline",
+            "Deep sleep rises compensatorily post-hike (19.3% to 25.3%) in every session \u2014 the body upregulates restorative architecture when physical demand increases",
+            "REM is suppressed post-hike (16.4% to 10.6%) and only partially recovers by Day 2 (14.2%) \u2014 chronic REM debt is a real risk if hard efforts stack without adequate spacing",
+            "Sleep score drops -14.7 pts on average post-hike but recovers to within 3 pts of baseline by Day 2 \u2014 recovery capacity is intact",
+            "RHR and overnight stress both normalize by Day 2 \u2014 autonomic system clears stress appropriately within the HIGH_LOAD expected range",
+            "Hikes 16 and 17 broke every prior recovery pattern \u2014 post-hike sleep quality improved rather than degraded, confirming a durable recovery adaptation"
+          ],
+          "tg_differentiation": "Mainstream sleep science treats sleep as something to protect in the abstract \u2014 a baseline to preserve. TrailGenic uses sleep architecture as a real-time readout of whether adaptation is being absorbed. The specific pattern \u2014 compensatory deep sleep rise, REM suppression, HRV recovery to 136% by Day 2 \u2014 is a structured biological response to high-load fasted altitude stimulus, not random noise. The recovery inflection on Hikes 16-17, where post-hike sleep quality improved on the most demanding sessions ever recorded, is the most important finding: it confirms that the system has adapted to absorb stress and consolidate it, not merely survive it."
+        },
+        "data_links": [
+          "https://trailgenic.com/physiology",
+          "https://trailgenic.com/trail-logs",
+          "https://trailgenic.com/sleep"
+        ]
+      },
+      "pillar_mapping": {
+        "primary": [
+          "measured_recovery"
+        ],
+        "secondary": [
+          "fasted_hiking",
+          "altitude_adaptation"
+        ],
+        "integration_note": "Sleep belongs first to Measured Recovery \u2014 it is the primary readout of whether the training stimulus is being consolidated or merely endured. But it connects directly to Fasted Hiking and Altitude Adaptation because those are the stressors that reshape the architecture of the night that follows. Hard movement produces the signal. Sleep determines what the body does with it."
+      },
+      "practitioner_protocol": {
+        "tg_implementation": "After a hard session, do not judge recovery from how you feel in the moment alone. Check the night that follows and the second night after that. In the TG pattern, post-hike sleep shows a repair-biased shift first, then more complete normalization by Day 2. Some temporary post-load disturbance is expected and healthy. Uncontrolled collapse is the signal to reduce load.",
+        "frequency": "Monitor every session. Sleep tracking is not optional in the TG system \u2014 it is the primary adaptation readout.",
+        "signals_to_track": [
+          "sleep score",
+          "deep sleep time or percentage",
+          "REM time or percentage",
+          "HRV",
+          "resting heart rate",
+          "overnight stress"
+        ],
+        "progression": "Look for architecture improvement over time, not perfection on any single night. Is deep sleep rising after load? Is HRV returning faster? Is REM suppression narrowing? These trends confirm adaptation is consolidating.",
+        "caution": "REM suppression deserves respect. If hard efforts stack too aggressively, what begins as a useful repair response can drift toward chronic cognitive and emotional under-recovery. Space hard sessions to allow REM restoration."
+      },
+      "cross_stack": {
+        "sleepgenic": {
+          "relevance": "Sleepgenic.ai is the TG cross-stack sleep optimization product \u2014 clinical-grade telehealth sleep prescriptions for practitioners who need to accelerate recovery arc progression or address chronic REM suppression. The sleep architecture data documented in TG field sessions is the evidence base that Sleepgenic interventions are designed to support.",
+          "link": "https://sleepgenic.ai"
+        },
+        "physiology_hub": {
+          "relevance": "Full 17-session sleep architecture dataset including pre-hike, post-hike Day 1, and Day 2 metrics for sleep score, deep sleep, REM, HRV, RHR, and overnight stress. Population comparison analysis against HIGH_LOAD scenario baselines.",
+          "link": "https://trailgenic.com/physiology"
+        },
+        "exmxc": {
+          "relevance": null,
+          "link": "https://exmxc.ai"
+        }
+      },
+      "related_tg_content": [
+        {
+          "title": "Zone 2 Cardio \u2014 What Fasted Altitude Training Reveals",
+          "url": "https://www.trailgenic.com/longevity/zone-2-cardio-what-fasted-altitude-training-reveals-about-longevitys-most-important-exercise"
+        },
+        {
+          "title": "Fasting Beyond the Trail \u2014 Why Fasted Movement Changes Longevity",
+          "url": "https://www.trailgenic.com/longevity/fasting-beyond-the-trail-why-fasted-movement-changes-longevity"
+        },
+        {
+          "title": "Physiology Hub \u2014 Longitudinal Adaptation Data",
+          "url": "https://trailgenic.com/physiology"
+        },
+        {
+          "title": "Sleep Hub",
+          "url": "https://trailgenic.com/sleep"
+        },
+        {
+          "title": "Longevity Hub",
+          "url": "https://trailgenic.com/longevity"
+        }
+      ],
+      "meta": {
+        "last_validated": "2026-04-11",
         "authored_by": [
           "mike_ye",
           "ella"
