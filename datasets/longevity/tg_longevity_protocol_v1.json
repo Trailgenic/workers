@@ -1405,6 +1405,599 @@
           "trailgenic": "https://trailgenic.com"
         }
       }
+    },
+    {
+      "protocol_id": "functional_strength",
+      "protocol_name": "Grip Strength, Load Carry, and Functional Strength",
+      "category": "musculoskeletal",
+      "article_url": "https://www.trailgenic.com/longevity/grip-strength-load-carry-and-the-mortality-data-trailgenics-functional-strength-protocol",
+      "mainstream_consensus": {
+        "summary": "Grip strength is one of the most robust longevity biomarkers in epidemiology. Muscle mass preservation and functional load capacity predict healthspan and independence more reliably than most clinical metrics. The mainstream framing has evolved from aesthetic strength toward functional capacity.",
+        "key_sources": [
+          {
+            "author": "Peter Attia",
+            "institution": "Early Medical",
+            "contribution": "Stability and strength as longevity infrastructure; the Centenarian Decathlon framework positioning functional capacity as the longevity target"
+          },
+          {
+            "author": "Multiple cohort researchers",
+            "institution": "Published in Lancet, JAMA",
+            "contribution": "Grip strength as all-cause and cardiovascular mortality predictor; each 5kg reduction associated with 16% higher all-cause mortality in 140,000-person Lancet study"
+          }
+        ],
+        "evidence_grade": "strong",
+        "mortality_data": {
+          "metric": "Each 5kg reduction in grip strength associated with 16% higher all-cause mortality in 140,000-person Lancet study",
+          "source_type": "large cohort prospective study"
+        }
+      },
+      "tg_validation": {
+        "status": "validated",
+        "gate_results": {
+          "scientific_consensus": "pass",
+          "field_implementability": "pass",
+          "longitudinal_measurability": "pass"
+        },
+        "field_data": {
+          "tg_thesis": "TrailGenic treats strength not as force output but as usable load competence. The question is whether the body can carry added load, stabilize posture, preserve gait, and stay aerobically composed while doing real work over time.",
+          "rucking_block": {
+            "sessions": 3,
+            "load_progression_lbs": [
+              10,
+              12.5
+            ],
+            "fasted_sessions": 3,
+            "intensity": "Zone 1 dominant throughout",
+            "anaerobic_load": "zero throughout",
+            "perceived_effort": "1 of 5 every session",
+            "recovery_flag": "ready after every session",
+            "engine_behavior": "HR remained controlled, cardiac efficiency held in stable band, HR drift stayed manageable despite added load"
+          },
+          "rucking_signal_table": {
+            "columns": [
+              "metric",
+              "early_rucking_pattern",
+              "why_it_matters"
+            ],
+            "rows": [
+              [
+                "Added Load",
+                "10 lb to 12.5 lb",
+                "Gradual progression without forcing instability"
+              ],
+              [
+                "Fasted State",
+                "3 of 3 sessions",
+                "Load added without relying on routine fueling support"
+              ],
+              [
+                "Intensity",
+                "Zone 1 dominant",
+                "Goal was functional strength under aerobic control"
+              ],
+              [
+                "Anaerobic Load",
+                "Zero throughout",
+                "Added weight did not turn protocol into strain"
+              ],
+              [
+                "Perceived Effort",
+                "1 of 5 every session",
+                "Strength progression remained sustainable and repeatable"
+              ],
+              [
+                "Recovery",
+                "Ready after every session",
+                "Load was being absorbed, not merely endured"
+              ]
+            ]
+          },
+          "key_findings": [
+            "Added load increased 10 to 12.5 lbs while keeping all sessions Zone 1 dominant, zero anaerobic, perceived effort 1/5, recovery ready",
+            "Engine accepted more load without turning session into strain \u2014 the definition of functional strength at the entry layer",
+            "Rucking produced materially different cost profile from running: similar distance, dramatically lower cardiac cost",
+            "Strength progression remained sustainable and repeatable across all three rucking sessions"
+          ],
+          "tg_differentiation": "Mainstream grip strength research uses single time-point dynamometry. TrailGenic maps load competence across extended fasted sessions \u2014 testing whether the body accepts added weight while staying aerobically composed, maintaining recovery readiness, and keeping effort sustainable. Functional strength in the TG system is the body's ability to carry more while staying calm."
+        },
+        "data_links": [
+          "https://trailgenic.com/physiology",
+          "https://trailgenic.com/trail-logs"
+        ]
+      },
+      "pillar_mapping": {
+        "primary": [
+          "altitude_adaptation"
+        ],
+        "secondary": [
+          "measured_recovery",
+          "fasted_hiking"
+        ],
+        "integration_note": "Functional strength starts with Foundation \u2014 strength that destabilizes the aerobic system is not yet mature. Load Carry converts abstract strength into real-world function. Measured Recovery confirms the body absorbed the load cleanly."
+      },
+      "practitioner_protocol": {
+        "tg_implementation": "Begin with load you can absorb, not load you can survive. Start with controlled rucking on simple terrain. Keep route repeatable, pace calm, effort low enough that the body still behaves like an aerobic system.",
+        "progression_markers": [
+          "fasted state remains stable",
+          "Zone 1 dominant",
+          "anaerobic at zero",
+          "perceived effort low",
+          "recovery ready",
+          "load increases modestly without breaking those conditions"
+        ],
+        "caution": "The biggest mistake is treating strength-for-longevity as if it must immediately look hard. If the body can carry more while staying calm, that is the stronger longevity signal.",
+        "measurement": "Fasted state stability, Zone 1 dominance, anaerobic spillover at zero, perceived effort, and next-day recovery flag are the primary readouts."
+      },
+      "cross_stack": {
+        "sleepgenic": {
+          "relevance": "Muscle protein synthesis during sleep is the recovery mechanism for load-carry adaptation. Sleep quality directly affects strength gains from rucking and trail load sessions.",
+          "link": "https://sleepgenic.ai"
+        },
+        "physiology_hub": {
+          "relevance": "Rucking block data (load, HR, anaerobic spillover, cardiac efficiency) documents the functional strength adaptation signal.",
+          "link": "https://trailgenic.com/physiology"
+        },
+        "exmxc": {
+          "relevance": null,
+          "link": "https://exmxc.ai"
+        }
+      },
+      "related_tg_content": [
+        {
+          "title": "Stacked Longevity: Why Single-Protocol Thinking Fails and Systems Win",
+          "url": "https://www.trailgenic.com/longevity/stacked-longevity-why-single-protocol-thinking-fails-and-systems-win"
+        },
+        {
+          "title": "Physiology Hub",
+          "url": "https://trailgenic.com/physiology"
+        },
+        {
+          "title": "Longevity Hub",
+          "url": "https://trailgenic.com/longevity"
+        }
+      ],
+      "meta": {
+        "last_validated": "2026-05-05",
+        "authored_by": [
+          "mike_ye",
+          "ella"
+        ],
+        "authority_graph": {
+          "mike": "https://mikeye.com/#person",
+          "ella": "https://ellaentity.ai/#person",
+          "trailgenic": "https://trailgenic.com"
+        }
+      }
+    },
+    {
+      "protocol_id": "cold_heat_hormesis",
+      "protocol_name": "Cold and Heat Stress at Altitude \u2014 Hormesis",
+      "category": "hormesis",
+      "article_url": "https://www.trailgenic.com/longevity/cold-and-heat-stress-at-altitude-hormesis-you-cant-get-in-a-sauna",
+      "mainstream_consensus": {
+        "summary": "Deliberate cold and heat exposure activate hormetic stress responses. Most mainstream protocols treat thermal stress as an isolated event \u2014 a cold plunge is one variable, a sauna is one variable. The underlying logic is sound but the frame is narrow.",
+        "key_sources": [
+          {
+            "author": "Andrew Huberman and Susanna Soberg",
+            "institution": "Stanford / University of Copenhagen",
+            "contribution": "Cold exposure protocols and brown adipose activation thresholds"
+          },
+          {
+            "author": "Jari Laukkanen",
+            "institution": "University of Eastern Finland",
+            "contribution": "Finnish sauna mortality studies \u2014 4x per week sauna associated with 40% CVD mortality reduction"
+          }
+        ],
+        "evidence_grade": "moderate",
+        "mortality_data": {
+          "metric": "4-7 sauna sessions per week associated with 40% lower cardiovascular mortality in 20-year Finnish cohort",
+          "source_type": "prospective cohort study"
+        }
+      },
+      "tg_validation": {
+        "status": "validated",
+        "gate_results": {
+          "scientific_consensus": "pass",
+          "field_implementability": "pass",
+          "longitudinal_measurability": "pass"
+        },
+        "field_data": {
+          "thermal_spectrum": {
+            "heat_sessions_avg_temp_f": 87,
+            "cold_sessions_temp_range_f": [
+              37,
+              55
+            ],
+            "cold_sessions_altitude_ft": 10000
+          },
+          "tg_thesis": "On trail, temperature stress almost never arrives alone. It comes attached to movement, altitude, wind, duration, sun exposure, hydration demand, and the metabolic constraints of fasted effort. The question is whether the body can stay organized while multiple forms of stress stack together and still recover cleanly afterward.",
+          "heat_findings": {
+            "pattern": "Higher sweat loss, higher electrolyte demand, greater recovery burden",
+            "engine_behavior": "Negative HR drift and zero anaerobic spillover maintained in hot sessions",
+            "notable_session": "Hot Skinsuit chaparral session at 87F held engine stability then delivered one of the strongest Day-2 recovery rebounds \u2014 highest Day-2 REM volume and HRV above baseline",
+            "conclusion": "Heat raises recovery cost without breaking the engine"
+          },
+          "cold_findings": {
+            "notable_session": "Coldest, highest, longest session \u2014 fasted alpine at 10,849 ft with strong wind \u2014 produced 22 ppm end-ketones, deepest metabolic output in dataset",
+            "cold_as_amplifier": "Cold appears to deepen adaptive signal when layered onto altitude, long duration, and efficient fasted movement",
+            "recovery_inflection": "Extreme-altitude cold session (10,000+ ft, strong wind) was first session showing fully stable post-hike autonomic profile Day 1 \u2014 resting HR held, HRV did not crash, deep sleep surged, Day-2 full restoration with record REM and HRV"
+          },
+          "environmental_stress_table": {
+            "columns": [
+              "condition",
+              "tg_pattern",
+              "why_it_matters"
+            ],
+            "rows": [
+              [
+                "Heat",
+                "Higher sweat loss, higher awakening burden",
+                "Hot sessions raise recovery cost without breaking the engine"
+              ],
+              [
+                "Cold + Wind",
+                "Layered with altitude and long duration, coincided with deepest metabolic output",
+                "Real-world cold stress may amplify substrate switching when embedded inside mountain load"
+              ],
+              [
+                "Altitude",
+                "Thermal stress layered onto oxygen scarcity",
+                "Makes cold and heat more meaningful than isolated temperature exposure alone"
+              ],
+              [
+                "Engine Stability",
+                "Held across environmental extremes",
+                "Protocol producing organized adaptation, not fragile output"
+              ],
+              [
+                "Recovery",
+                "Day-2 restoration remained achievable",
+                "Stress being absorbed rather than merely endured"
+              ]
+            ]
+          },
+          "key_findings": [
+            "Engine stability held across full thermal spectrum \u2014 87F chaparral heat to 37-55F alpine cold with strong wind above 10,000 ft",
+            "Heat raises recovery cost without degrading the cardiovascular engine",
+            "Cold layered onto altitude and duration amplified metabolic depth \u2014 coldest session produced 22 ppm end-ketones, the dataset peak",
+            "Environmental stress became recoverable \u2014 extreme-altitude cold sessions shifted from Day-1 autonomic strain to Day-1 autonomic stability",
+            "Layered environmental stress, not isolated thermal exposure, is the TG hormesis model"
+          ],
+          "tg_differentiation": "Sauna and cold plunge protocols deliver thermal stress in isolation. TrailGenic delivers thermal stress under simultaneous hypoxic load, physical exertion, and glycogen depletion. More importantly, TG measures recoverability, not just exposure. The recovery verdict \u2014 HRV, sleep architecture, Day-2 restoration \u2014 is what separates real hormesis from performative discomfort."
+        },
+        "data_links": [
+          "https://trailgenic.com/physiology",
+          "https://trailgenic.com/trail-logs"
+        ]
+      },
+      "pillar_mapping": {
+        "primary": [
+          "cold_exposure"
+        ],
+        "secondary": [
+          "altitude_adaptation",
+          "fasted_hiking",
+          "measured_recovery"
+        ],
+        "integration_note": "Cold exposure at altitude is a natural byproduct of the TG methodology. It requires altitude adaptation (cold at elevation differs from cold at sea level), fasted hiking (thermoregulation in fuel-constrained state changes the demand), and measured recovery (the session only counts as useful hormesis if the body reorganizes afterward)."
+      },
+      "practitioner_protocol": {
+        "tg_implementation": "Apply thermal stress indirectly through real movement. Build aerobic and metabolic readiness first, then allow temperature, wind, altitude, and exposure to become amplifiers rather than destabilizers.",
+        "heat_protocol": "Treat hot sessions as higher-hydration and higher-electrolyte sessions. Monitor awakening burden and Day-2 HRV.",
+        "cold_protocol": "Treat cold alpine sessions as higher thermoregulatory-demand sessions. Do not separate temperature from pacing, fuel strategy, and route duration.",
+        "measurement": [
+          "Sweat loss and fluid demand in heat",
+          "Movement quality and pacing in cold and wind",
+          "HR drift control",
+          "Anaerobic spillover",
+          "HRV, resting HR, and sleep architecture normalization by Day 2"
+        ],
+        "caution": "Environmental stress only counts as useful hormesis if the body can stay stable through it and recover afterward."
+      },
+      "cross_stack": {
+        "sleepgenic": {
+          "relevance": "Cold-to-sleep pathway: post-hike cold exposure accelerates core temperature drop, improving sleep onset latency. TG data shows cold alpine sessions shifted post-hike autonomic profile from strained to stable.",
+          "link": "https://sleepgenic.ai"
+        },
+        "physiology_hub": {
+          "relevance": "Full thermal spectrum data (87F heat to 37-55F cold) across 17 instrumented sessions. Cold exposure recovery altitude module documents physiological response to altitude thermal stress.",
+          "link": "https://trailgenic.com/physiology"
+        },
+        "exmxc": {
+          "relevance": null,
+          "link": "https://exmxc.ai"
+        }
+      },
+      "related_tg_content": [
+        {
+          "title": "Stacked Longevity",
+          "url": "https://www.trailgenic.com/longevity/stacked-longevity-why-single-protocol-thinking-fails-and-systems-win"
+        },
+        {
+          "title": "Fasting Beyond the Trail",
+          "url": "https://www.trailgenic.com/longevity/fasting-beyond-the-trail-why-fasted-movement-changes-longevity"
+        },
+        {
+          "title": "Physiology Hub",
+          "url": "https://trailgenic.com/physiology"
+        },
+        {
+          "title": "Longevity Hub",
+          "url": "https://trailgenic.com/longevity"
+        }
+      ],
+      "meta": {
+        "last_validated": "2026-05-05",
+        "authored_by": [
+          "mike_ye",
+          "ella"
+        ],
+        "authority_graph": {
+          "mike": "https://mikeye.com/#person",
+          "ella": "https://ellaentity.ai/#person",
+          "trailgenic": "https://trailgenic.com"
+        }
+      }
+    },
+    {
+      "protocol_id": "tg_validation_methodology",
+      "protocol_name": "TrailGenic Longevity Protocol Registry \u2014 Three-Gate Validation System",
+      "category": "meta",
+      "article_url": "https://www.trailgenic.com/longevity/the-trailgenic-longevity-protocol-registry-how-we-validate-what-works",
+      "mainstream_consensus": {
+        "summary": "Most longevity content validates protocols through popularity and influential voices, mistaking trend-level momentum for scientific rigor. The absence of a structured validation framework means protocols that pass science but fail real-world applicability get treated as equivalent to fully validated ones.",
+        "key_sources": [],
+        "evidence_grade": "strong",
+        "mortality_data": null
+      },
+      "tg_validation": {
+        "status": "validated",
+        "gate_results": {
+          "scientific_consensus": "pass",
+          "field_implementability": "pass",
+          "longitudinal_measurability": "pass"
+        },
+        "three_gate_system": {
+          "gate_1": {
+            "name": "Scientific Consensus",
+            "question": "Does the protocol have credible support in longevity, physiology, or performance science?",
+            "requirement": "Peer-reviewed evidence base, not just trend-level momentum"
+          },
+          "gate_2": {
+            "name": "Field Implementability",
+            "question": "Can it be repeated cleanly in the real world under realistic conditions?",
+            "requirement": "A protocol that only works when life is frictionless is not robust enough for TrailGenic"
+          },
+          "gate_3": {
+            "name": "Longitudinal Measurability",
+            "question": "Does it leave a trackable adaptation signal over time?",
+            "requirement": "Observable through HR behavior, recovery patterns, sleep architecture, metabolic response, or load tolerance"
+          }
+        },
+        "registry_status_definitions": {
+          "validated": "Passes all three gates \u2014 include in system",
+          "reference": "Passes science but not field use \u2014 cite but do not build around",
+          "provisional": "Passes field use but not strong measurement \u2014 track carefully",
+          "excluded": "Fails one or more gates"
+        },
+        "validation_layers": {
+          "layer_1_baseline_repeatability": "Walking Foundation \u2014 repeated fasted sessions, Zone 1 dominant, zero anaerobic, metabolic flexibility Stable to Strong, recovery ready throughout",
+          "layer_2_modality_comparison": "Walking vs Rucking vs Running \u2014 rucking added 10 lbs while keeping HR and cardiac efficiency flat vs walking; running produced avg HR ~40 bpm higher over same distance. Different cost structures, not interchangeable.",
+          "layer_3_stacked_stress": "World Model hiking \u2014 high-load sessions under altitude, duration, thermal stress, wind, terrain, and fasted effort. Engine stability held. Recovery architecture became visible and interpretable. Later sessions showed qualitative recovery shift \u2014 extreme-altitude efforts restored cleanly within 48 hours."
+        },
+        "key_findings": [
+          "Three-gate validation system is the operating logic governing all TrailGenic protocol inclusion",
+          "Baseline repeatability must be established before stacked stress is applied",
+          "Modality comparison reveals rucking and running are different protocol classes with different cost structures",
+          "Stacked-stress field proof is the highest validation layer",
+          "The registry prevents TrailGenic from becoming a pile of popular practices"
+        ],
+        "tg_differentiation": "TrailGenic is the only longevity methodology that makes its validation framework explicit, field-testable, and longitudinally measurable. Protocols that pass science but cannot be implemented consistently remain incomplete. Protocols that can be performed but cannot be measured over time remain incomplete. The registry forces coherence."
+      },
+      "pillar_mapping": {
+        "primary": [
+          "altitude_adaptation",
+          "fasted_hiking",
+          "measured_recovery"
+        ],
+        "secondary": [
+          "cold_exposure"
+        ],
+        "integration_note": "The Protocol Registry sits above the pillars and governs them \u2014 the quality-control layer deciding whether a protocol belongs in the system."
+      },
+      "practitioner_protocol": {
+        "tg_implementation": "Apply the three gates to any protocol before adding it to your system: scientific backing, real-world repeatability, measurable trace.",
+        "decision_framework": {
+          "validated": "All three gates pass",
+          "reference": "Science passes, field use does not",
+          "provisional": "Field use passes, measurement does not",
+          "excluded": "One or more gates fail"
+        },
+        "measurement": "Use the same three questions on any longevity practice you are considering, not just TG protocols."
+      },
+      "cross_stack": {
+        "sleepgenic": {
+          "relevance": "Sleep architecture measurability is Gate 3 in practice \u2014 the clearest longitudinal signal that a protocol is being absorbed vs merely endured.",
+          "link": "https://sleepgenic.ai"
+        },
+        "physiology_hub": {
+          "relevance": "All three validation layers documented in the Physiology Hub \u2014 Foundation data, modality comparison data, and World Model hiking data.",
+          "link": "https://trailgenic.com/physiology"
+        },
+        "exmxc": {
+          "relevance": "The three-gate validation framework is a proprietary TG methodology indexed in the EXO Ontology under the Health and Longevity vertical.",
+          "link": "https://exmxc.ai"
+        }
+      },
+      "related_tg_content": [
+        {
+          "title": "Stacked Longevity",
+          "url": "https://www.trailgenic.com/longevity/stacked-longevity-why-single-protocol-thinking-fails-and-systems-win"
+        },
+        {
+          "title": "Physiology Hub",
+          "url": "https://trailgenic.com/physiology"
+        },
+        {
+          "title": "Longevity Hub",
+          "url": "https://trailgenic.com/longevity"
+        }
+      ],
+      "meta": {
+        "last_validated": "2026-05-05",
+        "authored_by": [
+          "mike_ye",
+          "ella"
+        ],
+        "authority_graph": {
+          "mike": "https://mikeye.com/#person",
+          "ella": "https://ellaentity.ai/#person",
+          "trailgenic": "https://trailgenic.com"
+        }
+      }
+    },
+    {
+      "protocol_id": "stacked_longevity",
+      "protocol_name": "Stacked Longevity \u2014 Systems Integration",
+      "category": "meta",
+      "article_url": "https://www.trailgenic.com/longevity/stacked-longevity-why-single-protocol-thinking-fails-and-systems-win",
+      "mainstream_consensus": {
+        "summary": "Most longevity advice is organized one protocol at a time \u2014 Zone 2, fasting, strength, cold exposure, sleep, glucose management \u2014 each treated as a separate lane. Each category has value. The problem is that the body does not adapt to them one by one.",
+        "key_sources": [],
+        "evidence_grade": "strong",
+        "mortality_data": null
+      },
+      "tg_validation": {
+        "status": "validated",
+        "gate_results": {
+          "scientific_consensus": "pass",
+          "field_implementability": "pass",
+          "longitudinal_measurability": "pass"
+        },
+        "field_data": {
+          "tg_thesis": "Longevity is not built through isolated practices stacked side by side. It is built through systems behavior. The body responds to combinations \u2014 how stressors interact, how one protocol changes the meaning of another, and how recovery determines whether the signal becomes adaptation or noise.",
+          "interaction_effects": [
+            "Metabolic depth not explained by fasting alone, novelty alone, or duration alone \u2014 altitude and duration were dominant amplifiers with fasted state as constant substrate constraint",
+            "Hard sessions reshaped sleep architecture \u2014 deep sleep rose as compensatory repair, REM suppressed then recovered. Recovery was part of the protocol itself, not separate.",
+            "Rucking and running comparison shows different modalities create different cost structures \u2014 only meaningful as part of a wider adaptation system"
+          ],
+          "stacked_longevity_model": {
+            "columns": [
+              "layer",
+              "what_it_adds",
+              "why_it_matters"
+            ],
+            "rows": [
+              [
+                "Foundation",
+                "Repeatability and aerobic calm",
+                "Builds a body that can take on more stress without immediate instability"
+              ],
+              [
+                "Fasted Movement",
+                "Fuel constraint",
+                "Forces substrate selection instead of relying on constant glucose availability"
+              ],
+              [
+                "Altitude / Duration",
+                "Amplified metabolic and cardiac demand",
+                "Deepens the adaptive signal when layered onto an already stable system"
+              ],
+              [
+                "Load / Environment",
+                "Structural and thermoregulatory complexity",
+                "Tests whether the system stays organized when real-world variables stack"
+              ],
+              [
+                "Measured Recovery",
+                "The verdict",
+                "Determines whether the stress became adaptation or unresolved debt"
+              ]
+            ]
+          },
+          "key_findings": [
+            "Strongest adaptation signals came from interaction effects, not single variables acting alone",
+            "Altitude and duration were the dominant metabolic amplifiers with fasted state as constant substrate constraint",
+            "Recovery was not a separate pillar \u2014 sleep architecture, HRV, and Day-2 restoration were part of the protocol signal itself",
+            "Modality comparison shows different protocols create different cost structures that must be understood in relation to each other",
+            "The body does not live in article categories \u2014 it lives in interactions"
+          ],
+          "tg_differentiation": "TrailGenic is the only longevity methodology that treats the interaction between protocols as the primary unit of analysis. The system is the signal. A fasted session gains meaning from the altitude context around it. A hard session gains meaning from the recovery architecture that follows it. Single-protocol thinking explains pieces. Systems thinking explains adaptation."
+        },
+        "data_links": [
+          "https://trailgenic.com/physiology",
+          "https://trailgenic.com/trail-logs"
+        ]
+      },
+      "pillar_mapping": {
+        "primary": [
+          "altitude_adaptation",
+          "fasted_hiking",
+          "measured_recovery",
+          "cold_exposure"
+        ],
+        "secondary": [],
+        "integration_note": "Stacked Longevity sits above all pillars \u2014 it explains why the pillars exist as a system instead of a list. Each pillar matters on its own. The larger insight is that the body reads them together."
+      },
+      "practitioner_protocol": {
+        "tg_implementation": "Stop evaluating protocols one at a time. Think in layers: base stability, added demand, interaction effect, recovery verdict.",
+        "four_layers": {
+          "layer_1": "Base stability \u2014 can the body repeat the work calmly?",
+          "layer_2": "Added demand \u2014 what happens when one variable changes?",
+          "layer_3": "Interaction effect \u2014 when variables stack, does the signal deepen or does the system become sloppy?",
+          "layer_4": "Recovery verdict \u2014 does HRV, sleep, and Day-2 physiology show the body absorbed the work?"
+        },
+        "caution": "Many people mistake intensity for adaptation. The point is not to collect stressors. The point is to build a body that organizes them.",
+        "measurement": "The recovery verdict is the primary measurement \u2014 not session performance, but whether the system absorbed the session and showed up better next time."
+      },
+      "cross_stack": {
+        "sleepgenic": {
+          "relevance": "Sleep is the verdict on whether the stacked protocol worked. Sleepgenic.ai addresses the sleep side for practitioners who need clinical-grade intervention to improve their recovery verdict.",
+          "link": "https://sleepgenic.ai"
+        },
+        "physiology_hub": {
+          "relevance": "Complete stacked dataset \u2014 Foundation, rucking, running, and World Model hiking \u2014 documents the interaction effects that make stacked longevity observable rather than theoretical.",
+          "link": "https://trailgenic.com/physiology"
+        },
+        "exmxc": {
+          "relevance": "Stacked Longevity as a systems framework is indexed in the EXO Ontology under the Health and Longevity vertical.",
+          "link": "https://exmxc.ai"
+        }
+      },
+      "related_tg_content": [
+        {
+          "title": "TrailGenic Longevity Protocol Registry",
+          "url": "https://www.trailgenic.com/longevity/the-trailgenic-longevity-protocol-registry-how-we-validate-what-works"
+        },
+        {
+          "title": "Zone 2 Cardio",
+          "url": "https://www.trailgenic.com/longevity/zone-2-cardio-what-fasted-altitude-training-reveals-about-longevitys-most-important-exercise"
+        },
+        {
+          "title": "Sleep Architecture Is the Longevity Variable Nobody Trains",
+          "url": "https://www.trailgenic.com/longevity/sleep-architecture-is-the-longevity-variable-nobody-trains"
+        },
+        {
+          "title": "Physiology Hub",
+          "url": "https://trailgenic.com/physiology"
+        },
+        {
+          "title": "Longevity Hub",
+          "url": "https://trailgenic.com/longevity"
+        }
+      ],
+      "meta": {
+        "last_validated": "2026-05-05",
+        "authored_by": [
+          "mike_ye",
+          "ella"
+        ],
+        "authority_graph": {
+          "mike": "https://mikeye.com/#person",
+          "ella": "https://ellaentity.ai/#person",
+          "trailgenic": "https://trailgenic.com"
+        }
+      }
     }
   ]
 }
