@@ -166,7 +166,8 @@ export default {
         endpoints: {
           protocol: "https://mcp.trailgenic.com/datasets/longevity/protocol",
           registry: "https://mcp.trailgenic.com/datasets/longevity/registry",
-          validation: "https://mcp.trailgenic.com/datasets/longevity/validation"
+          validation: "https://mcp.trailgenic.com/datasets/longevity/validation",
+          foundation: "https://mcp.trailgenic.com/datasets/longevity/foundation"
         },
         description:
           "Field-validated longevity protocol intelligence. Covers zone 2, fasting, sleep, metabolic health, strength, and hormesis — each with TG practitioner overlay, six-pillar mapping, and longitudinal session data.",
@@ -281,6 +282,12 @@ export default {
         description:
           "Retrieve longitudinal field validation records linking a longevity protocol to specific TrailGenic trail sessions, physiology hub entries, and sleep recovery data.",
         endpoint: "https://mcp.trailgenic.com/datasets/longevity/validation"
+      },
+      {
+        tool: "tg.longevity.getFoundationSessions",
+        description:
+          "Retrieve TrailGenic Foundation Phase session log — 14 fasted, low-intensity walking sessions establishing aerobic baseline, metabolic flexibility progression, and recovery readiness before high-intensity alpine load was introduced. Gate 2 field implementability proof.",
+        endpoint: "https://mcp.trailgenic.com/datasets/longevity/foundation"
       }
 
     ],
@@ -613,7 +620,8 @@ if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
           { id: "tg.search.query", endpoint: "https://www.trailgenic.com" },
           { id: "tg.longevity.getProtocol", endpoint: "https://mcp.trailgenic.com/datasets/longevity/protocol" },
           { id: "tg.longevity.listProtocols", endpoint: "https://mcp.trailgenic.com/datasets/longevity/registry" },
-          { id: "tg.longevity.getFieldValidation", endpoint: "https://mcp.trailgenic.com/datasets/longevity/validation" }
+          { id: "tg.longevity.getFieldValidation", endpoint: "https://mcp.trailgenic.com/datasets/longevity/validation" },
+          { id: "tg.longevity.getFoundationSessions", endpoint: "https://mcp.trailgenic.com/datasets/longevity/foundation" }
 
         ]
       };

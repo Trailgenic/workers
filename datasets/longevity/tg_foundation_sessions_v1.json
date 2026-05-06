@@ -1,0 +1,23 @@
+{
+  "status": "active",
+  "dataset_id": "tg_foundation_sessions_v1",
+  "family": "TG Dataset Family 7 — Longevity Protocol Intelligence",
+  "description": "TrailGenic Foundation Phase session log.",
+  "endpoint": "https://mcp.trailgenic.com/datasets/longevity/foundation",
+  "sessions": [
+    { "session_id": 1 },
+    { "session_id": 2 },
+    { "session_id": 3 },
+    { "session_id": 4 },
+    { "session_id": 5 },
+    { "session_id": 6 },
+    { "session_id": 7 },
+    { "session_id": 8 },
+    { "session_id": 9 },
+    { "session_id": 10 },
+    { "session_id": 11 },
+    { "session_id": 12 },
+    { "session_id": 13 },
+    { "session_id": 14 }
+  ]
+}
