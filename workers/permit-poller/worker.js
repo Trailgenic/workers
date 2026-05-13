@@ -81,11 +81,27 @@ const getMonthStartISO = (date) => {
 };
 
 const extractAvailableDates = (availabilityResponse) => {
-  const availabilityMap = availabilityResponse?.payload?.availability || availabilityResponse?.availability || {};
-  return Object.entries(availabilityMap)
-    .filter(([, day]) => day && day.status === "Available")
-    .map(([date]) => date.slice(0, 10))
-    .sort();
+  const divisionMap =
+    availabilityResponse?.payload?.availability ||
+    availabilityResponse?.availability ||
+    {};
+
+  const availableDateSet = new Set();
+
+  for (const divisionDates of Object.values(divisionMap)) {
+    if (!divisionDates || typeof divisionDates !== "object") continue;
+    for (const [dateStr, slot] of Object.entries(divisionDates)) {
+      const remaining =
+        slot?.remaining ??
+        slot?.spots_remaining ??
+        (slot?.status === "Available" ? 1 : 0);
+      if (remaining > 0) {
+        availableDateSet.add(dateStr.slice(0, 10));
+      }
+    }
+  }
+
+  return Array.from(availableDateSet).sort();
 };
 
 const getPermitStateKey = (permitId) => `state:${permitId}`;
@@ -251,7 +267,8 @@ const runPollCycle = async (env) => {
 
 export default {
   async scheduled(_event, env, _ctx) {
-    await runPollCycle(env);
+    const results = await runPollCycle(env);
+    console.log("Poll cycle complete:", JSON.stringify(results));
   },
 
   async fetch(request, env) {
