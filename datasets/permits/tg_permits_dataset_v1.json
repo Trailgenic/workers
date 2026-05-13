@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "status": "active",
   "description": "Extreme scarcity wilderness permit intelligence with release windows, rules, and TrailGenic demand markers.",
-  "record_count": 8,
+  "record_count": 11,
   "fields": [
     "permit_id",
     "name",
@@ -205,7 +205,7 @@
     {
       "permit_id": "rec_gov_233358_overnight",
       "name": "Enchantments",
-      "rec_gov_facility_id": "233358",
+      "rec_gov_facility_id": "233273",
       "permit_type": "overnight",
       "location": {
         "park": "Alpine Lakes Wilderness (Okanogan-Wenatchee National Forest)",
@@ -259,14 +259,14 @@
         "can_transact": false,
         "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_233358_overnight/availability",
         "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_233358_overnight/subscribe",
-        "booking_url": "https://www.recreation.gov/permits/233358"
+        "booking_url": "https://www.recreation.gov/permits/233273"
       },
       "facility_id_verified": false
     },
     {
-      "permit_id": "rec_gov_445856_day_use",
-      "name": "Angels Landing",
-      "rec_gov_facility_id": "445856",
+      "permit_id": "rec_gov_4675310_spring",
+      "name": "Angels Landing Spring (Mar 1–May 31)",
+      "rec_gov_facility_id": "4675310",
       "permit_type": "day_use",
       "location": {
         "park": "Zion National Park",
@@ -318,9 +318,192 @@
         "can_query_availability": true,
         "can_subscribe_webhook": true,
         "can_transact": false,
-        "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445856_day_use/availability",
-        "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_445856_day_use/subscribe",
-        "booking_url": "https://www.recreation.gov/permits/445856"
+        "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_4675310_spring/availability",
+        "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_4675310_spring/subscribe",
+        "booking_url": "https://www.recreation.gov/permits/4675310"
+      },
+      "facility_id_verified": false
+    },
+    {
+      "permit_id": "rec_gov_4675324_summer",
+      "name": "Angels Landing Summer (Jun 1–Aug 31)",
+      "rec_gov_facility_id": "4675324",
+      "permit_type": "day_use",
+      "location": {
+        "park": "Zion National Park",
+        "state": "UT",
+        "lat": 37.2692,
+        "lon": -112.9507,
+        "elevation_summit_ft": 5790,
+        "elevation_trailhead_ft": 4360
+      },
+      "scarcity_tier": "extreme",
+      "quota_daily": 640,
+      "group_size_max": 6,
+      "release_calendar": {
+        "lottery_open": "01-01",
+        "lottery_close": "01-20",
+        "lottery_results": "01-25",
+        "claim_deadline": "01-31",
+        "walkup_opens": "01-01",
+        "season_start": "01-01",
+        "season_end": "12-31"
+      },
+      "rules": {
+        "bear_canister_required": false,
+        "wag_bag_required": false,
+        "consecutive_permits_allowed": true,
+        "fee_per_person_usd": 6,
+        "no_show_deadline_hours": 0,
+        "self_issue_available": false
+      },
+      "scarcity": {
+        "tier": "extreme",
+        "scarcity_score": 96,
+        "lottery_odds_pct": 38.0,
+        "avg_sellout_minutes_post_release": 5,
+        "historical_cancellation_rate_pct": 16,
+        "best_days_to_monitor": ["Monday", "Tuesday", "Wednesday"],
+        "peak_dates": ["03-20", "05-27", "10-10", "11-25"]
+      },
+      "trailgenic": {
+        "physiological_demand": "extreme",
+        "elevation_gain_ft": 1488,
+        "round_trip_miles": 5.4,
+        "altitude_exposure": "low",
+        "fasted_compatible": true,
+        "recommended_acclimation_days": 0,
+        "longevity_risk_factors": ["heat_load", "exposure_risk", "crowding_stress", "fall_hazard"]
+      },
+      "agent_actions": {
+        "can_query_availability": true,
+        "can_subscribe_webhook": true,
+        "can_transact": false,
+        "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_4675324_summer/availability",
+        "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_4675324_summer/subscribe",
+        "booking_url": "https://www.recreation.gov/permits/4675324"
+      },
+      "facility_id_verified": false
+    },
+    {
+      "permit_id": "rec_gov_4675325_fall",
+      "name": "Angels Landing Fall (Sep 1–Nov 30)",
+      "rec_gov_facility_id": "4675325",
+      "permit_type": "day_use",
+      "location": {
+        "park": "Zion National Park",
+        "state": "UT",
+        "lat": 37.2692,
+        "lon": -112.9507,
+        "elevation_summit_ft": 5790,
+        "elevation_trailhead_ft": 4360
+      },
+      "scarcity_tier": "extreme",
+      "quota_daily": 640,
+      "group_size_max": 6,
+      "release_calendar": {
+        "lottery_open": "01-01",
+        "lottery_close": "01-20",
+        "lottery_results": "01-25",
+        "claim_deadline": "01-31",
+        "walkup_opens": "01-01",
+        "season_start": "01-01",
+        "season_end": "12-31"
+      },
+      "rules": {
+        "bear_canister_required": false,
+        "wag_bag_required": false,
+        "consecutive_permits_allowed": true,
+        "fee_per_person_usd": 6,
+        "no_show_deadline_hours": 0,
+        "self_issue_available": false
+      },
+      "scarcity": {
+        "tier": "extreme",
+        "scarcity_score": 96,
+        "lottery_odds_pct": 38.0,
+        "avg_sellout_minutes_post_release": 5,
+        "historical_cancellation_rate_pct": 16,
+        "best_days_to_monitor": ["Monday", "Tuesday", "Wednesday"],
+        "peak_dates": ["03-20", "05-27", "10-10", "11-25"]
+      },
+      "trailgenic": {
+        "physiological_demand": "extreme",
+        "elevation_gain_ft": 1488,
+        "round_trip_miles": 5.4,
+        "altitude_exposure": "low",
+        "fasted_compatible": true,
+        "recommended_acclimation_days": 0,
+        "longevity_risk_factors": ["heat_load", "exposure_risk", "crowding_stress", "fall_hazard"]
+      },
+      "agent_actions": {
+        "can_query_availability": true,
+        "can_subscribe_webhook": true,
+        "can_transact": false,
+        "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_4675325_fall/availability",
+        "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_4675325_fall/subscribe",
+        "booking_url": "https://www.recreation.gov/permits/4675325"
+      },
+      "facility_id_verified": false
+    },
+    {
+      "permit_id": "rec_gov_4675326_winter",
+      "name": "Angels Landing Winter (Dec 1–Feb 28)",
+      "rec_gov_facility_id": "4675326",
+      "permit_type": "day_use",
+      "location": {
+        "park": "Zion National Park",
+        "state": "UT",
+        "lat": 37.2692,
+        "lon": -112.9507,
+        "elevation_summit_ft": 5790,
+        "elevation_trailhead_ft": 4360
+      },
+      "scarcity_tier": "extreme",
+      "quota_daily": 640,
+      "group_size_max": 6,
+      "release_calendar": {
+        "lottery_open": "01-01",
+        "lottery_close": "01-20",
+        "lottery_results": "01-25",
+        "claim_deadline": "01-31",
+        "walkup_opens": "01-01",
+        "season_start": "01-01",
+        "season_end": "12-31"
+      },
+      "rules": {
+        "bear_canister_required": false,
+        "wag_bag_required": false,
+        "consecutive_permits_allowed": true,
+        "fee_per_person_usd": 6,
+        "no_show_deadline_hours": 0,
+        "self_issue_available": false
+      },
+      "scarcity": {
+        "tier": "extreme",
+        "scarcity_score": 96,
+        "lottery_odds_pct": 38.0,
+        "avg_sellout_minutes_post_release": 5,
+        "historical_cancellation_rate_pct": 16,
+        "best_days_to_monitor": ["Monday", "Tuesday", "Wednesday"],
+        "peak_dates": ["03-20", "05-27", "10-10", "11-25"]
+      },
+      "trailgenic": {
+        "physiological_demand": "extreme",
+        "elevation_gain_ft": 1488,
+        "round_trip_miles": 5.4,
+        "altitude_exposure": "low",
+        "fasted_compatible": true,
+        "recommended_acclimation_days": 0,
+        "longevity_risk_factors": ["heat_load", "exposure_risk", "crowding_stress", "fall_hazard"]
+      },
+      "agent_actions": {
+        "can_query_availability": true,
+        "can_subscribe_webhook": true,
+        "can_transact": false,
+        "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_4675326_winter/availability",
+        "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_4675326_winter/subscribe",
+        "booking_url": "https://www.recreation.gov/permits/4675326"
       },
       "facility_id_verified": false
     },
@@ -389,7 +572,7 @@
     {
       "permit_id": "rec_gov_234628_day_use",
       "name": "The Wave (Coyote Buttes North)",
-      "rec_gov_facility_id": "234628",
+      "rec_gov_facility_id": "274309",
       "permit_type": "day_use",
       "location": {
         "park": "Paria Canyon-Vermilion Cliffs Wilderness",
@@ -443,7 +626,7 @@
         "can_transact": false,
         "availability_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_234628_day_use/availability",
         "subscribe_endpoint": "https://mcp.trailgenic.com/permits/rec_gov_234628_day_use/subscribe",
-        "booking_url": "https://www.recreation.gov/permits/234628"
+        "booking_url": "https://www.recreation.gov/permits/274309"
       },
       "facility_id_verified": false
     },
