@@ -20,14 +20,32 @@ const PERMITS = [
   {
     permit_id: "rec_gov_233358_overnight",
     name: "Enchantments",
-    rec_gov_facility_id: "233358",
-    booking_url: "https://www.recreation.gov/permits/233358"
+    rec_gov_facility_id: "233273",
+    booking_url: "https://www.recreation.gov/permits/233273"
   },
   {
-    permit_id: "rec_gov_445856_day_use",
-    name: "Angels Landing",
-    rec_gov_facility_id: "445856",
-    booking_url: "https://www.recreation.gov/permits/445856"
+    permit_id: "rec_gov_4675310_spring",
+    name: "Angels Landing Spring (Mar 1–May 31)",
+    rec_gov_facility_id: "4675310",
+    booking_url: "https://www.recreation.gov/permits/4675310"
+  },
+  {
+    permit_id: "rec_gov_4675324_summer",
+    name: "Angels Landing Summer (Jun 1–Aug 31)",
+    rec_gov_facility_id: "4675324",
+    booking_url: "https://www.recreation.gov/permits/4675324"
+  },
+  {
+    permit_id: "rec_gov_4675325_fall",
+    name: "Angels Landing Fall (Sep 1–Nov 30)",
+    rec_gov_facility_id: "4675325",
+    booking_url: "https://www.recreation.gov/permits/4675325"
+  },
+  {
+    permit_id: "rec_gov_4675326_winter",
+    name: "Angels Landing Winter (Dec 1–Feb 28)",
+    rec_gov_facility_id: "4675326",
+    booking_url: "https://www.recreation.gov/permits/4675326"
   },
   {
     permit_id: "rec_gov_445859_overnight",
@@ -38,8 +56,8 @@ const PERMITS = [
   {
     permit_id: "rec_gov_234628_day_use",
     name: "The Wave (Coyote Buttes North)",
-    rec_gov_facility_id: "234628",
-    booking_url: "https://www.recreation.gov/permits/234628"
+    rec_gov_facility_id: "274309",
+    booking_url: "https://www.recreation.gov/permits/274309"
   },
   {
     permit_id: "rec_gov_445858_overnight",
@@ -63,11 +81,27 @@ const getMonthStartISO = (date) => {
 };
 
 const extractAvailableDates = (availabilityResponse) => {
-  const availabilityMap = availabilityResponse?.payload?.availability || availabilityResponse?.availability || {};
-  return Object.entries(availabilityMap)
-    .filter(([, day]) => day && day.status === "Available")
-    .map(([date]) => date.slice(0, 10))
-    .sort();
+  const divisionMap =
+    availabilityResponse?.payload?.availability ||
+    availabilityResponse?.availability ||
+    {};
+
+  const availableDateSet = new Set();
+
+  for (const divisionDates of Object.values(divisionMap)) {
+    if (!divisionDates || typeof divisionDates !== "object") continue;
+    for (const [dateStr, slot] of Object.entries(divisionDates)) {
+      const remaining =
+        slot?.remaining ??
+        slot?.spots_remaining ??
+        (slot?.status === "Available" ? 1 : 0);
+      if (remaining > 0) {
+        availableDateSet.add(dateStr.slice(0, 10));
+      }
+    }
+  }
+
+  return Array.from(availableDateSet).sort();
 };
 
 const getPermitStateKey = (permitId) => `state:${permitId}`;
@@ -233,7 +267,8 @@ const runPollCycle = async (env) => {
 
 export default {
   async scheduled(_event, env, _ctx) {
-    await runPollCycle(env);
+    const results = await runPollCycle(env);
+    console.log("Poll cycle complete:", JSON.stringify(results));
   },
 
   async fetch(request, env) {
