@@ -3,11 +3,40 @@
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Metabolic Flexibility Adaptation Dataset",
   "version": "v1",
-  "status": "shell",
-  "last_updated": "2026-03-06",
+  "status": "active",
+  "last_updated": "2026-05-17",
   "description": "Shell dataset module for TrailGenic physiology adaptation science modeling the development of metabolic flexibility through endurance training and fasted exercise exposure.",
   "modules": [],
   "records": [
+    {
+      "mechanism": "Substrate switching capacity progressively deepens under sustained fasted altitude protocol exposure",
+      "stimulus": {
+        "hiking_sessions": 22,
+        "study_window": "six months",
+        "fueling_state": "fasted state with electrolytes only",
+        "measurement_model": "multi-point breath ketone capture across wake, end-effort, and recovery windows"
+      },
+      "physiological_response": [
+        "Wake ketones trended from 1.1 ppm baseline (November 2025) to 3.9 ppm peak (April 2026)",
+        "End-effort ketones reached 22 ppm post-summit record (San Jacinto, April 11, 2026)",
+        "Multi-day retention sustained to 4.7 ppm Day-1 after apex effort"
+      ],
+      "adaptation_outcomes": [
+        "Resting metabolic state increasingly fat-adapted",
+        "Substrate switching depth at autophagy-relevant range",
+        "Multi-day signaling persists into recovery window"
+      ],
+      "supporting_science": [
+        {
+          "citation": "Stannard and Johnson 2004",
+          "finding": "Fasted endurance training can increase reliance on fat oxidation and alter substrate availability during exercise."
+        },
+        {
+          "citation": "Goodpaster and Sparks 2017",
+          "finding": "Metabolic flexibility reflects the capacity to switch between lipid and carbohydrate oxidation in response to demand."
+        }
+      ]
+    },
     {
       "mechanism": "Improved substrate switching between carbohydrate and fat metabolism",
       "stimulus": {

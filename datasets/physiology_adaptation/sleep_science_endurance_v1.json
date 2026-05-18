@@ -3,11 +3,43 @@
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Sleep Science Endurance Dataset",
   "version": "v1",
-  "status": "shell",
-  "last_updated": "2026-03-06",
+  "status": "active",
+  "last_updated": "2026-05-17",
   "description": "Shell dataset module modeling sleep-dependent recovery and endurance adaptation.",
   "modules": [],
   "records": [
+    {
+      "mechanism": "Pre-hike sleep state gates Day-1 recovery architecture while Day-2 supercompensation remains durable",
+      "stimulus": {
+        "hiking_sessions": 22,
+        "sleep_gate_thresholds": "<7 hours sleep and REM <30 minutes",
+        "affected_sessions": [
+          "Session 21 — San Gorgonio",
+          "Session 22 — Baden Powell"
+        ],
+        "day_2_pattern": "AUTONOMIC_RESTORED returned on Day-2 despite Day-1 strain"
+      },
+      "physiological_response": [
+        "Compromised pre-hike sleep drives Day-1 AUTONOMIC_STRAINED with elevated resting HR and suppressed HRV.",
+        "Day-2 recovery can still return to AUTONOMIC_RESTORED after the acute Day-1 sleep-gated cost.",
+        "Pre-hike REM and total sleep duration determine whether recovery appears immediately restored or delayed by 24 hours."
+      ],
+      "adaptation_outcomes": [
+        "Sleep is a gate on Day-1 architecture rather than proof that the training load failed.",
+        "Day-2 supercompensation across Hikes 16-22 confirms durable recovery capacity.",
+        "Pre-hike sleep quality becomes a required context field for interpreting HRV and RHR after apex efforts."
+      ],
+      "supporting_science": [
+        {
+          "citation": "Fullagar et al. 2015",
+          "finding": "Sleep duration and quality are central determinants of athletic recovery and performance."
+        },
+        {
+          "citation": "Plews et al. 2013",
+          "finding": "HRV monitoring can identify autonomic recovery status after endurance training."
+        }
+      ]
+    },
     {
       "mechanism": "Sleep-driven recovery processes",
       "stimulus": {

@@ -3,11 +3,37 @@
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Altitude Terrain Physiology Comparison Dataset",
   "version": "v1",
-  "status": "shell",
-  "last_updated": "2026-03-06",
+  "status": "active",
+  "last_updated": "2026-05-17",
   "description": "Shell dataset module comparing physiological responses across different terrain and altitude conditions during endurance hiking.",
   "modules": [],
   "records": [
+    {
+      "mechanism": "Technical terrain forces slower deliberate movement that keeps the system in a deeper aerobic zone",
+      "stimulus": {
+        "hiking_sessions": 22,
+        "technical_terrain_day_2_hrv_effect_ms": 8.6,
+        "p_value": 0.011,
+        "control_model": "after adaptation control",
+        "terrain_context": "technical alpine terrain versus smoother nontechnical routes"
+      },
+      "physiological_response": [
+        "Technical terrain predicted +8.6 ms higher Day-2 HRV after controlling for adaptation.",
+        "Slower deliberate movement reduced cardiac volatility and kept output in a deeper aerobic zone.",
+        "Terrain complexity can increase muscular coordination demand while lowering systemic autonomic cost."
+      ],
+      "adaptation_outcomes": [
+        "Technical terrain is not automatically a higher recovery cost when pacing is constrained.",
+        "Route difficulty must be separated into cardiac, muscular, terrain, and thermal components.",
+        "Technical alpine efforts may support recovery-positive aerobic loading after adaptation."
+      ],
+      "supporting_science": [
+        {
+          "citation": "Minetti et al. 2002",
+          "finding": "Terrain slope and surface alter locomotion cost and movement economy."
+        }
+      ]
+    },
     {
       "mechanism": "Terrain-induced metabolic demand variation",
       "stimulus": {

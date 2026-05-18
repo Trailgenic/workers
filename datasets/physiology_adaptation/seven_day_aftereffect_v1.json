@@ -3,98 +3,97 @@
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Seven Day Aftereffect Dataset",
   "version": "v1",
-  "status": "shell",
-  "last_updated": "2026-03-06",
-  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling extended endurance adaptation following high-duration aerobic stimulus.",
+  "status": "active",
+  "last_updated": "2026-05-17",
+  "description": "Dataset module for TrailGenic physiology adaptation science documenting the 48-hour post-effort recovery architecture, including the Session 16 inflection that marks the transition from recovery-dependent to recovery-amplifying training.",
   "modules": [],
   "records": [
     {
-      "mechanism": "Extended mitochondrial signaling following prolonged endurance stimulus",
+      "mechanism": "Day-2 autonomic supercompensation following high-load fasted alpine effort",
       "stimulus": {
-        "exercise_type": "long-duration endurance activity",
-        "duration_hours": "4-10",
-        "exercise_intensity": "zone 1 to zone 2 aerobic metabolism"
+        "hiking_sessions": 22,
+        "study_window": "six months",
+        "inflection_session": "Session 16 — Baldy via Devil's Backbone, March 29, 2026",
+        "session_context": "high-load fasted alpine effort with post-effort Day-1 and Day-2 biomarker capture"
       },
       "physiological_response": [
-        "increased AMPK signaling following prolonged energy stress",
-        "elevated PGC-1alpha transcription signaling",
-        "continued mitochondrial remodeling signaling post-exercise",
-        "increased oxidative enzyme expression"
+        "Day-2 HRV returns at or above pre-hike baseline.",
+        "Day-2 resting HR matches or beats pre-hike baseline.",
+        "Sleep architecture restored within the 48-hour post-effort window."
       ],
       "adaptation_outcomes": [
-        "enhanced mitochondrial density",
-        "improved endurance efficiency in subsequent sessions",
-        "greater fatigue resistance",
-        "enhanced long-term aerobic capacity"
-      ],
-      "supporting_science": [
-        {
-          "citation": "Egan and Zierath 2013",
-          "finding": "Exercise activates molecular signaling pathways including AMPK and PGC-1alpha which regulate mitochondrial biogenesis."
-        },
-        {
-          "citation": "Baar et al. 2002",
-          "finding": "Endurance exercise induces transcriptional responses that promote mitochondrial adaptation and oxidative metabolism."
-        }
-      ]
-    },
-    {
-      "mechanism": "Elevated fat oxidation capacity following glycogen depletion",
-      "stimulus": {
-        "exercise_type": "extended endurance exercise",
-        "duration_hours": "3-8",
-        "exercise_intensity": "sustained aerobic workload"
-      },
-      "physiological_response": [
-        "increased reliance on fatty acid oxidation",
-        "upregulation of lipid transport proteins",
-        "increased intramuscular triglyceride utilization",
-        "increased mitochondrial fatty acid oxidation capacity"
-      ],
-      "adaptation_outcomes": [
-        "greater fat oxidation efficiency",
-        "reduced dependence on glycogen during submaximal exercise",
-        "improved endurance fueling stability",
-        "enhanced metabolic flexibility"
-      ],
-      "supporting_science": [
-        {
-          "citation": "Holloszy and Coyle 1984",
-          "finding": "Endurance training enhances skeletal muscle oxidative capacity and fat utilization during prolonged exercise."
-        },
-        {
-          "citation": "Achten and Jeukendrup 2004",
-          "finding": "Fat oxidation during endurance exercise increases with training status and aerobic adaptation."
-        }
-      ]
-    },
-    {
-      "mechanism": "Post-exercise endurance adaptation window",
-      "stimulus": {
-        "exercise_type": "high-volume endurance training",
-        "duration_hours": "4-10",
-        "exercise_intensity": "predominantly aerobic"
-      },
-      "physiological_response": [
-        "prolonged metabolic signaling following endurance activity",
-        "increased protein synthesis related to mitochondrial enzymes",
-        "elevated insulin sensitivity",
-        "enhanced substrate transport into muscle cells"
-      ],
-      "adaptation_outcomes": [
-        "improved metabolic efficiency in subsequent training sessions",
-        "greater endurance stability across weekly training cycles",
-        "improved recovery of metabolic homeostasis",
-        "enhanced aerobic training response"
+        "Seven consecutive Day-2 AUTONOMIC_RESTORED reads across five trail systems.",
+        "Transition from recovery cost to recovery compounding.",
+        "Session 16 marks the first durable recovery inflection in the 22-session dataset."
       ],
       "supporting_science": [
         {
           "citation": "Coffey and Hawley 2007",
-          "finding": "Exercise triggers molecular responses that persist post-exercise and influence adaptation to endurance training."
+          "finding": "Post-exercise molecular signaling can persist beyond the exercise bout and contribute to training adaptation."
         },
         {
-          "citation": "Hawley et al. 2014",
-          "finding": "Training adaptations occur through cumulative molecular signaling responses to repeated endurance exercise."
+          "citation": "Plews et al. 2013",
+          "finding": "HRV recovery dynamics can serve as a marker of endurance adaptation and autonomic readiness."
+        }
+      ]
+    },
+    {
+      "mechanism": "Pre-hike sleep state gates Day-1 recovery architecture independently of Day-2 supercompensation",
+      "stimulus": {
+        "sessions": "Sessions 21 (San Gorgonio) and 22 (Baden Powell)",
+        "pre_hike_sleep_state": "compromised pre-hike sleep with compressed duration and REM",
+        "day_2_context": "AUTONOMIC_RESTORED returned despite Day-1 strain"
+      },
+      "physiological_response": [
+        "Day-1 returns to AUTONOMIC_STRAINED with elevated resting HR and suppressed HRV.",
+        "Day-2 fully restores after the acute sleep-gated Day-1 recovery cost.",
+        "The same trained system can show Day-1 strain and Day-2 supercompensation in sequence."
+      ],
+      "adaptation_outcomes": [
+        "Day-2 recovery is durable and route-independent.",
+        "Day-1 architecture is conditional on entering rested.",
+        "Pre-hike sleep becomes a gating variable rather than a secondary lifestyle covariate."
+      ],
+      "supporting_science": [
+        {
+          "citation": "Fullagar et al. 2015",
+          "finding": "Sleep quantity and quality materially influence athletic recovery and subsequent performance readiness."
+        },
+        {
+          "citation": "Plews et al. 2013",
+          "finding": "Autonomic recovery markers help identify whether training load has been absorbed."
+        }
+      ]
+    },
+    {
+      "mechanism": "Suprabaseline rebound from worst pre-hike state to highest exit state within 48 hours",
+      "stimulus": {
+        "session": "San Gorgonio via Vivian Creek, May 9, 2026",
+        "pre_hike_hrv_ms": 23,
+        "pre_hike_rem_minutes": 0,
+        "distance_miles": 16.81,
+        "elevation_gain_ft": 5600,
+        "peak_altitude_ft": 11506,
+        "duration_minutes": 589
+      },
+      "physiological_response": [
+        "Day-2 HRV rebound to 54 ms.",
+        "Resting HR at 54 bpm matching all-time Day-2 low.",
+        "Recovery arc moved from suppressed pre-hike autonomic state to highest exit state within 48 hours."
+      ],
+      "adaptation_outcomes": [
+        "Largest positive recovery arc in 22-session dataset.",
+        "System actively converts effort into adaptation faster than effort accumulates.",
+        "Apex session simultaneously set distance, altitude, duration, and recovery-arc ceilings."
+      ],
+      "supporting_science": [
+        {
+          "citation": "Coffey and Hawley 2007",
+          "finding": "Repeated endurance stimuli can drive persistent signaling that supports adaptation after the effort ends."
+        },
+        {
+          "citation": "Plews et al. 2013",
+          "finding": "Positive HRV rebound after load can indicate adaptive recovery rather than accumulated strain."
         }
       ]
     }

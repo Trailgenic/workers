@@ -3,11 +3,36 @@
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Eccentric Load Stress Inversion Dataset",
   "version": "v1",
-  "status": "shell",
-  "last_updated": "2026-03-06",
+  "status": "active",
+  "last_updated": "2026-05-17",
   "description": "Shell dataset module modeling eccentric muscular stress and adaptation during downhill endurance activity.",
   "modules": [],
   "records": [
+    {
+      "mechanism": "Repeated downhill eccentric load is absorbed without accumulated autonomic strain after the recovery inflection",
+      "stimulus": {
+        "hiking_sessions": 22,
+        "recovery_inflection": "Session 16 — Baldy via Devil's Backbone",
+        "day_2_restored_streak": "Hikes 16-22",
+        "terrain_context": "technical alpine descents and large elevation-loss sessions"
+      },
+      "physiological_response": [
+        "Eccentric descent load no longer predicts persistent Day-2 autonomic suppression after the inflection.",
+        "Technical terrain may slow movement enough to preserve deeper aerobic output while still imposing muscular load.",
+        "Day-2 restoration across Hikes 16-22 suggests muscular stress was absorbed rather than accumulated."
+      ],
+      "adaptation_outcomes": [
+        "Improved downhill resilience across repeated mountain exposure.",
+        "Lower risk that eccentric muscular stress becomes systemic overreaching when recovery architecture is intact.",
+        "Supports progression toward higher-load alpine routes with sleep-gated Day-1 monitoring."
+      ],
+      "supporting_science": [
+        {
+          "citation": "Proske and Morgan 2001",
+          "finding": "Repeated eccentric exposure can produce protective adaptations that reduce subsequent muscle damage."
+        }
+      ]
+    },
     {
       "mechanism": "Eccentric muscle loading during downhill movement",
       "stimulus": {

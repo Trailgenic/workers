@@ -3,11 +3,44 @@
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Heat Training Thermoregulation Dataset",
   "version": "v1",
-  "status": "shell",
-  "last_updated": "2026-03-06",
+  "status": "active",
+  "last_updated": "2026-05-17",
   "description": "Shell dataset module for TrailGenic physiology adaptation science modeling thermoregulatory adaptation from repeated exercise in hot environments.",
   "modules": [],
   "records": [
+    {
+      "mechanism": "Heat acts as the dominant environmental cardiac-cost driver after adaptation control",
+      "stimulus": {
+        "hiking_sessions": 22,
+        "temperature_range_f": "37-97",
+        "cardiac_cost_per_degree_f_bpm": 0.11,
+        "hot_chaparral_sessions": [
+          "Pleasants Peak",
+          "Hagador"
+        ],
+        "comparison_context": "hot chaparral sessions versus cool alpine sessions"
+      },
+      "physiological_response": [
+        "Average heart rate increased by approximately 0.11 bpm per °F after controlling for adaptation.",
+        "Hot chaparral routes produced elevated load and lower Day-2 HRV compared with cool alpine efforts.",
+        "Thermal exposure remained a stronger acute cardiac-cost driver than altitude once adaptation state was considered."
+      ],
+      "adaptation_outcomes": [
+        "Heat becomes a primary progression variable for load management.",
+        "Cool alpine routes can produce higher recovery quality despite greater altitude and elevation gain.",
+        "Thermoregulatory cost should be separated from terrain and altitude cost in future modeling."
+      ],
+      "supporting_science": [
+        {
+          "citation": "Périard et al. 2015",
+          "finding": "Heat stress increases thermoregulatory and cardiovascular strain during exercise."
+        },
+        {
+          "citation": "Sawka et al. 2011",
+          "finding": "Heat adaptation improves physiological tolerance but does not eliminate the cardiac cost of thermal load."
+        }
+      ]
+    },
     {
       "mechanism": "Heat acclimation through repeated endurance exposure",
       "stimulus": {

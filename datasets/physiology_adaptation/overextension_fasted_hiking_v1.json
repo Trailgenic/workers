@@ -3,11 +3,40 @@
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Overextension Fasted Hiking Safety Dataset",
   "version": "v1",
-  "status": "shell",
-  "last_updated": "2026-03-06",
+  "status": "active",
+  "last_updated": "2026-05-17",
   "description": "Shell dataset module modeling physiological risk factors and safety considerations when endurance activity is performed in a fasted metabolic state for extended durations.",
   "modules": [],
   "records": [
+    {
+      "mechanism": "Twenty-two fasted high-load hikes show absorbed rather than accumulated load when recovery architecture is intact",
+      "stimulus": {
+        "hiking_sessions": 22,
+        "fueling_state": "fasted with electrolyte-only support",
+        "day_2_restored_streak": "Hikes 16-22",
+        "apex_session": "San Gorgonio via Vivian Creek, May 9, 2026"
+      },
+      "physiological_response": [
+        "No overreaching pattern emerged across 22 high-load fasted hiking sessions.",
+        "Seven consecutive Day-2 AUTONOMIC_RESTORED reads indicate load was absorbed rather than accumulated.",
+        "Even after the apex San Gorgonio effort, Day-2 HRV rebounded to 54 ms from a 23 ms pre-hike state."
+      ],
+      "adaptation_outcomes": [
+        "Fasted high-load hiking is sustainable in this protocol when sleep, electrolytes, pacing, and recovery monitoring are maintained.",
+        "Day-2 supercompensation becomes the safety signal separating adaptation from overextension.",
+        "Compressed pre-hike sleep remains a Day-1 risk modifier even when Day-2 recovery is robust."
+      ],
+      "supporting_science": [
+        {
+          "citation": "Meeusen et al. 2013",
+          "finding": "Overtraining risk is best interpreted through performance and recovery markers across time, not single-session load alone."
+        },
+        {
+          "citation": "Jeukendrup 2017",
+          "finding": "Fueling and intensity management shape the risk profile of prolonged endurance work."
+        }
+      ]
+    },
     {
       "mechanism": "Hypoglycemia risk during prolonged fasted endurance activity",
       "stimulus": {
