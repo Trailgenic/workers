@@ -3,11 +3,42 @@
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Altitude Adaptation Dataset",
   "version": "v1",
-  "status": "shell",
-  "last_updated": "2026-03-06",
-  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling physiological responses and adaptations to high-altitude exposure during endurance activity.",
+  "status": "active",
+  "last_updated": "2026-05-17",
+  "description": "Dataset module for TrailGenic physiology adaptation science modeling cardiac and metabolic stability during repeated high-altitude endurance exposure.",
   "modules": [],
   "records": [
+    {
+      "mechanism": "Alpine cardiac consolidation at progressively higher altitude ceiling",
+      "stimulus": {
+        "hiking_sessions": 22,
+        "altitude_ceiling_ft": 11506,
+        "ceiling_session": "San Gorgonio via Vivian Creek, May 9, 2026",
+        "recent_alpine_sessions": 5,
+        "recent_alpine_avg_hr_range_bpm": "119-121",
+        "altitude_context": "recent repeated 10,000+ ft alpine sessions"
+      },
+      "physiological_response": [
+        "Average HR consolidated at 119-121 bpm across the recent alpine block despite repeated exposure above 10,000 ft.",
+        "The altitude ceiling rose to 11,506 ft without loss of engine stability.",
+        "The apex San Gorgonio session combined longest distance, highest peak, and largest recovery arc in the dataset."
+      ],
+      "adaptation_outcomes": [
+        "Improved high-altitude efficiency under sustained fasted load.",
+        "Reduced cardiac cost at 10,000+ ft after repeated exposure.",
+        "Expanded altitude tolerance without evidence of accumulated autonomic strain."
+      ],
+      "supporting_science": [
+        {
+          "citation": "Mizuno et al. 1990",
+          "finding": "Altitude exposure and endurance training can interact to shape oxygen transport and aerobic performance adaptations."
+        },
+        {
+          "citation": "Fulco et al. 1998",
+          "finding": "Repeated altitude exposure alters physiological strain and acclimatization responses during exercise."
+        }
+      ]
+    },
     {
       "mechanism": "Hypoxia-driven erythropoietin signaling",
       "stimulus": {

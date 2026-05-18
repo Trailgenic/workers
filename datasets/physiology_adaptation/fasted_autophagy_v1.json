@@ -3,11 +3,42 @@
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Fasted Autophagy Dataset",
   "version": "v1",
-  "status": "shell",
-  "last_updated": "2026-03-06",
-  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling stimulus, response, and adaptation for fasted autophagy.",
+  "status": "active",
+  "last_updated": "2026-05-17",
+  "description": "Dataset module for TrailGenic physiology adaptation science modeling fasted endurance, autophagy-relevant signaling, ketone depth, and multi-day metabolic retention.",
   "modules": [],
   "records": [
+    {
+      "mechanism": "Fasted alpine load produces autophagy-relevant ketone depth and multi-day retention after repeated HWM exposure",
+      "stimulus": {
+        "hiking_sessions": 22,
+        "record_session": "San Jacinto via Marion Mountain, April 11, 2026",
+        "record_end_ketones_ppm": 22,
+        "record_distance_miles": 12.75,
+        "record_peak_altitude_ft": 10849,
+        "day_1_retention_ppm": 4.7
+      },
+      "physiological_response": [
+        "End-effort breath ketones reached 22 ppm after San Jacinto, the highest value in the dataset.",
+        "Wake ketones progressed from 1.1 ppm baseline to 3.9 ppm peak by April 25, 2026.",
+        "Ketone elevation persisted into the recovery window, including 4.7 ppm Day-1 retention after the San Gorgonio apex effort."
+      ],
+      "adaptation_outcomes": [
+        "Repeated fasted altitude exposure deepened substrate-switching range.",
+        "Autophagy-relevant metabolic signaling extended beyond the exercise bout.",
+        "Ketone retention indicates absorbed metabolic stress rather than acute depletion alone."
+      ],
+      "supporting_science": [
+        {
+          "citation": "He et al. 2012",
+          "finding": "Exercise can induce autophagy-related signaling linked to metabolic regulation."
+        },
+        {
+          "citation": "Kim et al. 2011",
+          "finding": "AMPK and mTOR pathways regulate autophagy initiation under nutrient and energy stress."
+        }
+      ]
+    },
     {
       "mechanism": "AMPK activation during fasted endurance exercise",
       "stimulus": {

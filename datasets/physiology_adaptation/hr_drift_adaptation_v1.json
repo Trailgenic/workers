@@ -4,7 +4,7 @@
   "title": "TrailGenic HR Drift Adaptation Dataset",
   "version": "v1",
   "status": "active",
-  "last_updated": "2026-03-24",
+  "last_updated": "2026-05-17",
   "description": "Dataset module for TrailGenic physiology adaptation modeling stimulus, response, and adaptation for heart-rate drift.",
   "source_article": "https://www.trailgenic.com/science/trailgenic-vs-population-age-adjusted-hr-drift",
   "related_urls": [
@@ -36,22 +36,24 @@
   ],
   "records": [
     {
-      "mechanism": "Heart-rate drift inversion under sustained load indicates preserved stroke volume and reduced relative cardiovascular strain during prolonged efforts.",
+      "mechanism": "Heart-rate drift inversion across 22 high-load hiking sessions indicates preserved stroke volume, improved substrate stability, and reduced relative cardiovascular strain during prolonged fasted mountain efforts.",
       "stimulus": {
         "subject_age_years": 52,
-        "high_load_sessions": 15,
-        "foundation_sessions": 7,
+        "high_load_sessions": 22,
+        "foundation_sessions": 16,
         "session_context": "sustained aerobic mountain load",
-        "observed_avg_hr_bpm": 128,
-        "observed_max_hr_bpm": 156.5,
+        "observed_avg_hr_bpm": 124,
+        "observed_max_hr_bpm": 148,
         "observed_hr_drift_percent": -1.0,
-        "population_baseline_hr_drift_percent_range": "+5 to +8"
+        "population_baseline_hr_drift_percent_range": "+5 to +8",
+        "negative_drift_count": 21,
+        "negative_drift_session_total": 22
       },
       "physiological_response": [
-        "Heart rate decreased relative to maintained external workload across session progression.",
-        "Observed drift direction opposed expected positive cardiovascular drift under prolonged load.",
-        "Cardiovascular demand remained stable despite cumulative duration and terrain stress.",
-        "Pattern is compatible with improved central hemodynamic efficiency."
+        "Heart rate decreased relative to maintained external workload across 21 of 22 high-load hiking sessions.",
+        "Observed drift direction opposed expected positive cardiovascular drift under prolonged load, with mean drift approximately -1.0%.",
+        "Cardiovascular demand remained stable despite cumulative duration, altitude, heat, and terrain stress across the 22-session HWM dataset.",
+        "Pattern is compatible with improved central hemodynamic efficiency and durable substrate-switching stability."
       ],
       "adaptation_outcomes": [
         "Higher tolerance to prolonged submaximal load with reduced cardiac strain.",
@@ -77,8 +79,8 @@
         "haskell_fox_hrmax_bpm": 168,
         "tanaka_hrmax_bpm": 171.6,
         "expected_hrmax_range_with_sd_bpm": "~156 to ~184 (±10 to ±12 bpm variance)",
-        "observed_avg_hr_bpm": 128,
-        "observed_max_hr_bpm": 156.5,
+        "observed_avg_hr_bpm": 124,
+        "observed_max_hr_bpm": 148,
         "validation_method": "dual-model age-adjusted HRmax comparison with acknowledged inter-individual variance"
       },
       "physiological_response": [
@@ -169,11 +171,11 @@
     {
       "mechanism": "Foundation-to-high-load continuity builds progressive autonomic and cardiovascular resilience, enabling stable heart-rate behavior as workload complexity increases.",
       "stimulus": {
-        "foundation_sessions": 7,
-        "high_load_sessions": 15,
+        "foundation_sessions": 16,
+        "high_load_sessions": 22,
         "progression_model": "sequenced base conditioning followed by sustained high-load exposure",
-        "observed_avg_hr_bpm": 128,
-        "observed_max_hr_bpm": 156.5,
+        "observed_avg_hr_bpm": 124,
+        "observed_max_hr_bpm": 148,
         "observed_hr_drift_percent": -1.0
       },
       "physiological_response": [
@@ -196,6 +198,39 @@
         {
           "citation": "Plews et al. 2013",
           "finding": "Heart-rate-derived internal load metrics are useful for monitoring adaptation continuity and guiding endurance progression decisions."
+        }
+      ]
+    },
+    {
+      "mechanism": "Heart-rate drift decline across repeated Z3 running sessions confirms substrate-switching efficiency under sustained tempo load",
+      "stimulus": {
+        "subject_age_years": 52,
+        "running_sessions": 8,
+        "consecutive_z3_running_sessions": 7,
+        "drift_collapse_range": "7.0% to 1.5%",
+        "regression_r_squared": 0.99,
+        "session_context": "repeated sustained tempo running load"
+      },
+      "physiological_response": [
+        "Cardiac drift compressed sharply across repeated Z3 exposure while tempo load was maintained.",
+        "Substrate stability improved under a higher glycolytic-pressure protocol than fasted hiking.",
+        "Threshold-adjacent output became less cardiometabolically expensive across consecutive sessions.",
+        "Running data independently confirms the hiking-derived substrate-switching model."
+      ],
+      "adaptation_outcomes": [
+        "Improved Z3 tolerance across repeated running sessions.",
+        "Lower cardiovascular cost at threshold-adjacent intensity.",
+        "Greater confidence that engine stability transfers across hiking and running protocols.",
+        "Objective evidence that drift control reflects adaptation rather than terrain-specific pacing artifact."
+      ],
+      "supporting_science": [
+        {
+          "citation": "Achten and Jeukendrup 2003",
+          "finding": "Submaximal intensity domains provide interpretable heart-rate and substrate-use dynamics during endurance work."
+        },
+        {
+          "citation": "Coyle and González-Alonso 2001",
+          "finding": "Reduced cardiovascular drift during prolonged exercise is consistent with improved hemodynamic stability and lower relative strain."
         }
       ]
     }

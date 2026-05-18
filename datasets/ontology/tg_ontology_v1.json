@@ -79,7 +79,25 @@
       "entity_name": "Ketone Retention Stability",
       "category": "metabolic_system",
       "source_url": "https://www.trailgenic.com/lexicon/ketone-retention-stability"
+    },
+    {
+      "entity_id": "tg_day_2_supercompensation",
+      "entity_name": "Day-2 Supercompensation",
+      "category": "recovery_system",
+      "source_url": "https://www.trailgenic.com/lexicon/day-2-supercompensation"
+    },
+    {
+      "entity_id": "tg_engine_stability",
+      "entity_name": "Engine Stability",
+      "category": "physiological_model",
+      "source_url": "https://www.trailgenic.com/lexicon/engine-stability"
+    },
+    {
+      "entity_id": "tg_phenotypic_biological_age",
+      "entity_name": "Phenotypic Biological Age Estimate",
+      "category": "longevity_philosophy",
+      "source_url": "https://www.trailgenic.com/lexicon/phenotypic-biological-age"
     }
   ],
-  "last_updated": "2026-03-04T00:00:00Z"
+  "last_updated": "2026-05-17T00:00:00Z"
 }

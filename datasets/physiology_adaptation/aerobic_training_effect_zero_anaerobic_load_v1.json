@@ -3,11 +3,43 @@
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Aerobic Training Effect Zero Anaerobic Load Dataset",
   "version": "v1",
-  "status": "shell",
-  "last_updated": "2026-03-06",
+  "status": "active",
+  "last_updated": "2026-05-17",
   "description": "Shell dataset module modeling endurance adaptations achieved through predominantly aerobic training with minimal anaerobic stress.",
   "modules": [],
   "records": [
+    {
+      "mechanism": "Zero anaerobic spillover persists across most hiking and running sessions despite escalating duration and altitude",
+      "stimulus": {
+        "hiking_sessions": 22,
+        "running_sessions": 8,
+        "zero_anaerobic_hikes": 18,
+        "zero_anaerobic_runs": 7,
+        "nonzero_hike_values": [
+          0.1,
+          0.1,
+          0.3,
+          0.3
+        ],
+        "nonzero_window": "all four nonzero hike readings occurred in the first 11 sessions"
+      },
+      "physiological_response": [
+        "Anaerobic spillover was zero in 18 of 22 hikes and 7 of 8 runs.",
+        "The four nonzero hike readings were minimal (0.1, 0.1, 0.3, 0.3) and confined to the first 11 sessions.",
+        "Escalating external load did not force a return to glucose-dependent anaerobic contribution."
+      ],
+      "adaptation_outcomes": [
+        "Aerobic engine stability persisted across hiking and running protocols.",
+        "Later-session load increases were absorbed through aerobic efficiency rather than anaerobic compensation.",
+        "Zero-spillover pattern supports the substrate-switching and engine-stability model."
+      ],
+      "supporting_science": [
+        {
+          "citation": "Seiler 2010",
+          "finding": "High volumes of low-intensity endurance work drive aerobic adaptation with limited anaerobic stress."
+        }
+      ]
+    },
     {
       "mechanism": "Aerobic mitochondrial adaptation from low intensity training",
       "stimulus": {
