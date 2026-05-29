@@ -81,26 +81,17 @@ const getMonthStartISO = (date) => {
 };
 
 const extractAvailableDates = (availabilityResponse) => {
-  const divisionMap =
-    availabilityResponse?.payload?.availability ||
-    availabilityResponse?.availability ||
-    {};
-
+  const divisionMap = availabilityResponse?.payload?.availability || {};
   const availableDateSet = new Set();
-
-  for (const divisionDates of Object.values(divisionMap)) {
-    if (!divisionDates || typeof divisionDates !== "object") continue;
-    for (const [dateStr, slot] of Object.entries(divisionDates)) {
-      const remaining =
-        slot?.remaining ??
-        slot?.spots_remaining ??
-        (slot?.status === "Available" ? 1 : 0);
-      if (remaining > 0) {
+  for (const division of Object.values(divisionMap)) {
+    const dateAvail = division?.date_availability;
+    if (!dateAvail || typeof dateAvail !== "object") continue;
+    for (const [dateStr, slot] of Object.entries(dateAvail)) {
+      if (slot && typeof slot.remaining === "number" && slot.remaining > 0) {
         availableDateSet.add(dateStr.slice(0, 10));
       }
     }
   }
-
   return Array.from(availableDateSet).sort();
 };
 
@@ -191,20 +182,16 @@ const notifySubscribers = async (env, permit, availableDates) => {
   }
 };
 
+const BROWSER_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
+
 const fetchPermitAvailability = async (permit, startDateISO) => {
-  const endpoint =
-    `https://www.recreation.gov/api/permits/${permit.rec_gov_facility_id}/availability/month?start_date=${encodeURIComponent(startDateISO)}`;
-
+  const endpoint = `https://www.recreation.gov/api/permits/${permit.rec_gov_facility_id}/availability/month?start_date=${encodeURIComponent(startDateISO)}`;
   const res = await fetch(endpoint, {
-    headers: {
-      Accept: "application/json"
-    }
+    headers: { "Accept": "application/json", "User-Agent": BROWSER_UA }
   });
-
   if (!res.ok) {
-    throw new Error(`Recreation.gov returned ${res.status}`);
+    throw new Error(`Recreation.gov returned ${res.status} for facility ${permit.rec_gov_facility_id}`);
   }
-
   return await res.json();
 };
 
@@ -230,12 +217,13 @@ const pollPermit = async (env, permit, now = new Date()) => {
 
   const stateKey = getPermitStateKey(permit.permit_id);
   const previousRaw = await env.PERMIT_STATE.get(stateKey);
+  const isFirstRun = !previousRaw;
   const previousDates = previousRaw ? (JSON.parse(previousRaw).dates || []) : [];
-
   const previousDateSet = new Set(previousDates);
   const newDates = combinedDates.filter((d) => !previousDateSet.has(d));
 
-  if (newDates.length > 0) {
+  if (!isFirstRun && newDates.length > 0) {
+    console.log(`New availability for ${permit.permit_id}: ${newDates.join(", ")}`);
     await notifySubscribers(env, permit, newDates);
   }
 
