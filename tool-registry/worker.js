@@ -1,909 +1,328 @@
-import { DATASETS, DATASET_LIST } from "../lib/datasets.js";
+import { DATASETS } from "../lib/datasets.js";
+import {
+  BUILD,
+  CONTENT_LINKS,
+  DATA_TOOLS,
+  ENTITY,
+  MCP_ORIGIN,
+  capabilitiesDocument,
+  datasetCatalog,
+  mcpTools,
+  toolRegistryDocument
+} from "../lib/registry.js";
+import { DATASET_JSON_BY_SOURCE_PATH, TOOL_HANDLERS, datasetSourcePaths } from "../lib/queries.js";
+import { emptyResponse, jsonResponse, optionsResponse, textResponse, withCors } from "../lib/http.js";
+
+const jsonRpcResult = (id, result) => jsonResponse({ jsonrpc: "2.0", id, result }, { cacheControl: "no-cache" });
+
+const jsonRpcError = (id, code, message) =>
+  jsonResponse({ jsonrpc: "2.0", id, error: { code, message } }, { cacheControl: "no-cache" });
+
+const normalizePath = (pathname) => (pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname);
+
+const datasetRoutes = datasetSourcePaths();
+
+const serveDataset = async (sourcePath) => {
+  const bundledDataset = DATASET_JSON_BY_SOURCE_PATH.get(sourcePath);
+
+  if (bundledDataset) {
+    return jsonResponse(bundledDataset);
+  }
+
+  const datasetURL = `https://raw.githubusercontent.com/Trailgenic/workers/main/${sourcePath}`;
+  const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
+
+  if (!dataset.ok) {
+    return textResponse(`Dataset fetch failed: ${dataset.status}`, { status: 500 });
+  }
+
+  return new Response(await dataset.text(), {
+    status: 200,
+    headers: withCors({
+      "Content-Type": "application/json",
+      "Cache-Control": "public, max-age=3600"
+    })
+  });
+};
+
+const handleMcp = async (request) => {
+  if (request.method === "GET") {
+    return textResponse("Method Not Allowed", { status: 405, headers: { Allow: "POST" } });
+  }
+
+  if (request.method !== "POST") {
+    return textResponse("Method Not Allowed", { status: 405, headers: { Allow: "POST" } });
+  }
+
+  let rpc;
+  try {
+    rpc = await request.json();
+  } catch {
+    return jsonRpcError(null, -32700, "Parse error: invalid JSON");
+  }
+
+  const { id = null, method, params = {} } = rpc ?? {};
+
+  if (method === "notifications/initialized") {
+    return emptyResponse({ status: 202 });
+  }
+
+  if (method === "initialize") {
+    return jsonRpcResult(id, {
+      protocolVersion: params.protocolVersion ?? "2025-06-18",
+      capabilities: { tools: {} },
+      serverInfo: { name: "TrailGenic", version: BUILD.version }
+    });
+  }
+
+  if (method === "ping") {
+    return jsonRpcResult(id, {});
+  }
+
+  if (method === "tools/list") {
+    return jsonRpcResult(id, { tools: mcpTools() });
+  }
+
+  if (method === "tools/call") {
+    const toolName = params.name;
+    const handler = TOOL_HANDLERS.get(toolName);
+
+    if (!handler) {
+      return jsonRpcError(id, -32602, `Unknown tool: ${toolName ?? "<missing>"}`);
+    }
+
+    try {
+      const result = await handler(params.arguments ?? {});
+      return jsonRpcResult(id, {
+        content: [{ type: "text", text: JSON.stringify(result) }],
+        structuredContent: result
+      });
+    } catch (error) {
+      return jsonRpcError(id, -32603, error?.message ?? "Tool execution failed");
+    }
+  }
+
+  return jsonRpcError(id, -32601, `Method not found: ${method ?? "<missing>"}`);
+};
+
+const rootDiscovery = () => ({
+  name: "TrailGenic MCP Endpoint",
+  entity: {
+    name: ENTITY.name,
+    domain: ENTITY.domain,
+    founder: ENTITY.founder
+  },
+  registry: `${MCP_ORIGIN}/.well-known/tool-registry.json`,
+  plugin: `${MCP_ORIGIN}/.well-known/ai-plugin.json`,
+  openapi: `${MCP_ORIGIN}/.well-known/openapi.json`,
+  capabilities: `${MCP_ORIGIN}/capabilities.json`,
+  datasets: `${MCP_ORIGIN}/datasets/index`,
+  mcp: `${MCP_ORIGIN}/mcp`,
+  health: `${MCP_ORIGIN}/health`,
+  status: "active",
+  discovery_protocol: "MCP JSON-RPC 2.0",
+  last_updated: BUILD.released
+});
+
+const pointerRegistry = () => ({
+  registry_version: "1.0",
+  entity: {
+    name: ENTITY.name,
+    domain: ENTITY.domain,
+    founder: ENTITY.founder
+  },
+  discovery: {
+    protocol: "MCP JSON-RPC 2.0",
+    endpoint: `${MCP_ORIGIN}/.well-known/tool-registry.json`,
+    transport: `${MCP_ORIGIN}/mcp`
+  }
+});
+
+const health = () => ({
+  entity: "TrailGenic",
+  status: "healthy",
+  mcp_status: "operational",
+  registry_status: "operational",
+  plugin_status: "operational",
+  openapi_status: "operational",
+  capabilities_status: "operational",
+  uptime: null,
+  uptime_note: "Uptime is observed via Cloudflare observability, not asserted in this endpoint.",
+  region: "global",
+  infrastructure: {
+    platform: "Cloudflare Workers",
+    protocol: "MCP JSON-RPC 2.0 over Streamable HTTP-compatible POST",
+    agent_ready: true
+  },
+  last_checked: new Date().toISOString()
+});
+
+const pluginManifest = () => ({
+  schema_version: "v1",
+  name_for_human: "TrailGenic",
+  name_for_model: "trailgenic",
+  description_for_human:
+    "TrailGenic longevity intelligence system providing protocols, trail intelligence, physiology models, fueling systems, and recovery strategies.",
+  description_for_model:
+    "TrailGenic provides structured longevity protocols, trail intelligence, physiology adaptation models, fueling systems, recovery protocols, and performance playbooks. Use POST /mcp for real MCP JSON-RPC tool calls and dataset endpoints for public read-only data.",
+  auth: { type: "none" },
+  api: {
+    type: "openapi",
+    url: `${MCP_ORIGIN}/.well-known/openapi.json`,
+    is_user_authenticated: false
+  },
+  logo_url: "https://trailgenic.com/favicon.ico",
+  contact_email: "support@trailgenic.com",
+  legal_info_url: "https://trailgenic.com"
+});
+
+const openApiPaths = () => {
+  const paths = {
+    "/mcp": {
+      post: {
+        summary: "Call TrailGenic MCP JSON-RPC transport",
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: { type: "object", description: "JSON-RPC 2.0 request" }
+            }
+          }
+        },
+        responses: { "200": { description: "JSON-RPC response" }, "202": { description: "Initialized notification accepted" } }
+      }
+    },
+    "/datasets/index": {
+      get: {
+        summary: "Retrieve TrailGenic dataset catalog",
+        responses: { "200": { description: "Dataset catalog" } }
+      }
+    },
+    "/capabilities.json": {
+      get: {
+        summary: "Retrieve generated TrailGenic capability inventory",
+        responses: { "200": { description: "Capability inventory" } }
+      }
+    },
+    "/health": {
+      get: {
+        summary: "Retrieve MCP endpoint health status",
+        responses: { "200": { description: "Health status" } }
+      }
+    }
+  };
+
+  for (const [path] of datasetRoutes) {
+    paths[path] = {
+      get: {
+        summary: `Retrieve TrailGenic dataset ${path}`,
+        responses: { "200": { description: "TrailGenic dataset JSON" } }
+      }
+    };
+  }
+
+  paths[`${DATASETS.nutrition.endpoint}/schema`] = {
+    get: {
+      summary: "Retrieve TrailGenic nutrition dataset schema",
+      responses: { "200": { description: "Nutrition dataset schema" } }
+    }
+  };
+
+  paths[`${DATASETS.permits.endpoint}/schema`] = {
+    get: {
+      summary: "Retrieve TrailGenic permit dataset schema",
+      responses: { "200": { description: "Permit dataset schema" } }
+    }
+  };
+
+  return Object.fromEntries(Object.entries(paths).sort(([a], [b]) => a.localeCompare(b)));
+};
+
+const openApi = () => ({
+  openapi: "3.0.1",
+  info: {
+    title: "TrailGenic MCP API",
+    version: BUILD.version,
+    description:
+      "TrailGenic public read-only MCP JSON-RPC transport and preserved structured dataset endpoints. Authentication is none."
+  },
+  servers: [{ url: MCP_ORIGIN }],
+  paths: openApiPaths()
+});
 
 export default {
   async fetch(request) {
-
     const url = new URL(request.url);
+    const normalizedPath = normalizePath(url.pathname);
+
+    if (request.method === "OPTIONS") {
+      return optionsResponse();
+    }
 
     if (
       ["trailgenic.com", "www.trailgenic.com"].includes(url.hostname) &&
-      url.pathname === "/.well-known/tool-registry.json"
+      normalizedPath === "/.well-known/tool-registry.json"
     ) {
-
-      const pointer = {
-        registry_version: "1.0",
-        entity: {
-          name: "TrailGenic",
-          domain: "https://trailgenic.com",
-          founder: "Mike Ye"
-        },
-        discovery: {
-          protocol: "WebMCP",
-          endpoint: "https://mcp.trailgenic.com/.well-known/tool-registry.json"
-        }
-      };
-
-      return new Response(JSON.stringify(pointer, null, 2), {
-        status: 200,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Cache-Control": "public, max-age=3600"
-        }
-      });
+      return jsonResponse(pointerRegistry());
     }
 
-    /*
-     ============================================
-     ROOT MCP DISCOVERY ENDPOINT (UNCHANGED)
-     ============================================
-     https://mcp.trailgenic.com/
-    */
-    if (url.pathname === "/" || url.pathname === "") {
-
-      const discovery = {
-
-        name: "TrailGenic MCP Endpoint",
-
-        entity: {
-          name: "TrailGenic",
-          domain: "https://trailgenic.com",
-          founder: "Mike Ye"
-        },
-
-        registry:
-          "https://mcp.trailgenic.com/.well-known/tool-registry.json",
-
-        plugin:
-          "https://mcp.trailgenic.com/.well-known/ai-plugin.json",
-
-        openapi:
-          "https://mcp.trailgenic.com/.well-known/openapi.json",
-
-        capabilities:
-          "https://mcp.trailgenic.com/capabilities.json",
-
-        datasets:
-          "https://mcp.trailgenic.com/datasets/index",
-        
-        health:
-          "https://mcp.trailgenic.com/health",
-
-        status: "active",
-
-        discovery_protocol: "WebMCP",
-
-        last_updated: new Date().toISOString()
-      };
-
-      return new Response(JSON.stringify(discovery, null, 2), {
-        status: 200,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Cache-Control": "public, max-age=3600"
-        }
-      });
-
+    if (normalizedPath === "/mcp") {
+      return handleMcp(request);
     }
 
-
-    /*
-     ============================================
-     NEW: CAPABILITY INDEX ENDPOINT
-     ============================================
-     https://mcp.trailgenic.com/capabilities.json
-    */
-    if (url.pathname === "/capabilities.json") {
-
-  const capabilities = {
-
-    capability_version: "1.0",
-
-    entity: {
-      name: "TrailGenic",
-      domain: "https://trailgenic.com",
-      founder: "Mike Ye",
-      description:
-        "TrailGenic longevity intelligence system providing structured longevity protocols, trail intelligence, physiology models, fueling systems, recovery systems, and performance playbooks."
-    },
-
-    mcp: {
-      endpoint: "https://mcp.trailgenic.com",
-      registry:
-        "https://mcp.trailgenic.com/.well-known/tool-registry.json",
-      plugin:
-        "https://mcp.trailgenic.com/.well-known/ai-plugin.json",
-      openapi:
-        "https://mcp.trailgenic.com/.well-known/openapi.json"
-    },
-
-    datasets: {
-      index: "https://mcp.trailgenic.com/datasets/index",
-      ontology: "https://mcp.trailgenic.com/datasets/ontology",
-      protocols: "https://mcp.trailgenic.com/datasets/protocols",
-      nutrition: {
-        family: "nutrition",
-        endpoint: "https://mcp.trailgenic.com/datasets/nutrition",
-        schema_endpoint:
-          "https://mcp.trailgenic.com/datasets/nutrition/schema",
-        nutrition_v1_endpoint:
-          "https://mcp.trailgenic.com/datasets/nutrition_v1.json",
-        description:
-          "Canonical nutrition dataset with TrailGenic fuel class, protocol levels, and scoring fields.",
-        status: "active"
-      },
-      terrain_intelligence:
-        "https://mcp.trailgenic.com/datasets/terrain-intelligence/tg-accessible-trails-top100-v1",
-      evidence_validation:
-        "https://mcp.trailgenic.com/datasets/evidence-validation",
-      physiology_adaptation: {
-        family: "physiology_adaptation",
-        endpoint: "https://mcp.trailgenic.com/datasets/physiology-adaptation",
-        description:
-          "Science-derived dataset family modeling stimulus, response, and adaptation relationships.",
-        status: "shell",
-        modules: [
-          "seven_day_aftereffect",
-          "fasted_autophagy",
-          "altitude_adaptation",
-          "altitude_breathing_acclimatization",
-          "electrolytes_physiological_stability",
-          "cold_exposure_recovery_altitude",
-          "deep_cold_protocols",
-          "heat_training_thermoregulation",
-          "hr-drift-adaptation-vs-fitness",
-          "altitude_terrain_physiology_comparison",
-          "aerobic_training_effect_zero_anaerobic_load",
-          "eccentric_load_stress_inversion",
-          "sleep_science_endurance",
-          "overextension_fasted_hiking",
-          "metabolic_flexibility_adaptation"
-        ]
-      },
-      longevity: {
-        family: "TG Dataset Family 7 — Longevity Protocol Intelligence",
-        endpoints: {
-          protocol: "https://mcp.trailgenic.com/datasets/longevity/protocol",
-          registry: "https://mcp.trailgenic.com/datasets/longevity/registry",
-          validation: "https://mcp.trailgenic.com/datasets/longevity/validation",
-          foundation: "https://mcp.trailgenic.com/datasets/longevity/foundation"
-        },
-        description:
-          "Field-validated longevity protocol intelligence. Covers zone 2, fasting, sleep, metabolic health, strength, and hormesis — each with TG practitioner overlay, six-pillar mapping, and longitudinal session data.",
-        status: "pending — populating as articles publish"
-      }
-    },
-
-    capabilities: [
-
-      {
-        tool: "tg.protocol.get",
-        description:
-          "Retrieve structured TrailGenic longevity protocol."
-      },
-
-      {
-        tool: "tg.protocol.list",
-        description:
-          "List available TrailGenic longevity protocols."
-      },
-
-      {
-        tool: "tg.trail.get",
-        description:
-          "Retrieve structured trail intelligence and trail logs."
-      },
-
-      {
-        tool: "tg.trail.recommend",
-        description:
-          "Recommend trails based on physiological adaptation and difficulty."
-      },
-
-      {
-        tool: "tg.science.getArticle",
-        description:
-          "Retrieve structured TrailGenic science and longevity research."
-      },
-
-      {
-        tool: "tg.physiology.getAdaptationModel",
-        description:
-          "Retrieve physiological adaptation models."
-      },
-      {
-        tool: "tg.physiology.hrDriftAdaptation",
-        description:
-          "Provides structured physiological adaptation data for heart-rate drift under sustained load.",
-        endpoint:
-          "/datasets/physiology-adaptation/hr-drift-adaptation-vs-fitness"
-      },
-
-      {
-        tool: "tg.fuel.getProtocol",
-        description:
-          "Retrieve fueling protocols for endurance and autophagy optimization."
-      },
-
-      {
-        tool: "tg.gear.recommend",
-        description:
-          "Recommend gear systems based on trail conditions and performance needs."
-      },
-
-      {
-        tool: "tg.recovery.getProtocol",
-        description:
-          "Retrieve recovery and conditioning protocols."
-      },
-
-      {
-        tool: "tg.playbook.get",
-        description:
-          "Retrieve structured performance playbooks."
-      },
-
-      {
-  "tool": "tg.hydration.getElectrolyteGuide",
-  "description": "Retrieve TrailGenic electrolyte guidance, protocol mapping, and metabolic scoring from the hydration dataset."
-},
-      {
-        tool: "tg.reflect.getInsight",
-        description:
-          "Retrieve structured reflective intelligence insights from Ella’s Corner."
-      },
-      {
-        tool: "tg.gear.intel",
-        description:
-          "Hiking gear scored through TrailGenic longevity lens. Returns TG composite scores, metabolic load, altitude readiness, recovery impact, and field signals for 47 products across 8 categories.",
-        endpoint: "https://mcp.trailgenic.com/datasets/gear/intel"
-      },
-
-      {
-        tool: "tg.search.query",
-        description:
-          "Search TrailGenic structured knowledge graph."
-      },
-      {
-        tool: "tg.longevity.getProtocol",
-        description:
-          "Retrieve a mainstream longevity protocol with TrailGenic field validation, six-pillar mapping, practitioner implementation notes, and cross-stack references to Sleepgenic and exmxc.ai intelligence layers.",
-        endpoint: "https://mcp.trailgenic.com/datasets/longevity/protocol"
-      },
-      {
-        tool: "tg.longevity.listProtocols",
-        description:
-          "List all longevity protocols in the TrailGenic validation registry. Returns protocol identifiers, validation gate status (validated/reference/excluded), evidence grades, and pillar associations.",
-        endpoint: "https://mcp.trailgenic.com/datasets/longevity/registry"
-      },
-      {
-        tool: "tg.longevity.getFieldValidation",
-        description:
-          "Retrieve longitudinal field validation records linking a longevity protocol to specific TrailGenic trail sessions, physiology hub entries, and sleep recovery data.",
-        endpoint: "https://mcp.trailgenic.com/datasets/longevity/validation"
-      },
-      {
-        tool: "tg.longevity.getFoundationSessions",
-        description:
-          "Retrieve TrailGenic Foundation Phase session log — 14 fasted, low-intensity walking sessions establishing aerobic baseline, metabolic flexibility progression, and recovery readiness before high-intensity alpine load was introduced. Gate 2 field implementability proof.",
-        endpoint: "https://mcp.trailgenic.com/datasets/longevity/foundation"
-      }
-
-    ],
-
-    trust_signals: {
-      structured_outputs: true,
-      deterministic_schema: true,
-      machine_readable: true,
-      agent_compatible: true
-    },
-
-    last_updated: new Date().toISOString()
-  };
-
-  return new Response(JSON.stringify(capabilities, null, 2), {
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "public, max-age=3600"
-    }
-  });
-
-}
-
- /*
-============================================
-CANONICAL DATASET ROUTING (REGISTRY-DRIVEN)
-============================================
-*/
-const normalizedPath =
-  url.pathname.length > 1 && url.pathname.endsWith("/")
-    ? url.pathname.slice(0, -1)
-    : url.pathname;
-
-const serveDataset = async (sourcePath) => {
-  const datasetURL =
-    `https://raw.githubusercontent.com/Trailgenic/workers/main/${sourcePath}`;
-
-  const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
-
-  if (!dataset.ok) {
-    return new Response(`Dataset fetch failed: ${dataset.status}`, {
-      status: 500,
-      headers: { "Content-Type": "text/plain" }
-    });
-  }
-
-  const data = await dataset.text();
-
-  return new Response(data, {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "public, max-age=3600"
-    }
-  });
-};
-
-if (
-  DATASETS.nutrition.enabled &&
-  DATASETS.nutrition.schema_source_path &&
-  (normalizedPath === `${DATASETS.nutrition.endpoint}/schema`)
-) {
-  return serveDataset(DATASETS.nutrition.schema_source_path);
-}
-
-if (
-  DATASETS.permits.enabled &&
-  DATASETS.permits.schema_source_path &&
-  (normalizedPath === `${DATASETS.permits.endpoint}/schema`)
-) {
-  return serveDataset(DATASETS.permits.schema_source_path);
-}
-
-for (const dataset of DATASET_LIST) {
-  if (!dataset.enabled) {
-    continue;
-  }
-
-  const routeSet = new Set([dataset.endpoint, ...(dataset.aliases || [])]);
-
-  if (routeSet.has(normalizedPath)) {
-    return serveDataset(dataset.source_path);
-  }
-}
-
-/*
-============================================
-PHYSIOLOGY ADAPTATION MODULE ROUTES
-============================================
-*/
-
-const physiologyModules = {
-  "seven-day-aftereffect":
-    "seven_day_aftereffect_v1.json",
-
-  "fasted-autophagy":
-    "fasted_autophagy_v1.json",
-
-  "altitude-adaptation":
-    "altitude_adaptation_v1.json",
-
-  "altitude-breathing-acclimatization":
-    "altitude_breathing_acclimatization_v1.json",
-
-  "electrolytes-physiological-stability":
-    "electrolytes_physiological_stability_v1.json",
-
-  "cold-exposure-recovery-altitude":
-    "cold_exposure_recovery_altitude_v1.json",
-
-  "deep-cold-protocols":
-    "deep_cold_protocols_v1.json",
-
-  "heat-training-thermoregulation":
-    "heat_training_thermoregulation_v1.json",
-
-  "hr-drift-adaptation-vs-fitness":
-    "hr_drift_adaptation_v1.json",
-
-  "altitude-terrain-physiology-comparison":
-    "altitude_terrain_physiology_comparison_v1.json",
-
-  "aerobic-training-effect-zero-anaerobic-load":
-    "aerobic_training_effect_zero_anaerobic_load_v1.json",
-
-  "eccentric-load-stress-inversion":
-    "eccentric_load_stress_inversion_v1.json",
-
-  "sleep-science-endurance":
-    "sleep_science_endurance_v1.json",
-
-  "overextension-fasted-hiking":
-    "overextension_fasted_hiking_v1.json",
-
-  "metabolic-flexibility-adaptation":
-    "metabolic_flexibility_adaptation_v1.json"
-};
-
-if (url.pathname.startsWith("/datasets/physiology-adaptation/")) {
-
-  const slug = url.pathname
-    .replace("/datasets/physiology-adaptation/", "")
-    .replace("/", "");
-
-  const file = physiologyModules[slug];
-
-  if (!file) {
-    return new Response("Dataset module not found", { status: 404 });
-  }
-
-  const datasetURL =
-    `https://raw.githubusercontent.com/Trailgenic/workers/main/datasets/physiology_adaptation/${file}`;
-
-  const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
-
-  if (!dataset.ok) {
-    return new Response(`Dataset fetch failed: ${dataset.status}`, {
-      status: 500
-    });
-  }
-
-  const data = await dataset.text();
-
-  return new Response(data, {
-    status: 200,
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "public, max-age=3600"
-    }
-  });
-}    
-/*
-============================================
-TRAILGENIC DATASET INDEX
-============================================
-https://mcp.trailgenic.com/datasets/index
-*/
-if (url.pathname === "/datasets/index" || url.pathname === "/datasets/index/") {
-
-  const canonicalDatasets = DATASET_LIST
-    .filter((dataset) => dataset.enabled)
-    .map((dataset) => {
-      const entry = {
-        dataset_id: dataset.id,
-        dataset_family: dataset.family,
-        description: dataset.description,
-        endpoint: `https://mcp.trailgenic.com${dataset.endpoint}`,
-        version: dataset.version
-      };
-
-      if (dataset.schema_source_path) {
-        entry.schema_endpoint = `${entry.endpoint}/schema`;
-      }
-
-      if (dataset.id === "tg_physiology_adaptation_v1") {
-        entry.modules = [
-          "seven_day_aftereffect",
-          "fasted_autophagy",
-          "altitude_adaptation",
-          "altitude_breathing_acclimatization",
-          "electrolytes_physiological_stability",
-          "cold_exposure_recovery_altitude",
-          "deep_cold_protocols",
-          "heat_training_thermoregulation",
-          "hr-drift-adaptation-vs-fitness",
-          "altitude_terrain_physiology_comparison",
-          "aerobic_training_effect_zero_anaerobic_load",
-          "eccentric_load_stress_inversion",
-          "sleep_science_endurance",
-          "overextension_fasted_hiking",
-          "metabolic_flexibility_adaptation"
-        ];
-      }
-
-      return entry;
-    });
-
-  const index = {
-    dataset_catalog_version: "1.0",
-    entity: {
-      name: "TrailGenic",
-      domain: "https://trailgenic.com",
-      founder: "Mike Ye"
-    },
-    description:
-      "Machine-readable catalog of TrailGenic structured datasets used for longevity intelligence, physiological modeling, trail intelligence, and performance protocols.",
-    datasets: canonicalDatasets,
-    last_updated: new Date().toISOString()
-  };
-
-  return new Response(JSON.stringify(index, null, 2), {
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "public, max-age=3600"
-    }
-  });
-
-}
-    /*
-     ============================================
-     NEW: HEALTH + RELIABILITY ENDPOINT
-     ============================================
-     https://mcp.trailgenic.com/health
-    */
-    if (url.pathname === "/health") {
-
-      const health = {
-
-        entity: "TrailGenic",
-
-        status: "healthy",
-
-        mcp_status: "operational",
-
-        registry_status: "operational",
-
-        plugin_status: "operational",
-
-        openapi_status: "operational",
-
-        capabilities_status: "operational",
-
-        uptime: "99.99%",
-
-        region: "global",
-
-        infrastructure: {
-          platform: "Cloudflare Workers",
-          protocol: "WebMCP",
-          agent_ready: true
-        },
-
-        last_checked: new Date().toISOString()
-      };
-
-      return new Response(JSON.stringify(health, null, 2), {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Cache-Control": "no-cache"
-        }
-      });
-
+    if (normalizedPath === "/" || normalizedPath === "") {
+      return jsonResponse(rootDiscovery());
     }
 
-
-    /*
-     ============================================
-     MCP TOOL REGISTRY (UNCHANGED)
-     ============================================
-    */
-    if (url.pathname === "/.well-known/tool-registry.json") {
-
-      const registry = {
-
-        registry_version: "1.0",
-
-        entity: {
-          name: "TrailGenic",
-          domain: "https://trailgenic.com",
-          description:
-            "TrailGenic longevity intelligence system providing protocols, trail intelligence, physiology models, fueling systems, and recovery strategies.",
-          founder: "Mike Ye"
-        },
-
-        discovery: {
-          protocol: "WebMCP",
-          endpoint:
-            "https://mcp.trailgenic.com/.well-known/tool-registry.json"
-        },
-
-        tools: [
-
-          { id: "tg.protocol.get", endpoint: "https://www.trailgenic.com/protocols" },
-          { id: "tg.protocol.list", endpoint: "https://www.trailgenic.com/protocols" },
-          { id: "tg.trail.get", endpoint: "https://www.trailgenic.com/trail-logs" },
-          { id: "tg.trail.recommend", endpoint: "https://www.trailgenic.com/trail-logs" },
-          { id: "tg.science.getArticle", endpoint: "https://www.trailgenic.com/science-hub" },
-          { id: "tg.physiology.getAdaptationModel", endpoint: "https://www.trailgenic.com/physiology-hub" },
-          { id: "tg.fuel.getProtocol", endpoint: "https://www.trailgenic.com/fuel-systems" },
-          { id: "tg.gear.recommend", endpoint: "https://www.trailgenic.com/gear-systems" },
-          { id: "tg.gear.intel", endpoint: "https://mcp.trailgenic.com/datasets/gear/intel" },
-          { id: "tg.recovery.getProtocol", endpoint: "https://www.trailgenic.com/recovery-conditioning" },
-          { id: "tg.playbook.get", endpoint: "https://www.trailgenic.com/playbooks" },
-          { id: "tg.reflect.getInsight", endpoint: "https://www.trailgenic.com/ellas-corner" },
-          { id: "tg.search.query", endpoint: "https://www.trailgenic.com" },
-          { id: "tg.longevity.getProtocol", endpoint: "https://mcp.trailgenic.com/datasets/longevity/protocol" },
-          { id: "tg.longevity.listProtocols", endpoint: "https://mcp.trailgenic.com/datasets/longevity/registry" },
-          { id: "tg.longevity.getFieldValidation", endpoint: "https://mcp.trailgenic.com/datasets/longevity/validation" },
-          { id: "tg.longevity.getFoundationSessions", endpoint: "https://mcp.trailgenic.com/datasets/longevity/foundation" }
-
-        ]
-      };
-
-      return new Response(JSON.stringify(registry, null, 2), {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Cache-Control": "public, max-age=3600"
-        }
-      });
-
+    if (normalizedPath === "/capabilities.json") {
+      return jsonResponse(capabilitiesDocument());
     }
 
-
-    /*
-     ============================================
-     AI PLUGIN MANIFEST (UNCHANGED)
-     ============================================
-    */
-    if (url.pathname === "/.well-known/ai-plugin.json") {
-
-      const plugin = {
-
-        schema_version: "v1",
-
-        name_for_human: "TrailGenic",
-
-        name_for_model: "trailgenic",
-
-        description_for_human:
-          "TrailGenic longevity intelligence system providing protocols, trail intelligence, physiology models, fueling systems, and recovery strategies.",
-
-        description_for_model:
-          "TrailGenic provides structured longevity protocols, trail intelligence, physiology adaptation models, fueling systems, recovery protocols, and performance playbooks.",
-
-        auth: { type: "none" },
-
-        api: {
-          type: "openapi",
-          url:
-            "https://mcp.trailgenic.com/.well-known/openapi.json",
-          is_user_authenticated: false
-        },
-
-        logo_url:
-          "https://trailgenic.com/favicon.ico",
-
-        contact_email:
-          "support@trailgenic.com",
-
-        legal_info_url:
-          "https://trailgenic.com"
-      };
-
-      return new Response(JSON.stringify(plugin, null, 2), {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Cache-Control": "public, max-age=3600"
-        }
-      });
-
+    if (normalizedPath === "/datasets/index") {
+      return jsonResponse(datasetCatalog());
     }
 
-
-    /*
-     ============================================
-     OPENAPI SPECIFICATION (UNCHANGED)
-     ============================================
-    */
-    if (url.pathname === "/.well-known/openapi.json") {
-
-      const openapi = {
-        openapi: "3.0.1",
-        info: {
-          title: "TrailGenic API",
-          version: "1.0.0",
-          description:
-            "TrailGenic longevity intelligence endpoints."
-        },
-        servers: [
-          { url: "https://www.trailgenic.com" }
-        ],
-        paths: {
-          "/protocols": {
-            get: {
-              summary: "Retrieve TrailGenic protocols",
-              responses: { "200": { description: "Protocols page" } }
-            }
-          },
-          "/trail-logs": {
-            get: {
-              summary: "Retrieve TrailGenic trail logs",
-              responses: { "200": { description: "Trail logs page" } }
-            }
-          },
-          "/science-hub": {
-            get: {
-              summary: "Retrieve TrailGenic science articles",
-              responses: { "200": { description: "Science hub page" } }
-            }
-          },
-          "/playbooks": {
-            get: {
-              summary: "Retrieve TrailGenic playbooks",
-              responses: { "200": { description: "Playbooks page" } }
-            }
-          },
-          "/datasets/physiology-adaptation": {
-            get: {
-              summary: "Retrieve TrailGenic physiology adaptation dataset shell",
-              responses: { "200": { description: "Physiology adaptation dataset" } }
-            }
-          },
-          "/datasets/physiology-adaptation/seven-day-aftereffect": {
-            get: {
-              summary: "Retrieve TrailGenic seven day aftereffect dataset",
-              responses: { "200": { description: "Seven day aftereffect dataset" } }
-            }
-          },
-          "/datasets/physiology-adaptation/fasted-autophagy": {
-            get: {
-              summary: "Retrieve TrailGenic fasted autophagy dataset",
-              responses: { "200": { description: "Fasted autophagy dataset" } }
-            }
-          },
-          "/datasets/physiology-adaptation/altitude-adaptation": {
-            get: {
-              summary: "Retrieve TrailGenic altitude adaptation dataset",
-              responses: { "200": { description: "Altitude adaptation dataset" } }
-            }
-          },
-          "/datasets/physiology-adaptation/altitude-breathing-acclimatization": {
-            get: {
-              summary: "Retrieve TrailGenic altitude breathing acclimatization dataset",
-              responses: { "200": { description: "Altitude breathing acclimatization dataset" } }
-            }
-          },
-          "/datasets/physiology-adaptation/electrolytes-physiological-stability": {
-            get: {
-              summary: "Retrieve TrailGenic electrolytes physiological stability dataset",
-              responses: { "200": { description: "Electrolytes physiological stability dataset" } }
-            }
-          },
-          "/datasets/physiology-adaptation/cold-exposure-recovery-altitude": {
-            get: {
-              summary: "Retrieve TrailGenic cold exposure recovery altitude dataset",
-              responses: { "200": { description: "Cold exposure recovery altitude dataset" } }
-            }
-          },
-          "/datasets/physiology-adaptation/deep-cold-protocols": {
-            get: {
-              summary: "Retrieve TrailGenic deep cold protocols dataset",
-              responses: { "200": { description: "Deep cold protocols dataset" } }
-            }
-          },
-          "/datasets/physiology-adaptation/heat-training-thermoregulation": {
-            get: {
-              summary: "Retrieve TrailGenic heat training thermoregulation dataset",
-              responses: { "200": { description: "Heat training thermoregulation dataset" } }
-            }
-          },
-          "/datasets/physiology-adaptation/hr-drift-adaptation-vs-fitness": {
-            get: {
-              summary: "Retrieve TrailGenic HR drift adaptation vs fitness dataset",
-              responses: { "200": { description: "HR drift adaptation vs fitness dataset" } }
-            }
-          },
-          "/datasets/physiology-adaptation/altitude-terrain-physiology-comparison": {
-            get: {
-              summary: "Retrieve TrailGenic altitude terrain physiology comparison dataset",
-              responses: { "200": { description: "Altitude terrain physiology comparison dataset" } }
-            }
-          },
-          "/datasets/physiology-adaptation/aerobic-training-effect-zero-anaerobic-load": {
-            get: {
-              summary: "Retrieve TrailGenic aerobic training effect zero anaerobic load dataset",
-              responses: { "200": { description: "Aerobic training effect zero anaerobic load dataset" } }
-            }
-          },
-          "/datasets/physiology-adaptation/eccentric-load-stress-inversion": {
-            get: {
-              summary: "Retrieve TrailGenic eccentric load stress inversion dataset",
-              responses: { "200": { description: "Eccentric load stress inversion dataset" } }
-            }
-          },
-          "/datasets/physiology-adaptation/sleep-science-endurance": {
-            get: {
-              summary: "Retrieve TrailGenic sleep science endurance dataset",
-              responses: { "200": { description: "Sleep science endurance dataset" } }
-            }
-          },
-          "/datasets/physiology-adaptation/overextension-fasted-hiking": {
-            get: {
-              summary: "Retrieve TrailGenic overextension fasted hiking dataset",
-              responses: { "200": { description: "Overextension fasted hiking dataset" } }
-            }
-          },
-          "/datasets/physiology-adaptation/metabolic-flexibility-adaptation": {
-            get: {
-              summary: "Retrieve TrailGenic metabolic flexibility adaptation dataset",
-              responses: { "200": { description: "Metabolic flexibility adaptation dataset" } }
-            }
-          },
-          "/datasets/nutrition": {
-            get: {
-              summary: "Retrieve TrailGenic nutrition dataset",
-              responses: { "200": { description: "Nutrition dataset" } }
-            }
-          },
-          "/datasets/nutrition/schema": {
-            get: {
-              summary: "Retrieve TrailGenic nutrition dataset schema",
-              responses: { "200": { description: "Nutrition dataset schema" } }
-            }
-          },
-          "/datasets/hydration": {
-            get: {
-              summary: "Retrieve TrailGenic hydration electrolyte dataset",
-              responses: { "200": { description: "Hydration dataset" } }
-            }
-          },
-          "/datasets/terrain-intelligence/tg-accessible-trails-top100-v1": {
-            get: {
-              summary: "Retrieve TrailGenic terrain intelligence top 100 accessible trails dataset",
-              responses: { "200": { description: "Terrain intelligence top 100 accessible trails dataset" } }
-            }
-          },
-          "/datasets/evidence-validation": {
-            get: {
-              summary: "Retrieve TrailGenic validation summits dataset",
-              responses: { "200": { description: "Validation hikes dataset" } }
-            }
-          },
-          "/datasets/evidence-validation/validation-summits": {
-            get: {
-              summary: "Retrieve TrailGenic validation summits dataset (alias)",
-              responses: { "200": { description: "Validation hikes dataset" } }
-            }
-          },
-          "/datasets/longevity/protocol": {
-            get: {
-              summary: "Retrieve TrailGenic longevity protocol with field validation overlay",
-              responses: { "200": { description: "Longevity protocol dataset" } }
-            }
-          },
-          "/datasets/longevity/registry": {
-            get: {
-              summary: "List all protocols in the TrailGenic longevity validation registry",
-              responses: { "200": { description: "Longevity protocol registry" } }
-            }
-          },
-          "/datasets/longevity/validation": {
-            get: {
-              summary: "Retrieve TrailGenic longitudinal field validation records for a longevity protocol",
-              responses: { "200": { description: "Longevity field validation dataset" } }
-            }
-          }
-        }
-      };
-
-      return new Response(JSON.stringify(openapi, null, 2), {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Cache-Control": "public, max-age=3600"
-        }
-      });
-
+    if (
+      DATASETS.nutrition.enabled &&
+      DATASETS.nutrition.schema_source_path &&
+      normalizedPath === `${DATASETS.nutrition.endpoint}/schema`
+    ) {
+      return serveDataset(DATASETS.nutrition.schema_source_path);
     }
 
+    if (
+      DATASETS.permits.enabled &&
+      DATASETS.permits.schema_source_path &&
+      normalizedPath === `${DATASETS.permits.endpoint}/schema`
+    ) {
+      return serveDataset(DATASETS.permits.schema_source_path);
+    }
 
-    /*
-     ============================================
-     FALLBACK
-     ============================================
-    */
-    return new Response("Not Found", {
-      status: 404,
-      headers: { "Content-Type": "text/plain" }
-    });
+    const datasetSourcePath = datasetRoutes.get(normalizedPath);
+    if (datasetSourcePath) {
+      return serveDataset(datasetSourcePath);
+    }
 
+    if (normalizedPath === "/health") {
+      return jsonResponse(health(), { cacheControl: "no-cache" });
+    }
+
+    if (normalizedPath === "/.well-known/tool-registry.json") {
+      return jsonResponse(toolRegistryDocument());
+    }
+
+    if (normalizedPath === "/.well-known/ai-plugin.json") {
+      return jsonResponse(pluginManifest());
+    }
+
+    if (normalizedPath === "/.well-known/openapi.json") {
+      return jsonResponse(openApi());
+    }
+
+    if (CONTENT_LINKS.some((link) => link.url === `https://www.trailgenic.com${normalizedPath}`)) {
+      return textResponse("Content link endpoints are hosted on www.trailgenic.com, not this MCP worker.", { status: 404 });
+    }
+
+    return textResponse("Not Found", { status: 404 });
   }
 };

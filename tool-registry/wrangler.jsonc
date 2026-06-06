@@ -1,5 +1,12 @@
 {
   "name": "trailgenic-tool-registry",
   "main": "worker.js",
-  "compatibility_date": "2026-02-18"
+  "compatibility_date": "2026-02-18",
+  "routes": [
+    { "pattern": "mcp.trailgenic.com/*", "zone_name": "trailgenic.com" }
+  ],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  }
 }
