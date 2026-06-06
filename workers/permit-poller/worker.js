@@ -73,6 +73,14 @@ const extractInyoDates = (resp) => {
 const getPermitStateKey = (permitId) => `state:${permitId}`;
 const getSubscriptionKey = (phone) => `sub:${phone}`;
 
+const maskPhone = (phone) => {
+  if (!phone || !phoneRegex.test(phone)) {
+    return "redacted";
+  }
+
+  return `${phone.slice(0, 2)}******${phone.slice(-4)}`;
+};
+
 const readJson = async (request) => {
   try { return await request.json(); } catch { return null; }
 };
@@ -98,7 +106,7 @@ const sendTwilioSMS = async (env, to, body) => {
   });
   if (!res.ok) {
     const errText = await res.text();
-    console.log(`Twilio send failed for ${to}: ${res.status} ${errText}`);
+    console.log(`Twilio send failed for ${maskPhone(to)}: ${res.status} ${errText}`);
   }
 };
 
@@ -243,6 +251,9 @@ export default {
     }
 
     if (url.pathname === "/permits/subscribe" && request.method === "POST") {
+      // TODO: add rate limiting.
+      // TODO: add phone verification / opt-in confirmation.
+      // TODO: add abuse prevention before public launch.
       const body = await readJson(request);
       if (!body || !body.phone || !phoneRegex.test(body.phone)) {
         return respond({ error: "Invalid phone. Use E.164 format (e.g., +15551234567)." }, 400);
@@ -262,23 +273,30 @@ export default {
         updated_at: new Date().toISOString()
       };
       await env.SUBSCRIPTIONS.put(getSubscriptionKey(body.phone), JSON.stringify(subscription));
-      return respond({ ok: true, subscription }, 200);
+      return respond({
+        ok: true,
+        subscription: {
+          ...subscription,
+          phone: undefined,
+          phone_masked: maskPhone(body.phone)
+        }
+      }, 200);
     }
 
     if (request.method === "GET" && url.pathname.startsWith("/permits/subscriptions/")) {
-      const phone = decodeURIComponent(url.pathname.replace("/permits/subscriptions/", ""));
-      const data = await env.SUBSCRIPTIONS.get(getSubscriptionKey(phone));
-      if (!data) return respond({ error: "Subscription not found." }, 404);
-      return respond(JSON.parse(data));
+      return respond({ error: "Not found" }, 404);
     }
 
     if (url.pathname === "/permits/unsubscribe" && request.method === "DELETE") {
+      // TODO: add rate limiting.
+      // TODO: add phone verification / opt-in confirmation.
+      // TODO: add abuse prevention before public launch.
       const body = await readJson(request);
       if (!body || !body.phone || !phoneRegex.test(body.phone)) {
         return respond({ error: "Invalid phone. Use E.164 format (e.g., +15551234567)." }, 400);
       }
       await env.SUBSCRIPTIONS.delete(getSubscriptionKey(body.phone));
-      return respond({ ok: true, unsubscribed: body.phone }, 200);
+      return respond({ ok: true, phone_masked: maskPhone(body.phone) }, 200);
     }
 
     if (request.method === "GET" && url.pathname.startsWith("/permits/state/")) {
