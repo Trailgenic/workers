@@ -1,6 +1,7 @@
 {
   "name": "trailgenic-tool-registry",
   "main": "worker.js",
+  "account_id": "6d024e693905533d55aec50562726ad0",
   "compatibility_date": "2026-02-18",
   "routes": [
     { "pattern": "mcp.trailgenic.com/*", "zone_name": "trailgenic.com" }
