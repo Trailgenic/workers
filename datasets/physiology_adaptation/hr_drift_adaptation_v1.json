@@ -4,7 +4,7 @@
   "title": "TrailGenic HR Drift Adaptation Dataset",
   "version": "v1",
   "status": "active",
-  "last_updated": "2026-05-17",
+  "last_updated": "2026-06-10",
   "description": "Dataset module for TrailGenic physiology adaptation modeling stimulus, response, and adaptation for heart-rate drift.",
   "source_article": "https://www.trailgenic.com/science/trailgenic-vs-population-age-adjusted-hr-drift",
   "related_urls": [
@@ -36,11 +36,11 @@
   ],
   "records": [
     {
-      "mechanism": "Heart-rate drift inversion across 22 high-load hiking sessions indicates preserved stroke volume, improved substrate stability, and reduced relative cardiovascular strain during prolonged fasted mountain efforts.",
+      "mechanism": "Heart-rate drift inversion across 25 high-load hiking sessions indicates preserved stroke volume, improved substrate stability, and reduced relative cardiovascular strain during prolonged fasted mountain efforts.",
       "stimulus": {
         "subject_age_years": 52,
-        "high_load_sessions": 22,
-        "foundation_sessions": 16,
+        "high_load_sessions": 25,
+        "foundation_sessions": 14,
         "session_context": "sustained aerobic mountain load",
         "observed_avg_hr_bpm": 124,
         "observed_max_hr_bpm": 148,
@@ -50,9 +50,9 @@
         "negative_drift_session_total": 22
       },
       "physiological_response": [
-        "Heart rate decreased relative to maintained external workload across 21 of 22 high-load hiking sessions.",
+        "Heart rate decreased relative to maintained external workload across 21 of 25 high-load hiking sessions.",
         "Observed drift direction opposed expected positive cardiovascular drift under prolonged load, with mean drift approximately -1.0%.",
-        "Cardiovascular demand remained stable despite cumulative duration, altitude, heat, and terrain stress across the 22-session HWM dataset.",
+        "Cardiovascular demand remained stable despite cumulative duration, altitude, heat, and terrain stress across the 25-session HWM dataset.",
         "Pattern is compatible with improved central hemodynamic efficiency and durable substrate-switching stability."
       ],
       "adaptation_outcomes": [
@@ -171,8 +171,8 @@
     {
       "mechanism": "Foundation-to-high-load continuity builds progressive autonomic and cardiovascular resilience, enabling stable heart-rate behavior as workload complexity increases.",
       "stimulus": {
-        "foundation_sessions": 16,
-        "high_load_sessions": 22,
+        "foundation_sessions": 14,
+        "high_load_sessions": 25,
         "progression_model": "sequenced base conditioning followed by sustained high-load exposure",
         "observed_avg_hr_bpm": 124,
         "observed_max_hr_bpm": 148,

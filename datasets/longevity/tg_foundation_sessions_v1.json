@@ -1,5 +1,6 @@
 {
   "schema_version": "1.0",
+  "last_updated": "2026-06-10",
   "dataset_id": "tg_foundation_sessions_v1",
   "dataset_family": "TG Dataset Family 7 \u2014 Longevity Protocol Intelligence",
   "description": "TrailGenic Foundation Phase session log. 14 fasted, low-intensity walking sessions on flat terrain establishing aerobic readiness, metabolic flexibility, and recovery baseline before high-intensity alpine load was introduced. All sessions performed fasted, Zone 1 dominant, zero anaerobic, perceived effort 1 of 5, recovery flag ready throughout.",
@@ -87,7 +88,7 @@
       "avg_hr_bpm": 111,
       "max_hr_bpm": 134,
       "cardiac_efficiency_index": 34.7,
-      "hr_drift_pct": -8.4,
+      "hr_drift_pct": 4.0,
       "aerobic_training_effect": 1.7,
       "anaerobic": 0,
       "perceived_effort": 1,
@@ -521,7 +522,7 @@
     }
   ],
   "meta": {
-    "last_validated": "2026-05-05",
+    "last_validated": "2026-06-10",
     "authored_by": [
       "mike_ye",
       "ella"
