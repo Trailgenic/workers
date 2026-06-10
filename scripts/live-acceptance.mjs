@@ -49,13 +49,23 @@ assert(ping.response.ok && ping.json.result && Object.keys(ping.json.result).len
 
 const listed = await postMcp("tools/list");
 const listIds = toolIdsFromList(listed.json.result.tools);
-assert(listIds.length === 13, `tools/list should return 13 tools, got ${listIds.length}`);
+assert(listIds.length === 14, `tools/list should return 14 tools, got ${listIds.length}`);
+assert(listIds.includes("tg.longevity.bioAge.compute"), "tools/list should include tg.longevity.bioAge.compute");
 
 const indexCall = await postMcp("tools/call", { name: "tg.datasets.index.get", arguments: {} });
 assert(indexCall.json.result.structuredContent.datasets?.length > 0, "tg.datasets.index.get should return catalog datasets");
 
 const foundationCall = await postMcp("tools/call", { name: "tg.longevity.foundationSessions.get", arguments: {} });
 assert(foundationCall.json.result.structuredContent.sessions?.length === 14, "foundation sessions tool should return 14 sessions");
+
+const bioAgeCall = await postMcp("tools/call", {
+  name: "tg.longevity.bioAge.compute",
+  arguments: { age: 53, resting_hr: 59, distance_mi: 10.94, elevation_gain_ft: 4140, moving_time_min: 256, avg_hr: 122, overnight_hrv: 31 }
+});
+assert(
+  bioAgeCall.json.result.structuredContent.result.biological_age_years.midpoint === 35,
+  "bioAge compute should return biological_age_years.midpoint === 35 for the validated session"
+);
 
 const nutritionDataset = await getJson("/datasets/nutrition");
 assert(nutritionDataset.response.ok, "/datasets/nutrition should return JSON");

@@ -31,7 +31,7 @@ The permit SMS infrastructure is operationally separate from this MCP worker and
 
 ## Callable MCP Tools
 
-The public MCP tool inventory is generated from one canonical registry and currently includes 13 callable tools:
+The public MCP tool inventory is generated from one canonical registry and currently includes 14 callable tools:
 
 | Tool | Parameters |
 | --- | --- |
@@ -48,6 +48,7 @@ The public MCP tool inventory is generated from one canonical registry and curre
 | `tg.gear.intel.get` | `category`, `limit` |
 | `tg.longevity.protocol.get` | `protocol_id`, `category` |
 | `tg.longevity.foundationSessions.get` | none |
+| `tg.longevity.bioAge.compute` | `age`, `resting_hr`, `distance_mi`, `elevation_gain_ft`, `moving_time_min`, `avg_hr` (required); `max_hr`, `overnight_hrv`, `fasted` (optional) |
 
 Large dataset tools support optional filters and bounded `limit` values so MCP clients do not need to ingest full high-record payloads.
 
