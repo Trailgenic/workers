@@ -121,7 +121,55 @@
               "HR drift runs in the opposite direction of the population: population HIGH_LOAD expects +5–8% positive drift; TG mean is approximately -1.0% with 21 of 25 hiking sessions negative.",
               "Duration ceiling reached 589 minutes and distance ceiling reached 16.81 miles on San Gorgonio via Vivian Creek (May 9, 2026).",
               "Altitude ceiling reached 11,506 ft on San Gorgonio while preserving Day-2 recovery supercompensation."
-            ]
+            ],
+            "aggregate_only_blocks": {
+              "avg_hr": {
+                "subject_finding": "Subject aggregate average HR mean 126.5 bpm (range 119-132 bpm).",
+                "population_reference": "HIGH_LOAD population average HR range 140-160 bpm, anchored to %HRmax intensity zones with reference population max HR approximately 190 bpm.",
+                "source": "%HRmax intensity-zone physiology anchor with reference population max HR approximately 190 bpm.",
+                "source_type": "physiology_anchor",
+                "comparison": "Subject aggregate average HR is below the population HIGH_LOAD intensity floor.",
+                "caveats": [
+                  "Altitude, technical terrain, long duration, and fasted state inflate physiological cost, so raw HR gaps should be interpreted as adjusted context rather than a universal standalone ranking claim.",
+                  "This is an aggregate comparison only and does not expose per-session rows or raw heart-rate telemetry."
+                ]
+              },
+              "max_hr": {
+                "subject_finding": "Subject aggregate max HR mean 154.7 bpm (range 146-165 bpm).",
+                "population_reference": "HIGH_LOAD population max HR range 170-190 bpm, anchored to %HRmax intensity zones with reference population max HR approximately 190 bpm.",
+                "source": "%HRmax intensity-zone physiology anchor with reference population max HR approximately 190 bpm.",
+                "source_type": "physiology_anchor",
+                "comparison": "Subject aggregate max HR is below the population HIGH_LOAD floor; no anaerobic ceiling was approached.",
+                "caveats": [
+                  "Altitude, technical terrain, long duration, and fasted state inflate physiological cost, so raw HR gaps should be interpreted as adjusted context rather than a universal standalone ranking claim.",
+                  "This is an aggregate comparison only and does not expose per-session rows or raw heart-rate telemetry."
+                ]
+              },
+              "age_adjusted_avg_hr": {
+                "subject_finding": "Recent subject sessions remained below the age-52-adjusted average-HR floor.",
+                "population_reference": "Age-52-adjusted average-HR floor 124-141 bpm using adjustment factor 0.884.",
+                "source": "TrailGenic age-adjusted physiology anchor derived from %HRmax intensity bands and factor 0.884.",
+                "source_type": "physiology_anchor",
+                "comparison": "Recent subject aggregate average HR sits below the age-adjusted HIGH_LOAD floor.",
+                "caveats": [
+                  "Age-adjustment assumes the HR bands represent a ~30-year-old reference population, inferred from the HRV cohort midpoint; this is an assumption, not an established cohort age for the HR bands.",
+                  "Altitude, technical terrain, long duration, and fasted state inflate physiological cost, so raw HR gaps should be interpreted as adjusted context rather than a universal standalone ranking claim.",
+                  "This is an aggregate comparison only and does not expose per-session rows or raw heart-rate telemetry."
+                ]
+              },
+              "terrain_context": {
+                "subject_finding": "Hiking aggregate occurred in altitude, technical-terrain, long-duration, and fasted contexts.",
+                "population_reference": "Distance, elevation, and duration are not published here as population comparison rankings.",
+                "source": "TrailGenic-constructed estimate from endurance-training norms",
+                "source_type": "constructed_estimate",
+                "comparison": "Constructed estimate: altitude, technical terrain, duration, and fasted state likely inflate physiological cost, so raw HR gaps may understate efficiency under context-adjusted load.",
+                "caveats": [
+                  "Constructed estimate only; this is adjustment context, not a standalone population ranking claim.",
+                  "Terrain, altitude, duration, and fasted state should not be treated as universal favorable solvents.",
+                  "No distance, elevation, or duration values are asserted as published population comparisons in this block."
+                ]
+              }
+            }
           },
           "engine_stability": {
             "tag": "ENGINE_STABLE",
@@ -2085,5 +2133,5 @@
       }
     }
   ],
-  "last_updated": "2026-06-10"
+  "last_updated": "2026-06-11"
 }

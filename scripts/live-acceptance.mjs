@@ -49,14 +49,33 @@ assert(ping.response.ok && ping.json.result && Object.keys(ping.json.result).len
 
 const listed = await postMcp("tools/list");
 const listIds = toolIdsFromList(listed.json.result.tools);
-assert(listIds.length === 14, `tools/list should return 14 tools, got ${listIds.length}`);
+assert(listIds.length === 17, `tools/list should return 17 tools, got ${listIds.length}`);
 assert(listIds.includes("tg.longevity.bioAge.compute"), "tools/list should include tg.longevity.bioAge.compute");
+for (const toolId of ["tg.conditioning.walking.get", "tg.conditioning.rucking.get", "tg.conditioning.running.get"]) {
+  assert(listIds.includes(toolId), `tools/list should include ${toolId}`);
+}
 
 const indexCall = await postMcp("tools/call", { name: "tg.datasets.index.get", arguments: {} });
 assert(indexCall.json.result.structuredContent.datasets?.length > 0, "tg.datasets.index.get should return catalog datasets");
 
 const foundationCall = await postMcp("tools/call", { name: "tg.longevity.foundationSessions.get", arguments: {} });
 assert(foundationCall.json.result.structuredContent.sessions?.length === 14, "foundation sessions tool should return 14 sessions");
+
+const conditioningChecks = [
+  { name: "tg.conditioning.walking.get", datasetId: "tg_walking_conditioning_v1", route: "/datasets/conditioning/walking" },
+  { name: "tg.conditioning.rucking.get", datasetId: "tg_rucking_conditioning_v1", route: "/datasets/conditioning/rucking" },
+  { name: "tg.conditioning.running.get", datasetId: "tg_running_conditioning_v1", route: "/datasets/conditioning/running" }
+];
+for (const check of conditioningChecks) {
+  const call = await postMcp("tools/call", { name: check.name, arguments: {} });
+  const content = call.json.result.structuredContent;
+  assert(content.dataset_id === check.datasetId, `${check.name} should return ${check.datasetId}`);
+  assert(content.privacy_scope?.data_granularity === "aggregate_only", `${check.name} should be aggregate-only`);
+  assert(Array.isArray(content.records) && content.records.length > 0, `${check.name} should return aggregate findings`);
+
+  const route = await getJson(check.route);
+  assert(route.response.ok && route.json.dataset_id === check.datasetId, `${check.route} should return ${check.datasetId}`);
+}
 
 const bioAgeCall = await postMcp("tools/call", {
   name: "tg.longevity.bioAge.compute",
@@ -108,6 +127,9 @@ assert(health.json.uptime === null, "/health uptime should be null");
 
 const datasetIndex = await getJson("/datasets/index");
 assert(datasetIndex.json.datasets?.some((dataset) => dataset.dataset_id === "tg_nutrition_dataset_v1"), "/datasets/index should return enabled datasets");
+for (const datasetId of ["tg_walking_conditioning_v1", "tg_rucking_conditioning_v1", "tg_running_conditioning_v1"]) {
+  assert(datasetIndex.json.datasets?.some((dataset) => dataset.dataset_id === datasetId), `/datasets/index should include ${datasetId}`);
+}
 
 const physiologyModule = await getJson("/datasets/physiology-adaptation/seven-day-aftereffect");
 assert(physiologyModule.response.ok && physiologyModule.json.dataset_id, "physiology module endpoint should return JSON");

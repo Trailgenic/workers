@@ -1,0 +1,81 @@
+{
+  "dataset_id": "tg_rucking_conditioning_v1",
+  "dataset_family": "conditioning",
+  "title": "TrailGenic Rucking Conditioning Dataset",
+  "version": "v1",
+  "status": "active",
+  "last_updated": "2026-06-11",
+  "description": "Aggregate-only TrailGenic conditioning module for flat fasted rucking economy under progressive load. This dataset serves existence metadata, summary statistics, methodology, and claims only; it does not expose per-session rows or raw telemetry.",
+  "privacy_scope": {
+    "data_granularity": "aggregate_only",
+    "excluded_data": [
+      "per-session rows",
+      "raw heart-rate telemetry",
+      "raw power telemetry",
+      "raw cadence telemetry",
+      "raw stride telemetry",
+      "raw stamina telemetry",
+      "raw sleep telemetry",
+      "raw sweat telemetry",
+      "individual session records"
+    ]
+  },
+  "existence_metadata": {
+    "session_count": 7,
+    "date_range": {
+      "start": "2026-04-21",
+      "end": "2026-06-09"
+    },
+    "training_state": "fasted",
+    "terrain_context": "flat",
+    "load_progression_lb": {
+      "start": 10,
+      "end": 15,
+      "relative_increase_percent": 50
+    },
+    "load_as_bodyweight_percent_range": "approximately 7-10%"
+  },
+  "records": [
+    {
+      "mechanism": "Load-adjusted rucking efficiency held flat while external load increased, indicating maintained economy under added load.",
+      "aggregate_finding": {
+        "metric": "load-adjusted efficiency",
+        "definition": "heart rate divided by distance and relative load factor",
+        "load_adjusted_efficiency_range": {
+          "min": 30,
+          "max": 32
+        },
+        "load_adjusted_efficiency_mean": 31.1,
+        "load_progression_signal": "Load increased 50% from 10 lb to 15 lb while adjusted efficiency stayed approximately flat.",
+        "raw_cei_context": "Raw CEI rose to 35.6 at 15 lb, masking the held economy; load-adjusted efficiency is the true signal."
+      },
+      "summary_statistics": {
+        "session_count": 7,
+        "load_range_lb": {
+          "min": 10,
+          "max": 15
+        },
+        "load_adjusted_efficiency_mean": 31.1,
+        "load_adjusted_efficiency_typical_band": "approximately 30-32",
+        "raw_cei_at_15_lb": 35.6,
+        "hr_drift_percent_range": {
+          "min": 6.0,
+          "max": 8.5,
+          "direction": "all positive"
+        }
+      },
+      "methodology": {
+        "metric_formula": "load-adjusted efficiency = average heart rate / (distance miles x (1 + load lb / bodyweight lb))",
+        "purpose": "Isolates economy-under-load by normalizing cardiovascular cost for carried load relative to bodyweight.",
+        "caveat": "The signal should sharpen as loads reach 20-30% of bodyweight.",
+        "claim_boundary": "Conditioning tracking only; not a biological-age measure."
+      },
+      "claims": [
+        "Rucking economy was maintained under a 50% external-load increase from 10 lb to 15 lb.",
+        "Raw CEI alone overstates cardiovascular cost because it does not account for carried load.",
+        "Positive HR drift remained present across the aggregate ruck block, ranging from +6.0% to +8.5%.",
+        "This dataset is a conditioning signal and does not compute or imply biological age."
+      ]
+    }
+  ]
+}

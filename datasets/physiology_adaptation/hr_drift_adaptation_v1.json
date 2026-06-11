@@ -4,7 +4,7 @@
   "title": "TrailGenic HR Drift Adaptation Dataset",
   "version": "v1",
   "status": "active",
-  "last_updated": "2026-06-10",
+  "last_updated": "2026-06-11",
   "description": "Dataset module for TrailGenic physiology adaptation modeling stimulus, response, and adaptation for heart-rate drift.",
   "source_article": "https://www.trailgenic.com/science/trailgenic-vs-population-age-adjusted-hr-drift",
   "related_urls": [
@@ -70,7 +70,18 @@
           "citation": "Achten and Jeukendrup 2003",
           "finding": "Submaximal endurance intensity domains support stable aerobic metabolism and provide interpretable heart-rate dynamics for adaptation tracking."
         }
-      ]
+      ],
+      "population_comparison": {
+        "subject_finding": "Aggregate HR drift averaged -0.8% with a range of -2.8% to +1.0% across high-load hiking sessions.",
+        "population_reference": "+5% to +8% positive aerobic decoupling; convention anchors: Low 0-3%, Moderate 3-5%, High >5%.",
+        "source": "Aerobic-decoupling physiology anchor convention: Low 0-3% / Moderate 3-5% / High >5%.",
+        "source_type": "physiology_anchor",
+        "comparison": "Negative-to-minimal subject drift where the population reference shows positive decoupling.",
+        "caveats": [
+          "Terrain, altitude, heat, duration, and fasted state can shift cardiovascular drift and should be treated as context adjustments, not as universal favorable solvents.",
+          "This aggregate comparison summarizes drift direction and magnitude only; it does not expose per-session rows or raw heart-rate telemetry."
+        ]
+      }
     },
     {
       "mechanism": "Age-adjusted heart-rate validation confirms training intensity within expected physiological range and supports interpretation of drift metrics as adaptation signals rather than overreaching artifacts.",
