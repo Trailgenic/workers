@@ -31,7 +31,7 @@ The permit SMS infrastructure is operationally separate from this MCP worker and
 
 ## Callable MCP Tools
 
-The public MCP tool inventory is generated from one canonical registry and currently includes 14 callable tools:
+The public MCP tool inventory is generated from one canonical registry and currently includes 17 callable tools:
 
 | Tool | Parameters |
 | --- | --- |
@@ -48,6 +48,9 @@ The public MCP tool inventory is generated from one canonical registry and curre
 | `tg.gear.intel.get` | `category`, `limit` |
 | `tg.longevity.protocol.get` | `protocol_id`, `category` |
 | `tg.longevity.foundationSessions.get` | none |
+| `tg.conditioning.walking.get` | `start_date`, `end_date` (optional; aggregate-only) |
+| `tg.conditioning.rucking.get` | `start_date`, `end_date` (optional; aggregate-only) |
+| `tg.conditioning.running.get` | `start_date`, `end_date` (optional; aggregate-only) |
 | `tg.longevity.bioAge.compute` | `age`, `resting_hr`, `distance_mi`, `elevation_gain_ft`, `moving_time_min`, `avg_hr` (required); `max_hr`, `overnight_hrv`, `fasted` (optional) |
 
 Large dataset tools support optional filters and bounded `limit` values so MCP clients do not need to ingest full high-record payloads.
@@ -81,6 +84,9 @@ Dataset endpoints remain public and machine-readable:
 - `https://mcp.trailgenic.com/datasets/longevity/registry`
 - `https://mcp.trailgenic.com/datasets/longevity/validation`
 - `https://mcp.trailgenic.com/datasets/longevity/foundation`
+- `https://mcp.trailgenic.com/datasets/conditioning/walking`
+- `https://mcp.trailgenic.com/datasets/conditioning/rucking`
+- `https://mcp.trailgenic.com/datasets/conditioning/running`
 
 Physiology adaptation module endpoints are also preserved:
 
