@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_updated": "2026-06-10",
+  "last_updated": "2026-06-11",
   "dataset_id": "tg_foundation_sessions_v1",
   "dataset_family": "TG Dataset Family 7 \u2014 Longevity Protocol Intelligence",
   "description": "TrailGenic Foundation Phase session log. 14 fasted, low-intensity walking sessions on flat terrain establishing aerobic readiness, metabolic flexibility, and recovery baseline before high-intensity alpine load was introduced. All sessions performed fasted, Zone 1 dominant, zero anaerobic, perceived effort 1 of 5, recovery flag ready throughout.",
@@ -63,7 +63,32 @@
         55.6,
         61.0
       ],
-      "flag_duration": "WITHIN population Foundation range throughout"
+      "flag_duration": "WITHIN population Foundation range throughout",
+      "aggregate_only_blocks": {
+        "avg_hr": {
+          "subject_finding": "Subject Foundation average HR mean 105.4 bpm (range 96-112 bpm).",
+          "population_reference": "FOUNDATION population average HR range 110-130 bpm.",
+          "source": "Foundation aerobic intensity physiology anchor.",
+          "source_type": "physiology_anchor",
+          "comparison": "Subject Foundation average HR is a mix of within and below the population Foundation range.",
+          "caveats": [
+            "Flat terrain, fasted state, low perceived effort, and Foundation protocol standardization make this a modest conditioning comparison, not a universal favorable solvent.",
+            "This is an aggregate comparison only and does not expose per-session rows or raw heart-rate telemetry."
+          ]
+        },
+        "hrv_norm_anchor": {
+          "subject_finding": "Foundation phase is anchored to published HRV norms for context rather than ranked from individual session rows.",
+          "population_reference": "Males 25-34: SDNN 49.9 ms / RMSSD 36.2 ms, N=1,906.",
+          "source": "Published HRV norm anchor: males 25-34 SDNN 49.9 ms / RMSSD 36.2 ms, N=1,906.",
+          "source_type": "published_norm",
+          "comparison": "Published HRV norms provide an external autonomic reference anchor for Foundation interpretation.",
+          "caveats": [
+            "This norm anchor is contextual and does not convert Foundation walking into a biological-age measure.",
+            "Age, device method, sleep state, training state, and measurement protocol affect HRV comparability.",
+            "This block is aggregate-only and does not expose raw HRV, sleep, or session-level telemetry."
+          ]
+        }
+      }
     }
   },
   "longevity_significance": {
