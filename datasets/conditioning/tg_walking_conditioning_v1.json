@@ -1,0 +1,74 @@
+{
+  "dataset_id": "tg_walking_conditioning_v1",
+  "dataset_family": "conditioning",
+  "title": "TrailGenic Walking Conditioning Dataset",
+  "version": "v1",
+  "status": "active",
+  "last_updated": "2026-06-11",
+  "description": "Aggregate-only TrailGenic conditioning module for standardized Foundation walking economy. This dataset serves existence metadata, summary statistics, methodology, and claims only; it does not expose per-session rows or raw telemetry.",
+  "privacy_scope": {
+    "data_granularity": "aggregate_only",
+    "excluded_data": [
+      "per-session rows",
+      "raw heart-rate telemetry",
+      "raw power telemetry",
+      "raw cadence telemetry",
+      "raw stride telemetry",
+      "raw stamina telemetry",
+      "raw sleep telemetry",
+      "raw sweat telemetry",
+      "individual session records"
+    ]
+  },
+  "existence_metadata": {
+    "session_count": 18,
+    "date_range": {
+      "start": "2026-03-03",
+      "end": "2026-06-04"
+    },
+    "protocol_context": "Foundation protocol",
+    "training_state": "fasted",
+    "terrain_context": "flat",
+    "distance_standardization": "standardized approximately 3.17 miles"
+  },
+  "records": [
+    {
+      "mechanism": "Cardiac Efficiency Index improved across standardized fasted flat walking, indicating lower cardiovascular cost per mile at matched distance.",
+      "aggregate_finding": {
+        "metric": "Cardiac Efficiency Index (CEI)",
+        "definition": "heart rate per mile",
+        "first_5_session_mean_hr_per_mile": 33.8,
+        "last_5_session_mean_hr_per_mile": 31.9,
+        "relative_aerobic_economy_gain_percent": 5.6,
+        "interpretation": "Falling CEI across a fixed walking distance indicates improving aerobic economy."
+      },
+      "summary_statistics": {
+        "cei_overall_mean_hr_per_mile": 33.3,
+        "cei_range_hr_per_mile": {
+          "min": 30.3,
+          "max": 35.3
+        },
+        "hr_drift_percent": {
+          "mean": 4.2,
+          "min": -1.5,
+          "max": 8.9,
+          "interpretation": "Small positive drift is normal for flat Zone-1 walking."
+        },
+        "average_hr_bpm_mean": 106,
+        "resting_hr_bpm_trend": "trending down to 51-54"
+      },
+      "methodology": {
+        "metric_formula": "CEI = average heart rate / distance in miles",
+        "comparison_frame": "first five standardized walking sessions versus last five standardized walking sessions",
+        "control_frame": "fasted, flat Foundation walking at approximately matched 3.17-mile distance",
+        "claim_boundary": "Conditioning tracking only; not a biological-age measure."
+      },
+      "claims": [
+        "Walking aerobic economy improved by approximately 5.6% at matched distance.",
+        "The aggregate CEI distribution remained in a tight 30.3-35.3 HR/mi range across the block.",
+        "Resting heart rate trended downward into the 51-54 bpm range, supporting improved low-intensity aerobic readiness.",
+        "This dataset is a conditioning signal and does not compute or imply biological age."
+      ]
+    }
+  ]
+}

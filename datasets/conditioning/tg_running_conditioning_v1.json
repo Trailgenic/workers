@@ -1,0 +1,95 @@
+{
+  "dataset_id": "tg_running_conditioning_v1",
+  "dataset_family": "conditioning",
+  "title": "TrailGenic Running Conditioning Dataset",
+  "version": "v1",
+  "status": "active",
+  "last_updated": "2026-06-11",
+  "description": "Aggregate-only TrailGenic conditioning module for fasted running economy by distance tier. This dataset serves existence metadata, summary statistics, methodology, and claims only; it does not expose per-session rows or raw telemetry.",
+  "privacy_scope": {
+    "data_granularity": "aggregate_only",
+    "excluded_data": [
+      "per-session rows",
+      "raw heart-rate telemetry",
+      "raw power telemetry",
+      "raw cadence telemetry",
+      "raw stride telemetry",
+      "raw stamina telemetry",
+      "raw sleep telemetry",
+      "raw sweat telemetry",
+      "individual session records"
+    ]
+  },
+  "existence_metadata": {
+    "session_count": 11,
+    "date_range": {
+      "start": "2026-03-17",
+      "end": "2026-06-10"
+    },
+    "training_state": "fasted",
+    "distance_tiers": [
+      {
+        "distance_mi": 2.4,
+        "session_count": 5
+      },
+      {
+        "distance_mi": 3.17,
+        "session_count": 6
+      }
+    ]
+  },
+  "records": [
+    {
+      "mechanism": "Running economy must be interpreted within distance tier because longer steady-state runs produce lower CEI readings than shorter run/walk efforts.",
+      "aggregate_finding": {
+        "metric": "Cardiac Efficiency Index by running distance tier",
+        "tier_findings": [
+          {
+            "distance_tier_mi": 2.4,
+            "cei_mean_hr_per_mile": 61.3,
+            "cei_range_hr_per_mile": {
+              "min": 58.3,
+              "max": 64.2
+            },
+            "hr_drift_percent_mean": 4.7,
+            "hr_drift_trend": "declining from 7.0% to 2.7%"
+          },
+          {
+            "distance_tier_mi": 3.17,
+            "cei_mean_hr_per_mile": 46.7,
+            "cei_range_hr_per_mile": {
+              "min": 43.8,
+              "max": 48.7
+            },
+            "hr_drift_percent_mean": 2.8
+          }
+        ],
+        "cross_tier_warning": "Cross-tier CEI is not comparable; within-tier movement is the signal."
+      },
+      "summary_statistics": {
+        "cadence_spm_change": {
+          "from": 136,
+          "to": 144,
+          "interpretation": "Cadence improved as running mechanics consolidated."
+        },
+        "run_walk_ratio_shift": "walk portion shrank from approximately 11-12 minutes to approximately 4 minutes, shifting strongly toward running",
+        "garmin_vo2max": 46,
+        "tier_2_4_mi_cei_mean": 61.3,
+        "tier_3_17_mi_cei_mean": 46.7
+      },
+      "methodology": {
+        "metric_formula": "CEI = average heart rate / distance in miles, interpreted within matched distance tier",
+        "distance_tier_framing": "Shorter 2.4-mile sessions and longer 3.17-mile sessions are reported separately because duration, steady-state settling, and run/walk composition change CEI behavior.",
+        "future_use": "Input layer for a future TrailGenic running biological-age compute tool.",
+        "claim_boundary": "Conditioning tracking only; not itself a biological-age measure."
+      },
+      "claims": [
+        "Within-tier CEI is the valid running economy signal; cross-tier CEI should not be compared directly.",
+        "The 2.4-mile tier showed declining HR drift from 7.0% to 2.7%, with a 4.7% aggregate mean.",
+        "The 3.17-mile tier held a lower aggregate HR drift mean of 2.8%.",
+        "Cadence and run/walk composition improved, supporting additional economy gains beyond CEI.",
+        "This dataset is a conditioning input layer for future compute work and does not compute or imply biological age."
+      ]
+    }
+  ]
+}
