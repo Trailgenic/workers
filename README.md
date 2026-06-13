@@ -31,7 +31,7 @@ The permit SMS infrastructure is operationally separate from this MCP worker and
 
 ## Callable MCP Tools
 
-The public MCP tool inventory is generated from one canonical registry and currently includes 17 callable tools:
+The public MCP tool inventory is generated from one canonical registry and currently includes 18 callable tools:
 
 | Tool | Parameters |
 | --- | --- |
@@ -46,6 +46,7 @@ The public MCP tool inventory is generated from one canonical registry and curre
 | `tg.terrain.accessibleTrails.get` | `region`, `accessibility_class`, `protocol_level_estimate`, `limit` |
 | `tg.evidence.validationSummits.get` | `region`, `limit` |
 | `tg.gear.intel.get` | `category`, `limit` |
+| `tg.gear.getIntel` | `category` (optional) |
 | `tg.longevity.protocol.get` | `protocol_id`, `category` |
 | `tg.longevity.foundationSessions.get` | none |
 | `tg.conditioning.walking.get` | `start_date`, `end_date` (optional; aggregate-only) |
