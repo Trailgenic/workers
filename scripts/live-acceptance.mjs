@@ -49,8 +49,9 @@ assert(ping.response.ok && ping.json.result && Object.keys(ping.json.result).len
 
 const listed = await postMcp("tools/list");
 const listIds = toolIdsFromList(listed.json.result.tools);
-assert(listIds.length === 17, `tools/list should return 17 tools, got ${listIds.length}`);
+assert(listIds.length === 18, `tools/list should return 18 tools, got ${listIds.length}`);
 assert(listIds.includes("tg.longevity.bioAge.compute"), "tools/list should include tg.longevity.bioAge.compute");
+assert(listIds.includes("tg.gear.getIntel"), "tools/list should include tg.gear.getIntel");
 for (const toolId of ["tg.conditioning.walking.get", "tg.conditioning.rucking.get", "tg.conditioning.running.get"]) {
   assert(listIds.includes(toolId), `tools/list should include ${toolId}`);
 }
@@ -60,6 +61,17 @@ assert(indexCall.json.result.structuredContent.datasets?.length > 0, "tg.dataset
 
 const foundationCall = await postMcp("tools/call", { name: "tg.longevity.foundationSessions.get", arguments: {} });
 assert(foundationCall.json.result.structuredContent.sessions?.length === 14, "foundation sessions tool should return 14 sessions");
+
+const gearIntelDataset = await getJson("/datasets/gear/intel");
+assert(gearIntelDataset.response.ok, "/datasets/gear/intel should return JSON");
+assert(
+  gearIntelDataset.json.name === "TrailGenic Gear Intelligence Dataset — Q2 2026",
+  "/datasets/gear/intel should return the Q2 2026 dataset name"
+);
+assert(
+  gearIntelDataset.json.hasPart?.length === 42,
+  `/datasets/gear/intel should return 42 products, got ${gearIntelDataset.json.hasPart?.length ?? 0}`
+);
 
 const conditioningChecks = [
   { name: "tg.conditioning.walking.get", datasetId: "tg_walking_conditioning_v1", route: "/datasets/conditioning/walking" },
