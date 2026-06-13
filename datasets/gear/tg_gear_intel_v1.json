@@ -1,8 +1,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Dataset",
-  "name": "TrailGenic Backpacks Intelligence Dataset",
-  "description": "Gear scored through TrailGenic longevity lens. Fasted high-altitude performance metrics.",
+  "name": "TrailGenic Gear Intelligence Dataset — Q2 2026",
+  "description": "Hiking gear scored through the TrailGenic longevity lens. Returns TG composite scores, metabolic load, altitude readiness, recovery impact, protocol fit, and field durability signals for 42 products across 8 categories.",
   "dateCreated": "2026-04-05T00:13:07.074Z",
   "creator": {
     "@type": "Organization",
@@ -21,6 +21,12 @@
       "name": "Salomon ADV Skin 12 Hydration Vest",
       "category": "Backpacks",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 84,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Metabolic Load",
@@ -61,6 +67,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 84,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 88,
           "description": "260g base weight, tight body integration minimizes bounce penalty"
@@ -97,6 +109,12 @@
       "name": "Osprey Talon 22",
       "category": "Backpacks",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 73,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Metabolic Load",
@@ -137,6 +155,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 75,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 68,
           "description": "3.3lb weight acceptable but suspension system adds dead load"
@@ -173,6 +197,12 @@
       "name": "Hyperlite Mountain Gear 3400 Southwest",
       "category": "Backpacks",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 84,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Metabolic Load",
@@ -213,6 +243,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 83,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 88,
           "description": "2.0 lb base weight minimal dead load penalty"
@@ -251,6 +287,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 83,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 91,
           "description": "19.7oz frameless design minimizes dead weight penalty"
@@ -284,47 +326,15 @@
     },
     {
       "@type": "Product",
-      "name": "Nathan Pinnacle 12L Race Vest",
-      "category": "Backpacks",
-      "additionalProperty": [
-        {
-          "@type": "PropertyValue",
-          "name": "Metabolic Load",
-          "value": 88,
-          "description": "355g weight with exceptional bounce control"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Altitude Readiness",
-          "value": 92,
-          "description": "Superior ventilation through perforated back panel"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Recovery Impact",
-          "value": 78,
-          "description": "Soft flask positioning reduces shoulder fatigue"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Pack Weight Economics",
-          "value": 85,
-          "description": "12L capacity at sub-400g delivers strong ratio"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Field Durability",
-          "value": 76,
-          "description": "Hydrapack components solid but vest fabric shows wear"
-        }
-      ],
-      "description": "The Pinnacle 12L excels as a fasted alpine vest with minimal bounce and exceptional thermoregulation through perforated panels. Weight-to-capacity ratio and integrated hydration system make it ideal for 4-6 hour high-altitude sessions."
-    },
-    {
-      "@type": "Product",
       "name": "New Balance Fresh Foam X Hierro v8",
       "category": "Trail Shoes",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 71,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Metabolic Load",
@@ -365,6 +375,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 75,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 78,
           "description": "290g weight decent, but energy return limited on technical climbs"
@@ -401,6 +417,12 @@
       "name": "Altra Lone Peak 8",
       "category": "Trail Shoes",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 84,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Metabolic Load",
@@ -441,6 +463,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 72,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 68,
           "description": "10.9oz weight penalty vs minimal alternatives"
@@ -477,6 +505,12 @@
       "name": "Brooks Cascadia 17",
       "category": "Trail Shoes",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 72,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Metabolic Load",
@@ -517,6 +551,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 84,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 88,
           "description": "295g weight with aggressive lug pattern reduces energy cost on technical terrain"
@@ -555,6 +595,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 77,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 81,
           "description": "9.8oz weight with efficient PWRRUN foam reduces energy cost per step"
@@ -588,47 +634,15 @@
     },
     {
       "@type": "Product",
-      "name": "Topo Athletic MTN Racer 3",
-      "category": "Trail Shoes",
-      "additionalProperty": [
-        {
-          "@type": "PropertyValue",
-          "name": "Metabolic Load",
-          "value": 89,
-          "description": "295g weight with efficient toe-off mechanics"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Altitude Readiness",
-          "value": 86,
-          "description": "Breathable upper maintains thermoregulation above 10k"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Field Durability",
-          "value": 78,
-          "description": "Vibram outsole solid but midsole compression noted 400+ miles"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Pack Weight Economics",
-          "value": 85,
-          "description": "Excellent weight-to-protection ratio for alpine carries"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Recovery Impact",
-          "value": 81,
-          "description": "Wide toe box reduces pressure points during long sessions"
-        }
-      ],
-      "description": "MTN Racer 3 delivers exceptional metabolic efficiency with its lightweight build and natural foot positioning that reduces energy cost during fasted alpine sessions. The wide toe box and breathable construction align well with extended high-altitude efforts, though midsole longevity becomes questionable beyond 400 miles of loaded carries."
-    },
-    {
-      "@type": "Product",
       "name": "Arc'teryx Cerium SL Hoody",
       "category": "Insulation",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 85,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Metabolic Load",
@@ -669,6 +683,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 84,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 88,
           "description": "10.8oz weight exceptional for warmth delivered"
@@ -705,6 +725,12 @@
       "name": "Patagonia Nano Puff Hoody",
       "category": "Insulation",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 74,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Metabolic Load",
@@ -745,6 +771,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 83,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 89,
           "description": "7.8oz packable, minimal motion restriction"
@@ -783,6 +815,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 89,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 95,
           "description": "2.5oz weight exceptional for warmth output"
@@ -816,47 +854,15 @@
     },
     {
       "@type": "Product",
-      "name": "Western Mountaineering Flash Jacket",
-      "category": "Insulation",
-      "additionalProperty": [
-        {
-          "@type": "PropertyValue",
-          "name": "Metabolic Load",
-          "value": 89,
-          "description": "13.5oz for 850+ fill creates minimal dead-load penalty"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Altitude Readiness",
-          "value": 87,
-          "description": "Pertex Quantum shell breathes well during fasted exertion above treeline"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Field Durability",
-          "value": 82,
-          "description": "Premium construction but delicate shell requires care in alpine environments"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Pack Weight Economics",
-          "value": 88,
-          "description": "Exceptional warmth-to-weight ratio justifies pack space allocation"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Recovery Impact",
-          "value": 81,
-          "description": "Efficient thermal regulation supports post-session recovery protocols"
-        }
-      ],
-      "description": "Elite warmth-to-weight performer that excels in fasted alpine conditions where metabolic heat production is compromised. The breathable shell design prevents overheating during high-output ascents while maintaining thermal efficiency during rest phases."
-    },
-    {
-      "@type": "Product",
       "name": "Black Diamond Distance Carbon Z Poles",
       "category": "Trekking Poles",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 85,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Metabolic Load",
@@ -897,6 +903,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 80,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 85,
           "description": "15.5oz pair significantly reduces arm fatigue on long ascents"
@@ -933,6 +945,12 @@
       "name": "Leki Micro Vario Carbon Poles",
       "category": "Trekking Poles",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 84,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Metabolic Load",
@@ -973,6 +991,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 85,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 91,
           "description": "8.8oz pair significantly reduces swing weight fatigue"
@@ -1009,6 +1033,12 @@
       "name": "REI Co-op Flash Carbon Trekking Poles",
       "category": "Trekking Poles",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 74,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Metabolic Load",
@@ -1049,6 +1079,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 85,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Electrolyte/Nutrition Score",
           "value": 92,
           "description": "2300mg sodium, 400mg potassium, zero sugar - ideal for fasted state"
@@ -1085,6 +1121,12 @@
       "name": "ReLyte Electrolyte Mix",
       "category": "Electrolytes",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 84,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Electrolyte/Nutrition Score",
@@ -1125,6 +1167,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 87,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Electrolyte/Nutrition Score",
           "value": 92,
           "description": "1000mg sodium targets fasted depletion rates"
@@ -1163,6 +1211,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 85,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Electrolyte/Nutrition Score",
           "value": 92,
           "description": "1500mg sodium optimized for fasted sessions"
@@ -1196,85 +1250,15 @@
     },
     {
       "@type": "Product",
-      "name": "Nuun Sport Tablets",
-      "category": "Electrolytes",
-      "additionalProperty": [
-        {
-          "@type": "PropertyValue",
-          "name": "Electrolyte/Nutrition Score",
-          "value": 75,
-          "description": "Balanced Na/K ratio, minimal sugar"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Metabolic Load",
-          "value": 78,
-          "description": "Fast absorption without digestive load"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Altitude Readiness",
-          "value": 68,
-          "description": "Adequate hydration support above 10K"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Longevity Protocol Fit",
-          "value": 74,
-          "description": "Compatible with fasted protocols"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Field Durability",
-          "value": 70,
-          "description": "Tablets can crumble in pack"
-        }
-      ],
-      "description": "Solid electrolyte foundation for fasted alpine sessions with 360mg sodium and clean mineral profile that won't disrupt ketosis. Tablet format presents durability concerns in loaded packs but dissolves consistently even in cold mountain water."
-    },
-    {
-      "@type": "Product",
-      "name": "SaltStick Fastchews",
-      "category": "Electrolytes",
-      "additionalProperty": [
-        {
-          "@type": "PropertyValue",
-          "name": "Electrolyte/Nutrition Score",
-          "value": 78,
-          "description": "2:1 sodium:potassium ratio solid for fasted sessions"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Metabolic Load",
-          "value": 85,
-          "description": "Fast absorption without GI stress during exertion"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Altitude Readiness",
-          "value": 72,
-          "description": "Adequate mineral replacement for high-altitude sweat losses"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Field Durability",
-          "value": 68,
-          "description": "Chewable format vulnerable to heat/moisture degradation"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Pack Weight Economics",
-          "value": 75,
-          "description": "Dense electrolyte delivery per gram carried"
-        }
-      ],
-      "description": "SaltStick Fastchews deliver reliable mineral replacement with minimal metabolic disruption during fasted alpine sessions. The 215mg sodium per tab supports sustained performance above treeline, though chewable format requires careful pack storage in variable conditions."
-    },
-    {
-      "@type": "Product",
       "name": "Salomon Soft Flask 500ml",
       "category": "Hydration",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 83,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Metabolic Load",
@@ -1315,6 +1299,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 84,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 88,
           "description": "22g weight, collapsible design eliminates dead volume burden"
@@ -1351,6 +1341,12 @@
       "name": "Hydrapak Softflask 500ml",
       "category": "Hydration",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 85,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Metabolic Load",
@@ -1391,6 +1387,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 85,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 89,
           "description": "34g weight reduces pack penalty significantly"
@@ -1421,6 +1423,12 @@
       "name": "Sawyer Squeeze Water Filter System",
       "category": "Hydration",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 85,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Metabolic Load",
@@ -1461,6 +1469,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 84,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 91,
           "description": "Exceptionally light at 120g, minimal motion restriction"
@@ -1497,6 +1511,12 @@
       "name": "Arc'teryx Wind Jacket",
       "category": "Shell / Rain",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 79,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Metabolic Load",
@@ -1537,6 +1557,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 73,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 88,
           "description": "1.2oz weight exceptional for alpine carry efficiency"
@@ -1575,6 +1601,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 72,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Pack Weight Economics",
           "value": 88,
           "description": "6.4oz minimizes dead load penalty"
@@ -1608,47 +1640,15 @@
     },
     {
       "@type": "Product",
-      "name": "Black Diamond Liquid Point Shell",
-      "category": "Shell / Rain",
-      "additionalProperty": [
-        {
-          "@type": "PropertyValue",
-          "name": "Metabolic Load",
-          "value": 75,
-          "description": "Moderate weight penalty but efficient alpine cut"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Altitude Readiness",
-          "value": 85,
-          "description": "Excellent breathability under fasted exertion above treeline"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Field Durability",
-          "value": 68,
-          "description": "3L construction solid but seam integrity concerns in alpine abuse"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Recovery Impact",
-          "value": 70,
-          "description": "Good post-session thermal regulation, articulated design"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Longevity Protocol Fit",
-          "value": 62,
-          "description": "Weather protection strong but lacks cold exposure optimization"
-        }
-      ],
-      "description": "Solid alpine shell for fasted high-altitude work with exceptional breathability during sustained climbs, but durability concerns limit confidence for multi-season longevity protocols. Best suited for moderate alpine objectives rather than extended expedition use."
-    },
-    {
-      "@type": "Product",
       "name": "Montbell Versalite Rain Jacket",
       "category": "Shell / Rain",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 84,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Metabolic Load",
@@ -1689,6 +1689,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 74,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 78,
           "description": "86g weight acceptable for output, but bounces slightly during fast ascents"
@@ -1725,6 +1731,12 @@
       "name": "Black Diamond Storm 500",
       "category": "Headlamps",
       "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 85,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
         {
           "@type": "PropertyValue",
           "name": "Metabolic Load",
@@ -1765,6 +1777,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 84,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 89,
           "description": "75g total weight, minimal neck strain during extended sessions"
@@ -1803,6 +1821,12 @@
       "additionalProperty": [
         {
           "@type": "PropertyValue",
+          "name": "TG Composite Score",
+          "value": 85,
+          "description": "Composite TrailGenic score across metabolic load, recovery impact, altitude readiness, protocol fit, and field durability."
+        },
+        {
+          "@type": "PropertyValue",
           "name": "Metabolic Load",
           "value": 88,
           "description": "100g weight minimal neck strain during extended sessions"
@@ -1833,44 +1857,8 @@
         }
       ],
       "description": "The reactive lighting technology eliminates cognitive load of manual brightness adjustment during fasted ascents when decision-making is compromised. Red light preservation of night vision critical for dawn starts in longevity protocols."
-    },
-    {
-      "@type": "Product",
-      "name": "Fenix HM65R-T",
-      "category": "Headlamps",
-      "additionalProperty": [
-        {
-          "@type": "PropertyValue",
-          "name": "Metabolic Load",
-          "value": 88,
-          "description": "104g weight with dual light design minimizes neck strain during extended sessions"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Altitude Readiness",
-          "value": 85,
-          "description": "Proven thermal stability and beam consistency above 12,000ft in cold conditions"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Field Durability",
-          "value": 89,
-          "description": "IPX8 rating with robust construction survives alpine moisture and temperature cycling"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Pack Weight Economics",
-          "value": 82,
-          "description": "Weight justified by dual beam versatility and USB-C rechargeable eliminating spare batteries"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Recovery Impact",
-          "value": 78,
-          "description": "Balanced weight distribution reduces post-session neck tension in fasted state"
-        }
-      ],
-      "description": "The HM65R-T delivers exceptional alpine performance with its dual-beam system proving invaluable during fasted dawn starts and technical night sections above treeline. The USB-C rechargeable design eliminates battery weight penalties while maintaining consistent output in sub-freezing conditions."
     }
-  ]
+  ],
+  "dateModified": "2026-06-13",
+  "numberOfItems": 42
 }
