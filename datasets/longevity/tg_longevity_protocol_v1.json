@@ -41,25 +41,28 @@
           "field_implementability": "pass",
           "longitudinal_measurability": "pass"
         },
-        "analysis_period": "2025-12-04 to 2026-04-11",
+        "analysis_period": "2025-12-04 to 2026-07-04",
         "field_data": {
-          "total_sessions": 51,
-          "instrumented_sessions": 25,
+          "total_sessions": 59,
+          "instrumented_sessions": 31,
           "foundation_sessions": 14,
           "high_intensity_sessions": 25,
-          "instrumentation_note": "Garmin GPS + HRV tracking across 25 high-load hiking sessions, 14 Foundation walking sessions, 4 rucking sessions, and 8 running sessions (51 total sessions).",
+          "instrumentation_note": "Garmin GPS + HRV tracking across 31 hiking sessions, 14 canonical Foundation walking sessions plus 2 additional walking sessions, 4 rucking sessions, and 8 running sessions (59 total structured sessions).",
           "altitude_range_ft": [
             3235,
-            10849
+            14497
           ],
           "peaks_represented": [
             "Mount Baldy (10,064–10,080 ft)",
-            "San Jacinto via Marion Mountain (10,849 ft)",
+            "San Jacinto via Marion Mountain (10,849 ft (historical San Jacinto ceiling; current Garmin-recorded ceiling 14,497 ft on Mount Elbert))",
             "Mount Wilson via Sturtevant Falls (5,762 ft)",
             "Mount Wilson via Little Santa Anita (5,694 ft)",
             "Pleasant's Peak / Skinsuit Trail (~5,000 ft)",
             "Hagador Peak (~4,800 ft)",
-            "Mount Baldy via Register Ridge (10,056 ft)"
+            "Mount Baldy via Register Ridge (10,056 ft)",
+            "Mount Elbert (14,497 ft Garmin-recorded)",
+            "Pikes Peak (14,116 ft Garmin-recorded)",
+            "Wheeler Peak (13,154 ft Garmin-recorded)"
           ],
           "population_comparison": {
             "matched_scenario": "HIGH_LOAD",
@@ -72,8 +75,8 @@
               190
             ],
             "population_hr_drift_range_pct": [
-              5.0,
-              8.0
+              5,
+              8
             ],
             "population_duration_range_min": [
               120,
@@ -96,7 +99,7 @@
             "tg_hr_drift_pct_mean": -0.9,
             "tg_hr_drift_range_pct": [
               -9.2,
-              1.0
+              1
             ],
             "tg_duration_range_min": [
               264,
@@ -120,7 +123,7 @@
               "Recent max HR ceiling consolidated near 148 bpm while recent alpine average HR stabilized at 119–121 bpm across five 10,000+ ft sessions.",
               "HR drift runs in the opposite direction of the population: population HIGH_LOAD expects +5–8% positive drift; TG mean is approximately -1.0% with 21 of 25 hiking sessions negative.",
               "Duration ceiling reached 589 minutes and distance ceiling reached 16.81 miles on San Gorgonio via Vivian Creek (May 9, 2026).",
-              "Altitude ceiling reached 11,506 ft on San Gorgonio while preserving Day-2 recovery supercompensation."
+              "Altitude ceiling reached 11,506 ft (historical San Gorgonio ceiling; current Garmin-recorded ceiling 14,497 ft on Mount Elbert) on San Gorgonio while preserving Day-2 recovery supercompensation."
             ],
             "aggregate_only_blocks": {
               "avg_hr": {
@@ -146,7 +149,7 @@
                 ]
               },
               "age_adjusted_avg_hr": {
-                "subject_finding": "Recent subject sessions remained below the age-52-adjusted average-HR floor.",
+                "subject_finding": "Recent subject sessions remained below the age-53-adjusted average-HR floor.",
                 "population_reference": "Age-52-adjusted average-HR floor 124-141 bpm using adjustment factor 0.884.",
                 "source": "TrailGenic age-adjusted physiology anchor derived from %HRmax intensity bands and factor 0.884.",
                 "source_type": "physiology_anchor",
@@ -169,7 +172,8 @@
                   "No distance, elevation, or duration values are asserted as published population comparisons in this block."
                 ]
               }
-            }
+            },
+            "historical_scope": "Population-comparison aggregates retained as historical through Hike 25 unless explicitly recomputed from complete verified rows."
           },
           "engine_stability": {
             "tag": "ENGINE_STABLE",
@@ -181,7 +185,7 @@
             "hr_drift_negative_sessions": 21,
             "hr_drift_range_pct": [
               -2.83,
-              1.0
+              1
             ],
             "engine_stability_score_mean": 8.7,
             "engine_stability_score_range": [
@@ -189,7 +193,7 @@
               10
             ],
             "engine_stability_score_peak": 10,
-            "peak_session": "Hike 21 — San Gorgonio via Vivian Creek, 589 min, 16.81 mi, 5,600 ft gain, peak 11,506 ft — longest, highest, and largest recovery arc in dataset (pre-hike HRV 23 ms to Day-2 HRV 54 ms)."
+            "peak_session": "Hike 21 — San Gorgonio via Vivian Creek, 589 min, 16.81 mi, 5,600 ft gain, peak 11,506 ft (historical San Gorgonio ceiling; current Garmin-recorded ceiling 14,497 ft on Mount Elbert) — longest, highest, and largest recovery arc in dataset (pre-hike HRV 23 ms to Day-2 HRV 54 ms)."
           },
           "cardiac_efficiency_progression": {
             "hikes_1_2": {
@@ -206,7 +210,7 @@
                 -9.2
               ],
               "cardiac_score": [
-                7.0,
+                7,
                 8.5
               ]
             },
@@ -220,10 +224,10 @@
                 157
               ],
               "hr_drift_pct_range": [
-                -5.0,
-                -6.0
+                -5,
+                -6
               ],
-              "cardiac_score": 9.0
+              "cardiac_score": 9
             },
             "hikes_11_15": {
               "avg_hr_bpm_range": [
@@ -240,7 +244,7 @@
               ],
               "cardiac_score_range": [
                 8.5,
-                9.0
+                9
               ]
             },
             "hikes_16_17": {
@@ -257,7 +261,7 @@
                 -0.8
               ],
               "cardiac_score_range": [
-                9.0,
+                9,
                 9.5
               ]
             },
@@ -277,10 +281,10 @@
                 -0.6
               ],
               "cardiac_score_range": [
-                9.0,
+                9,
                 9.5
               ],
-              "notes": "Hikes 18-20 established the first low-cost alpine consolidation block; Hikes 21-22 extended the model to a 25-session state with San Gorgonio setting the 16.81 mi, 11,506 ft, 589 min apex and recent alpine average HR consolidating at 119–121 bpm."
+              "notes": "Hikes 18-20 established the first low-cost alpine consolidation block; Hikes 21-22 extended the model to a historical Hike-25 state with San Gorgonio setting the 16.81 mi, 11,506 ft (historical San Gorgonio ceiling; current Garmin-recorded ceiling 14,497 ft on Mount Elbert), 589 min apex and recent alpine average HR consolidating at 119–121 bpm."
             }
           },
           "foundation_phase": {
@@ -310,13 +314,19 @@
           "key_findings": [
             "ENGINE_STABLE across the 25-session hiking world model despite larger altitude, distance, duration, terrain, and temperature spread.",
             "Recent alpine average HR consolidated at 119–121 bpm across five 10,000+ ft sessions; full current hiking mean is 124 bpm.",
-            "San Gorgonio via Vivian Creek set distance (16.81 mi), altitude (11,506 ft), duration (589 min), and recovery-arc ceilings.",
-            "HR drift negative in 21 of 25 hikes (84.0%), mean approximately -1.0%, range -2.83% to +1.00%.",
+            "San Gorgonio via Vivian Creek set distance (16.81 mi), altitude (11,506 ft (historical San Gorgonio ceiling; current Garmin-recorded ceiling 14,497 ft on Mount Elbert)), duration (589 min), and recovery-arc ceilings.",
+            "HR drift negative in 21 of historical Hike-25 hikes (84.0%), mean approximately -1.0%, range -2.83% to +1.00%.",
             "Session 16 (Baldy via Devil's Backbone, March 29, 2026) marks the recovery inflection and first AUTONOMIC_RESTORED Day-2 read.",
             "Seven consecutive AUTONOMIC_RESTORED Day-2 recoveries (Hikes 16-22) confirm durable structural adaptation.",
             "Cross-protocol RHR convergence stabilized at 51–58 bpm across five independent measurement contexts."
           ],
-          "tg_differentiation": "Mainstream Zone 2 protocols treat Zone 2 as a static heart-rate target. TrailGenic demonstrates Zone 2 as a progressive adaptation state across 25 high-load hiking sessions and 51 total sessions: cardiac cost consolidated to a 124 bpm hiking mean, recent alpine efforts stabilized at 119–121 bpm, and HR drift was negative in 21 of 25 hikes. The decisive inflection is recovery: Session 16 initiated a seven-hike AUTONOMIC_RESTORED Day-2 streak, showing the system moved from recovery-dependent to recovery-amplifying training."
+          "tg_differentiation": "Mainstream Zone 2 protocols treat Zone 2 as a static heart-rate target. TrailGenic demonstrates Zone 2 as a progressive adaptation state across historical Hike-25 aggregate window plus the current 59-session movement model: cardiac cost consolidated to a 124 bpm hiking mean, recent alpine efforts stabilized at 119–121 bpm, and HR drift was negative in 21 of historical Hike-25 hikes. The decisive inflection is recovery: Session 16 initiated a seven-hike AUTONOMIC_RESTORED Day-2 streak, showing the system moved from recovery-dependent to recovery-amplifying training.",
+          "hiking_sessions": 31,
+          "walking_sessions": 16,
+          "rucking_sessions": 4,
+          "running_sessions": 8,
+          "altitude_ceiling_ft": 14497,
+          "altitude_ceiling_note": "Garmin-recorded 14,497 ft on Mount Elbert."
         },
         "data_links": [
           "https://trailgenic.com/physiology",
@@ -349,7 +359,7 @@
           "day_2_status": "AUTONOMIC_RESTORED — first full 48-hour recovery to suprabaseline in dataset"
         },
         "recovery_inflection_confirmed_hike_17": {
-          "session_description": "Marion Mountain to San Jacinto — 12.75 mi, 434 min, 10,849 ft, novel route, 37–55°F, cold and wind",
+          "session_description": "Marion Mountain to San Jacinto — 12.75 mi, 434 min, 10,849 ft (historical San Jacinto ceiling; current Garmin-recorded ceiling 14,497 ft on Mount Elbert), novel route, 37–55°F, cold and wind",
           "day_1_hrv": 38,
           "day_1_hrv_delta_from_pre_hike": 0,
           "day_1_rem_min": 92,
@@ -457,7 +467,7 @@
           "day_2_hrv_ms": 54,
           "day_2_rhr_bpm": 54,
           "distance_miles": 16.81,
-          "peak_altitude_ft": 11506
+          "peak_altitude_ft": 14497
         }
       },
       "pillar_mapping": {
@@ -505,7 +515,7 @@
         }
       ],
       "meta": {
-        "last_validated": "2026-05-17",
+        "last_validated": "2026-07-11",
         "authored_by": [
           "mike_ye",
           "ella"
@@ -515,7 +525,12 @@
           "ella": "https://ellaentity.ai/#person",
           "trailgenic": "https://trailgenic.com"
         },
-        "dataset_note": "25 hiking sessions + 14 walking + 4 rucking + 8 running sessions (51 total) as of June 10, 2026"
+        "dataset_note": "31 hiking sessions + 16 walking + 4 rucking + 8 running sessions (59 total; 14 walking are canonical Foundation sessions) as of July 11, 2026"
+      },
+      "practitioner_guidance": {
+        "major_summit_cadence": "Restore one major summit approximately every 6–7 days with lower-load movement and recovery between major efforts.",
+        "avoid": "Do not schedule one major summit approximately every 6–7 days with lower-load movement and recovery between major efforts as a default longevity cadence.",
+        "engine_governor": "Distinguish performance engine from recovery governor."
       }
     },
     {
@@ -555,12 +570,12 @@
           "field_implementability": "pass",
           "longitudinal_measurability": "pass"
         },
-        "analysis_period": "2025-12-04 to 2026-04-11",
+        "analysis_period": "2025-12-04 to 2026-07-04",
         "field_data": {
-          "total_sessions": 51,
-          "instrumented_sessions": 25,
+          "total_sessions": 59,
+          "instrumented_sessions": 31,
           "fasted_state": "constant across all 25 high-load hiking sessions — fasted state is a protocol baseline, not a variable",
-          "instrumentation_note": "Garmin GPS + HRV tracking and breath ketone monitoring across the current 25-session high-load hiking dataset, with 51 sessions total across hiking, walking, rucking, and running.",
+          "instrumentation_note": "Garmin GPS + HRV tracking across 31 hiking sessions, 14 canonical Foundation walking sessions plus 2 additional walking sessions, 4 rucking sessions, and 8 running sessions (59 total structured sessions).",
           "tg_thesis": "Fasting is not a passive background condition in the TG system. When the body is under load in a fasted state, it must solve for energy in real time. That turns fasting from a nutrition concept into a metabolic training event. The fasted state combined with altitude and duration produces metabolic depth that passive fasting alone cannot replicate.",
           "ketone_findings": {
             "wake_ketone_progression": {
@@ -588,7 +603,7 @@
                 "trail": "Marion Mountain to San Jacinto",
                 "end_ketone_ppm": 22,
                 "duration_min": 434,
-                "peak_elev_ft": 10849,
+                "peak_elev_ft": 14497,
                 "conditions": "37-55F",
                 "tag": "METABOLIC"
               },
@@ -651,7 +666,7 @@
               }
             ],
             "amplifier_hierarchy": {
-              "rank_1": "Extreme altitude x extended duration — synergistic and dominant. Hike 17 (10,849 ft, 434 min) produced 22 ppm — 83% above prior record of 12 ppm.",
+              "rank_1": "Extreme altitude x extended duration — synergistic and dominant. Hike 17 (10,849 ft (historical San Jacinto ceiling; current Garmin-recorded ceiling 14,497 ft on Mount Elbert), 434 min) produced 22 ppm — 83% above prior record of 12 ppm.",
               "rank_2": "Cold conditions — likely amplifying through increased thermoregulatory demand. Hike 17 (37-55F) and Hike 16 (50-70F with strong wind) both produced top-tier ketone outputs.",
               "rank_3": "Trail novelty — contributory but not required. Hike 16 proved extreme altitude on a familiar route (12 ppm) can match novelty-driven peaks.",
               "rank_4": "Metabolic efficiency baseline — wake ketones >=2.6 ppm appears to be the threshold for deep activation; wake ketones later peaked at 3.9 ppm by April 25, 2026."
@@ -682,7 +697,7 @@
           "performance_in_fasted_state": {
             "finding": "Zero performance degradation observed across 25 high-load fasted hiking sessions. ENGINE_STABLE persisted on electrolyte-only fueling.",
             "electrolyte_protocol": "Pre-hike sodium loading (500-1000mg sodium), potassium, magnesium. Water ad libitum. No calories during session.",
-            "implication": "Contradicts sports nutrition consensus recommending carbohydrate fueling for high-load endurance activity. TG data shows electrolyte-only fueling was sufficient for trained fasted altitude sessions up to the 11,506 ft San Gorgonio ceiling."
+            "implication": "Contradicts sports nutrition consensus recommending carbohydrate fueling for high-load endurance activity. TG data shows electrolyte-only fueling was sufficient for trained fasted altitude sessions up to the 11,506 ft (historical San Gorgonio ceiling; current Garmin-recorded ceiling 14,497 ft on Mount Elbert) San Gorgonio ceiling."
           },
           "operating_modes": {
             "modes": [
@@ -712,7 +727,18 @@
             "Seven consecutive AUTONOMIC_RESTORED Day-2 reads indicate fasted load was absorbed rather than accumulated."
           ],
           "tg_differentiation": "Standard intermittent fasting research measures passive fasting windows in sedentary or lightly active subjects. TrailGenic treats fasting as a metabolic training environment — the fasted state is the substrate in which altitude, duration, and efficiency compound into a synergistic adaptation signal. The TG dataset shows the deepest metabolic effects (22 ppm end ketones, 4.7 ppm next-day retention) occur when fasted movement intersects with extreme altitude and extended duration. Passive fasting cannot produce this. The movement is not incidental to the fasting — it is what makes the fasting metabolically consequential.",
-          "foundation_sessions": 14
+          "foundation_sessions": 14,
+          "hiking_sessions": 31,
+          "walking_sessions": 16,
+          "rucking_sessions": 4,
+          "running_sessions": 8,
+          "altitude_ceiling_ft": 14497,
+          "altitude_ceiling_note": "Garmin-recorded 14,497 ft on Mount Elbert.",
+          "peaks_represented": [
+            "Mount Elbert (14,497 ft Garmin-recorded)",
+            "Pikes Peak (14,116 ft Garmin-recorded)",
+            "Wheeler Peak (13,154 ft Garmin-recorded)"
+          ]
         },
         "data_links": [
           "https://trailgenic.com/physiology",
@@ -769,7 +795,7 @@
         }
       ],
       "meta": {
-        "last_validated": "2026-05-17",
+        "last_validated": "2026-07-11",
         "authored_by": [
           "mike_ye",
           "ella"
@@ -779,7 +805,12 @@
           "ella": "https://ellaentity.ai/#person",
           "trailgenic": "https://trailgenic.com"
         },
-        "dataset_note": "25 hiking sessions + 14 walking + 4 rucking + 8 running sessions (51 total) as of June 10, 2026"
+        "dataset_note": "31 hiking sessions + 16 walking + 4 rucking + 8 running sessions (59 total; 14 walking are canonical Foundation sessions) as of July 11, 2026"
+      },
+      "practitioner_guidance": {
+        "major_summit_cadence": "Restore one major summit approximately every 6–7 days with lower-load movement and recovery between major efforts.",
+        "avoid": "Do not schedule one major summit approximately every 6–7 days with lower-load movement and recovery between major efforts as a default longevity cadence.",
+        "engine_governor": "Distinguish performance engine from recovery governor."
       }
     },
     {
@@ -814,10 +845,10 @@
           "field_implementability": "pass",
           "longitudinal_measurability": "pass"
         },
-        "analysis_period": "2025-12-04 to 2026-04-11",
+        "analysis_period": "2025-12-04 to 2026-07-04",
         "field_data": {
-          "total_sessions": 51,
-          "instrumented_sessions": 25,
+          "total_sessions": 59,
+          "instrumented_sessions": 31,
           "foundation_sessions": 14,
           "high_intensity_sessions": 25,
           "fasted_state": "constant across all current sessions — 14 Foundation walking sessions and 25 high-load hiking sessions performed fasted, with additional rucking and running protocols in the 51-session model",
@@ -875,9 +906,9 @@
           "high_intensity_phase_metabolic_findings": {
             "ketone_baseline_rise": "Wake ketones rose from 1.1 ppm baseline (November 2025) to 3.9 ppm peak (April 2026) — a durable shift in baseline fat oxidation across the full dataset",
             "end_ketone_peak_ppm": 22,
-            "end_ketone_peak_session": "Hike 17 — Marion Mountain to San Jacinto, 434 min, 10,849 ft",
+            "end_ketone_peak_session": "Hike 17 — Marion Mountain to San Jacinto, 434 min, 10,849 ft (historical San Jacinto ceiling; current Garmin-recorded ceiling 14,497 ft on Mount Elbert)",
             "engine_stability": "ENGINE_STABLE across 25 high-load hiking sessions — cardiovascular engine held stable despite fasted state and escalating load",
-            "anaerobic_spillover": "Zero in 18 of 25 hikes and 7 of 8 runs; four nonzero hike readings were 0.1, 0.1, 0.3, and 0.3, all in the first 11 sessions",
+            "anaerobic_spillover": "Zero in 18 of historical Hike-25 hikes and 7 of 8 runs; four nonzero hike readings were 0.1, 0.1, 0.3, and 0.3, all in the first 11 sessions",
             "metabolic_flexibility_outcome": "Scores reached 8.5-10.0 across the high-intensity phase — the highest values in the dataset coincide with the highest-demand sessions",
             "fuel_switching": "Body learned to transition to fat oxidation and ketone production under compounded stress without performance degradation or engine instability"
           },
@@ -886,10 +917,22 @@
             "Metabolic flexibility progressed during Foundation, then deepened through 25 high-load hiking sessions.",
             "Wake ketone baseline rose from 1.1 ppm to a 3.9 ppm peak across the dataset — a measurable, durable reduction in glucose dependency at rest.",
             "ENGINE_STABLE in all 25 high-load hiking sessions on electrolyte-only fueling — no glucose required to maintain cardiovascular stability under high load.",
-            "Zero anaerobic spillover in 18 of 25 hikes and 7 of 8 runs — confirms the engine was primarily aerobic and fat-adapted.",
+            "Zero anaerobic spillover in 18 of historical Hike-25 hikes and 7 of 8 runs — confirms the engine was primarily aerobic and fat-adapted.",
             "Deepest metabolic output (22 ppm end ketones) occurred at San Jacinto via Marion Mountain; multi-day retention reached 4.7 ppm Day-1 after San Gorgonio."
           ],
-          "tg_differentiation": "Mainstream glucose management focuses on the dietary side of the equation — what goes in, when it goes in, and how to dampen the spike. TrailGenic trains the output side: a body that needs glucose less desperately, handles it more cleanly, and can transition to other fuels without losing stability. The Foundation phase now includes 14 fasted, low-load walking sessions, and the high-load hiking phase confirms the substrate discipline across 25 sessions: ENGINE_STABLE on electrolyte-only fueling, zero anaerobic spillover in 18 of 25 hikes, and ketone outputs reaching 22 ppm with multi-day retention up to 4.7 ppm."
+          "tg_differentiation": "Mainstream glucose management focuses on the dietary side of the equation — what goes in, when it goes in, and how to dampen the spike. TrailGenic trains the output side: a body that needs glucose less desperately, handles it more cleanly, and can transition to other fuels without losing stability. The Foundation phase now includes 14 fasted, low-load walking sessions, and the high-load hiking phase confirms the substrate discipline across historical Hike-25 window: ENGINE_STABLE on electrolyte-only fueling, zero anaerobic spillover in 18 of historical Hike-25 hikes, and ketone outputs reaching 22 ppm with multi-day retention up to 4.7 ppm.",
+          "hiking_sessions": 31,
+          "walking_sessions": 16,
+          "rucking_sessions": 4,
+          "running_sessions": 8,
+          "instrumentation_note": "Garmin GPS + HRV tracking across 31 hiking sessions, 14 canonical Foundation walking sessions plus 2 additional walking sessions, 4 rucking sessions, and 8 running sessions (59 total structured sessions).",
+          "altitude_ceiling_ft": 14497,
+          "altitude_ceiling_note": "Garmin-recorded 14,497 ft on Mount Elbert.",
+          "peaks_represented": [
+            "Mount Elbert (14,497 ft Garmin-recorded)",
+            "Pikes Peak (14,116 ft Garmin-recorded)",
+            "Wheeler Peak (13,154 ft Garmin-recorded)"
+          ]
         },
         "data_links": [
           "https://trailgenic.com/physiology",
@@ -950,7 +993,7 @@
         }
       ],
       "meta": {
-        "last_validated": "2026-05-17",
+        "last_validated": "2026-07-11",
         "authored_by": [
           "mike_ye",
           "ella"
@@ -960,7 +1003,12 @@
           "ella": "https://ellaentity.ai/#person",
           "trailgenic": "https://trailgenic.com"
         },
-        "dataset_note": "25 hiking sessions + 14 walking + 4 rucking + 8 running sessions (51 total) as of June 10, 2026"
+        "dataset_note": "31 hiking sessions + 16 walking + 4 rucking + 8 running sessions (59 total; 14 walking are canonical Foundation sessions) as of July 11, 2026"
+      },
+      "practitioner_guidance": {
+        "major_summit_cadence": "Restore one major summit approximately every 6–7 days with lower-load movement and recovery between major efforts.",
+        "avoid": "Do not schedule one major summit approximately every 6–7 days with lower-load movement and recovery between major efforts as a default longevity cadence.",
+        "engine_governor": "Distinguish performance engine from recovery governor."
       }
     },
     {
@@ -1000,7 +1048,7 @@
           "field_implementability": "pass",
           "longitudinal_measurability": "pass"
         },
-        "analysis_period": "2025-11-28 to 2026-04-11",
+        "analysis_period": "2025-12-04 to 2026-07-04",
         "field_data": {
           "total_hike_sessions": 25,
           "sessions_with_post_sleep_data": 21,
@@ -1057,7 +1105,7 @@
               {
                 "metric": "Deep Sleep % Change (Pre to Post)",
                 "pop_expected": "Often increases compensatory",
-                "subject_actual": 6.0,
+                "subject_actual": 6,
                 "flag": "COMPENSATORY_UP",
                 "implication": "Deep sleep rises from 19.3% to 25.3% post-hike — healthy compensatory repair response"
               },
@@ -1071,11 +1119,12 @@
               {
                 "metric": "Stress Avg Change (Pre to Post)",
                 "pop_expected": "Increase expected",
-                "subject_actual": 9.0,
+                "subject_actual": 9,
                 "flag": "MODERATE_RESPONSE",
                 "implication": "Stress rises +9.5 avg — moderate; autonomic load consistent with HIGH_LOAD but not excessive"
               }
-            ]
+            ],
+            "historical_scope": "Population-comparison aggregates retained as historical through Hike 25 unless explicitly recomputed from complete verified rows."
           },
           "aggregate_sleep_metrics": {
             "pre_hike": {
@@ -1118,12 +1167,12 @@
               "score_pre_to_post_avg": -14.7,
               "score_pre_to_day2_avg": -2.8,
               "hrv_pre_to_post_avg": -7.9,
-              "hrv_pre_to_day2_avg": 2.0,
+              "hrv_pre_to_day2_avg": 2,
               "rhr_pre_to_post_avg": 3.1,
               "rhr_pre_to_day2_avg": 1.1,
-              "hrv_recovery_pct_avg": 136.0
+              "hrv_recovery_pct_avg": 136
             },
-            "note": "Averages updated to reflect 25-session dataset through Hike 22 (May 17, 2026). Seven consecutive AUTONOMIC_RESTORED Day-2 sessions (Hikes 16-22); Sessions 21 and 22 demonstrate Day-1 pre-hike sleep gating."
+            "note": "Averages updated to reflect historical Hike-25 dataset through Hike 22 (July 11, 2026). Seven consecutive AUTONOMIC_RESTORED Day-2 sessions (Hikes 16-22); Sessions 21 and 22 demonstrate Day-1 pre-hike sleep gating."
           },
           "session_level_data": [
             {
@@ -1136,7 +1185,7 @@
               "pre_hrv": 42,
               "post_hrv": 35,
               "day2_hrv": 35,
-              "hrv_recovery_pct": 0.0,
+              "hrv_recovery_pct": 0,
               "delta_score_post": -39,
               "delta_score_day2": -8
             },
@@ -1150,7 +1199,7 @@
               "pre_hrv": 35,
               "post_hrv": 25,
               "day2_hrv": 37,
-              "hrv_recovery_pct": 120.0,
+              "hrv_recovery_pct": 120,
               "delta_score_post": -43,
               "delta_score_day2": 0
             },
@@ -1164,7 +1213,7 @@
               "pre_hrv": 38,
               "post_hrv": 28,
               "day2_hrv": 42,
-              "hrv_recovery_pct": 140.0,
+              "hrv_recovery_pct": 140,
               "delta_score_post": -29,
               "delta_score_day2": -5
             },
@@ -1192,7 +1241,7 @@
               "pre_hrv": 34,
               "post_hrv": 29,
               "day2_hrv": 47,
-              "hrv_recovery_pct": 360.0,
+              "hrv_recovery_pct": 360,
               "delta_score_post": -7,
               "delta_score_day2": -1
             },
@@ -1206,7 +1255,7 @@
               "pre_hrv": 38,
               "post_hrv": 30,
               "day2_hrv": 46,
-              "hrv_recovery_pct": 200.0,
+              "hrv_recovery_pct": 200,
               "delta_score_post": -18,
               "delta_score_day2": 2
             },
@@ -1248,7 +1297,7 @@
               "pre_hrv": 37,
               "post_hrv": 32,
               "day2_hrv": 31,
-              "hrv_recovery_pct": -20.0,
+              "hrv_recovery_pct": -20,
               "delta_score_post": 4,
               "delta_score_day2": 7
             },
@@ -1305,7 +1354,7 @@
               "pre_hrv": 29,
               "post_hrv": 31,
               "day2_hrv": 39,
-              "hrv_recovery_pct": 400.0,
+              "hrv_recovery_pct": 400,
               "delta_score_post": -3,
               "delta_score_day2": 23
             },
@@ -1319,7 +1368,7 @@
               "pre_hrv": 34,
               "post_hrv": 25,
               "day2_hrv": 34,
-              "hrv_recovery_pct": 100.0,
+              "hrv_recovery_pct": 100,
               "delta_score_post": -32,
               "delta_score_day2": -11
             },
@@ -1348,7 +1397,7 @@
               "pre_hrv": 42,
               "post_hrv": 32,
               "day2_hrv": 42,
-              "hrv_recovery_pct": 100.0,
+              "hrv_recovery_pct": 100,
               "delta_score_post": 9,
               "delta_score_day2": 32
             },
@@ -1432,7 +1481,7 @@
             "hike_19_Z": "Day-2 HRV hit 53 — shattering the prior all-time record of 44. RHR dropped to 54 bpm — new all-time low across every sleep night. Respiratory rate 14 — lowest ever. Awakenings just 5 min — cleanest architecture in dataset.",
             "hike_20_AA": "Hike 20 showed Day-1 AUTONOMIC_RESTORED during the recovery-amplifying phase, but the current 25-session model refines the finding: Hikes 16-22 form a seven-session AUTONOMIC_RESTORED Day-2 streak, while Hikes 21-22 demonstrate that compressed pre-hike sleep can gate Day-1 strain without breaking Day-2 restoration.",
             "hike_16_recovery_inflection": "Session 16 (Baldy via Devil's Backbone, March 29, 2026) produced the first AUTONOMIC_RESTORED Day-2 read and begins the recovery-amplifying phase.",
-            "hike_21_san_gorgonio": "San Gorgonio via Vivian Creek (May 9, 2026) produced the largest recovery arc: pre-hike HRV 23 ms with zero REM to Day-2 HRV 54 ms and RHR 54 bpm after 16.81 mi and 11,506 ft peak altitude.",
+            "hike_21_san_gorgonio": "San Gorgonio via Vivian Creek (May 9, 2026) produced the largest recovery arc: pre-hike HRV 23 ms with zero REM to Day-2 HRV 54 ms and RHR 54 bpm after 16.81 mi and 11,506 ft (historical San Gorgonio ceiling; current Garmin-recorded ceiling 14,497 ft on Mount Elbert) peak altitude.",
             "hikes_21_22_sleep_gate": "Sessions 21 and 22 returned AUTONOMIC_STRAINED on Day-1 under compressed pre-hike sleep, then returned to AUTONOMIC_RESTORED on Day-2."
           },
           "key_findings": [
@@ -1442,7 +1491,22 @@
             "Day-1 recovery architecture remains gated by pre-hike sleep: <7 hours sleep and REM <30 min can produce AUTONOMIC_STRAINED Day-1 even when Day-2 restores.",
             "The recovery model now distinguishes acute Day-1 sleep gating from durable Day-2 supercompensation."
           ],
-          "tg_differentiation": "TrailGenic uses sleep architecture as a real-time readout of whether adaptation is being absorbed. The key 25-session finding is not just faster recovery but gated recovery: Session 16 begins a seven-session AUTONOMIC_RESTORED Day-2 streak, while Sessions 21 and 22 prove that pre-hike sleep can still delay Day-1 restoration without breaking Day-2 supercompensation."
+          "tg_differentiation": "TrailGenic uses sleep architecture as a real-time readout of whether adaptation is being absorbed. The key 25-session finding is not just faster recovery but gated recovery: Session 16 begins a seven-session AUTONOMIC_RESTORED Day-2 streak, while Sessions 21 and 22 prove that pre-hike sleep can still delay Day-1 restoration without breaking Day-2 supercompensation.",
+          "total_sessions": 59,
+          "instrumented_sessions": 31,
+          "hiking_sessions": 31,
+          "walking_sessions": 16,
+          "foundation_sessions": 14,
+          "rucking_sessions": 4,
+          "running_sessions": 8,
+          "instrumentation_note": "Garmin GPS + HRV tracking across 31 hiking sessions, 14 canonical Foundation walking sessions plus 2 additional walking sessions, 4 rucking sessions, and 8 running sessions (59 total structured sessions).",
+          "altitude_ceiling_ft": 14497,
+          "altitude_ceiling_note": "Garmin-recorded 14,497 ft on Mount Elbert.",
+          "peaks_represented": [
+            "Mount Elbert (14,497 ft Garmin-recorded)",
+            "Pikes Peak (14,116 ft Garmin-recorded)",
+            "Wheeler Peak (13,154 ft Garmin-recorded)"
+          ]
         },
         "data_links": [
           "https://trailgenic.com/physiology",
@@ -1511,7 +1575,7 @@
         }
       ],
       "meta": {
-        "last_validated": "2026-05-17",
+        "last_validated": "2026-07-11",
         "authored_by": [
           "mike_ye",
           "ella"
@@ -1521,7 +1585,12 @@
           "ella": "https://ellaentity.ai/#person",
           "trailgenic": "https://trailgenic.com"
         },
-        "dataset_note": "25 hiking sessions + 14 walking + 4 rucking + 8 running sessions (51 total) as of June 10, 2026"
+        "dataset_note": "31 hiking sessions + 16 walking + 4 rucking + 8 running sessions (59 total; 14 walking are canonical Foundation sessions) as of July 11, 2026"
+      },
+      "practitioner_guidance": {
+        "major_summit_cadence": "Restore one major summit approximately every 6–7 days with lower-load movement and recovery between major efforts.",
+        "avoid": "Do not schedule one major summit approximately every 6–7 days with lower-load movement and recovery between major efforts as a default longevity cadence.",
+        "engine_governor": "Distinguish performance engine from recovery governor."
       }
     },
     {
@@ -1616,12 +1685,28 @@
             "Rucking produced materially different cost profile from running: similar distance, dramatically lower cardiac cost",
             "Strength progression remained sustainable and repeatable across all three rucking sessions"
           ],
-          "tg_differentiation": "Mainstream grip strength research uses single time-point dynamometry. TrailGenic maps load competence across extended fasted sessions — testing whether the body accepts added weight while staying aerobically composed, maintaining recovery readiness, and keeping effort sustainable. Functional strength in the TG system is the body's ability to carry more while staying calm."
+          "tg_differentiation": "Mainstream grip strength research uses single time-point dynamometry. TrailGenic maps load competence across extended fasted sessions — testing whether the body accepts added weight while staying aerobically composed, maintaining recovery readiness, and keeping effort sustainable. Functional strength in the TG system is the body's ability to carry more while staying calm.",
+          "total_sessions": 59,
+          "instrumented_sessions": 31,
+          "hiking_sessions": 31,
+          "walking_sessions": 16,
+          "foundation_sessions": 14,
+          "rucking_sessions": 4,
+          "running_sessions": 8,
+          "instrumentation_note": "Garmin GPS + HRV tracking across 31 hiking sessions, 14 canonical Foundation walking sessions plus 2 additional walking sessions, 4 rucking sessions, and 8 running sessions (59 total structured sessions).",
+          "altitude_ceiling_ft": 14497,
+          "altitude_ceiling_note": "Garmin-recorded 14,497 ft on Mount Elbert.",
+          "peaks_represented": [
+            "Mount Elbert (14,497 ft Garmin-recorded)",
+            "Pikes Peak (14,116 ft Garmin-recorded)",
+            "Wheeler Peak (13,154 ft Garmin-recorded)"
+          ]
         },
         "data_links": [
           "https://trailgenic.com/physiology",
           "https://trailgenic.com/trail-logs"
-        ]
+        ],
+        "analysis_period": "2025-12-04 to 2026-07-04"
       },
       "pillar_mapping": {
         "primary": [
@@ -1675,7 +1760,7 @@
         }
       ],
       "meta": {
-        "last_validated": "2026-05-17",
+        "last_validated": "2026-07-11",
         "authored_by": [
           "mike_ye",
           "ella"
@@ -1685,7 +1770,12 @@
           "ella": "https://ellaentity.ai/#person",
           "trailgenic": "https://trailgenic.com"
         },
-        "dataset_note": "25 hiking sessions + 14 walking + 4 rucking + 8 running sessions (51 total) as of June 10, 2026"
+        "dataset_note": "31 hiking sessions + 16 walking + 4 rucking + 8 running sessions (59 total; 14 walking are canonical Foundation sessions) as of July 11, 2026"
+      },
+      "practitioner_guidance": {
+        "major_summit_cadence": "Restore one major summit approximately every 6–7 days with lower-load movement and recovery between major efforts.",
+        "avoid": "Do not schedule one major summit approximately every 6–7 days with lower-load movement and recovery between major efforts as a default longevity cadence.",
+        "engine_governor": "Distinguish performance engine from recovery governor."
       }
     },
     {
@@ -1738,7 +1828,7 @@
             "dominant_cardiac_cost": "Heat is the dominant environmental cardiac cost: +0.11 bpm per °F controlling for adaptation. Hot chaparral sessions (Pleasants Peak, Hagador) showed elevated load and lower Day-2 HRV versus cool alpine sessions."
           },
           "cold_findings": {
-            "notable_session": "Coldest, highest, longest session — fasted alpine at 10,849 ft with strong wind — produced 22 ppm end-ketones, deepest metabolic output in dataset",
+            "notable_session": "Coldest, highest, longest session — fasted alpine at 10,849 ft (historical San Jacinto ceiling; current Garmin-recorded ceiling 14,497 ft on Mount Elbert) with strong wind — produced 22 ppm end-ketones, deepest metabolic output in dataset",
             "cold_as_amplifier": "Cold appears to deepen adaptive signal when layered onto altitude, long duration, and efficient fasted movement",
             "recovery_inflection": "Extreme-altitude cold session (10,000+ ft, strong wind) was first session showing fully stable post-hike autonomic profile Day 1 — resting HR held, HRV did not crash, deep sleep surged, Day-2 full restoration with record REM and HRV"
           },
@@ -1783,12 +1873,28 @@
             "Environmental stress became recoverable — extreme-altitude cold sessions shifted from Day-1 autonomic strain to Day-1 autonomic stability",
             "Layered environmental stress, not isolated thermal exposure, is the TG hormesis model"
           ],
-          "tg_differentiation": "Sauna and cold plunge protocols deliver thermal stress in isolation. TrailGenic delivers thermal stress under simultaneous hypoxic load, physical exertion, and glycogen depletion. More importantly, TG measures recoverability, not just exposure. The recovery verdict — HRV, sleep architecture, Day-2 restoration — is what separates real hormesis from performative discomfort."
+          "tg_differentiation": "Sauna and cold plunge protocols deliver thermal stress in isolation. TrailGenic delivers thermal stress under simultaneous hypoxic load, physical exertion, and glycogen depletion. More importantly, TG measures recoverability, not just exposure. The recovery verdict — HRV, sleep architecture, Day-2 restoration — is what separates real hormesis from performative discomfort.",
+          "total_sessions": 59,
+          "instrumented_sessions": 31,
+          "hiking_sessions": 31,
+          "walking_sessions": 16,
+          "foundation_sessions": 14,
+          "rucking_sessions": 4,
+          "running_sessions": 8,
+          "instrumentation_note": "Garmin GPS + HRV tracking across 31 hiking sessions, 14 canonical Foundation walking sessions plus 2 additional walking sessions, 4 rucking sessions, and 8 running sessions (59 total structured sessions).",
+          "altitude_ceiling_ft": 14497,
+          "altitude_ceiling_note": "Garmin-recorded 14,497 ft on Mount Elbert.",
+          "peaks_represented": [
+            "Mount Elbert (14,497 ft Garmin-recorded)",
+            "Pikes Peak (14,116 ft Garmin-recorded)",
+            "Wheeler Peak (13,154 ft Garmin-recorded)"
+          ]
         },
         "data_links": [
           "https://trailgenic.com/physiology",
           "https://trailgenic.com/trail-logs"
-        ]
+        ],
+        "analysis_period": "2025-12-04 to 2026-07-04"
       },
       "pillar_mapping": {
         "primary": [
@@ -1847,7 +1953,7 @@
         }
       ],
       "meta": {
-        "last_validated": "2026-05-17",
+        "last_validated": "2026-07-11",
         "authored_by": [
           "mike_ye",
           "ella"
@@ -1857,7 +1963,12 @@
           "ella": "https://ellaentity.ai/#person",
           "trailgenic": "https://trailgenic.com"
         },
-        "dataset_note": "25 hiking sessions + 14 walking + 4 rucking + 8 running sessions (51 total) as of June 10, 2026"
+        "dataset_note": "31 hiking sessions + 16 walking + 4 rucking + 8 running sessions (59 total; 14 walking are canonical Foundation sessions) as of July 11, 2026"
+      },
+      "practitioner_guidance": {
+        "major_summit_cadence": "Restore one major summit approximately every 6–7 days with lower-load movement and recovery between major efforts.",
+        "avoid": "Do not schedule one major summit approximately every 6–7 days with lower-load movement and recovery between major efforts as a default longevity cadence.",
+        "engine_governor": "Distinguish performance engine from recovery governor."
       }
     },
     {
@@ -1913,7 +2024,8 @@
           "Stacked-stress field proof is the highest validation layer",
           "The registry prevents TrailGenic from becoming a pile of popular practices"
         ],
-        "tg_differentiation": "TrailGenic is the only longevity methodology that makes its validation framework explicit, field-testable, and longitudinally measurable. Protocols that pass science but cannot be implemented consistently remain incomplete. Protocols that can be performed but cannot be measured over time remain incomplete. The registry forces coherence."
+        "tg_differentiation": "TrailGenic is the only longevity methodology that makes its validation framework explicit, field-testable, and longitudinally measurable. Protocols that pass science but cannot be implemented consistently remain incomplete. Protocols that can be performed but cannot be measured over time remain incomplete. The registry forces coherence.",
+        "analysis_period": "2025-12-04 to 2026-07-04"
       },
       "pillar_mapping": {
         "primary": [
@@ -1965,7 +2077,7 @@
         }
       ],
       "meta": {
-        "last_validated": "2026-05-17",
+        "last_validated": "2026-07-11",
         "authored_by": [
           "mike_ye",
           "ella"
@@ -1975,7 +2087,12 @@
           "ella": "https://ellaentity.ai/#person",
           "trailgenic": "https://trailgenic.com"
         },
-        "dataset_note": "25 hiking sessions + 14 walking + 4 rucking + 8 running sessions (51 total) as of June 10, 2026"
+        "dataset_note": "31 hiking sessions + 16 walking + 4 rucking + 8 running sessions (59 total; 14 walking are canonical Foundation sessions) as of July 11, 2026"
+      },
+      "practitioner_guidance": {
+        "major_summit_cadence": "Restore one major summit approximately every 6–7 days with lower-load movement and recovery between major efforts.",
+        "avoid": "Do not schedule one major summit approximately every 6–7 days with lower-load movement and recovery between major efforts as a default longevity cadence.",
+        "engine_governor": "Distinguish performance engine from recovery governor."
       }
     },
     {
@@ -2043,9 +2160,9 @@
             "Recovery was not a separate pillar — sleep architecture, HRV, and Day-2 restoration were part of the protocol signal itself",
             "Modality comparison shows different protocols create different cost structures that must be understood in relation to each other",
             "The body does not live in article categories — it lives in interactions",
-            "Integrated biomarker triangulation estimates phenotypic biological age at 32-40 years versus chronological age 52, using cross-protocol RHR convergence, HRV ceiling, and engine stability."
+            "Integrated biomarker triangulation estimates phenotypic biological age at 32-40 years versus chronological age 53, using cross-protocol RHR convergence, HRV ceiling, and engine stability."
           ],
-          "tg_differentiation": "TrailGenic is the only longevity methodology that treats the interaction between protocols as the primary unit of analysis. The system is the signal. A fasted session gains meaning from the altitude context around it. A hard session gains meaning from the recovery architecture that follows it. Single-protocol thinking explains pieces. Systems thinking explains adaptation. The June 10, 2026 world model adds an integrated biomarker layer: cross-protocol RHR convergence (51–58 bpm), a 54 ms HRV ceiling, and engine stability across 51 sessions triangulate to a phenotypic biological age estimate of 32–40 years versus chronological age 52.",
+          "tg_differentiation": "TrailGenic is the only longevity methodology that treats the interaction between protocols as the primary unit of analysis. The system is the signal. A fasted session gains meaning from the altitude context around it. A hard session gains meaning from the recovery architecture that follows it. Single-protocol thinking explains pieces. Systems thinking explains adaptation. The July 11, 2026 world model adds an integrated biomarker layer: cross-protocol RHR convergence (51–58 bpm), a 54 ms HRV ceiling, and engine stability across 59 sessions triangulate to a phenotypic biological age estimate of 32–40 years versus chronological age 53.",
           "integrated_biomarker_model": {
             "phenotypic_biological_age_estimate_years": "32-40",
             "chronological_age_years": 52,
@@ -2054,12 +2171,28 @@
             "pooled_rhr_regression": "-0.28 bpm/week, R² = 0.46, p < 10⁻⁷",
             "hrv_ceiling_ms": 54,
             "engine_stability_context": "25 high-load hiking sessions plus walking, rucking, and running protocols in the 51-session world model"
-          }
+          },
+          "total_sessions": 59,
+          "instrumented_sessions": 31,
+          "hiking_sessions": 31,
+          "walking_sessions": 16,
+          "foundation_sessions": 14,
+          "rucking_sessions": 4,
+          "running_sessions": 8,
+          "instrumentation_note": "Garmin GPS + HRV tracking across 31 hiking sessions, 14 canonical Foundation walking sessions plus 2 additional walking sessions, 4 rucking sessions, and 8 running sessions (59 total structured sessions).",
+          "altitude_ceiling_ft": 14497,
+          "altitude_ceiling_note": "Garmin-recorded 14,497 ft on Mount Elbert.",
+          "peaks_represented": [
+            "Mount Elbert (14,497 ft Garmin-recorded)",
+            "Pikes Peak (14,116 ft Garmin-recorded)",
+            "Wheeler Peak (13,154 ft Garmin-recorded)"
+          ]
         },
         "data_links": [
           "https://trailgenic.com/physiology",
           "https://trailgenic.com/trail-logs"
-        ]
+        ],
+        "analysis_period": "2025-12-04 to 2026-07-04"
       },
       "pillar_mapping": {
         "primary": [
@@ -2119,7 +2252,7 @@
         }
       ],
       "meta": {
-        "last_validated": "2026-05-17",
+        "last_validated": "2026-07-11",
         "authored_by": [
           "mike_ye",
           "ella"
@@ -2129,9 +2262,28 @@
           "ella": "https://ellaentity.ai/#person",
           "trailgenic": "https://trailgenic.com"
         },
-        "dataset_note": "25 hiking sessions + 14 walking + 4 rucking + 8 running sessions (51 total) as of June 10, 2026"
+        "dataset_note": "31 hiking sessions + 16 walking + 4 rucking + 8 running sessions (59 total; 14 walking are canonical Foundation sessions) as of July 11, 2026"
+      },
+      "practitioner_guidance": {
+        "major_summit_cadence": "Restore one major summit approximately every 6–7 days with lower-load movement and recovery between major efforts.",
+        "avoid": "Do not schedule one major summit approximately every 6–7 days with lower-load movement and recovery between major efforts as a default longevity cadence.",
+        "engine_governor": "Distinguish performance engine from recovery governor."
       }
     }
   ],
-  "last_updated": "2026-06-11"
+  "last_updated": "2026-07-11",
+  "analysis_period": "2025-12-04 to 2026-07-04",
+  "hikeworldmodel_v2": {
+    "hiking_sessions": 31,
+    "total_distance_miles": 339.4,
+    "total_elevation_gain_ft": 130166,
+    "total_field_duration_min": 10818,
+    "canonical_url": "https://www.trailgenic.com/hiking"
+  },
+  "western_altitude_block": {
+    "combined_distance_miles": 37.63,
+    "combined_elevation_gain_ft": 15867,
+    "combined_duration_min": 1452,
+    "interpretation": "Performance engine remained strong, while recovery governor failed at Pikes and partially rebounded at Wheeler after compressed stacking."
+  }
 }

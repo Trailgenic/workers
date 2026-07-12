@@ -4,10 +4,29 @@
   "title": "TrailGenic Aerobic Training Effect Zero Anaerobic Load Dataset",
   "version": "v1",
   "status": "active",
-  "last_updated": "2026-05-17",
-  "description": "Shell dataset module modeling endurance adaptations achieved through predominantly aerobic training with minimal anaerobic stress.",
+  "last_updated": "2026-07-11",
+  "description": "Adds verified 0.0 anaerobic training effect for Elbert, Pikes, and Wheeler. Older zero-spillover counts remain historical when scoped to the previous data window.",
   "modules": [],
   "records": [
+    {
+      "mechanism": "Western Altitude Block update through Wheeler Peak",
+      "stimulus": {
+        "hiking_sessions": 31,
+        "subject_age_years": 53
+      },
+      "physiological_response": [
+        "Adds verified 0.0 anaerobic training effect for Elbert, Pikes, and Wheeler. Older zero-spillover counts remain historical when scoped to the previous data window."
+      ],
+      "adaptation_outcomes": [
+        "The adaptation remained; the compressed block exceeded the current recovery envelope."
+      ],
+      "supporting_urls": [
+        "https://www.trailgenic.com/physiology/mount-elbert-altitude-ceiling-recovery-resilience",
+        "https://www.trailgenic.com/physiology/pikes-peak-ceiling-engine-recovery-failure",
+        "https://www.trailgenic.com/physiology/wheeler-peak-positive-hr-drift-fatigue-reveal",
+        "https://www.trailgenic.com/science/engine-and-governor-recovery-failed-before-performance"
+      ]
+    },
     {
       "mechanism": "Zero anaerobic spillover persists across most hiking and running sessions despite escalating duration and altitude",
       "stimulus": {
@@ -64,5 +83,17 @@
         }
       ]
     }
-  ]
+  ],
+  "current_scope": {
+    "subject_age_years": 53,
+    "hiking_sessions": 31,
+    "total_structured_sessions": 59,
+    "western_altitude_block": true
+  },
+  "western_altitude_block_summary": {
+    "combined_distance_miles": 37.63,
+    "combined_elevation_gain_ft": 15867,
+    "combined_duration_min": 1452,
+    "interpretation": "Normal cadence usually restored; compressed summit stacking exposed the current recovery boundary."
+  }
 }

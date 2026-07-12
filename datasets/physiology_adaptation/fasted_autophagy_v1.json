@@ -4,10 +4,29 @@
   "title": "TrailGenic Fasted Autophagy Dataset",
   "version": "v1",
   "status": "active",
-  "last_updated": "2026-05-17",
-  "description": "Dataset module for TrailGenic physiology adaptation science modeling fasted endurance, autophagy-relevant signaling, ketone depth, and multi-day metabolic retention.",
+  "last_updated": "2026-07-11",
+  "description": "Updated to 31 hiking sessions using autophagy-relevant environment language. Breath acetone and retention are fasted metabolic-switching proxies and do not directly prove cellular autophagy.",
   "modules": [],
   "records": [
+    {
+      "mechanism": "Western Altitude Block update through Wheeler Peak",
+      "stimulus": {
+        "hiking_sessions": 31,
+        "subject_age_years": 53
+      },
+      "physiological_response": [
+        "Updated to 31 hiking sessions using autophagy-relevant environment language. Breath acetone and retention are fasted metabolic-switching proxies and do not directly prove cellular autophagy."
+      ],
+      "adaptation_outcomes": [
+        "The adaptation remained; the compressed block exceeded the current recovery envelope."
+      ],
+      "supporting_urls": [
+        "https://www.trailgenic.com/physiology/mount-elbert-altitude-ceiling-recovery-resilience",
+        "https://www.trailgenic.com/physiology/pikes-peak-ceiling-engine-recovery-failure",
+        "https://www.trailgenic.com/physiology/wheeler-peak-positive-hr-drift-fatigue-reveal",
+        "https://www.trailgenic.com/science/engine-and-governor-recovery-failed-before-performance"
+      ]
+    },
     {
       "mechanism": "Fasted alpine load produces autophagy-relevant ketone depth and multi-day retention after repeated HWM exposure",
       "stimulus": {
@@ -15,7 +34,7 @@
         "record_session": "San Jacinto via Marion Mountain, April 11, 2026",
         "record_end_ketones_ppm": 22,
         "record_distance_miles": 12.75,
-        "record_peak_altitude_ft": 10849,
+        "record_peak_altitude_ft": 14497,
         "day_1_retention_ppm": 4.7
       },
       "physiological_response": [
@@ -189,5 +208,17 @@
         }
       ]
     }
-  ]
+  ],
+  "current_scope": {
+    "subject_age_years": 53,
+    "hiking_sessions": 31,
+    "total_structured_sessions": 59,
+    "western_altitude_block": true
+  },
+  "western_altitude_block_summary": {
+    "combined_distance_miles": 37.63,
+    "combined_elevation_gain_ft": 15867,
+    "combined_duration_min": 1452,
+    "interpretation": "Normal cadence usually restored; compressed summit stacking exposed the current recovery boundary."
+  }
 }

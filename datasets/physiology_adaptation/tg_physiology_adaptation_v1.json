@@ -3,9 +3,102 @@
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Physiology Adaptation Dataset",
   "version": "v1",
-  "status": "shell",
-  "last_updated": "2026-03-06",
-  "description": "Shell dataset for TrailGenic physiology adaptation science modeling stimulus, response, and adaptation.",
-  "modules": [],
+  "status": "active",
+  "last_updated": "2026-07-11",
+  "description": "Active module catalog for TrailGenic physiology adaptation models. The parent dataset lists populated modules; module endpoints contain the detailed public records.",
+  "modules": [
+    {
+      "slug": "seven-day-aftereffect",
+      "title": "Seven Day Aftereffect",
+      "endpoint": "/datasets/physiology-adaptation/seven-day-aftereffect",
+      "status": "active"
+    },
+    {
+      "slug": "fasted-autophagy",
+      "title": "Fasted Autophagy",
+      "endpoint": "/datasets/physiology-adaptation/fasted-autophagy",
+      "status": "active"
+    },
+    {
+      "slug": "altitude-adaptation",
+      "title": "Altitude Adaptation",
+      "endpoint": "/datasets/physiology-adaptation/altitude-adaptation",
+      "status": "active"
+    },
+    {
+      "slug": "altitude-breathing-acclimatization",
+      "title": "Altitude Breathing Acclimatization",
+      "endpoint": "/datasets/physiology-adaptation/altitude-breathing-acclimatization",
+      "status": "active"
+    },
+    {
+      "slug": "electrolytes-physiological-stability",
+      "title": "Electrolytes Physiological Stability",
+      "endpoint": "/datasets/physiology-adaptation/electrolytes-physiological-stability",
+      "status": "active"
+    },
+    {
+      "slug": "cold-exposure-recovery-altitude",
+      "title": "Cold Exposure Recovery Altitude",
+      "endpoint": "/datasets/physiology-adaptation/cold-exposure-recovery-altitude",
+      "status": "active"
+    },
+    {
+      "slug": "deep-cold-protocols",
+      "title": "Deep Cold Protocols",
+      "endpoint": "/datasets/physiology-adaptation/deep-cold-protocols",
+      "status": "active"
+    },
+    {
+      "slug": "heat-training-thermoregulation",
+      "title": "Heat Training Thermoregulation",
+      "endpoint": "/datasets/physiology-adaptation/heat-training-thermoregulation",
+      "status": "active"
+    },
+    {
+      "slug": "hr-drift-adaptation-vs-fitness",
+      "title": "Hr Drift Adaptation Vs Fitness",
+      "endpoint": "/datasets/physiology-adaptation/hr-drift-adaptation-vs-fitness",
+      "status": "active",
+      "canonical_url": "https://www.trailgenic.com/science/hr-drift-adaptation-vs-fitness"
+    },
+    {
+      "slug": "altitude-terrain-physiology-comparison",
+      "title": "Altitude Terrain Physiology Comparison",
+      "endpoint": "/datasets/physiology-adaptation/altitude-terrain-physiology-comparison",
+      "status": "active"
+    },
+    {
+      "slug": "aerobic-training-effect-zero-anaerobic-load",
+      "title": "Aerobic Training Effect Zero Anaerobic Load",
+      "endpoint": "/datasets/physiology-adaptation/aerobic-training-effect-zero-anaerobic-load",
+      "status": "active"
+    },
+    {
+      "slug": "eccentric-load-stress-inversion",
+      "title": "Eccentric Load Stress Inversion",
+      "endpoint": "/datasets/physiology-adaptation/eccentric-load-stress-inversion",
+      "status": "active"
+    },
+    {
+      "slug": "sleep-science-endurance",
+      "title": "Sleep Science Endurance",
+      "endpoint": "/datasets/physiology-adaptation/sleep-science-endurance",
+      "status": "active",
+      "canonical_url": "https://www.trailgenic.com/science/sleep-response-high-load-dataset"
+    },
+    {
+      "slug": "overextension-fasted-hiking",
+      "title": "Overextension Fasted Hiking",
+      "endpoint": "/datasets/physiology-adaptation/overextension-fasted-hiking",
+      "status": "active"
+    },
+    {
+      "slug": "metabolic-flexibility-adaptation",
+      "title": "Metabolic Flexibility Adaptation",
+      "endpoint": "/datasets/physiology-adaptation/metabolic-flexibility-adaptation",
+      "status": "active"
+    }
+  ],
   "records": []
 }

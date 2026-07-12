@@ -31,7 +31,7 @@ The permit SMS infrastructure is operationally separate from this MCP worker and
 
 ## Callable MCP Tools
 
-The public MCP tool inventory is generated from one canonical registry and currently includes 18 callable tools:
+The public MCP tool inventory is generated from one canonical registry and currently includes 19 callable tools:
 
 | Tool | Parameters |
 | --- | --- |
@@ -39,6 +39,7 @@ The public MCP tool inventory is generated from one canonical registry and curre
 | `tg.ontology.get` | `category` |
 | `tg.protocols.get` | `protocol_id` |
 | `tg.physiology.adaptation.get` | `module` |
+| `tg.hiking.worldModel.get` | none |
 | `tg.physiology.hrDriftAdaptation.get` | none |
 | `tg.nutrition.get` | `food_category`, `tg_fuel_class`, `limit` |
 | `tg.hydration.get` | `category`, `limit` |
@@ -53,6 +54,8 @@ The public MCP tool inventory is generated from one canonical registry and curre
 | `tg.conditioning.rucking.get` | `start_date`, `end_date` (optional; aggregate-only) |
 | `tg.conditioning.running.get` | `start_date`, `end_date` (optional; aggregate-only) |
 | `tg.longevity.bioAge.compute` | `age`, `resting_hr`, `distance_mi`, `elevation_gain_ft`, `moving_time_min`, `avg_hr` (required); `max_hr`, `overnight_hrv`, `fasted` (optional) |
+
+The current public movement model covers 59 structured sessions: 16 walking sessions (14 canonical Foundation sessions plus 2 additional walking sessions), 4 rucking sessions, 8 running sessions, and 31 hiking sessions. HikeWorldModel™ v2.0 is published as aggregate-only data with selected high-signal summaries, not raw biometric telemetry.
 
 Large dataset tools support optional filters and bounded `limit` values so MCP clients do not need to ingest full high-record payloads.
 
@@ -71,6 +74,8 @@ Dataset endpoints remain public and machine-readable:
 - `https://mcp.trailgenic.com/datasets/index`
 - `https://mcp.trailgenic.com/datasets/ontology`
 - `https://mcp.trailgenic.com/datasets/protocols`
+- `https://mcp.trailgenic.com/datasets/hiking`
+- `https://mcp.trailgenic.com/datasets/hiking/world-model`
 - `https://mcp.trailgenic.com/datasets/physiology-adaptation`
 - `https://mcp.trailgenic.com/datasets/nutrition`
 - `https://mcp.trailgenic.com/datasets/nutrition/schema`
@@ -89,7 +94,7 @@ Dataset endpoints remain public and machine-readable:
 - `https://mcp.trailgenic.com/datasets/conditioning/rucking`
 - `https://mcp.trailgenic.com/datasets/conditioning/running`
 
-Physiology adaptation module endpoints are also preserved:
+Physiology adaptation is now an active module catalog; detailed records remain in the module endpoints. Physiology adaptation module endpoints are also preserved:
 
 - `https://mcp.trailgenic.com/datasets/physiology-adaptation/seven-day-aftereffect`
 - `https://mcp.trailgenic.com/datasets/physiology-adaptation/fasted-autophagy`

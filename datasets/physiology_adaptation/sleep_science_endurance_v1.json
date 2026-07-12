@@ -4,63 +4,86 @@
   "title": "TrailGenic Sleep Science Endurance Dataset",
   "version": "v1",
   "status": "active",
-  "last_updated": "2026-05-17",
-  "description": "Shell dataset module modeling sleep-dependent recovery and endurance adaptation.",
+  "last_updated": "2026-07-11",
+  "description": "Sleep-recovery dataset updated to 30 independent pre-hike recovery sequences and Western Altitude Block recovery archetypes.",
+  "source_article": "https://www.trailgenic.com/science/sleep-response-high-load-dataset",
+  "related_urls": [
+    "https://www.trailgenic.com/sleep",
+    "https://www.trailgenic.com/science/engine-and-governor-recovery-failed-before-performance",
+    "https://www.trailgenic.com/physiology/mount-elbert-altitude-ceiling-recovery-resilience",
+    "https://www.trailgenic.com/physiology/pikes-peak-ceiling-engine-recovery-failure",
+    "https://www.trailgenic.com/physiology/wheeler-peak-positive-hr-drift-fatigue-reveal"
+  ],
   "modules": [],
+  "sequence_counts": {
+    "independent_pre_hike_sequences": 30,
+    "complete_immediate_post_hike_windows": 29,
+    "complete_day_2_windows": 29,
+    "overlap_rule": "Manitou overlaps the Elbert recovery window and is not counted as a separate sleep sequence."
+  },
+  "aggregate_profiles": {
+    "pre_hike": {
+      "sleep_score": 69,
+      "total_sleep_min": 352,
+      "deep_sleep_min": 80.8,
+      "rem_sleep_min": 52.8,
+      "awake_time_min": 31,
+      "hrv_ms": 35.7,
+      "rhr_bpm": 58.9,
+      "overnight_stress": 18
+    },
+    "immediate_post_hike": {
+      "sleep_score": 58.4,
+      "total_sleep_min": 361,
+      "deep_sleep_min": 84,
+      "rem_sleep_min": 38.2,
+      "awake_time_min": 46.5,
+      "hrv_ms": 30.1,
+      "rhr_bpm": 61.7,
+      "overnight_stress": 26.4
+    },
+    "day_2": {
+      "sleep_score": 66.6,
+      "total_sleep_min": 357,
+      "deep_sleep_min": 65.2,
+      "rem_sleep_min": 46,
+      "awake_time_min": 31.8,
+      "hrv_ms": 40,
+      "rhr_bpm": 59.4,
+      "overnight_stress": 17.7
+    }
+  },
+  "day_2_classifications": {
+    "AUTONOMIC_RESTORED": 11,
+    "AUTONOMIC_STABLE": 15,
+    "AUTONOMIC_STRAINED": 3,
+    "stable_or_restored": "26 of 29 (approximately 89.7%)"
+  },
+  "structured_terms": {
+    "recovery_closure": "Restoration confirmed by architecture and autonomic direction, not duration alone.",
+    "recovery_demand_sleep": "Long sleep opportunity with persistent low HRV, elevated RHR, stress, fragmentation, or compressed REM.",
+    "split_recovery_pattern": "Autonomic markers may recover before REM or total sleep architecture.",
+    "recovery_governor": "Recovery system that can fail after performance remains excellent."
+  },
+  "recovery_archetypes": {
+    "mount_elbert": "Severe strain followed by successful recovery closure.",
+    "pikes_peak": "Sleep demand without recovery closure.",
+    "wheeler_peak": "Partial recovery after accumulated debt."
+  },
   "records": [
     {
-      "mechanism": "Pre-hike sleep state gates Day-1 recovery architecture while Day-2 supercompensation remains durable",
+      "mechanism": "Sleep duration is recovery opportunity; architecture and autonomic direction reveal whether restoration occurred.",
       "stimulus": {
-        "hiking_sessions": 22,
-        "sleep_gate_thresholds": "<7 hours sleep and REM <30 minutes",
-        "affected_sessions": [
-          "Session 21 — San Gorgonio",
-          "Session 22 — Baden Powell"
-        ],
-        "day_2_pattern": "AUTONOMIC_RESTORED returned on Day-2 despite Day-1 strain"
+        "hiking_sessions": 31,
+        "independent_recovery_sequences": 30
       },
       "physiological_response": [
-        "Compromised pre-hike sleep drives Day-1 AUTONOMIC_STRAINED with elevated resting HR and suppressed HRV.",
-        "Day-2 recovery can still return to AUTONOMIC_RESTORED after the acute Day-1 sleep-gated cost.",
-        "Pre-hike REM and total sleep duration determine whether recovery appears immediately restored or delayed by 24 hours."
+        "Elbert: severe Day-1 strain, successful Day-2 closure.",
+        "Pikes: excellent performance with failed recovery-governor closure.",
+        "Wheeler: partial Day-2 rebound after accumulated debt."
       ],
       "adaptation_outcomes": [
-        "Sleep is a gate on Day-1 architecture rather than proof that the training load failed.",
-        "Day-2 supercompensation across Hikes 16-22 confirms durable recovery capacity.",
-        "Pre-hike sleep quality becomes a required context field for interpreting HRV and RHR after apex efforts."
-      ],
-      "supporting_science": [
-        {
-          "citation": "Fullagar et al. 2015",
-          "finding": "Sleep duration and quality are central determinants of athletic recovery and performance."
-        },
-        {
-          "citation": "Plews et al. 2013",
-          "finding": "HRV monitoring can identify autonomic recovery status after endurance training."
-        }
-      ]
-    },
-    {
-      "mechanism": "Sleep-driven recovery processes",
-      "stimulus": {
-        "sleep_duration_hours": "7-9",
-        "exercise_load": "moderate to high endurance training"
-      },
-      "physiological_response": [
-        "growth hormone release",
-        "glycogen restoration",
-        "neuromuscular recovery"
-      ],
-      "adaptation_outcomes": [
-        "improved endurance recovery",
-        "greater training adaptation",
-        "reduced injury risk"
-      ],
-      "supporting_science": [
-        {
-          "citation": "Fullagar et al. 2015",
-          "finding": "Sleep is essential for athletic recovery and performance adaptation."
-        }
+        "Normal cadence usually restored; compressed stacking exposed the boundary."
       ]
     }
   ]

@@ -4,7 +4,7 @@
   "title": "TrailGenic Eccentric Load Stress Inversion Dataset",
   "version": "v1",
   "status": "active",
-  "last_updated": "2026-05-17",
+  "last_updated": "2026-07-11",
   "description": "Shell dataset module modeling eccentric muscular stress and adaptation during downhill endurance activity.",
   "modules": [],
   "records": [
@@ -12,7 +12,7 @@
       "mechanism": "Repeated downhill eccentric load is absorbed without accumulated autonomic strain after the recovery inflection",
       "stimulus": {
         "hiking_sessions": 22,
-        "recovery_inflection": "Session 16 — Baldy via Devil's Backbone",
+        "recovery_inflection": "Session 16 \u2014 Baldy via Devil's Backbone",
         "day_2_restored_streak": "Hikes 16-22",
         "terrain_context": "technical alpine descents and large elevation-loss sessions"
       },
