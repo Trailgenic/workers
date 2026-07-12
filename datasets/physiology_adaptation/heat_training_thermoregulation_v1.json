@@ -4,7 +4,7 @@
   "title": "TrailGenic Heat Training Thermoregulation Dataset",
   "version": "v1",
   "status": "active",
-  "last_updated": "2026-05-17",
+  "last_updated": "2026-07-11",
   "description": "Shell dataset module for TrailGenic physiology adaptation science modeling thermoregulatory adaptation from repeated exercise in hot environments.",
   "modules": [],
   "records": [
@@ -21,7 +21,7 @@
         "comparison_context": "hot chaparral sessions versus cool alpine sessions"
       },
       "physiological_response": [
-        "Average heart rate increased by approximately 0.11 bpm per °F after controlling for adaptation.",
+        "Average heart rate increased by approximately 0.11 bpm per \u00b0F after controlling for adaptation.",
         "Hot chaparral routes produced elevated load and lower Day-2 HRV compared with cool alpine efforts.",
         "Thermal exposure remained a stronger acute cardiac-cost driver than altitude once adaptation state was considered."
       ],
@@ -32,7 +32,7 @@
       ],
       "supporting_science": [
         {
-          "citation": "Périard et al. 2015",
+          "citation": "P\u00e9riard et al. 2015",
           "finding": "Heat stress increases thermoregulatory and cardiovascular strain during exercise."
         },
         {
@@ -62,7 +62,7 @@
       ],
       "supporting_science": [
         {
-          "citation": "Périard et al. 2015",
+          "citation": "P\u00e9riard et al. 2015",
           "finding": "Heat acclimation improves thermoregulatory control and cardiovascular stability during exercise in hot environments."
         },
         {

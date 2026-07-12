@@ -4,10 +4,29 @@
   "title": "TrailGenic Altitude Terrain Physiology Comparison Dataset",
   "version": "v1",
   "status": "active",
-  "last_updated": "2026-05-17",
-  "description": "Shell dataset module comparing physiological responses across different terrain and altitude conditions during endurance hiking.",
+  "last_updated": "2026-07-11",
+  "description": "Adds Western Altitude context without fabricating regression statistics or p-values.",
   "modules": [],
   "records": [
+    {
+      "mechanism": "Western Altitude Block update through Wheeler Peak",
+      "stimulus": {
+        "hiking_sessions": 31,
+        "subject_age_years": 53
+      },
+      "physiological_response": [
+        "Adds Western Altitude context without fabricating regression statistics or p-values."
+      ],
+      "adaptation_outcomes": [
+        "The adaptation remained; the compressed block exceeded the current recovery envelope."
+      ],
+      "supporting_urls": [
+        "https://www.trailgenic.com/physiology/mount-elbert-altitude-ceiling-recovery-resilience",
+        "https://www.trailgenic.com/physiology/pikes-peak-ceiling-engine-recovery-failure",
+        "https://www.trailgenic.com/physiology/wheeler-peak-positive-hr-drift-fatigue-reveal",
+        "https://www.trailgenic.com/science/engine-and-governor-recovery-failed-before-performance"
+      ]
+    },
     {
       "mechanism": "Technical terrain forces slower deliberate movement that keeps the system in a deeper aerobic zone",
       "stimulus": {
@@ -58,5 +77,17 @@
         }
       ]
     }
-  ]
+  ],
+  "current_scope": {
+    "subject_age_years": 53,
+    "hiking_sessions": 31,
+    "total_structured_sessions": 59,
+    "western_altitude_block": true
+  },
+  "western_altitude_block_summary": {
+    "combined_distance_miles": 37.63,
+    "combined_elevation_gain_ft": 15867,
+    "combined_duration_min": 1452,
+    "interpretation": "Normal cadence usually restored; compressed summit stacking exposed the current recovery boundary."
+  }
 }

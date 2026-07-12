@@ -49,11 +49,34 @@ assert(ping.response.ok && ping.json.result && Object.keys(ping.json.result).len
 
 const listed = await postMcp("tools/list");
 const listIds = toolIdsFromList(listed.json.result.tools);
-assert(listIds.length === 18, `tools/list should return 18 tools, got ${listIds.length}`);
+assert(listIds.length === 19, `tools/list should return 19 tools, got ${listIds.length}`);
+assert(listIds.includes("tg.hiking.worldModel.get"), "tools/list should include tg.hiking.worldModel.get");
 assert(listIds.includes("tg.longevity.bioAge.compute"), "tools/list should include tg.longevity.bioAge.compute");
 assert(listIds.includes("tg.gear.getIntel"), "tools/list should include tg.gear.getIntel");
 for (const toolId of ["tg.conditioning.walking.get", "tg.conditioning.rucking.get", "tg.conditioning.running.get"]) {
   assert(listIds.includes(toolId), `tools/list should include ${toolId}`);
+}
+
+
+const hikingCall = await postMcp("tools/call", { name: "tg.hiking.worldModel.get", arguments: {} });
+const hikingModel = hikingCall.json.result.structuredContent;
+assert(hikingModel.dataset_id === "tg_hikeworldmodel_v2", "hiking world model tool should return tg_hikeworldmodel_v2");
+assert(hikingModel.privacy_scope?.data_granularity === "aggregate_only", "hiking world model should be aggregate-only");
+assert(hikingModel.summary_statistics?.hiking_sessions === 31, "hiking world model should report 31 hiking sessions");
+assert(hikingModel.summary_statistics?.total_distance_miles === 339.40, "hiking world model should report 339.40 miles");
+assert(hikingModel.summary_statistics?.total_elevation_gain_ft === 130166, "hiking world model should report 130166 ft gain");
+for (const effort of ["Mount Elbert", "Manitou Incline", "Pikes Peak", "Wheeler Peak"]) {
+  assert(hikingModel.western_altitude_block?.efforts?.includes(effort), `Western Block should include ${effort}`);
+}
+const hikingRoute = await getJson("/datasets/hiking");
+assert(hikingRoute.response.ok && hikingRoute.json.dataset_id === "tg_hikeworldmodel_v2", "/datasets/hiking should return tg_hikeworldmodel_v2");
+const hikingAlias = await getJson("/datasets/hiking/world-model");
+assert(hikingAlias.response.ok && hikingAlias.json.dataset_id === "tg_hikeworldmodel_v2", "/datasets/hiking/world-model should return tg_hikeworldmodel_v2");
+const hrDriftRoute = await getJson("/datasets/physiology-adaptation/hr-drift-adaptation-vs-fitness");
+assert(hrDriftRoute.json.methodology?.route_aware === true, "HR drift endpoint should include route-aware methodology");
+const sleepRoute = await getJson("/datasets/physiology-adaptation/sleep-science-endurance");
+for (const key of ["mount_elbert", "pikes_peak", "wheeler_peak"]) {
+  assert(sleepRoute.json.recovery_archetypes?.[key], `sleep science should include ${key} recovery archetype`);
 }
 
 const indexCall = await postMcp("tools/call", { name: "tg.datasets.index.get", arguments: {} });
@@ -139,7 +162,7 @@ assert(health.json.uptime === null, "/health uptime should be null");
 
 const datasetIndex = await getJson("/datasets/index");
 assert(datasetIndex.json.datasets?.some((dataset) => dataset.dataset_id === "tg_nutrition_dataset_v1"), "/datasets/index should return enabled datasets");
-for (const datasetId of ["tg_walking_conditioning_v1", "tg_rucking_conditioning_v1", "tg_running_conditioning_v1"]) {
+for (const datasetId of ["tg_walking_conditioning_v1", "tg_rucking_conditioning_v1", "tg_running_conditioning_v1", "tg_hikeworldmodel_v2"]) {
   assert(datasetIndex.json.datasets?.some((dataset) => dataset.dataset_id === datasetId), `/datasets/index should include ${datasetId}`);
 }
 

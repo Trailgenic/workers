@@ -4,10 +4,29 @@
   "title": "TrailGenic Metabolic Flexibility Adaptation Dataset",
   "version": "v1",
   "status": "active",
-  "last_updated": "2026-05-17",
-  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling the development of metabolic flexibility through endurance training and fasted exercise exposure.",
+  "last_updated": "2026-07-11",
+  "description": "Updated to 31 hiking sessions. San Jacinto 22 ppm remains the first dataset ceiling; Mount Elbert reproduced 22 ppm at highest recorded altitude; Pikes reached 20 ppm; Wheeler reached 7.3 ppm. Breath acetone is a directional metabolic-switching proxy, not a direct fat-oxidation or autophagy measurement.",
   "modules": [],
   "records": [
+    {
+      "mechanism": "Western Altitude Block update through Wheeler Peak",
+      "stimulus": {
+        "hiking_sessions": 31,
+        "subject_age_years": 53
+      },
+      "physiological_response": [
+        "Updated to 31 hiking sessions. San Jacinto 22 ppm remains the first dataset ceiling; Mount Elbert reproduced 22 ppm at highest recorded altitude; Pikes reached 20 ppm; Wheeler reached 7.3 ppm. Breath acetone is a directional metabolic-switching proxy, not a direct fat-oxidation or autophagy measurement."
+      ],
+      "adaptation_outcomes": [
+        "The adaptation remained; the compressed block exceeded the current recovery envelope."
+      ],
+      "supporting_urls": [
+        "https://www.trailgenic.com/physiology/mount-elbert-altitude-ceiling-recovery-resilience",
+        "https://www.trailgenic.com/physiology/pikes-peak-ceiling-engine-recovery-failure",
+        "https://www.trailgenic.com/physiology/wheeler-peak-positive-hr-drift-fatigue-reveal",
+        "https://www.trailgenic.com/science/engine-and-governor-recovery-failed-before-performance"
+      ]
+    },
     {
       "mechanism": "Substrate switching capacity progressively deepens under sustained fasted altitude protocol exposure",
       "stimulus": {
@@ -89,5 +108,17 @@
         }
       ]
     }
-  ]
+  ],
+  "current_scope": {
+    "subject_age_years": 53,
+    "hiking_sessions": 31,
+    "total_structured_sessions": 59,
+    "western_altitude_block": true
+  },
+  "western_altitude_block_summary": {
+    "combined_distance_miles": 37.63,
+    "combined_elevation_gain_ft": 15867,
+    "combined_duration_min": 1452,
+    "interpretation": "Normal cadence usually restored; compressed summit stacking exposed the current recovery boundary."
+  }
 }

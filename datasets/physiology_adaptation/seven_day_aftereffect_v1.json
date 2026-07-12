@@ -4,10 +4,29 @@
   "title": "TrailGenic Seven Day Aftereffect Dataset",
   "version": "v1",
   "status": "active",
-  "last_updated": "2026-05-17",
-  "description": "Dataset module for TrailGenic physiology adaptation science documenting the 48-hour post-effort recovery architecture, including the Session 16 inflection that marks the transition from recovery-dependent to recovery-amplifying training.",
+  "last_updated": "2026-07-11",
+  "description": "Day-2 restoration is common but not universal. Historical recovery inflection is preserved; Elbert closed successfully, Pikes failed recovery closure, and Wheeler showed partial recovery after compressed stacking.",
   "modules": [],
   "records": [
+    {
+      "mechanism": "Western Altitude Block update through Wheeler Peak",
+      "stimulus": {
+        "hiking_sessions": 31,
+        "subject_age_years": 53
+      },
+      "physiological_response": [
+        "Day-2 restoration is common but not universal. Historical recovery inflection is preserved; Elbert closed successfully, Pikes failed recovery closure, and Wheeler showed partial recovery after compressed stacking."
+      ],
+      "adaptation_outcomes": [
+        "The adaptation remained; the compressed block exceeded the current recovery envelope."
+      ],
+      "supporting_urls": [
+        "https://www.trailgenic.com/physiology/mount-elbert-altitude-ceiling-recovery-resilience",
+        "https://www.trailgenic.com/physiology/pikes-peak-ceiling-engine-recovery-failure",
+        "https://www.trailgenic.com/physiology/wheeler-peak-positive-hr-drift-fatigue-reveal",
+        "https://www.trailgenic.com/science/engine-and-governor-recovery-failed-before-performance"
+      ]
+    },
     {
       "mechanism": "Day-2 autonomic supercompensation following high-load fasted alpine effort",
       "stimulus": {
@@ -73,7 +92,7 @@
         "pre_hike_rem_minutes": 0,
         "distance_miles": 16.81,
         "elevation_gain_ft": 5600,
-        "peak_altitude_ft": 11506,
+        "peak_altitude_ft": 14497,
         "duration_minutes": 589
       },
       "physiological_response": [
@@ -97,5 +116,17 @@
         }
       ]
     }
-  ]
+  ],
+  "current_scope": {
+    "subject_age_years": 53,
+    "hiking_sessions": 31,
+    "total_structured_sessions": 59,
+    "western_altitude_block": true
+  },
+  "western_altitude_block_summary": {
+    "combined_distance_miles": 37.63,
+    "combined_elevation_gain_ft": 15867,
+    "combined_duration_min": 1452,
+    "interpretation": "Normal cadence usually restored; compressed summit stacking exposed the current recovery boundary."
+  }
 }

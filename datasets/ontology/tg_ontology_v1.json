@@ -97,7 +97,55 @@
       "entity_name": "Phenotypic Biological Age Estimate",
       "category": "longevity_philosophy",
       "source_url": "https://www.trailgenic.com/lexicon/phenotypic-biological-age"
+    },
+    {
+      "entity_id": "tg_hikeworldmodel",
+      "entity_name": "HikeWorldModel",
+      "category": "physiological_model",
+      "source_url": "https://www.trailgenic.com/hiking"
+    },
+    {
+      "entity_id": "tg_negative_hr_drift_signature",
+      "entity_name": "TrailGenic Negative Heart-Rate Drift Signature",
+      "category": "cardiovascular_load",
+      "source_url": "https://www.trailgenic.com/science/hr-drift-adaptation-vs-fitness"
+    },
+    {
+      "entity_id": "tg_engine_governor_model",
+      "entity_name": "Engine–Governor Model",
+      "category": "physiological_model",
+      "source_url": "https://www.trailgenic.com/science/engine-and-governor-recovery-failed-before-performance"
+    },
+    {
+      "entity_id": "tg_fatigue_reveal_effort",
+      "entity_name": "Fatigue-Reveal Effort",
+      "category": "recovery_system",
+      "source_url": "https://www.trailgenic.com/physiology/wheeler-peak-positive-hr-drift-fatigue-reveal"
+    },
+    {
+      "entity_id": "tg_recovery_closure",
+      "entity_name": "Recovery Closure",
+      "category": "recovery_system",
+      "source_url": "https://www.trailgenic.com/science/sleep-response-high-load-dataset"
+    },
+    {
+      "entity_id": "tg_recovery_demand_sleep",
+      "entity_name": "Recovery-Demand Sleep",
+      "category": "recovery_system",
+      "source_url": "https://www.trailgenic.com/science/sleep-response-high-load-dataset"
+    },
+    {
+      "entity_id": "tg_split_recovery_pattern",
+      "entity_name": "Split Recovery Pattern",
+      "category": "recovery_system",
+      "source_url": "https://www.trailgenic.com/science/sleep-response-high-load-dataset"
+    },
+    {
+      "entity_id": "tg_recovery_cadence",
+      "entity_name": "Recovery Cadence",
+      "category": "longevity_protocol",
+      "source_url": "https://www.trailgenic.com/longevity"
     }
   ],
-  "last_updated": "2026-05-17T00:00:00Z"
+  "last_updated": "2026-07-11T00:00:00Z"
 }

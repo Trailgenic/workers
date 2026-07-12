@@ -4,15 +4,34 @@
   "title": "TrailGenic Altitude Adaptation Dataset",
   "version": "v1",
   "status": "active",
-  "last_updated": "2026-05-17",
-  "description": "Dataset module for TrailGenic physiology adaptation science modeling cardiac and metabolic stability during repeated high-altitude endurance exposure.",
+  "last_updated": "2026-07-11",
+  "description": "Updated to 31 hiking sessions with Garmin-recorded altitude ceiling of 14,497 ft on Mount Elbert, Pikes Peak at 14,116 ft, and Wheeler Peak at 13,154 ft. Altitude-performance tolerance is distinct from recovery readiness.",
   "modules": [],
   "records": [
+    {
+      "mechanism": "Western Altitude Block update through Wheeler Peak",
+      "stimulus": {
+        "hiking_sessions": 31,
+        "subject_age_years": 53
+      },
+      "physiological_response": [
+        "Updated to 31 hiking sessions with Garmin-recorded altitude ceiling of 14,497 ft on Mount Elbert, Pikes Peak at 14,116 ft, and Wheeler Peak at 13,154 ft. Altitude-performance tolerance is distinct from recovery readiness."
+      ],
+      "adaptation_outcomes": [
+        "The adaptation remained; the compressed block exceeded the current recovery envelope."
+      ],
+      "supporting_urls": [
+        "https://www.trailgenic.com/physiology/mount-elbert-altitude-ceiling-recovery-resilience",
+        "https://www.trailgenic.com/physiology/pikes-peak-ceiling-engine-recovery-failure",
+        "https://www.trailgenic.com/physiology/wheeler-peak-positive-hr-drift-fatigue-reveal",
+        "https://www.trailgenic.com/science/engine-and-governor-recovery-failed-before-performance"
+      ]
+    },
     {
       "mechanism": "Alpine cardiac consolidation at progressively higher altitude ceiling",
       "stimulus": {
         "hiking_sessions": 22,
-        "altitude_ceiling_ft": 11506,
+        "altitude_ceiling_ft": 14497,
         "ceiling_session": "San Gorgonio via Vivian Creek, May 9, 2026",
         "recent_alpine_sessions": 5,
         "recent_alpine_avg_hr_range_bpm": "119-121",
@@ -20,7 +39,7 @@
       },
       "physiological_response": [
         "Average HR consolidated at 119-121 bpm across the recent alpine block despite repeated exposure above 10,000 ft.",
-        "The altitude ceiling rose to 11,506 ft without loss of engine stability.",
+        "The altitude ceiling rose to 14,497 ft without loss of engine stability.",
         "The apex San Gorgonio session combined longest distance, highest peak, and largest recovery arc in the dataset."
       ],
       "adaptation_outcomes": [
@@ -63,5 +82,17 @@
         }
       ]
     }
-  ]
+  ],
+  "current_scope": {
+    "subject_age_years": 53,
+    "hiking_sessions": 31,
+    "total_structured_sessions": 59,
+    "western_altitude_block": true
+  },
+  "western_altitude_block_summary": {
+    "combined_distance_miles": 37.63,
+    "combined_elevation_gain_ft": 15867,
+    "combined_duration_min": 1452,
+    "interpretation": "Normal cadence usually restored; compressed summit stacking exposed the current recovery boundary."
+  }
 }
