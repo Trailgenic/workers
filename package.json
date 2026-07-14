@@ -1,0 +1,25 @@
+{
+  "name": "trailgenic-workers",
+  "version": "1.4.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "node --check tool-registry/worker.js && node --check lib/registry.js && node --check lib/queries.js && node --check lib/mcp-server.js && node --check lib/resources.js && node --check scripts/live-acceptance.mjs",
+    "test": "node --test tests/registry.test.mjs",
+    "test:workers": "vitest run --config vitest.config.mjs",
+    "validate:json": "node scripts/validate-json.mjs",
+    "validate:registry": "node scripts/validate-registry.mjs",
+    "wrangler:dry-run": "wrangler deploy --config tool-registry/wrangler.jsonc --dry-run --outdir /tmp/trailgenic-worker-dry-run"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "agents": "^0.0.115",
+    "ajv": "^8.17.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.9.7",
+    "vitest": "^3.2.4",
+    "wrangler": "^4.25.0"
+  }
+}

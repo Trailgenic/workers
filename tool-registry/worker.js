@@ -1,3 +1,4 @@
+import { createMcpHandler } from "agents/mcp";
 import { DATASETS } from "../lib/datasets.js";
 import {
   BUILD,
@@ -5,108 +6,97 @@ import {
   DATA_TOOLS,
   ENTITY,
   MCP_ORIGIN,
+  MCP_TRANSPORT,
+  SUPPORTED_MCP_PROTOCOL_VERSIONS,
   capabilitiesDocument,
   datasetCatalog,
   mcpTools,
   toolRegistryDocument
 } from "../lib/registry.js";
-import { DATASET_JSON_BY_SOURCE_PATH, TOOL_HANDLERS, datasetSourcePaths } from "../lib/queries.js";
-import { emptyResponse, jsonResponse, optionsResponse, textResponse, withCors } from "../lib/http.js";
+import { DATASET_JSON_BY_SOURCE_PATH, datasetSourcePaths } from "../lib/queries.js";
+import { createTrailgenicMcpServer } from "../lib/mcp-server.js";
+import { resourceInventory } from "../lib/resources.js";
+import { emptyResponse, jsonResponse, optionsResponse, textResponse } from "../lib/http.js";
 
-const jsonRpcResult = (id, result) => jsonResponse({ jsonrpc: "2.0", id, result }, { cacheControl: "no-cache" });
+const DEFAULT_ALLOWED_ORIGINS = ["https://trailgenic.com", "https://www.trailgenic.com", MCP_ORIGIN];
+const mcpHandler = createMcpHandler(() => createTrailgenicMcpServer(), { responseMode: "json" });
 
-const jsonRpcError = (id, code, message) =>
-  jsonResponse({ jsonrpc: "2.0", id, error: { code, message } }, { cacheControl: "no-cache" });
-
-const normalizePath = (pathname) => (pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname);
-
-const datasetRoutes = datasetSourcePaths();
-
-const serveDataset = async (sourcePath) => {
-  const bundledDataset = DATASET_JSON_BY_SOURCE_PATH.get(sourcePath);
-
-  if (bundledDataset) {
-    return jsonResponse(bundledDataset);
-  }
-
-  const datasetURL = `https://raw.githubusercontent.com/Trailgenic/workers/main/${sourcePath}`;
-  const dataset = await fetch(datasetURL, { cf: { cacheTtl: 3600, cacheEverything: true } });
-
-  if (!dataset.ok) {
-    return textResponse(`Dataset fetch failed: ${dataset.status}`, { status: 500 });
-  }
-
-  return new Response(await dataset.text(), {
-    status: 200,
-    headers: withCors({
-      "Content-Type": "application/json",
-      "Cache-Control": "public, max-age=3600"
-    })
-  });
+const isJsonContentType = (value) => {
+  if (!value) return false;
+  return value.split(";")[0].trim().toLowerCase() === "application/json";
 };
 
-const handleMcp = async (request) => {
+const acceptPolicy = (value) => {
+  if (value === null || value.trim() === "" || value.includes("*/*")) return "normalize";
+  const parts = value.toLowerCase().split(",").map((part) => part.split(";")[0].trim());
+  const hasJson = parts.includes("application/json");
+  const hasEventStream = parts.includes("text/event-stream");
+  if (hasJson && hasEventStream) return "pass";
+  if (hasJson) return "normalize";
+  return "reject";
+};
+
+const allowedOrigins = (env = {}) => String(env.MCP_ALLOWED_ORIGINS ?? DEFAULT_ALLOWED_ORIGINS.join(","))
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+const applyOriginCors = (response, origin) => {
+  if (!origin) return response;
+  const headers = new Headers(response.headers);
+  headers.set("Access-Control-Allow-Origin", origin);
+  headers.set("Vary", headers.has("Vary") ? `${headers.get("Vary")}, Origin` : "Origin");
+  return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+};
+
+const normalizeMcpRequest = (request) => {
+  const headers = new Headers(request.headers);
+  headers.set("Accept", "application/json, text/event-stream");
+  return new Request(request, { headers });
+};
+
+const handleMcp = async (request, env) => {
   if (request.method === "GET") {
     return textResponse("Method Not Allowed", { status: 405, headers: { Allow: "POST" } });
   }
-
+  if (request.method === "OPTIONS") return emptyResponse({ status: 204 });
   if (request.method !== "POST") {
     return textResponse("Method Not Allowed", { status: 405, headers: { Allow: "POST" } });
   }
 
-  let rpc;
-  try {
-    rpc = await request.json();
-  } catch {
-    return jsonRpcError(null, -32700, "Parse error: invalid JSON");
+  const origin = request.headers.get("Origin");
+  if (origin && !allowedOrigins(env).includes(origin)) {
+    return textResponse("Forbidden Origin", { status: 403, cacheControl: "no-cache" });
   }
 
-  const { id = null, method, params = {} } = rpc ?? {};
-
-  if (method === "notifications/initialized") {
-    return emptyResponse({ status: 202 });
+  if (!isJsonContentType(request.headers.get("Content-Type"))) {
+    return textResponse("Unsupported Media Type", { status: 415, cacheControl: "no-cache" });
   }
 
-  if (method === "initialize") {
-    return jsonRpcResult(id, {
-      protocolVersion: params.protocolVersion ?? "2025-06-18",
-      capabilities: { tools: {} },
-      serverInfo: { name: "TrailGenic", version: BUILD.version }
-    });
+  const protocolVersion = request.headers.get("MCP-Protocol-Version");
+  if (protocolVersion && !SUPPORTED_MCP_PROTOCOL_VERSIONS.includes(protocolVersion)) {
+    return jsonResponse({ jsonrpc: "2.0", id: null, error: { code: -32000, message: `Unsupported MCP protocol version: ${protocolVersion}` } }, { status: 400, cacheControl: "no-cache" });
   }
 
-  if (method === "ping") {
-    return jsonRpcResult(id, {});
+  const acceptAction = acceptPolicy(request.headers.get("Accept"));
+  if (acceptAction === "reject") {
+    return textResponse("Not Acceptable", { status: 406, cacheControl: "no-cache" });
   }
 
-  if (method === "tools/list") {
-    return jsonRpcResult(id, { tools: mcpTools() });
-  }
-
-  if (method === "tools/call") {
-    const toolName = params.name;
-    const handler = TOOL_HANDLERS.get(toolName);
-
-    if (!handler) {
-      return jsonRpcError(id, -32602, `Unknown tool: ${toolName ?? "<missing>"}`);
-    }
-
-    try {
-      const result = await handler(params.arguments ?? {});
-      return jsonRpcResult(id, {
-        content: [{ type: "text", text: JSON.stringify(result) }],
-        structuredContent: result
-      });
-    } catch (error) {
-      return jsonRpcError(id, -32603, error?.message ?? "Tool execution failed");
-    }
-  }
-
-  return jsonRpcError(id, -32601, `Method not found: ${method ?? "<missing>"}`);
+  const internalRequest = acceptAction === "normalize" ? normalizeMcpRequest(request) : request;
+  const response = await mcpHandler.fetch(internalRequest, env, {});
+  return applyOriginCors(response, origin);
 };
 
 const rootDiscovery = () => ({
   name: "TrailGenic MCP Endpoint",
+  service_name: "TrailGenic MCP Endpoint",
+  build_version: BUILD.version,
+  supported_protocol_versions: SUPPORTED_MCP_PROTOCOL_VERSIONS,
+  transport_url: MCP_TRANSPORT,
+  tools: DATA_TOOLS.map((tool) => tool.id),
+  resources: resourceInventory().map((resource) => resource.uri),
+  scope: "Public read-only aggregate-only TrailGenic data; no raw telemetry, private rows, phone data, subscriptions, or operational permit infrastructure.",
   entity: {
     name: ENTITY.name,
     domain: ENTITY.domain,
@@ -120,7 +110,7 @@ const rootDiscovery = () => ({
   mcp: `${MCP_ORIGIN}/mcp`,
   health: `${MCP_ORIGIN}/health`,
   status: "active",
-  discovery_protocol: "MCP JSON-RPC 2.0",
+  discovery_protocol: "MCP JSON-RPC 2.0 via official MCP SDK and Cloudflare stateless Workers MCP handler",
   last_updated: BUILD.released
 });
 
@@ -140,19 +130,19 @@ const pointerRegistry = () => ({
 
 const health = () => ({
   entity: "TrailGenic",
-  status: "healthy",
-  mcp_status: "operational",
-  registry_status: "operational",
-  plugin_status: "operational",
-  openapi_status: "operational",
+  status: "responding",
+  mcp_status: "not_checked",
+  registry_status: "not_checked",
+  plugin_status: "not_checked",
+  openapi_status: "not_checked",
   capabilities_status: "operational",
   uptime: null,
   uptime_note: "Uptime is observed via Cloudflare observability, not asserted in this endpoint.",
   region: "global",
   infrastructure: {
     platform: "Cloudflare Workers",
-    protocol: "MCP JSON-RPC 2.0 over Streamable HTTP-compatible POST",
-    agent_ready: true
+    protocol: "MCP JSON-RPC 2.0 over official Cloudflare stateless MCP handler",
+    agent_ready: "not_checked"
   },
   last_checked: new Date().toISOString()
 });
@@ -251,11 +241,11 @@ const openApi = () => ({
 });
 
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     const url = new URL(request.url);
     const normalizedPath = normalizePath(url.pathname);
 
-    if (request.method === "OPTIONS") {
+    if (request.method === "OPTIONS" && normalizedPath !== "/mcp") {
       return optionsResponse();
     }
 
@@ -267,7 +257,7 @@ export default {
     }
 
     if (normalizedPath === "/mcp") {
-      return handleMcp(request);
+      return handleMcp(request, env);
     }
 
     if (normalizedPath === "/" || normalizedPath === "") {

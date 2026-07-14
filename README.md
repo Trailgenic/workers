@@ -145,3 +145,19 @@ The permit poller is intentionally excluded from MCP CI/deploy workflows.
 TrailGenic is created and operated by Mike Ye.
 
 https://trailgenic.com
+
+## MCP SDK, transport, and deployment safety
+
+TrailGenic now uses the official `@modelcontextprotocol/sdk` `McpServer` and Cloudflare's stateless `createMcpHandler` from `agents/mcp` for the public MCP transport at `POST https://mcp.trailgenic.com/mcp`. Browser discovery remains JSON at `GET https://mcp.trailgenic.com/`; `GET /mcp` is intentionally `405 Allow: POST`, and `OPTIONS /mcp` remains `204`.
+
+The server advertises and validates MCP protocol versions `2025-11-25` and `2025-06-18`; unsupported `MCP-Protocol-Version` headers are rejected instead of echoed. MCP POST accepts missing, empty, wildcard, JSON-only, or JSON-plus-event-stream `Accept` headers, normalizing incomplete accepted requests internally to `application/json, text/event-stream`. Event-stream-only or unsupported media types are rejected with `406`. MCP POST `Content-Type` must be `application/json` compatible or the request is rejected with `415`.
+
+Browser `Origin` is validated only for the MCP transport. Default allowed origins are `https://trailgenic.com`, `https://www.trailgenic.com`, and `https://mcp.trailgenic.com`; deployments may override with `MCP_ALLOWED_ORIGINS`. Server-to-server clients without `Origin` remain accepted. Public read-only REST dataset routes keep their public CORS behavior.
+
+All 19 existing tool names are preserved. Both gear tools remain: `tg.gear.intel.get` is the bounded query-oriented compatibility tool, while `tg.gear.getIntel` is the canonical full-dataset tool with optional exact-category filtering. Conditioning walking, rucking, and running keep optional date fields for backward compatibility, but date-range slicing returns an MCP `isError: true` tool result because public conditioning data is aggregate-only and contains no per-session rows.
+
+MCP resources are generated from canonical dataset and physiology registries using stable URIs: `trailgenic://datasets/index`, `trailgenic://datasets/{dataset_id}`, and `trailgenic://physiology/{module_slug}`. Public data is deterministic and release-bundled. The mutable runtime fallback to GitHub `main` has been removed; missing bundled data is a server error and CI validation failure.
+
+The permit poller and operational permit subscription infrastructure are separate from this MCP deployment. No Twilio data, phone numbers, permit subscriptions, raw telemetry, precise private location rows, credentials, secrets, or private user data are exposed through tools or resources.
+
+CI runs `npm ci`, source checks, JSON validation, pure tests, Worker-runtime tests, registry/bundle/resource parity validation, Wrangler dry-run, and `git diff --check` before deployment. Push-to-main deployment verifies first, deploys only `tool-registry`, waits for propagation, and then runs `node scripts/live-acceptance.mjs`.

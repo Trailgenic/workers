@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import { DATASET_LIST, PHYSIOLOGY_MODULES } from '../lib/datasets.js';
+import { DATA_TOOLS, mcpTools } from '../lib/registry.js';
+import { DATASET_JSON_BY_SOURCE_PATH, TOOL_HANDLERS, datasetSourcePaths } from '../lib/queries.js';
+import { readResource, resourceInventory } from '../lib/resources.js';
+assert.equal(DATA_TOOLS.length, 19);
+assert.deepEqual(mcpTools().map(t=>t.name), DATA_TOOLS.map(t=>t.id));
+for (const tool of DATA_TOOLS) assert.ok(TOOL_HANDLERS.has(tool.id), `missing handler ${tool.id}`);
+for (const dataset of DATASET_LIST.filter(d=>d.enabled)) assert.ok(DATASET_JSON_BY_SOURCE_PATH.has(dataset.source_path), `missing bundle ${dataset.source_path}`);
+for (const module of PHYSIOLOGY_MODULES) assert.ok(DATASET_JSON_BY_SOURCE_PATH.has(module.source_path), `missing module ${module.source_path}`);
+for (const [route, source] of datasetSourcePaths()) assert.ok(DATASET_JSON_BY_SOURCE_PATH.has(source), `missing route data ${route}`);
+const uris = resourceInventory().map(r=>r.uri);
+assert.equal(new Set(uris).size, uris.length, 'duplicate resources');
+for (const uri of uris) assert.notEqual(readResource(uri), undefined, `missing resource ${uri}`);
+console.log(`Registry validation passed: ${uris.length} resources`);
