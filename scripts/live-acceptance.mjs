@@ -1,3 +1,4 @@
+import { BUILD } from "../lib/registry.js";
 const BASE = process.env.BASE || "https://mcp.trailgenic.com";
 
 let nextId = 1;
@@ -41,7 +42,7 @@ const init = await postMcp("initialize", initParams("2025-06-18"));
 assert(init.response.ok, "initialize should return HTTP 2xx");
 assert(init.json.result, `initialize should return a result, got: ${JSON.stringify(init.json).slice(0, 200)}`);
 assert(init.json.result.serverInfo.name === "TrailGenic", "initialize serverInfo.name should be TrailGenic");
-assert(init.json.result.serverInfo.version === "1.4.0", `server version should be 1.4.0, got ${init.json.result.serverInfo.version}`);
+assert(init.json.result.serverInfo.version === BUILD.version, `server version should be ${BUILD.version}, got ${init.json.result.serverInfo.version}`);
 assert(init.json.result.protocolVersion === "2025-06-18", "initialize should negotiate 2025-06-18");
 
 const initPrimary = await postMcp("initialize", initParams("2025-11-25"));
@@ -211,9 +212,10 @@ const badContentType = await fetch(`${BASE}/mcp`, {
 });
 assert(badContentType.status === 415, "non-JSON Content-Type should return 415");
 
-const rootDiscovery = await getJson("/");
+const rootDiscovery = await getJson(`/?cache_bust=${Date.now()}`);
+assert(rootDiscovery.response.headers.get("cache-control") === "no-cache", "root discovery should be served with Cache-Control: no-cache");
 assert(rootDiscovery.response.ok, "root browser discovery should return HTTP 200 JSON");
-assert(rootDiscovery.json.build_version === "1.4.0", `root discovery build_version should be 1.4.0, got ${rootDiscovery.json.build_version}`);
+assert(rootDiscovery.json.build_version === BUILD.version, `root discovery build_version should be ${BUILD.version}, got ${rootDiscovery.json.build_version}`);
 assert(Array.isArray(rootDiscovery.json.tools) && rootDiscovery.json.tools.length === 19, "root discovery should list 19 tools");
 assert(Array.isArray(rootDiscovery.json.resources) && rootDiscovery.json.resources.length > 0, "root discovery should list generated resources");
 assert(Array.isArray(rootDiscovery.json.supported_protocol_versions) && rootDiscovery.json.supported_protocol_versions.includes("2025-11-25"), "root discovery should advertise 2025-11-25");
@@ -228,6 +230,13 @@ const indexContents = indexResource.json.result?.contents?.[0]?.text;
 assert(indexContents, "resources/read for dataset index should return contents");
 const indexParsed = JSON.parse(indexContents);
 const restIndex = await getJson("/datasets/index");
-assert((indexParsed.datasets?.length ?? 0) === (restIndex.json.datasets?.length ?? -1), "dataset-index resource should match REST dataset index");
+assert(JSON.stringify(indexParsed) === JSON.stringify(restIndex.json), "dataset-index resource should deep-equal REST dataset index");
+
+const disallowedOriginPost = await fetch(`${BASE}/mcp`, {
+  method: "POST",
+  headers: { "content-type": "application/json", origin: "https://evil.example" },
+  body: JSON.stringify({ jsonrpc: "2.0", id: nextId++, method: "ping" })
+});
+assert(disallowedOriginPost.status === 403, "disallowed-Origin POST should return 403");
 
 console.log("TrailGenic live acceptance passed.");
