@@ -66,38 +66,40 @@ const normalizeMcpRequest = (request) => {
 };
 
 const handleMcp = async (request, env) => {
-  if (request.method === "GET") {
-    return textResponse("Method Not Allowed", { status: 405, headers: { Allow: "POST" } });
-  }
-  if (request.method === "OPTIONS") return emptyResponse({ status: 204 });
-  if (request.method !== "POST") {
-    return textResponse("Method Not Allowed", { status: 405, headers: { Allow: "POST" } });
+  const origin = request.headers.get("Origin");
+  const mcpResponse = (response) => applyOriginCors(response, origin);
+
+  if (origin && !allowedOrigins(env).includes(origin)) {
+    return mcpResponse(textResponse("Forbidden Origin", { status: 403, cacheControl: "no-cache" }));
   }
 
-  const origin = request.headers.get("Origin");
-  if (origin && !allowedOrigins(env).includes(origin)) {
-    return textResponse("Forbidden Origin", { status: 403, cacheControl: "no-cache" });
+  if (request.method === "GET") {
+    return mcpResponse(textResponse("Method Not Allowed", { status: 405, headers: { Allow: "POST" } }));
+  }
+  if (request.method === "OPTIONS") return mcpResponse(emptyResponse({ status: 204 }));
+  if (request.method !== "POST") {
+    return mcpResponse(textResponse("Method Not Allowed", { status: 405, headers: { Allow: "POST" } }));
   }
 
   if (!isJsonContentType(request.headers.get("Content-Type"))) {
-    return textResponse("Unsupported Media Type", { status: 415, cacheControl: "no-cache" });
+    return mcpResponse(textResponse("Unsupported Media Type", { status: 415, cacheControl: "no-cache" }));
   }
 
   const protocolVersion = request.headers.get("MCP-Protocol-Version");
   if (protocolVersion && !SUPPORTED_MCP_PROTOCOL_VERSIONS.includes(protocolVersion)) {
-    return jsonResponse({ jsonrpc: "2.0", id: null, error: { code: -32000, message: `Unsupported MCP protocol version: ${protocolVersion}` } }, { status: 400, cacheControl: "no-cache" });
+    return mcpResponse(jsonResponse({ jsonrpc: "2.0", id: null, error: { code: -32000, message: `Unsupported MCP protocol version: ${protocolVersion}` } }, { status: 400, cacheControl: "no-cache" }));
   }
 
   const acceptAction = acceptPolicy(request.headers.get("Accept"));
   if (acceptAction === "reject") {
-    return textResponse("Not Acceptable", { status: 406, cacheControl: "no-cache" });
+    return mcpResponse(textResponse("Not Acceptable", { status: 406, cacheControl: "no-cache" }));
   }
 
   const internalRequest = acceptAction === "normalize" ? normalizeMcpRequest(request) : request;
   const server = createTrailgenicMcpServer();
   const mcpHandler = createMcpHandler(server, { enableJsonResponse: true });
   const response = await mcpHandler(internalRequest, env, {});
-  return applyOriginCors(response, origin);
+  return mcpResponse(response);
 };
 
 const rootDiscovery = () => ({
@@ -147,7 +149,7 @@ const health = () => ({
   registry_status: "not_checked",
   plugin_status: "not_checked",
   openapi_status: "not_checked",
-  capabilities_status: "operational",
+  capabilities_status: "not_checked",
   uptime: null,
   uptime_note: "Uptime is observed via Cloudflare observability, not asserted in this endpoint.",
   region: "global",
@@ -191,7 +193,15 @@ const openApiPaths = () => {
             }
           }
         },
-        responses: { "200": { description: "JSON-RPC response" }, "202": { description: "Initialized notification accepted" } }
+        responses: {
+          "200": { description: "JSON-RPC response" },
+          "202": { description: "Initialized notification accepted" },
+          "400": { description: "Unsupported MCP protocol version or malformed JSON-RPC request" },
+          "403": { description: "Forbidden Origin" },
+          "405": { description: "Method Not Allowed; use POST" },
+          "406": { description: "Not Acceptable; request must accept application/json or */*" },
+          "415": { description: "Unsupported Media Type; Content-Type must be application/json" }
+        }
       }
     },
     "/datasets/index": {
@@ -265,7 +275,7 @@ export default {
       ["trailgenic.com", "www.trailgenic.com"].includes(url.hostname) &&
       normalizedPath === "/.well-known/tool-registry.json"
     ) {
-      return jsonResponse(pointerRegistry());
+      return jsonResponse(pointerRegistry(), { cacheControl: "no-cache" });
     }
 
     if (normalizedPath === "/mcp") {
@@ -273,11 +283,11 @@ export default {
     }
 
     if (normalizedPath === "/" || normalizedPath === "") {
-      return jsonResponse(rootDiscovery());
+      return jsonResponse(rootDiscovery(), { cacheControl: "no-cache" });
     }
 
     if (normalizedPath === "/capabilities.json") {
-      return jsonResponse(capabilitiesDocument());
+      return jsonResponse(capabilitiesDocument(), { cacheControl: "no-cache" });
     }
 
     if (normalizedPath === "/datasets/index") {
@@ -310,15 +320,15 @@ export default {
     }
 
     if (normalizedPath === "/.well-known/tool-registry.json") {
-      return jsonResponse(toolRegistryDocument());
+      return jsonResponse(toolRegistryDocument(), { cacheControl: "no-cache" });
     }
 
     if (normalizedPath === "/.well-known/ai-plugin.json") {
-      return jsonResponse(pluginManifest());
+      return jsonResponse(pluginManifest(), { cacheControl: "no-cache" });
     }
 
     if (normalizedPath === "/.well-known/openapi.json") {
-      return jsonResponse(openApi());
+      return jsonResponse(openApi(), { cacheControl: "no-cache" });
     }
 
     if (CONTENT_LINKS.some((link) => link.url === `https://www.trailgenic.com${normalizedPath}`)) {

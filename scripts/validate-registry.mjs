@@ -6,6 +6,7 @@ import { readResource, resourceInventory } from '../lib/resources.js';
 assert.equal(DATA_TOOLS.length, 19);
 assert.deepEqual(mcpTools().map(t=>t.name), DATA_TOOLS.map(t=>t.id));
 for (const tool of DATA_TOOLS) assert.ok(TOOL_HANDLERS.has(tool.id), `missing handler ${tool.id}`);
+for (const handlerId of TOOL_HANDLERS.keys()) assert.ok(DATA_TOOLS.some((tool) => tool.id === handlerId), `missing tool definition ${handlerId}`);
 for (const dataset of DATASET_LIST.filter(d=>d.enabled)) assert.ok(DATASET_JSON_BY_SOURCE_PATH.has(dataset.source_path), `missing bundle ${dataset.source_path}`);
 for (const module of PHYSIOLOGY_MODULES) assert.ok(DATASET_JSON_BY_SOURCE_PATH.has(module.source_path), `missing module ${module.source_path}`);
 for (const [route, source] of datasetSourcePaths()) assert.ok(DATASET_JSON_BY_SOURCE_PATH.has(source), `missing route data ${route}`);
