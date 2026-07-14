@@ -19,8 +19,6 @@ import { resourceInventory } from "../lib/resources.js";
 import { emptyResponse, jsonResponse, optionsResponse, textResponse } from "../lib/http.js";
 
 const DEFAULT_ALLOWED_ORIGINS = ["https://trailgenic.com", "https://www.trailgenic.com", MCP_ORIGIN];
-const mcpHandler = createMcpHandler(() => createTrailgenicMcpServer(), { responseMode: "json" });
-
 const isJsonContentType = (value) => {
   if (!value) return false;
   return value.split(";")[0].trim().toLowerCase() === "application/json";
@@ -84,7 +82,9 @@ const handleMcp = async (request, env) => {
   }
 
   const internalRequest = acceptAction === "normalize" ? normalizeMcpRequest(request) : request;
-  const response = await mcpHandler.fetch(internalRequest, env, {});
+  const server = createTrailgenicMcpServer();
+  const mcpHandler = createMcpHandler(server, { enableJsonResponse: true });
+  const response = await mcpHandler(internalRequest, env, {});
   return applyOriginCors(response, origin);
 };
 
