@@ -2,6 +2,12 @@ import { BUILD } from "../lib/registry.js";
 const BASE = process.env.BASE || "https://mcp.trailgenic.com";
 
 let nextId = 1;
+let nextMcpPostAt = 0;
+
+const MCP_POST_INTERVAL_MS = 1100;
+const MCP_RETRY_DELAY_MS = 11000;
+
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const assert = (condition, message) => {
   if (!condition) {
@@ -9,16 +15,60 @@ const assert = (condition, message) => {
   }
 };
 
+const paceMcpPost = async () => {
+  const now = Date.now();
+  const waitMs = Math.max(0, nextMcpPostAt - now);
+  nextMcpPostAt = Math.max(now, nextMcpPostAt) + MCP_POST_INTERVAL_MS;
+  if (waitMs > 0) {
+    await delay(waitMs);
+  }
+};
+
+const mcpPostFetch = async (options) => {
+  await paceMcpPost();
+  return fetch(`${BASE}/mcp`, { method: "POST", ...options });
+};
+
+const bodyPreview = (text) => text.slice(0, 200);
+
+const shouldRetryMcpPost = (response, contentType) =>
+  response.status === 429 || contentType.toLowerCase().includes("text/html");
+
+const parseMcpJsonResponse = (response, text, contentType, method) => {
+  const preview = bodyPreview(text);
+  if (!response.ok) {
+    throw new Error(`MCP ${method} failed with HTTP ${response.status}: ${preview}`);
+  }
+  if (!contentType.toLowerCase().includes("application/json")) {
+    throw new Error(`MCP ${method} returned non-JSON HTTP ${response.status}: ${preview}`);
+  }
+  try {
+    return text ? JSON.parse(text) : null;
+  } catch (error) {
+    throw new Error(`MCP ${method} returned invalid JSON HTTP ${response.status}: ${preview}`, { cause: error });
+  }
+};
+
 const postMcp = async (method, params = {}, extra = {}) => {
   const body = { jsonrpc: "2.0", id: nextId++, method, params, ...extra };
-  const response = await fetch(`${BASE}/mcp`, {
-    method: "POST",
+  const request = {
     headers: { "content-type": "application/json", "mcp-protocol-version": "2025-06-18" },
     body: JSON.stringify(body)
-  });
-  const text = await response.text();
-  const json = text ? JSON.parse(text) : null;
-  return { response, json };
+  };
+
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const response = await mcpPostFetch(request);
+    const text = await response.text();
+    const contentType = response.headers.get("content-type") ?? "";
+    if (attempt === 0 && shouldRetryMcpPost(response, contentType)) {
+      await delay(MCP_RETRY_DELAY_MS);
+      continue;
+    }
+    const json = parseMcpJsonResponse(response, text, contentType, method);
+    return { response, json };
+  }
+
+  throw new Error(`MCP ${method} failed after retry`);
 };
 
 const getJson = async (path) => {
@@ -49,8 +99,7 @@ const initPrimary = await postMcp("initialize", initParams("2025-11-25"));
 assert(initPrimary.json.result?.protocolVersion === "2025-11-25", "initialize should negotiate primary protocol 2025-11-25");
 assert(init.response.headers.get("access-control-allow-origin") === "*", "initialize response should include CORS");
 
-const initialized = await fetch(`${BASE}/mcp`, {
-  method: "POST",
+const initialized = await mcpPostFetch({
   headers: { "content-type": "application/json" },
   body: JSON.stringify({ jsonrpc: "2.0", method: "notifications/initialized" })
 });
@@ -191,22 +240,19 @@ const corsPreflight = await fetch(`${BASE}/mcp`, {
 assert(corsPreflight.status === 204, "OPTIONS /mcp should return 204");
 assert(corsPreflight.headers.get("access-control-allow-origin") === "*", "OPTIONS should include CORS");
 
-const acceptJsonOnly = await fetch(`${BASE}/mcp`, {
-  method: "POST",
+const acceptJsonOnly = await mcpPostFetch({
   headers: { "content-type": "application/json", accept: "application/json" },
   body: JSON.stringify({ jsonrpc: "2.0", id: nextId++, method: "ping" })
 });
 assert(acceptJsonOnly.ok, "JSON-only Accept should be normalized and succeed");
 
-const acceptEventStreamOnly = await fetch(`${BASE}/mcp`, {
-  method: "POST",
+const acceptEventStreamOnly = await mcpPostFetch({
   headers: { "content-type": "application/json", accept: "text/event-stream" },
   body: JSON.stringify({ jsonrpc: "2.0", id: nextId++, method: "ping" })
 });
 assert(acceptEventStreamOnly.status === 406, "event-stream-only Accept should return 406");
 
-const badContentType = await fetch(`${BASE}/mcp`, {
-  method: "POST",
+const badContentType = await mcpPostFetch({
   headers: { "content-type": "text/plain", accept: "application/json" },
   body: JSON.stringify({ jsonrpc: "2.0", id: nextId++, method: "ping" })
 });
@@ -232,8 +278,7 @@ const indexParsed = JSON.parse(indexContents);
 const restIndex = await getJson("/datasets/index");
 assert(JSON.stringify(indexParsed) === JSON.stringify(restIndex.json), "dataset-index resource should deep-equal REST dataset index");
 
-const disallowedOriginPost = await fetch(`${BASE}/mcp`, {
-  method: "POST",
+const disallowedOriginPost = await mcpPostFetch({
   headers: { "content-type": "application/json", origin: "https://evil.example" },
   body: JSON.stringify({ jsonrpc: "2.0", id: nextId++, method: "ping" })
 });
