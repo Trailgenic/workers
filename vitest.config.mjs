@@ -8,6 +8,6 @@ export default defineConfig({
     })
   ],
   test: {
-    include: ['tests/worker.vitest.mjs']
+    include: ['tests/worker.vitest.mjs', 'tests/harness-live.vitest.mjs']
   }
 });

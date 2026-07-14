@@ -31,9 +31,21 @@ const toolIdsFromInventory = (tools) => tools.map((tool) => tool.name ?? tool.id
 
 console.log(`Running TrailGenic live acceptance against ${BASE}`);
 
-const init = await postMcp("initialize", { protocolVersion: "2025-06-18" });
+const initParams = (protocolVersion) => ({
+  protocolVersion,
+  capabilities: {},
+  clientInfo: { name: "tg-live-acceptance", version: "1.0" }
+});
+
+const init = await postMcp("initialize", initParams("2025-06-18"));
 assert(init.response.ok, "initialize should return HTTP 2xx");
+assert(init.json.result, `initialize should return a result, got: ${JSON.stringify(init.json).slice(0, 200)}`);
 assert(init.json.result.serverInfo.name === "TrailGenic", "initialize serverInfo.name should be TrailGenic");
+assert(init.json.result.serverInfo.version === "1.4.0", `server version should be 1.4.0, got ${init.json.result.serverInfo.version}`);
+assert(init.json.result.protocolVersion === "2025-06-18", "initialize should negotiate 2025-06-18");
+
+const initPrimary = await postMcp("initialize", initParams("2025-11-25"));
+assert(initPrimary.json.result?.protocolVersion === "2025-11-25", "initialize should negotiate primary protocol 2025-11-25");
 assert(init.response.headers.get("access-control-allow-origin") === "*", "initialize response should include CORS");
 
 const initialized = await fetch(`${BASE}/mcp`, {
@@ -138,7 +150,9 @@ assert(nutritionRecords.length <= 200, "filtered nutrition call should be bounde
 assert(nutritionRecords.every((record) => record.food_category === realCategory), "nutrition records should match requested category");
 
 const unknownTool = await postMcp("tools/call", { name: "tg.unknown.tool", arguments: {} });
-assert(unknownTool.json.error?.code === -32602, "unknown tool should map to JSON-RPC -32602");
+const unknownToolResult = unknownTool.json.result;
+assert(unknownToolResult?.isError === true, "unknown tool should return an isError tool result");
+assert(JSON.stringify(unknownToolResult.content ?? "").includes("not found"), "unknown tool result should explain the tool was not found");
 
 const unknownMethod = await postMcp("tg/unknownMethod");
 assert(unknownMethod.json.error?.code === -32601, "unknown method should map to JSON-RPC -32601");
@@ -175,5 +189,45 @@ const corsPreflight = await fetch(`${BASE}/mcp`, {
 });
 assert(corsPreflight.status === 204, "OPTIONS /mcp should return 204");
 assert(corsPreflight.headers.get("access-control-allow-origin") === "*", "OPTIONS should include CORS");
+
+const acceptJsonOnly = await fetch(`${BASE}/mcp`, {
+  method: "POST",
+  headers: { "content-type": "application/json", accept: "application/json" },
+  body: JSON.stringify({ jsonrpc: "2.0", id: nextId++, method: "ping" })
+});
+assert(acceptJsonOnly.ok, "JSON-only Accept should be normalized and succeed");
+
+const acceptEventStreamOnly = await fetch(`${BASE}/mcp`, {
+  method: "POST",
+  headers: { "content-type": "application/json", accept: "text/event-stream" },
+  body: JSON.stringify({ jsonrpc: "2.0", id: nextId++, method: "ping" })
+});
+assert(acceptEventStreamOnly.status === 406, "event-stream-only Accept should return 406");
+
+const badContentType = await fetch(`${BASE}/mcp`, {
+  method: "POST",
+  headers: { "content-type": "text/plain", accept: "application/json" },
+  body: JSON.stringify({ jsonrpc: "2.0", id: nextId++, method: "ping" })
+});
+assert(badContentType.status === 415, "non-JSON Content-Type should return 415");
+
+const rootDiscovery = await getJson("/");
+assert(rootDiscovery.response.ok, "root browser discovery should return HTTP 200 JSON");
+assert(rootDiscovery.json.build_version === "1.4.0", `root discovery build_version should be 1.4.0, got ${rootDiscovery.json.build_version}`);
+assert(Array.isArray(rootDiscovery.json.tools) && rootDiscovery.json.tools.length === 19, "root discovery should list 19 tools");
+assert(Array.isArray(rootDiscovery.json.resources) && rootDiscovery.json.resources.length > 0, "root discovery should list generated resources");
+assert(Array.isArray(rootDiscovery.json.supported_protocol_versions) && rootDiscovery.json.supported_protocol_versions.includes("2025-11-25"), "root discovery should advertise 2025-11-25");
+
+const resourcesListed = await postMcp("resources/list");
+const resourceUris = (resourcesListed.json.result?.resources ?? []).map((resource) => resource.uri).sort();
+assert(resourceUris.length === rootDiscovery.json.resources.length, "resources/list should equal root discovery resource inventory");
+assert(JSON.stringify(resourceUris) === JSON.stringify([...rootDiscovery.json.resources].sort()), "resources/list URIs should match root discovery URIs");
+
+const indexResource = await postMcp("resources/read", { uri: "trailgenic://datasets/index" });
+const indexContents = indexResource.json.result?.contents?.[0]?.text;
+assert(indexContents, "resources/read for dataset index should return contents");
+const indexParsed = JSON.parse(indexContents);
+const restIndex = await getJson("/datasets/index");
+assert((indexParsed.datasets?.length ?? 0) === (restIndex.json.datasets?.length ?? -1), "dataset-index resource should match REST dataset index");
 
 console.log("TrailGenic live acceptance passed.");
