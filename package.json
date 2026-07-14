@@ -18,8 +18,10 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@cloudflare/vitest-pool-workers": "^0.9.7",
-    "vitest": "^3.2.4",
-    "wrangler": "^4.25.0"
+    "@cloudflare/vitest-pool-workers": "^0.18.4",
+    "@vitest/runner": "^4.1.10",
+    "@vitest/snapshot": "^4.1.10",
+    "vitest": "^4.1.10",
+    "wrangler": "^4.110.0"
   }
 }

@@ -19,6 +19,18 @@ import { resourceInventory } from "../lib/resources.js";
 import { emptyResponse, jsonResponse, optionsResponse, textResponse } from "../lib/http.js";
 
 const DEFAULT_ALLOWED_ORIGINS = ["https://trailgenic.com", "https://www.trailgenic.com", MCP_ORIGIN];
+const normalizePath = (pathname) => (pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname);
+
+const datasetRoutes = datasetSourcePaths();
+
+const serveDataset = (sourcePath) => {
+  const bundledDataset = DATASET_JSON_BY_SOURCE_PATH.get(sourcePath);
+  if (!bundledDataset) {
+    return textResponse(`Dataset bundle missing: ${sourcePath}`, { status: 500, cacheControl: "no-cache" });
+  }
+  return jsonResponse(bundledDataset);
+};
+
 const isJsonContentType = (value) => {
   if (!value) return false;
   return value.split(";")[0].trim().toLowerCase() === "application/json";
