@@ -1,37 +1,36 @@
 name: Deploy Tool Registry
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 concurrency:
   group: deploy-tool-registry-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   deploy:
-    name: Deploy tool-registry Worker
+    name: Verify then deploy tool-registry Worker
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-      - name: Deploy tool-registry
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run validate:json
+      - run: npm test
+      - run: npm run test:workers
+      - run: npm run validate:registry
+      - run: npm run wrangler:dry-run
+      - run: git diff --check
+      - name: Deploy tool-registry only
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          wranglerVersion: "4"
+          wranglerVersion: '4'
           command: deploy --config tool-registry/wrangler.jsonc
-  verify:
-    name: Verify live MCP transport
-    runs-on: ubuntu-latest
-    needs: deploy
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: "22"
       - name: Allow Cloudflare deployment propagation
         run: sleep 25
       - name: Run live acceptance harness
