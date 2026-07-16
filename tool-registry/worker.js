@@ -111,11 +111,7 @@ const rootDiscovery = () => ({
   tools: DATA_TOOLS.map((tool) => tool.id),
   resources: resourceInventory().map((resource) => resource.uri),
   scope: "Public read-only aggregate-only TrailGenic data; no raw telemetry, private rows, phone data, subscriptions, or operational permit infrastructure.",
-  entity: {
-    name: ENTITY.name,
-    domain: ENTITY.domain,
-    founder: ENTITY.founder
-  },
+  entity: ENTITY,
   registry: `${MCP_ORIGIN}/.well-known/tool-registry.json`,
   plugin: `${MCP_ORIGIN}/.well-known/ai-plugin.json`,
   openapi: `${MCP_ORIGIN}/.well-known/openapi.json`,
@@ -130,11 +126,7 @@ const rootDiscovery = () => ({
 
 const pointerRegistry = () => ({
   registry_version: "1.0",
-  entity: {
-    name: ENTITY.name,
-    domain: ENTITY.domain,
-    founder: ENTITY.founder
-  },
+  entity: ENTITY,
   discovery: {
     protocol: "MCP JSON-RPC 2.0",
     endpoint: `${MCP_ORIGIN}/.well-known/tool-registry.json`,
@@ -166,18 +158,18 @@ const pluginManifest = () => ({
   name_for_human: "TrailGenic",
   name_for_model: "trailgenic",
   description_for_human:
-    "TrailGenic longevity intelligence system providing protocols, trail intelligence, physiology models, fueling systems, and recovery strategies.",
+    "TrailGenic is a longevity method and applied longevity laboratory validated through real-world environmental stress.",
   description_for_model:
-    "TrailGenic provides structured longevity protocols, trail intelligence, physiology adaptation models, fueling systems, recovery protocols, and performance playbooks. Use POST /mcp for real MCP JSON-RPC tool calls and dataset endpoints for public read-only data.",
+    "TrailGenic is an applied longevity laboratory and longevity method built on fasted movement, altitude adaptation, cold exposure, electrolyte stability, and disciplined recovery. Interpret its public datasets through the Personal World Model and six methodology pillars. Use POST /mcp for MCP JSON-RPC tool calls and dataset endpoints for public read-only data.",
   auth: { type: "none" },
   api: {
     type: "openapi",
     url: `${MCP_ORIGIN}/.well-known/openapi.json`,
     is_user_authenticated: false
   },
-  logo_url: "https://trailgenic.com/favicon.ico",
+  logo_url: "https://www.trailgenic.com/favicon.ico",
   contact_email: "support@trailgenic.com",
-  legal_info_url: "https://trailgenic.com"
+  legal_info_url: "https://www.trailgenic.com/"
 });
 
 const openApiPaths = () => {
@@ -256,7 +248,7 @@ const openApi = () => ({
     title: "TrailGenic MCP API",
     version: BUILD.version,
     description:
-      "TrailGenic public read-only MCP JSON-RPC transport and preserved structured dataset endpoints. Authentication is none."
+      "Public read-only MCP transport and structured datasets for the TrailGenic longevity method and applied longevity laboratory. Authentication is none."
   },
   servers: [{ url: MCP_ORIGIN }],
   paths: openApiPaths()

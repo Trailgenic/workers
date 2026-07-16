@@ -2,7 +2,24 @@
 
 This repository contains the public TrailGenic Machine Communication Protocol (MCP) worker and dataset discovery infrastructure.
 
-TrailGenic is a longevity intelligence system providing structured protocols, trail intelligence, physiology models, fueling systems, recovery protocols, and performance playbooks.
+TrailGenic™ is a longevity method built on fasted hiking, altitude adaptation, autophagy activation, electrolyte stability, and disciplined recovery—validated through real-world environmental stress and interpreted through a Personal World Model.
+
+## Canonical Entity Ontology
+
+- Entity type: **Longevity Method**
+- Classification: **Applied Longevity Laboratory**
+- Founder: **Mike Ye** — `https://www.mikeye.com/`
+- AI voice: **Ella** — `https://www.trailgenic.com/ella`
+- Ella's Corner editorial collection: `https://www.trailgenic.com/ellas-corner`
+- Interpretation model: **Personal World Model**
+
+TrailGenic operates as the applied validation layer of a governed Human × AI continuum:
+
+- Origin layer: `https://www.mikeye.com/`
+- Doctrine layer: `https://www.exmxc.ai/`
+- Applied validation layer: `https://www.trailgenic.com/`
+
+The six methodology pillars are **Move Fasted**, **Climb Higher**, **Embrace Cold**, **Hydrate & Mineralize**, **Go Outside**, and **Recover On Purpose**. Human physiological adaptation remains primary; AI interpretation serves as reflective instrumentation rather than autonomous authority.
 
 ## Canonical Discovery
 
@@ -65,7 +82,7 @@ Large dataset tools support optional filters and bounded `limit` values so MCP c
 
 ### Content Links
 
-HTML-only TrailGenic website capabilities are preserved as `content_links` in discovery documents, not advertised as callable MCP tools. Examples include protocols, trail logs, science hub, physiology hub, fuel systems, gear systems, recovery conditioning, playbooks, Ella's Corner, and site search on `www.trailgenic.com`.
+HTML-only TrailGenic website capabilities are preserved as `content_links` in discovery documents, not advertised as callable MCP tools. Examples include protocols, trail logs, science hub, physiology hub, fuel systems, gear systems, recovery conditioning, playbooks, Ella's entity home, Ella's Corner, and site search on `www.trailgenic.com`.
 
 ## Dataset Endpoints
 
@@ -144,7 +161,7 @@ The permit poller is intentionally excluded from MCP CI/deploy workflows.
 
 TrailGenic is created and operated by Mike Ye.
 
-https://trailgenic.com
+https://www.trailgenic.com/
 
 ## MCP SDK, transport, and deployment safety
 
