@@ -1,6 +1,6 @@
 {
   "name": "trailgenic-workers",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "private": true,
   "type": "module",
   "scripts": {
@@ -14,7 +14,6 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.29.0",
     "agents": "0.17.4",
-    "ajv": "^8.17.1",
     "zod": "^4.4.3"
   },
   "devDependencies": {

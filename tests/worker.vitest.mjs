@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import mcpServerSource from '../lib/mcp-server.js?raw';
 import worker from '../tool-registry/worker.js';
 import { DATASET_LIST, PHYSIOLOGY_MODULES } from '../lib/datasets.js';
 import { DATA_TOOLS, datasetCatalog } from '../lib/registry.js';
@@ -130,19 +131,37 @@ describe('mcp transport through official SDK in workerd', () => {
   });
 
   it('successfully calls every registered tool and rejects invalid arguments before handlers', async () => {
+    expect(Object.keys(toolArgs).sort()).toEqual(DATA_TOOLS.map((tool) => tool.id).sort());
     for (const tool of DATA_TOOLS) {
       const call = await post({ jsonrpc: '2.0', id: 60, method: 'tools/call', params: { name: tool.id, arguments: toolArgs[tool.id] } }, { Accept: 'application/json' });
       const result = (await call.json()).result;
       expect(result?.isError, tool.id).not.toBe(true);
       expect(result?.structuredContent, tool.id).toBeDefined();
     }
+  });
+
+  it('rejects extra properties with a corrective Zod validation result', async () => {
     const extra = await post({ jsonrpc: '2.0', id: 61, method: 'tools/call', params: { name: 'tg.datasets.index.get', arguments: { unknown: true } } }, { Accept: 'application/json' });
-    const extraResult = (await extra.json()).result;
-    expect(extraResult.isError).toBe(true);
+    const result = (await extra.json()).result;
+    expect(result.isError).toBe(true);
+    expect(result.content[0].text).toContain('Invalid tool arguments.');
+    expect(result.content[0].text).toMatch(/unrecognized|unknown/i);
+  });
+
+  it('rejects missing required arguments with a corrective Zod validation result', async () => {
     const missing = await post({ jsonrpc: '2.0', id: 62, method: 'tools/call', params: { name: 'tg.longevity.bioAge.compute', arguments: {} } }, { Accept: 'application/json' });
-    expect((await missing.json()).result.isError).toBe(true);
+    const result = (await missing.json()).result;
+    expect(result.isError).toBe(true);
+    expect(result.content[0].text).toContain('Invalid tool arguments.');
+    expect(result.content[0].text).toContain('age');
+  });
+
+  it('rejects out-of-range numerics with a corrective Zod validation result', async () => {
     const outOfRange = await post({ jsonrpc: '2.0', id: 63, method: 'tools/call', params: { name: 'tg.longevity.bioAge.compute', arguments: { ...toolArgs['tg.longevity.bioAge.compute'], age: 101 } } }, { Accept: 'application/json' });
-    expect((await outOfRange.json()).result.isError).toBe(true);
+    const result = (await outOfRange.json()).result;
+    expect(result.isError).toBe(true);
+    expect(result.content[0].text).toContain('Invalid tool arguments.');
+    expect(result.content[0].text).toContain('age');
   });
 
   it('invalid gear category returns corrective isError', async () => {
@@ -188,6 +207,12 @@ describe('mcp transport through official SDK in workerd', () => {
     expect(result.isError).toBe(true);
   });
 });
+
+
+  it('does not import Ajv in Worker runtime code', async () => {
+    expect(mcpServerSource).not.toMatch(/from ["']ajv["']/i);
+    expect(mcpServerSource).not.toContain('new Ajv');
+  });
 
 describe('rest dataset routes and machine documents', () => {
   const get = (path) => worker.fetch(new Request(`https://mcp.trailgenic.com${path}`), {});
