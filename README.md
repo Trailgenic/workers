@@ -82,7 +82,7 @@ Large dataset tools support optional filters and bounded `limit` values so MCP c
 
 ### Content Links
 
-HTML-only TrailGenic website capabilities are preserved as `content_links` in discovery documents, not advertised as callable MCP tools. Examples include protocols, trail logs, science hub, physiology hub, fuel systems, gear systems, recovery conditioning, playbooks, Ella's entity home, Ella's Corner, and site search on `www.trailgenic.com`.
+HTML-only TrailGenic website capabilities are preserved as `content_links` in discovery documents, not advertised as callable MCP tools. Examples include protocols, trail logs, science hub, physiology hub, fuel systems, gear systems, recovery conditioning, playbooks, Ella's Corner, and site search on `www.trailgenic.com`.
 
 ## Dataset Endpoints
 

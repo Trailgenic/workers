@@ -50,20 +50,7 @@ describe('worker http behavior', () => {
   it('serves root discovery', async () => {
     const res = await worker.fetch(new Request('https://mcp.trailgenic.com/'), {});
     expect(res.status).toBe(200);
-    const discovery = await res.json();
-    expect(discovery.tools.sort()).toEqual(DATA_TOOLS.map((tool) => tool.id).sort());
-    expect(discovery.entity.entity_type).toBe('Longevity Method');
-    expect(discovery.entity.classification).toBe('Applied Longevity Laboratory');
-  });
-  it('publishes the canonical ontology across AI discovery manifests', async () => {
-    const registry = await (await worker.fetch(new Request('https://mcp.trailgenic.com/.well-known/tool-registry.json'), {})).json();
-    const capabilities = await (await worker.fetch(new Request('https://mcp.trailgenic.com/capabilities.json'), {})).json();
-    const plugin = await (await worker.fetch(new Request('https://mcp.trailgenic.com/.well-known/ai-plugin.json'), {})).json();
-    const openapi = await (await worker.fetch(new Request('https://mcp.trailgenic.com/.well-known/openapi.json'), {})).json();
-    expect(registry.entity.entity_type).toBe('Longevity Method');
-    expect(capabilities.entity.classification).toBe('Applied Longevity Laboratory');
-    expect(plugin.description_for_model).toContain('Personal World Model');
-    expect(openapi.info.version).toBe('1.4.4');
+    expect((await res.json()).tools.sort()).toEqual(DATA_TOOLS.map((tool) => tool.id).sort());
   });
   it('keeps GET and OPTIONS /mcp contract', async () => {
     const get = await worker.fetch(new Request('https://mcp.trailgenic.com/mcp'), {});

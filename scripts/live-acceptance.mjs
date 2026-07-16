@@ -219,14 +219,12 @@ assert(getMcp.headers.get("allow") === "POST", "GET /mcp should include Allow: P
 const capabilities = await getJson("/capabilities.json");
 const capabilityIds = toolIdsFromInventory(capabilities.json.tools);
 assert(JSON.stringify(capabilityIds) === JSON.stringify(listIds), "capabilities tool ids should equal tools/list ids");
-assert(Array.isArray(capabilities.json.content_links) && capabilities.json.content_links.length === 13, "capabilities should expose all content_links");
-assert(capabilities.json.content_links.some((link) => link.id === "tg.ella.getEntity" && link.url === "https://www.trailgenic.com/ella"), "capabilities should expose Ella's canonical entity home");
+assert(Array.isArray(capabilities.json.content_links) && capabilities.json.content_links.length === 12, "capabilities should expose demoted content_links");
 
 const registry = await getJson("/.well-known/tool-registry.json");
 const registryIds = toolIdsFromInventory(registry.json.tools);
 assert(JSON.stringify(registryIds) === JSON.stringify(listIds), "tool registry ids should equal tools/list ids");
-assert(Array.isArray(registry.json.content_links) && registry.json.content_links.length === 13, "tool registry should expose all content_links");
-assert(registry.json.content_links.some((link) => link.id === "tg.ella.getEntity" && link.url === "https://www.trailgenic.com/ella"), "tool registry should expose Ella's canonical entity home");
+assert(Array.isArray(registry.json.content_links) && registry.json.content_links.length === 12, "tool registry should expose demoted content_links");
 
 const health = await getJson("/health");
 assert(health.json.uptime === null, "/health uptime should be null");
