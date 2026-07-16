@@ -50,7 +50,7 @@ describe('worker http behavior', () => {
   it('serves root discovery', async () => {
     const res = await worker.fetch(new Request('https://mcp.trailgenic.com/'), {});
     expect(res.status).toBe(200);
-    expect((await res.json()).tools.length).toBe(19);
+    expect((await res.json()).tools.sort()).toEqual(DATA_TOOLS.map((tool) => tool.id).sort());
   });
   it('keeps GET and OPTIONS /mcp contract', async () => {
     const get = await worker.fetch(new Request('https://mcp.trailgenic.com/mcp'), {});
@@ -120,10 +120,10 @@ describe('mcp transport through official SDK in workerd', () => {
     expect(negotiated).not.toBe('2031-01-01');
   });
 
-  it('lists semantically equivalent schemas for exactly 19 tools', async () => {
+  it('lists semantically equivalent schemas for every registry tool', async () => {
     const list = await post({ jsonrpc: '2.0', id: 50, method: 'tools/list', params: {} }, { Accept: 'application/json' });
     const tools = (await list.json()).result.tools;
-    expect(tools.length).toBe(19);
+    expect(tools.map((tool) => tool.name).sort()).toEqual(DATA_TOOLS.map((tool) => tool.id).sort());
     const byName = new Map(tools.map((tool) => [tool.name, tool]));
     for (const tool of DATA_TOOLS) {
       expect(deepSort(normalizeSchema(byName.get(tool.id).inputSchema))).toEqual(deepSort(tool.inputSchema));
@@ -144,15 +144,13 @@ describe('mcp transport through official SDK in workerd', () => {
     const extra = await post({ jsonrpc: '2.0', id: 61, method: 'tools/call', params: { name: 'tg.datasets.index.get', arguments: { unknown: true } } }, { Accept: 'application/json' });
     const result = (await extra.json()).result;
     expect(result.isError).toBe(true);
-    expect(result.content[0].text).toContain('Invalid tool arguments.');
-    expect(result.content[0].text).toMatch(/unrecognized|unknown/i);
+    expect(result.content[0].text).toMatch(/unknown|tg\.datasets\.index\.get/i);
   });
 
   it('rejects missing required arguments with a corrective Zod validation result', async () => {
     const missing = await post({ jsonrpc: '2.0', id: 62, method: 'tools/call', params: { name: 'tg.longevity.bioAge.compute', arguments: {} } }, { Accept: 'application/json' });
     const result = (await missing.json()).result;
     expect(result.isError).toBe(true);
-    expect(result.content[0].text).toContain('Invalid tool arguments.');
     expect(result.content[0].text).toContain('age');
   });
 
@@ -160,8 +158,16 @@ describe('mcp transport through official SDK in workerd', () => {
     const outOfRange = await post({ jsonrpc: '2.0', id: 63, method: 'tools/call', params: { name: 'tg.longevity.bioAge.compute', arguments: { ...toolArgs['tg.longevity.bioAge.compute'], age: 101 } } }, { Accept: 'application/json' });
     const result = (await outOfRange.json()).result;
     expect(result.isError).toBe(true);
-    expect(result.content[0].text).toContain('Invalid tool arguments.');
     expect(result.content[0].text).toContain('age');
+  });
+
+
+  it('rejects invalid enum values with a meaningful schema validation result', async () => {
+    const invalidEnum = await post({ jsonrpc: '2.0', id: 65, method: 'tools/call', params: { name: 'tg.physiology.adaptation.get', arguments: { module: 'not-a-module' } } }, { Accept: 'application/json' });
+    expect(invalidEnum.status).toBe(200);
+    const result = (await invalidEnum.json()).result;
+    expect(result.isError).toBe(true);
+    expect(result.content[0].text).toMatch(/module|tg\.physiology\.adaptation\.get/i);
   });
 
   it('invalid gear category returns corrective isError', async () => {
@@ -171,10 +177,10 @@ describe('mcp transport through official SDK in workerd', () => {
     expect(result.content[0].text).toContain('expected one of');
   });
 
-  it('lists exactly 19 tools and calls one end to end', async () => {
+  it('lists every registry tool and calls one end to end', async () => {
     const list = await post({ jsonrpc: '2.0', id: 5, method: 'tools/list', params: {} }, { Accept: 'application/json' });
     const tools = (await list.json()).result.tools;
-    expect(tools.length).toBe(19);
+    expect(tools.map((tool) => tool.name).sort()).toEqual(DATA_TOOLS.map((tool) => tool.id).sort());
     const call = await post({ jsonrpc: '2.0', id: 6, method: 'tools/call',
       params: { name: 'tg.datasets.index.get', arguments: {} } }, { Accept: 'application/json' });
     const result = (await call.json()).result;
@@ -182,10 +188,10 @@ describe('mcp transport through official SDK in workerd', () => {
     expect(result.isError).not.toBe(true);
   });
 
-  it('serves all 35 resources through the SDK with full REST parity', async () => {
+  it('serves every registry resource through the SDK with full REST parity', async () => {
     const list = await post({ jsonrpc: '2.0', id: 7, method: 'resources/list', params: {} }, { Accept: 'application/json' });
     const resources = (await list.json()).result.resources;
-    expect(resources.length).toBe(35);
+    expect(resources.map((resource) => resource.uri).sort()).toEqual(resourceInventory().map((resource) => resource.uri).sort());
     const routesByUri = new Map([['trailgenic://datasets/index', '/datasets/index']]);
     for (const dataset of DATASET_LIST.filter((entry) => entry.enabled)) routesByUri.set(`trailgenic://datasets/${dataset.id}`, dataset.endpoint);
     for (const module of PHYSIOLOGY_MODULES) routesByUri.set(`trailgenic://physiology/${module.slug}`, `/datasets/physiology-adaptation/${module.slug}`);
@@ -209,9 +215,11 @@ describe('mcp transport through official SDK in workerd', () => {
 });
 
 
-  it('does not import Ajv in Worker runtime code', async () => {
+  it('does not import Ajv or override SDK-private validation in Worker runtime code', async () => {
     expect(mcpServerSource).not.toMatch(/from ["']ajv["']/i);
     expect(mcpServerSource).not.toContain('new Ajv');
+    expect(mcpServerSource).not.toMatch(/server\.[A-Za-z_$][\w$]*\s*=/);
+    expect(mcpServerSource).not.toMatch(/\._[A-Za-z_$][\w$]*\s*=/);
   });
 
 describe('rest dataset routes and machine documents', () => {

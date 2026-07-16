@@ -111,7 +111,12 @@ assert(ping.response.ok && ping.json.result && Object.keys(ping.json.result).len
 
 const listed = await postMcp("tools/list");
 const listIds = toolIdsFromList(listed.json.result.tools);
-assert(listIds.length === 19, `tools/list should return 19 tools, got ${listIds.length}`);
+const rootDiscovery = await getJson(`/?cache_bust=${Date.now()}`);
+assert(rootDiscovery.response.headers.get("cache-control") === "no-cache", "root discovery should be served with Cache-Control: no-cache");
+assert(rootDiscovery.response.ok, "root browser discovery should return HTTP 200 JSON");
+assert(rootDiscovery.json.build_version === BUILD.version, `root discovery build_version should be ${BUILD.version}, got ${rootDiscovery.json.build_version}`);
+const rootToolIds = [...rootDiscovery.json.tools].sort();
+assert(JSON.stringify(listIds) === JSON.stringify(rootToolIds), "tools/list ids should match root discovery tools");
 assert(listIds.includes("tg.hiking.worldModel.get"), "tools/list should include tg.hiking.worldModel.get");
 assert(listIds.includes("tg.longevity.bioAge.compute"), "tools/list should include tg.longevity.bioAge.compute");
 assert(listIds.includes("tg.gear.getIntel"), "tools/list should include tg.gear.getIntel");
@@ -258,11 +263,8 @@ const badContentType = await mcpPostFetch({
 });
 assert(badContentType.status === 415, "non-JSON Content-Type should return 415");
 
-const rootDiscovery = await getJson(`/?cache_bust=${Date.now()}`);
-assert(rootDiscovery.response.headers.get("cache-control") === "no-cache", "root discovery should be served with Cache-Control: no-cache");
-assert(rootDiscovery.response.ok, "root browser discovery should return HTTP 200 JSON");
-assert(rootDiscovery.json.build_version === BUILD.version, `root discovery build_version should be ${BUILD.version}, got ${rootDiscovery.json.build_version}`);
-assert(Array.isArray(rootDiscovery.json.tools) && rootDiscovery.json.tools.length === 19, "root discovery should list 19 tools");
+assert(Array.isArray(rootDiscovery.json.tools), "root discovery should list tools");
+assert(JSON.stringify(rootToolIds) === JSON.stringify(listIds), "root discovery tool ids should match tools/list ids");
 assert(Array.isArray(rootDiscovery.json.resources) && rootDiscovery.json.resources.length > 0, "root discovery should list generated resources");
 assert(Array.isArray(rootDiscovery.json.supported_protocol_versions) && rootDiscovery.json.supported_protocol_versions.includes("2025-11-25"), "root discovery should advertise 2025-11-25");
 
