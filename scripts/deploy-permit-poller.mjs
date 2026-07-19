@@ -84,7 +84,7 @@ for (const queueName of queueNames) {
   const output = `${result.stdout || ""}\n${result.stderr || ""}`;
   if (result.status === 0) {
     console.log(`Created queue ${queueName}`);
-  } else if (/already exists|already been taken|code\s*10010/i.test(output)) {
+  } else if (/already exists|already (?:been )?taken|code\s*(?:10010|11009)/i.test(output)) {
     console.log(`Queue ${queueName} already exists`);
   } else {
     process.stderr.write(output);
