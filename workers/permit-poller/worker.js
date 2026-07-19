@@ -11,6 +11,7 @@ import {
   verifyTrackerPhone,
   validateTrackerInput
 } from "./service.js";
+import { publicPage } from "./public-site.js";
 
 const JSON_TYPE = "application/json; charset=utf-8";
 
@@ -78,6 +79,20 @@ const handleHttp = async (request, env) => {
 
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: corsHeaders(request, env) });
+  }
+
+  if (request.method === "GET") {
+    const page = publicPage(url.pathname, env);
+    if (page) {
+      return new Response(page, {
+        headers: {
+          "Content-Type": "text/html; charset=utf-8",
+          "Cache-Control": "no-store",
+          "X-Content-Type-Options": "nosniff",
+          "Referrer-Policy": "strict-origin-when-cross-origin"
+        }
+      });
+    }
   }
 
   if (request.method === "GET" && url.pathname === "/health") {
