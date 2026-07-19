@@ -27,6 +27,9 @@ const missingSecrets = secretNames.filter((name) => !process.env[name]);
 if (missingSecrets.length) {
   throw new Error(`Missing required deployment secrets: ${missingSecrets.join(", ")}`);
 }
+if (!process.env.TURNSTILE_SITE_KEY) {
+  throw new Error("Missing required deployment variable: TURNSTILE_SITE_KEY");
+}
 
 const wrangler = (...args) =>
   execFileSync("npx", ["wrangler", ...args], {
@@ -91,6 +94,7 @@ for (const queueName of queueNames) {
 
 const config = JSON.parse(readFileSync(sourceConfigPath, "utf8"));
 config.d1_databases[0].database_id = databaseId;
+config.vars.TURNSTILE_SITE_KEY = process.env.TURNSTILE_SITE_KEY;
 writeFileSync(deployConfigPath, `${JSON.stringify(config, null, 2)}\n`, { mode: 0o600 });
 
 try {
