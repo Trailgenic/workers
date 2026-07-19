@@ -65,6 +65,7 @@ jobs:
       TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
       TWILIO_VERIFY_SERVICE_SID: ${{ secrets.TWILIO_VERIFY_SERVICE_SID }}
       TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
+      TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
