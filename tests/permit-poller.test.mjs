@@ -134,3 +134,18 @@ test("HTTP catalog is no-store and rejects unapproved browser origins", async ()
   }), env);
   assert.equal(bad.status, 403);
 });
+
+test("public signup and compliance pages are served by the alerts Worker", async () => {
+  const env = { ALLOWED_ORIGINS: "https://alerts.trailgenic.com", TURNSTILE_SITE_KEY: "0x_test" };
+  const signup = await handleHttp(new Request("https://alerts.trailgenic.com/"), env);
+  assert.equal(signup.status, 200);
+  const signupBody = await signup.text();
+  assert.match(signupBody, /TrailGenic Permit Alert SMS messages/);
+  assert.match(signupBody, /0x_test/);
+
+  for (const path of ["/privacy", "/terms", "/help"]) {
+    const response = await handleHttp(new Request(`https://alerts.trailgenic.com${path}`), env);
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get("Content-Type"), "text/html; charset=utf-8");
+  }
+});
