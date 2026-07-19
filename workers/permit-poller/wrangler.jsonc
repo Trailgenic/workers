@@ -2,18 +2,52 @@
   "name": "trailgenic-permit-poller",
   "main": "worker.js",
   "compatibility_date": "2026-02-18",
-  "triggers": {
-    "crons": ["*/10 * * * *"]
+  "observability": {
+    "enabled": true
   },
-  "kv_namespaces": [
+  "triggers": {
+    "crons": ["*/5 * * * *"]
+  },
+  "d1_databases": [
     {
-      "binding": "PERMIT_STATE",
-      "id": "3ca75450ec9545d98c9e57e67a557c0f"
-    },
-    {
-      "binding": "SUBSCRIPTIONS",
-      "id": "93c8c2e78b504bd8a728f1b4b01006e1"
+      "binding": "DB",
+      "database_name": "trailgenic-permit-poller",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
     }
   ],
-  "vars": {}
+  "queues": {
+    "producers": [
+      {
+        "binding": "POLL_QUEUE",
+        "queue": "trailgenic-permit-polls"
+      },
+      {
+        "binding": "NOTIFICATION_QUEUE",
+        "queue": "trailgenic-permit-notifications"
+      }
+    ],
+    "consumers": [
+      {
+        "queue": "trailgenic-permit-polls",
+        "max_batch_size": 10,
+        "max_batch_timeout": 5,
+        "max_retries": 5,
+        "dead_letter_queue": "trailgenic-permit-polls-dlq",
+        "max_concurrency": 1
+      },
+      {
+        "queue": "trailgenic-permit-notifications",
+        "max_batch_size": 10,
+        "max_batch_timeout": 5,
+        "max_retries": 5,
+        "dead_letter_queue": "trailgenic-permit-notifications-dlq",
+        "max_concurrency": 5
+      }
+    ]
+  },
+  "vars": {
+    "ALLOWED_ORIGINS": "https://trailgenic.com,https://www.trailgenic.com",
+    "REQUIRE_TURNSTILE": "true"
+  }
 }

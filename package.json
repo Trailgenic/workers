@@ -4,12 +4,16 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "lint": "node --check tool-registry/worker.js && node --check lib/registry.js && node --check lib/queries.js && node --check lib/mcp-server.js && node --check lib/resources.js && node --check scripts/live-acceptance.mjs",
+    "lint": "node --check tool-registry/worker.js && node --check workers/permit-poller/worker.js && node --check workers/permit-poller/catalog.js && node --check workers/permit-poller/adapters.js && node --check workers/permit-poller/service.js && node --check lib/registry.js && node --check lib/queries.js && node --check lib/mcp-server.js && node --check lib/resources.js && node --check scripts/live-acceptance.mjs && node --check scripts/permit-poller-live-check.mjs && node --check scripts/deploy-permit-poller.mjs",
     "test": "node --test tests/registry.test.mjs",
     "test:workers": "vitest run --config vitest.config.mjs",
+    "test:permit-poller": "node --test tests/permit-poller.test.mjs && vitest run --config vitest.permit-poller.config.mjs",
+    "test:permit-poller:live": "node scripts/permit-poller-live-check.mjs",
+    "deploy:permit-poller": "node scripts/deploy-permit-poller.mjs",
     "validate:json": "node scripts/validate-json.mjs",
     "validate:registry": "node scripts/validate-registry.mjs",
-    "wrangler:dry-run": "wrangler deploy --config tool-registry/wrangler.jsonc --dry-run --outdir /tmp/trailgenic-worker-dry-run"
+    "wrangler:dry-run": "wrangler deploy --config tool-registry/wrangler.jsonc --dry-run --outdir /tmp/trailgenic-worker-dry-run",
+    "wrangler:dry-run:permit-poller": "wrangler deploy --config workers/permit-poller/wrangler.jsonc --dry-run --outdir /tmp/trailgenic-permit-poller-dry-run"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.29.0",
