@@ -53,7 +53,7 @@
     ]
   },
   "vars": {
-    "ALLOWED_ORIGINS": "https://trailgenic.com,https://www.trailgenic.com",
+    "ALLOWED_ORIGINS": "https://trailgenic.com,https://www.trailgenic.com,https://alerts.trailgenic.com",
     "REQUIRE_TURNSTILE": "true"
   }
 }
