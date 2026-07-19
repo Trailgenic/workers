@@ -8,6 +8,12 @@
   "triggers": {
     "crons": ["*/5 * * * *"]
   },
+  "routes": [
+    {
+      "pattern": "alerts.trailgenic.com",
+      "custom_domain": true
+    }
+  ],
   "d1_databases": [
     {
       "binding": "DB",
