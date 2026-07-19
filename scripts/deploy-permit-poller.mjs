@@ -1,5 +1,6 @@
 import { execFileSync, spawnSync } from "node:child_process";
 import { readFileSync, rmSync, writeFileSync } from "node:fs";
+import { setTimeout as delay } from "node:timers/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
@@ -20,6 +21,7 @@ const secretNames = [
   "TWILIO_VERIFY_SERVICE_SID",
   "TURNSTILE_SECRET_KEY",
 ];
+const productionHealthUrl = "https://alerts.trailgenic.com/health";
 
 const missingSecrets = secretNames.filter((name) => !process.env[name]);
 if (missingSecrets.length) {
@@ -35,6 +37,30 @@ const wrangler = (...args) =>
   });
 
 const listDatabases = () => JSON.parse(wrangler("d1", "list", "--json"));
+
+const verifyProductionHealth = async () => {
+  let lastError = "not checked";
+  for (let attempt = 1; attempt <= 18; attempt += 1) {
+    try {
+      const response = await fetch(productionHealthUrl, {
+        headers: { Accept: "application/json" },
+        signal: AbortSignal.timeout(10_000),
+      });
+      const body = await response.json();
+      if (response.ok && body.status === "healthy" && body.sms_status === "configured") {
+        console.log(`Production health check passed on attempt ${attempt}`);
+        return;
+      }
+      lastError = `HTTP ${response.status}: ${JSON.stringify(body)}`;
+    } catch (error) {
+      lastError = error.message;
+    }
+    console.log(`Production health check attempt ${attempt} pending: ${lastError}`);
+    if (attempt < 18) await delay(10_000);
+  }
+  throw new Error(`Production health check failed: ${lastError}`);
+};
+
 let database = listDatabases().find((candidate) => candidate.name === databaseName);
 
 if (!database) {
@@ -86,6 +112,7 @@ try {
 
   console.log("Redeploying with production secrets");
   wrangler("deploy", "--config", deployConfigPath);
+  await verifyProductionHealth();
 } finally {
   rmSync(deployConfigPath, { force: true });
 }
