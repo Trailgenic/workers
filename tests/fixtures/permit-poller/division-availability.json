@@ -1,0 +1,20 @@
+{
+  "payload": {
+    "permit_id": "234652",
+    "availability": {
+      "31": {
+        "division_id": "31",
+        "date_availability": {
+          "2026-07-20T00:00:00Z": { "total": 275, "remaining": 3 },
+          "2026-07-21T00:00:00Z": { "total": 275, "remaining": 0 }
+        }
+      },
+      "32": {
+        "division_id": "32",
+        "date_availability": {
+          "2026-07-20T00:00:00Z": { "total": 300, "remaining": 100 }
+        }
+      }
+    }
+  }
+}

@@ -1,14 +1,15 @@
-name: Deploy Tool Registry
+name: Verify and Deploy Workers
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 concurrency:
-  group: deploy-tool-registry-${{ github.ref }}
+  group: deploy-workers-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  deploy:
-    name: Verify then deploy tool-registry Worker
+  verify:
+    name: Verify workers
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -20,10 +21,25 @@ jobs:
       - run: npm run lint
       - run: npm run validate:json
       - run: npm test
+      - run: npm run test:permit-poller
       - run: npm run test:workers
       - run: npm run validate:registry
       - run: npm run wrangler:dry-run
+      - run: npm run wrangler:dry-run:permit-poller
       - run: git diff --check
+
+  deploy-tool-registry:
+    name: Deploy tool-registry Worker
+    if: github.event_name != 'pull_request'
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
       - name: Deploy tool-registry only
         uses: cloudflare/wrangler-action@v4
         with:
@@ -35,3 +51,26 @@ jobs:
         run: sleep 25
       - name: Run live acceptance harness
         run: node scripts/live-acceptance.mjs
+
+  deploy-permit-poller:
+    name: Provision and deploy permit poller
+    if: github.event_name != 'pull_request'
+    needs: verify
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+      TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+      TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
+      TWILIO_VERIFY_SERVICE_SID: ${{ secrets.TWILIO_VERIFY_SERVICE_SID }}
+      TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Provision resources, migrate D1, and deploy
+        run: npm run deploy:permit-poller
