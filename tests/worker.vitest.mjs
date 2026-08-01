@@ -35,6 +35,7 @@ const toolArgs = {
   'tg.hydration.get': { limit: 1 },
   'tg.permits.dataset.get': {},
   'tg.terrain.accessibleTrails.get': { limit: 1 },
+  'tg.terrain.protocolMatchedHikes.get': { protocol_level: 3, limit: 1 },
   'tg.evidence.validationSummits.get': { limit: 1 },
   'tg.gear.intel.get': { limit: 1 },
   'tg.gear.getIntel': {},
@@ -229,12 +230,22 @@ describe('rest dataset routes and machine documents', () => {
     const index = await (await get('/datasets/index')).json();
     expect(index).toBeDefined();
     for (const path of ['/datasets/hiking', '/datasets/hiking/world-model', '/datasets/nutrition',
+      '/datasets/terrain-intelligence/protocol-matched-hikes-v2',
       '/datasets/conditioning/walking', '/datasets/physiology-adaptation/hr-drift-adaptation-vs-fitness',
       '/datasets/longevity/foundation']) {
       const res = await get(path);
       expect(res.status, `route ${path}`).toBe(200);
       expect((res.headers.get('Content-Type') || '')).toContain('json');
     }
+  });
+
+  it('filters the protocol-matched hike library without implying universal clearance', async () => {
+    const filtered = TOOL_HANDLERS.get('tg.terrain.protocolMatchedHikes.get')({ protocol_level: 3 });
+    expect(filtered.hikes.length).toBeGreaterThan(0);
+    expect(filtered.hikes.every((hike) => hike.protocol_level === 3)).toBe(true);
+    const full = await (await get('/datasets/terrain-intelligence/protocol-matched-hikes-v2')).json();
+    expect(full.numberOfItems).toBe(22);
+    expect(full.not_a_clearance).toBe(true);
   });
 
   it('serves capabilities, registry, plugin, openapi, and health', async () => {
