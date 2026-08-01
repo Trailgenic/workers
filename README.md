@@ -48,7 +48,7 @@ The permit SMS infrastructure is operationally separate from this MCP worker and
 
 ## Callable MCP Tools
 
-The public MCP tool inventory is generated from one canonical registry and currently includes 19 callable tools:
+The public MCP tool inventory is generated from one canonical registry and currently includes 20 callable tools:
 
 | Tool | Parameters |
 | --- | --- |
@@ -62,6 +62,7 @@ The public MCP tool inventory is generated from one canonical registry and curre
 | `tg.hydration.get` | `category`, `limit` |
 | `tg.permits.dataset.get` | `scarcity_tier` |
 | `tg.terrain.accessibleTrails.get` | `region`, `accessibility_class`, `protocol_level_estimate`, `limit` |
+| `tg.terrain.protocolMatchedHikes.get` | `region`, `protocol_level`, `evidence_tier`, `recovery_cost`, `limit` |
 | `tg.evidence.validationSummits.get` | `region`, `limit` |
 | `tg.gear.intel.get` | `category`, `limit` |
 | `tg.gear.getIntel` | `category` (optional) |
@@ -100,6 +101,7 @@ Dataset endpoints remain public and machine-readable:
 - `https://mcp.trailgenic.com/datasets/permits`
 - `https://mcp.trailgenic.com/datasets/permits/schema`
 - `https://mcp.trailgenic.com/datasets/terrain-intelligence/tg-accessible-trails-top100-v1`
+- `https://mcp.trailgenic.com/datasets/terrain-intelligence/protocol-matched-hikes-v2`
 - `https://mcp.trailgenic.com/datasets/evidence-validation`
 - `https://mcp.trailgenic.com/datasets/evidence-validation/validation-summits`
 - `https://mcp.trailgenic.com/datasets/gear/intel`
@@ -171,7 +173,7 @@ The server advertises and validates MCP protocol versions `2025-11-25` and `2025
 
 Browser `Origin` is validated only for the MCP transport. Default allowed origins are `https://trailgenic.com`, `https://www.trailgenic.com`, and `https://mcp.trailgenic.com`; deployments may override with `MCP_ALLOWED_ORIGINS`. Server-to-server clients without `Origin` remain accepted. Public read-only REST dataset routes keep their public CORS behavior.
 
-All 19 existing tool names are preserved. Both gear tools remain: `tg.gear.intel.get` is the bounded query-oriented compatibility tool, while `tg.gear.getIntel` is the canonical full-dataset tool with optional exact-category filtering. Conditioning walking, rucking, and running keep optional date fields for backward compatibility, but date-range slicing returns an MCP `isError: true` tool result because public conditioning data is aggregate-only and contains no per-session rows.
+All 19 previous tool names are preserved. `tg.terrain.protocolMatchedHikes.get` adds the canonical field-grounded recommendation layer while the Top-100 trail tool remains available for backward compatibility. Both gear tools remain: `tg.gear.intel.get` is the bounded query-oriented compatibility tool, while `tg.gear.getIntel` is the canonical full-dataset tool with optional exact-category filtering. Conditioning walking, rucking, and running keep optional date fields for backward compatibility, but date-range slicing returns an MCP `isError: true` tool result because public conditioning data is aggregate-only and contains no per-session rows.
 
 MCP resources are generated from canonical dataset and physiology registries using stable URIs: `trailgenic://datasets/index`, `trailgenic://datasets/{dataset_id}`, and `trailgenic://physiology/{module_slug}`. Public data is deterministic and release-bundled. The mutable runtime fallback to GitHub `main` has been removed; missing bundled data is a server error and CI validation failure.
 
