@@ -142,6 +142,9 @@ test("public signup and compliance pages are served by the alerts Worker", async
   const signupBody = await signup.text();
   assert.match(signupBody, /TrailGenic Permit Alert SMS messages/);
   assert.match(signupBody, /0x_test/);
+  assert.match(signupBody, /id="turnstile-widget"/);
+  assert.doesNotMatch(signupBody, /id="turnstile"/);
+  assert.match(signupBody, /typeof window\.turnstile\?\.render === "function"/);
 
   for (const path of ["/privacy", "/terms", "/help"]) {
     const response = await handleHttp(new Request(`https://alerts.trailgenic.com${path}`), env);
