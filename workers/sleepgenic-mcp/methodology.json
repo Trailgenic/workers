@@ -1,0 +1,109 @@
+{
+  "dataset_id": "sleepgenic-methodology-v1",
+  "version": "1.0.0",
+  "released": "2026-08-13",
+  "title": "Sleepgenic Longitudinal Sleep Interpretation Methodology",
+  "description": "A public, non-diagnostic methodology for interpreting consumer wearable sleep signals as longitudinal context rather than isolated verdicts.",
+  "entity": {
+    "name": "Sleepgenic",
+    "canonical_id": "https://sleepgenic.ai/#sleepgenic",
+    "domain": "https://sleepgenic.ai",
+    "founder": "Mike Ye",
+    "interpretation_layer": "https://ellaentity.ai/#ella"
+  },
+  "principles": [
+    {
+      "id": "within-person-first",
+      "title": "Within-person first",
+      "guidance": "Compare a measurement with the same person's recent baseline before comparing it with population values or another person."
+    },
+    {
+      "id": "trend-over-single-night",
+      "title": "Trend over single night",
+      "guidance": "Treat one night as an observation. Give greater interpretive weight to repeated direction across several comparable nights."
+    },
+    {
+      "id": "device-context",
+      "title": "Device and algorithm context",
+      "guidance": "Consumer sleep scores and derived stages are device-specific estimates. Avoid treating scores from different vendors as interchangeable."
+    },
+    {
+      "id": "context-before-causality",
+      "title": "Context before causality",
+      "guidance": "Training load, illness, alcohol, travel, temperature, stress, timing, and measurement conditions can move sleep and HRV signals. A signal alone does not establish a cause."
+    },
+    {
+      "id": "non-diagnostic",
+      "title": "Non-diagnostic boundary",
+      "guidance": "Wearable outputs support reflection and longitudinal observation; they do not diagnose or exclude a sleep, cardiac, or other medical condition."
+    }
+  ],
+  "topics": {
+    "sleep_score": {
+      "summary": "A vendor-defined composite estimate, useful mainly for tracking direction within the same device and person.",
+      "interpretation": [
+        "Use the device's own component breakdown when available.",
+        "Compare like with like: same device, similar wear conditions, and a representative personal baseline.",
+        "Do not translate a score directly into a diagnosis or universal sleep-quality grade."
+      ]
+    },
+    "hrv": {
+      "summary": "A timing-variation signal whose value depends on metric, device, posture, sampling window, physiology, and context.",
+      "interpretation": [
+        "Confirm the device's HRV metric and sampling window before comparing values.",
+        "Prioritize sustained within-person deviation over cross-person comparison.",
+        "Treat a change as a prompt to inspect context, not as proof of a specific cause."
+      ]
+    },
+    "sleep_stages": {
+      "summary": "Consumer stage estimates are model outputs rather than laboratory polysomnography.",
+      "interpretation": [
+        "Use stage estimates as directional context across repeated nights.",
+        "Avoid over-weighting small night-to-night stage changes.",
+        "Persistent concerns or symptoms belong in clinical evaluation, independent of a reassuring wearable estimate."
+      ]
+    },
+    "sleep_timing": {
+      "summary": "Bedtime, wake time, and regularity provide interpretable longitudinal context alongside duration.",
+      "interpretation": [
+        "Review timing and regularity across the same local time zone.",
+        "Mark travel, shift work, and daylight-saving transitions as context changes.",
+        "Distinguish time in bed from estimated time asleep."
+      ]
+    },
+    "recovery": {
+      "summary": "Recovery is a multi-signal interpretation, not a single wearable number.",
+      "interpretation": [
+        "Consider sleep timing, duration, symptoms, perceived readiness, recent load, resting heart rate, and HRV together.",
+        "Use uncertainty explicitly when signals disagree.",
+        "Escalate persistent symptoms or functional impairment to an appropriate clinician."
+      ]
+    },
+    "longitudinal_trends": {
+      "summary": "Repeated measurements become more meaningful when the comparison window and context are explicit.",
+      "interpretation": [
+        "State the baseline window and observation window.",
+        "Prefer median or representative baselines when isolated extremes would distort the comparison.",
+        "Record material context changes before attributing direction to an intervention."
+      ]
+    }
+  },
+  "sources": [
+    {
+      "title": "Consumer Sleep Technology: An American Academy of Sleep Medicine Position Statement",
+      "url": "https://jcsm.aasm.org/doi/10.5664/jcsm.7128",
+      "doi": "10.5664/jcsm.7128"
+    },
+    {
+      "title": "Consumer sleep technology: accuracy and impact on behavior among healthy individuals",
+      "url": "https://jcsm.aasm.org/doi/10.5664/jcsm.8450",
+      "doi": "10.5664/jcsm.8450"
+    },
+    {
+      "title": "Heart rate variability: standards of measurement, physiological interpretation and clinical use",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8598068/",
+      "pmid": "8598068"
+    }
+  ],
+  "disclaimer": "Educational and informational only. Sleepgenic does not provide medical diagnosis or treatment. Seek qualified care for persistent symptoms, suspected sleep disorders, concerning cardiac symptoms, or urgent health concerns."
+}

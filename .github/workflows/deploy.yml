@@ -26,6 +26,8 @@ jobs:
       - run: npm run validate:registry
       - run: npm run wrangler:dry-run
       - run: npm run wrangler:dry-run:permit-poller
+      - run: npm run test:sleepgenic-mcp
+      - run: npm run wrangler:dry-run:sleepgenic-mcp
       - run: git diff --check
 
   deploy-tool-registry:
@@ -75,3 +77,28 @@ jobs:
       - run: npm ci
       - name: Provision resources, migrate D1, and deploy
         run: npm run deploy:permit-poller
+
+
+  deploy-sleepgenic-mcp:
+    name: Deploy Sleepgenic MCP Worker
+    if: github.event_name != 'pull_request'
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Deploy Sleepgenic MCP and provision custom domain
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: '4'
+          command: deploy --config workers/sleepgenic-mcp/wrangler.jsonc
+      - name: Allow DNS and certificate propagation
+        run: sleep 25
+      - name: Run Sleepgenic live acceptance harness
+        run: npm run test:sleepgenic-mcp:live
