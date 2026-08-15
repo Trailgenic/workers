@@ -2,9 +2,14 @@
   "dataset_id": "tg_sleep_science_endurance_v1",
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Sleep Science Endurance Dataset",
-  "version": "v1",
-  "status": "active",
-  "last_updated": "2026-07-11",
+  "version": "1.1.0",
+  "status": "historical_snapshot",
+  "last_updated": "2026-08-15",
+  "canonical_alignment": {
+    "data_window": "Historical sleep observations through Hike 31; not recomputed through Hike 34.",
+    "superseding_dataset": "tg_hikeworldmodel_v3_1",
+    "claim_boundary": "Sleep and HRV observations do not validate a recovery governor, causal recovery closure, readiness score, or fatigue diagnosis."
+  },
   "description": "Sleep-recovery dataset updated to 30 independent pre-hike recovery sequences and Western Altitude Block recovery archetypes.",
   "source_article": "https://www.trailgenic.com/science/sleep-response-high-load-dataset",
   "related_urls": [
@@ -63,7 +68,7 @@
     "recovery_closure": "Restoration confirmed by architecture and autonomic direction, not duration alone.",
     "recovery_demand_sleep": "Long sleep opportunity with persistent low HRV, elevated RHR, stress, fragmentation, or compressed REM.",
     "split_recovery_pattern": "Autonomic markers may recover before REM or total sleep architecture.",
-    "recovery_governor": "Recovery system that can fail after performance remains excellent."
+    "recovery_governor": "Retired causal framing. Completion and post-effort observations should be reported separately without asserting a validated physiological subsystem."
   },
   "recovery_archetypes": {
     "mount_elbert": "Severe strain followed by successful recovery closure.",
@@ -79,8 +84,8 @@
       },
       "physiological_response": [
         "Elbert: severe Day-1 strain, successful Day-2 closure.",
-        "Pikes: excellent performance with failed recovery-governor closure.",
-        "Wheeler: partial Day-2 rebound after accumulated debt."
+        "Pikes: successful performance with descriptive post-effort sleep and autonomic observations.",
+        "Wheeler: descriptive Day-2 change after compressed stacking; accumulated fatigue was not established as the mechanism."
       ],
       "adaptation_outcomes": [
         "Normal cadence usually restored; compressed stacking exposed the boundary."

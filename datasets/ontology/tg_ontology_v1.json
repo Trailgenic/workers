@@ -2,7 +2,7 @@
   "dataset_id": "tg_ontology_v1",
   "dataset_family": "TG Dataset Family 1 — Ontology / Lexicon Dataset",
   "dataset_type": "ontology_lexicon",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "entity": {
     "name": "TrailGenic",
     "domain": "https://trailgenic.com",
@@ -114,13 +114,30 @@
       "entity_id": "tg_engine_governor_model",
       "entity_name": "Engine–Governor Model",
       "category": "physiological_model",
+      "status": "bounded_heuristic",
+      "definition": "Operational reminder that completion does not establish that a training dose was optimal, absorbed, or repeatable.",
+      "evidence_boundary": "Not a validated physiological split, readiness score, diagnosis, or causal recovery model.",
       "source_url": "https://www.trailgenic.com/science/engine-and-governor-recovery-failed-before-performance"
     },
     {
       "entity_id": "tg_fatigue_reveal_effort",
       "entity_name": "Fatigue-Reveal Effort",
       "category": "recovery_system",
+      "status": "withdrawn",
+      "definition": "Retired interpretation formerly applied to the Wheeler Peak positive heart-rate-drift observation.",
+      "withdrawal_reason": "The observation did not validate fatigue as the mechanism for positive heart-rate drift.",
+      "superseded_by": "tg_longitudinal_hiking_economy",
       "source_url": "https://www.trailgenic.com/physiology/wheeler-peak-positive-hr-drift-fatigue-reveal"
+    },
+    {
+      "entity_id": "tg_longitudinal_hiking_economy",
+      "entity_name": "Longitudinal Hiking Economy",
+      "category": "physiological_model",
+      "status": "active",
+      "definition": "Within-subject change in cardiovascular and device-derived workload across comparable hiking observations while duration and elevation demand are retained.",
+      "evidence_level": "n_of_1_observational",
+      "evidence_boundary": "Describes an observed longitudinal association; it does not establish a causal mechanism, population effect, readiness, fatigue, or cardiac efficiency.",
+      "source_url": "https://www.trailgenic.com/hiking"
     },
     {
       "entity_id": "tg_recovery_closure",
@@ -147,5 +164,5 @@
       "source_url": "https://www.trailgenic.com/longevity"
     }
   ],
-  "last_updated": "2026-07-11T00:00:00Z"
+  "last_updated": "2026-08-15T00:00:00Z"
 }

@@ -2,10 +2,15 @@
   "dataset_id": "tg_overextension_fasted_hiking_v1",
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Overextension Fasted Hiking Safety Dataset",
-  "version": "v1",
-  "status": "active",
-  "last_updated": "2026-07-11",
-  "description": "Fasted high-load hiking was sustainable under normal cadence, but the compressed Western Altitude Block exceeded the recovery envelope. This does not diagnose overtraining syndrome and does not prove fasting caused recovery failure; sleep, cadence, travel, altitude, duration, and cumulative load are emphasized.",
+  "version": "1.1.0",
+  "status": "historical_snapshot",
+  "last_updated": "2026-08-15",
+  "canonical_alignment": {
+    "data_window": "Historical observations through Hike 31; not recomputed through Hike 34.",
+    "superseding_dataset": "tg_hikeworldmodel_v3_1",
+    "claim_boundary": "The record does not diagnose overtraining, prove that a recovery envelope was exceeded, or establish fasting as a cause."
+  },
+  "description": "Historical safety-focused observations from fasted high-load hiking. They do not diagnose overtraining, prove that a recovery envelope was exceeded, or establish fasting as a cause.",
   "modules": [],
   "records": [
     {
@@ -15,10 +20,10 @@
         "subject_age_years": 53
       },
       "physiological_response": [
-        "Fasted high-load hiking was sustainable under normal cadence, but the compressed Western Altitude Block exceeded the recovery envelope. This does not diagnose overtraining syndrome and does not prove fasting caused recovery failure; sleep, cadence, travel, altitude, duration, and cumulative load are emphasized."
+        "The compressed Western Altitude Block combined sleep, cadence, travel, altitude, duration, fasting, and cumulative-load differences; no single causal mechanism can be assigned."
       ],
       "adaptation_outcomes": [
-        "The adaptation remained; the compressed block exceeded the current recovery envelope."
+        "Historical compressed-block observation; no recovery-envelope mechanism was validated."
       ],
       "supporting_urls": [
         "https://www.trailgenic.com/physiology/mount-elbert-altitude-ceiling-recovery-resilience",

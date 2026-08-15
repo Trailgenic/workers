@@ -2,9 +2,14 @@
   "dataset_id": "tg_altitude_terrain_physiology_comparison_v1",
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Altitude Terrain Physiology Comparison Dataset",
-  "version": "v1",
-  "status": "active",
-  "last_updated": "2026-07-11",
+  "version": "1.1.0",
+  "status": "active_with_historical_records",
+  "last_updated": "2026-08-15",
+  "canonical_alignment": {
+    "data_window": "Historical records through Hike 31 unless a record states otherwise.",
+    "superseding_dataset": "tg_hikeworldmodel_v3_1",
+    "claim_boundary": "Cross-route comparisons are confounded by terrain, altitude, pace, heat, travel, and session structure; no causal recovery mechanism is established."
+  },
   "description": "Adds Western Altitude context without fabricating regression statistics or p-values.",
   "modules": [],
   "records": [
@@ -18,7 +23,7 @@
         "Adds Western Altitude context without fabricating regression statistics or p-values."
       ],
       "adaptation_outcomes": [
-        "The adaptation remained; the compressed block exceeded the current recovery envelope."
+        "Historical cross-terrain observation; no recovery-envelope mechanism was validated."
       ],
       "supporting_urls": [
         "https://www.trailgenic.com/physiology/mount-elbert-altitude-ceiling-recovery-resilience",

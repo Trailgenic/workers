@@ -1,11 +1,11 @@
 {
   "name": "trailgenic-workers",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "private": true,
   "type": "module",
   "scripts": {
     "lint": "node --check tool-registry/worker.js && node --check workers/permit-poller/worker.js && node --check workers/permit-poller/public-site.js && node --check workers/permit-poller/catalog.js && node --check workers/permit-poller/adapters.js && node --check workers/permit-poller/service.js && node --check lib/registry.js && node --check lib/queries.js && node --check lib/mcp-server.js && node --check lib/resources.js && node --check scripts/live-acceptance.mjs && node --check scripts/permit-poller-live-check.mjs && node --check scripts/deploy-permit-poller.mjs && node --check workers/sleepgenic-mcp/worker.js && node --check scripts/sleepgenic-live-acceptance.mjs",
-    "test": "node --test tests/registry.test.mjs",
+    "test": "node --test tests/registry.test.mjs tests/canonical-reconciliation.test.mjs",
     "test:workers": "vitest run --config vitest.config.mjs",
     "test:permit-poller": "node --test tests/permit-poller.test.mjs && vitest run --config vitest.permit-poller.config.mjs",
     "test:permit-poller:live": "node scripts/permit-poller-live-check.mjs",

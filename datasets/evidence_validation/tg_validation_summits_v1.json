@@ -1,8 +1,10 @@
 {
   "dataset_id": "tg_validation_summits_v1",
   "dataset_name": "TrailGenic Validation Summits",
-  "description": "Real-world validation hikes demonstrating TrailGenic protocol performance under altitude, endurance, thermal, and climb stress conditions.",
-  "version": "1.0",
+  "description": "Real-world n-of-1 field observations under altitude, endurance, thermal, and climb stress conditions.",
+  "version": "1.1.0",
+  "last_updated": "2026-08-15",
+  "evidence_boundary": "Successful completion supports subject-specific feasibility only. It does not validate causal physiology, universal safety, readiness, recovery, or population efficacy.",
   "records": [
     {
       "trail_id": "tg_v001",
@@ -549,9 +551,9 @@
         "Altitude Load",
         "Climb Load (Very High)",
         "Duration Load (Very High)",
-        "Recovery Governor"
+        "Compressed Recovery Context"
       ],
-      "outcome": "Ceiling-level engine with failed recovery-governor closure.",
+      "outcome": "Successful high-altitude completion with descriptive post-effort recovery observations; no recovery-governor mechanism was validated.",
       "canonical_urls": [
         "https://www.trailgenic.com/trail-logs/pikes-peak-crags-fasted-14er-recovery-governor",
         "https://www.trailgenic.com/physiology/pikes-peak-ceiling-engine-recovery-failure",
@@ -570,10 +572,10 @@
       "protocol_name": "TrailGenic",
       "stimulus_vectors": [
         "Altitude Load",
-        "Fatigue Reveal",
+        "Positive HR Drift Observation",
         "Compressed Summit Stacking"
       ],
-      "outcome": "Fatigue-reveal effort after compressed summit stacking.",
+      "outcome": "Successful summit after compressed stacking with +1.2% route-aware heart-rate drift; fatigue as the mechanism was not validated.",
       "canonical_urls": [
         "https://www.trailgenic.com/trail-logs/wheeler-peak-fasted-fatigue-reveal-summit",
         "https://www.trailgenic.com/physiology/wheeler-peak-positive-hr-drift-fatigue-reveal"

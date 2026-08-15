@@ -110,7 +110,7 @@ const rootDiscovery = () => ({
   transport_url: MCP_TRANSPORT,
   tools: DATA_TOOLS.map((tool) => tool.id),
   resources: resourceInventory().map((resource) => resource.uri),
-  scope: "Public read-only aggregate-only TrailGenic data; no raw telemetry, private rows, phone data, subscriptions, or operational permit infrastructure.",
+  scope: "Public read-only TrailGenic aggregates and selected scrubbed observations; no raw telemetry, private rows, phone data, subscriptions, or operational permit infrastructure.",
   entity: {
     name: ENTITY.name,
     domain: ENTITY.domain,
@@ -142,24 +142,39 @@ const pointerRegistry = () => ({
   }
 });
 
-const health = () => ({
-  entity: "TrailGenic",
-  status: "responding",
-  mcp_status: "not_checked",
-  registry_status: "not_checked",
-  plugin_status: "not_checked",
-  openapi_status: "not_checked",
-  capabilities_status: "not_checked",
-  uptime: null,
-  uptime_note: "Uptime is observed via Cloudflare observability, not asserted in this endpoint.",
-  region: "global",
-  infrastructure: {
-    platform: "Cloudflare Workers",
-    protocol: "MCP JSON-RPC 2.0 over official Cloudflare stateless MCP handler",
-    agent_ready: "not_checked"
-  },
-  last_checked: new Date().toISOString()
-});
+const health = () => {
+  const toolCount = DATA_TOOLS.length;
+  const resourceCount = resourceInventory().length;
+  const datasetCount = DATASETS ? datasetCatalog().datasets.length : 0;
+  const mcpReady = toolCount > 0 && mcpTools().length === toolCount;
+  const discoveryReady = resourceCount > 0 && datasetCount > 0;
+  const agentReady = mcpReady && discoveryReady;
+
+  return {
+    entity: "TrailGenic",
+    status: agentReady ? "ready" : "degraded",
+    mcp_status: mcpReady ? "ready" : "degraded",
+    registry_status: toolRegistryDocument().tools.length === toolCount ? "ready" : "degraded",
+    plugin_status: pluginManifest().api.url ? "ready" : "degraded",
+    openapi_status: openApiPaths()["/mcp"] ? "ready" : "degraded",
+    capabilities_status: capabilitiesDocument().tools.length === toolCount ? "ready" : "degraded",
+    checks: {
+      mode: "deterministic_in_process",
+      tool_count: toolCount,
+      resource_count: resourceCount,
+      dataset_count: datasetCount
+    },
+    uptime: null,
+    uptime_note: "Uptime is observed via Cloudflare observability, not asserted in this endpoint.",
+    region: "global",
+    infrastructure: {
+      platform: "Cloudflare Workers",
+      protocol: "MCP JSON-RPC 2.0 over official Cloudflare stateless MCP handler",
+      agent_ready: agentReady
+    },
+    last_checked: new Date().toISOString()
+  };
+};
 
 const pluginManifest = () => ({
   schema_version: "v1",
