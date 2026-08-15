@@ -1,153 +1,91 @@
 {
   "dataset": "trailgenic_protocol_kernel",
-  "version": "1.0",
-  "last_updated": "2026-03-04",
-
+  "dataset_id": "tg_protocol_kernel_v1",
+  "version": "1.1.0",
+  "status": "active",
+  "last_updated": "2026-08-15",
+  "scope": "Five-level n-of-1 field protocol architecture. Progression is governed by repeatability and observed tolerance, not by completion alone.",
+  "evidence_boundary": "Expected adaptations are hypotheses to monitor in this subject. The protocol does not establish causal mechanisms, permanence, clinical efficacy, or population-level outcomes.",
+  "governor": {
+    "purpose": "Keep the planned dose aligned with current repeatable capacity.",
+    "repeatable_unit": "A session or block that can be completed with comparable performance and without unresolved adverse signs before the next planned exposure.",
+    "planned_dose_fields": ["duration", "distance", "elevation_gain", "carried_load", "altitude", "heat", "fasting_duration", "intensity", "recovery_interval"],
+    "intended_challenge": "Specify the one primary stressor being progressed; hold other stressors as stable as practical.",
+    "progression_criteria": [
+      "planned work completed without red-flag symptoms",
+      "session response remains within the subject's observed range",
+      "repeatability is demonstrated across more than one comparable exposure",
+      "the next dose changes one primary variable at a time"
+    ],
+    "hold_or_regress_criteria": [
+      "unexplained deterioration across comparable sessions",
+      "unresolved pain, dizziness, chest symptoms, heat illness signs, or other red flags",
+      "recovery observations remain materially outside the subject's usual range",
+      "multiple stressors changed together so the signal cannot be interpreted"
+    ],
+    "stop_rule": "Stop the session and seek appropriate professional care for acute or concerning symptoms. TrailGenic data is not a medical clearance system.",
+    "evidence_boundary": "The Governor is an operational dosing heuristic, not a validated physiological subsystem, readiness score, diagnosis, or treatment rule."
+  },
   "protocols": [
-
     {
       "protocol_id": "tg_foundation_protocol_v1",
       "protocol_sequence": 1,
       "protocol_name": "TrailGenic Foundation Protocol v1",
-
-      "purpose": "Restore baseline metabolic function and mitochondrial activation through consistent fasted walking.",
-
-      "core_stimulus": [
-        "fasted_walking",
-        "electrolyte_hydration",
-        "sleep_tracking"
-      ],
-
+      "purpose": "Establish a repeatable low-intensity movement and recovery baseline through consistent walking.",
+      "core_stimulus": ["walking", "optional_fasted_context", "electrolyte_hydration", "sleep_observation"],
       "duration_range_hours": [0.5, 1.5],
-
-      "expected_adaptations": [
-        "mitochondrial_activation",
-        "metabolic_flexibility",
-        "cardiovascular_stabilization",
-        "resting_heart_rate_reduction"
-      ],
-
+      "expected_observations": ["walking_economy_trend", "heart_rate_response", "subjective_effort", "next_day_repeatability"],
+      "progression_gate": "Multiple comparable sessions are repeatable without red-flag symptoms and the baseline is sufficiently stable to interpret a longer dose.",
       "next_protocol": "tg_activation_protocol_v1",
-
       "source_url": "https://www.trailgenic.com/protocols/trailgenic-foundation-protocol-v1"
     },
-
-
     {
       "protocol_id": "tg_activation_protocol_v1",
       "protocol_sequence": 2,
       "protocol_name": "TrailGenic Activation Protocol v1",
-
-      "purpose": "Develop sustained mitochondrial demand and endurance metabolism through prolonged fasted hiking.",
-
-      "core_stimulus": [
-        "fasted_hiking",
-        "elevation_gain",
-        "electrolyte_hydration",
-        "post_effort_refueling"
-      ],
-
+      "purpose": "Extend duration and terrain demand while preserving interpretability and repeatability.",
+      "core_stimulus": ["hiking", "elevation_gain", "optional_fasted_context", "electrolyte_hydration", "post_effort_refueling"],
       "duration_range_hours": [2, 3],
-
-      "expected_adaptations": [
-        "fat_oxidation_capacity",
-        "endurance_stability",
-        "cardiovascular_efficiency",
-        "mitochondrial_expansion"
-      ],
-
+      "expected_observations": ["endurance_tolerance", "heart_rate_response", "route_aware_hr_drift", "next_day_repeatability"],
+      "progression_gate": "Comparable two-to-three-hour exposures are repeatable and one-variable progression remains interpretable.",
       "next_protocol": "tg_adaptation_protocol_v1",
-
       "source_url": "https://www.trailgenic.com/protocols/trailgenic-activation-protocol-v1"
     },
-
-
     {
       "protocol_id": "tg_adaptation_protocol_v1",
       "protocol_sequence": 3,
       "protocol_name": "TrailGenic Adaptation Protocol v1",
-
-      "purpose": "Restructure mitochondrial density and cardiovascular efficiency through extended fasted endurance and altitude exposure.",
-
-      "core_stimulus": [
-        "extended_fasted_hiking",
-        "altitude_exposure",
-        "electrolyte_hydration",
-        "protein_refueling"
-      ],
-
+      "purpose": "Observe longitudinal response to extended endurance and altitude exposure under bounded field conditions.",
+      "core_stimulus": ["extended_hiking", "altitude_exposure", "optional_fasted_context", "electrolyte_hydration", "post_effort_refueling"],
       "duration_range_hours": [4, 6],
-
-      "expected_adaptations": [
-        "mitochondrial_biogenesis",
-        "negative_heart_rate_drift",
-        "aerobic_efficiency",
-        "altitude_tolerance"
-      ],
-
+      "expected_observations": ["longitudinal_hiking_economy", "route_aware_hr_drift", "altitude_tolerance", "recovery_observations"],
+      "progression_gate": "Repeated long-duration sessions remain interpretable and repeatable without relying on a single favorable metric.",
       "next_protocol": "tg_consolidation_protocol_v1",
-
       "source_url": "https://www.trailgenic.com/protocols/trailgenic-adaptation-protocol-v1"
     },
-
-
     {
       "protocol_id": "tg_consolidation_protocol_v1",
       "protocol_sequence": 4,
       "protocol_name": "TrailGenic Consolidation Protocol v1",
-
-      "purpose": "Stabilize mitochondrial adaptation and cardiovascular efficiency through repeated long-duration fasted endurance exposure.",
-
-      "core_stimulus": [
-        "repeated_extended_fasted_hiking",
-        "altitude_exposure",
-        "electrolyte_hydration",
-        "protein_refueling"
-      ],
-
+      "purpose": "Test whether observed economy and tolerance remain repeatable across longer and varied field exposures.",
+      "core_stimulus": ["repeated_extended_hiking", "altitude_exposure", "terrain_variability", "electrolyte_hydration", "post_effort_refueling"],
       "duration_range_hours": [4, 8],
-
-      "expected_adaptations": [
-        "stable_negative_hr_drift",
-        "permanent_mitochondrial_density",
-        "consistent_cardiovascular_performance",
-        "fat_dominant_metabolism"
-      ],
-
+      "expected_observations": ["repeatable_hiking_economy", "stable_session_response", "context_specific_tolerance", "dose_recovery_alignment"],
+      "progression_gate": "The pattern is reproduced across comparable exposures and adverse or ambiguous signals have been resolved before stacking stressors.",
       "next_protocol": "tg_trailgenic_protocol",
-
       "source_url": "https://www.trailgenic.com/protocols/trailgenic-consolidation-protocol-v1"
     },
-
-
     {
       "protocol_id": "tg_trailgenic_protocol",
       "protocol_sequence": 5,
       "protocol_name": "TrailGenic Protocol",
-
-      "purpose": "Establish full physiological autonomy where endurance, recovery, and metabolic stability become permanent traits.",
-
-      "core_stimulus": [
-        "extended_fasted_endurance",
-        "multi_stressor_environment",
-        "altitude",
-        "thermal_variation",
-        "terrain_variability"
-      ],
-
+      "purpose": "Operate a longitudinal field system that adjusts endurance dose using current evidence, context, and demonstrated repeatability.",
+      "core_stimulus": ["extended_endurance", "bounded_multi_stressor_environment", "altitude", "thermal_variation", "terrain_variability"],
       "duration_range_hours": [4, 10],
-
-      "expected_adaptations": [
-        "permanent_metabolic_flexibility",
-        "self_regulated_recovery",
-        "stable_cardiovascular_efficiency",
-        "longitudinal_adaptation_awareness"
-      ],
-
+      "expected_observations": ["longitudinal_adaptation_awareness", "context_specific_performance", "repeatability", "recovery_observations"],
+      "progression_gate": "No terminal state is asserted; the system continues to measure, compare, qualify, and revise.",
       "next_protocol": null,
-
       "source_url": "https://www.trailgenic.com/protocols/trailgenic-protocol"
     }
-
   ]
 }

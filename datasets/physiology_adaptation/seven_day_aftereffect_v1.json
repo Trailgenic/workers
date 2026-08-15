@@ -2,10 +2,15 @@
   "dataset_id": "tg_seven_day_aftereffect_v1",
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Seven Day Aftereffect Dataset",
-  "version": "v1",
-  "status": "active",
-  "last_updated": "2026-07-11",
-  "description": "Day-2 restoration is common but not universal. Historical recovery inflection is preserved; Elbert closed successfully, Pikes failed recovery closure, and Wheeler showed partial recovery after compressed stacking.",
+  "version": "1.1.0",
+  "status": "historical_snapshot",
+  "last_updated": "2026-08-15",
+  "canonical_alignment": {
+    "data_window": "Historical observations through Hike 31; not recomputed through Hike 34.",
+    "superseding_dataset": "tg_hikeworldmodel_v3_1",
+    "claim_boundary": "Day-2 classifications are descriptive labels. A durable recovery inflection, recovery closure mechanism, and causal effect of training have not been validated."
+  },
+  "description": "Historical day-after sleep and autonomic labels retained for traceability. The data do not validate a durable recovery inflection or causal recovery-closure mechanism.",
   "modules": [],
   "records": [
     {
@@ -15,10 +20,10 @@
         "subject_age_years": 53
       },
       "physiological_response": [
-        "Day-2 restoration is common but not universal. Historical recovery inflection is preserved; Elbert closed successfully, Pikes failed recovery closure, and Wheeler showed partial recovery after compressed stacking."
+        "Historical day-after labels varied across sessions; current canonical interpretation does not assign a recovery-closure mechanism."
       ],
       "adaptation_outcomes": [
-        "The adaptation remained; the compressed block exceeded the current recovery envelope."
+        "Historical compressed-block observation; no recovery-envelope mechanism was validated."
       ],
       "supporting_urls": [
         "https://www.trailgenic.com/physiology/mount-elbert-altitude-ceiling-recovery-resilience",
@@ -41,9 +46,9 @@
         "Sleep architecture restored within the 48-hour post-effort window."
       ],
       "adaptation_outcomes": [
-        "Seven consecutive Day-2 AUTONOMIC_RESTORED reads across five trail systems.",
-        "Transition from recovery cost to recovery compounding.",
-        "Session 16 marks the first durable recovery inflection in the 22-session dataset."
+        "Seven consecutive sessions received the historical Day-2 AUTONOMIC_RESTORED label across five trail systems.",
+        "The label sequence is descriptive and does not establish recovery compounding.",
+        "The former durable-inflexion interpretation is withdrawn pending a reproducible outcome definition and prospective validation."
       ],
       "supporting_science": [
         {

@@ -2,14 +2,13 @@
   "dataset_id": "tg_walking_conditioning_v1",
   "dataset_family": "conditioning",
   "title": "TrailGenic Walking Conditioning Dataset",
-  "version": "v1",
+  "version": "1.1.0",
   "status": "active",
-  "last_updated": "2026-06-11",
-  "description": "Aggregate-only TrailGenic conditioning module for standardized Foundation walking economy. This dataset serves existence metadata, summary statistics, methodology, and claims only; it does not expose per-session rows or raw telemetry.",
+  "last_updated": "2026-08-15",
+  "description": "Canonical aggregate plus selected-session TrailGenic conditioning module for standardized Foundation walking economy. It does not expose raw telemetry.",
   "privacy_scope": {
-    "data_granularity": "aggregate_only",
+    "data_granularity": "aggregate_plus_selected_sessions",
     "excluded_data": [
-      "per-session rows",
       "raw heart-rate telemetry",
       "raw power telemetry",
       "raw cadence telemetry",
@@ -17,30 +16,50 @@
       "raw stamina telemetry",
       "raw sleep telemetry",
       "raw sweat telemetry",
-      "individual session records"
+      "unpublished detailed session rows"
     ]
   },
   "existence_metadata": {
-    "session_count": 18,
+    "session_count": 21,
     "date_range": {
       "start": "2026-03-03",
-      "end": "2026-06-04"
+      "end": "2026-07-16"
     },
     "protocol_context": "Foundation protocol",
     "training_state": "fasted",
     "terrain_context": "flat",
     "distance_standardization": "standardized approximately 3.17 miles"
   },
+  "selected_sessions": [
+    {
+      "session": 21,
+      "date": "2026-07-16",
+      "temperature_f": 93,
+      "electrolytes": false,
+      "distance_miles_approx": 3.15,
+      "duration_min": 58.25,
+      "pace_min_per_mile": "18:30",
+      "avg_hr_bpm": 110,
+      "cei_hr_per_mile": 34.9,
+      "hr_drift_pct": 6.5,
+      "estimated_sweat_loss_ml": 775,
+      "zone_1_pct": 96,
+      "rpe": 1,
+      "anaerobic_training_effect": 0,
+      "recovery_observation": "ready",
+      "interpretation": "Descriptive single-session result under heat and no-electrolyte context."
+    }
+  ],
   "records": [
     {
       "mechanism": "Cardiac Efficiency Index improved across standardized fasted flat walking, indicating lower cardiovascular cost per mile at matched distance.",
       "aggregate_finding": {
         "metric": "Cardiac Efficiency Index (CEI)",
         "definition": "heart rate per mile",
-        "first_5_session_mean_hr_per_mile": 33.8,
-        "last_5_session_mean_hr_per_mile": 31.9,
-        "relative_aerobic_economy_gain_percent": 5.6,
-        "interpretation": "Falling CEI across a fixed walking distance indicates improving aerobic economy."
+        "baseline_cei_hr_per_mile": 34.7,
+        "best_observed_cei_hr_per_mile": 30.3,
+        "best_observed_session": 16,
+        "interpretation": "Lower CEI at a comparable distance is consistent with improved walking economy in this subject; context and repeatability remain necessary."
       },
       "summary_statistics": {
         "cei_overall_mean_hr_per_mile": 33.3,
@@ -59,14 +78,14 @@
       },
       "methodology": {
         "metric_formula": "CEI = average heart rate / distance in miles",
-        "comparison_frame": "first five standardized walking sessions versus last five standardized walking sessions",
+        "comparison_frame": "longitudinal comparison across 21 standardized walking sessions",
         "control_frame": "fasted, flat Foundation walking at approximately matched 3.17-mile distance",
         "claim_boundary": "Conditioning tracking only; not a biological-age measure."
       },
       "claims": [
-        "Walking aerobic economy improved by approximately 5.6% at matched distance.",
+        "The best observed CEI was 30.3 HR/mi versus a 34.7 baseline at matched distance.",
         "The aggregate CEI distribution remained in a tight 30.3-35.3 HR/mi range across the block.",
-        "Resting heart rate trended downward into the 51-54 bpm range, supporting improved low-intensity aerobic readiness.",
+        "All 21 published sessions were recorded as recovery-ready; this is an observational label, not clinical clearance.",
         "This dataset is a conditioning signal and does not compute or imply biological age."
       ]
     }

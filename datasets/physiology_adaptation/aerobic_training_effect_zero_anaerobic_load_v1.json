@@ -2,9 +2,14 @@
   "dataset_id": "tg_aerobic_training_effect_zero_anaerobic_load_v1",
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Aerobic Training Effect Zero Anaerobic Load Dataset",
-  "version": "v1",
-  "status": "active",
-  "last_updated": "2026-07-11",
+  "version": "1.1.0",
+  "status": "active_with_historical_records",
+  "last_updated": "2026-08-15",
+  "canonical_alignment": {
+    "data_window": "Historical records through Hike 31 unless a record states otherwise.",
+    "superseding_dataset": "tg_hikeworldmodel_v3_1",
+    "claim_boundary": "Device training-effect values are descriptive outputs, not direct measures of adaptation or recovery."
+  },
   "description": "Adds verified 0.0 anaerobic training effect for Elbert, Pikes, and Wheeler. Older zero-spillover counts remain historical when scoped to the previous data window.",
   "modules": [],
   "records": [
@@ -18,7 +23,7 @@
         "Adds verified 0.0 anaerobic training effect for Elbert, Pikes, and Wheeler. Older zero-spillover counts remain historical when scoped to the previous data window."
       ],
       "adaptation_outcomes": [
-        "The adaptation remained; the compressed block exceeded the current recovery envelope."
+        "Historical device-output observation; no recovery-envelope mechanism was validated."
       ],
       "supporting_urls": [
         "https://www.trailgenic.com/physiology/mount-elbert-altitude-ceiling-recovery-resilience",

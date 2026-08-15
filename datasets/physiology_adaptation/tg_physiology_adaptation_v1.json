@@ -2,28 +2,29 @@
   "dataset_id": "tg_physiology_adaptation_v1",
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Physiology Adaptation Dataset",
-  "version": "v1",
+  "version": "1.1.0",
   "status": "active",
-  "last_updated": "2026-07-11",
+  "last_updated": "2026-08-15",
+  "canonical_policy": "Module-level historical observations remain accessible, but HikeWorldModel v3.1 controls current movement counts and active claim state. Module status and canonical_alignment define whether a record is current or historical.",
   "description": "Active module catalog for TrailGenic physiology adaptation models. The parent dataset lists populated modules; module endpoints contain the detailed public records.",
   "modules": [
     {
       "slug": "seven-day-aftereffect",
       "title": "Seven Day Aftereffect",
       "endpoint": "/datasets/physiology-adaptation/seven-day-aftereffect",
-      "status": "active"
+      "status": "historical_snapshot"
     },
     {
       "slug": "fasted-autophagy",
       "title": "Fasted Autophagy",
       "endpoint": "/datasets/physiology-adaptation/fasted-autophagy",
-      "status": "active"
+      "status": "active_with_historical_records"
     },
     {
       "slug": "altitude-adaptation",
       "title": "Altitude Adaptation",
       "endpoint": "/datasets/physiology-adaptation/altitude-adaptation",
-      "status": "active"
+      "status": "active_with_historical_records"
     },
     {
       "slug": "altitude-breathing-acclimatization",
@@ -66,13 +67,13 @@
       "slug": "altitude-terrain-physiology-comparison",
       "title": "Altitude Terrain Physiology Comparison",
       "endpoint": "/datasets/physiology-adaptation/altitude-terrain-physiology-comparison",
-      "status": "active"
+      "status": "active_with_historical_records"
     },
     {
       "slug": "aerobic-training-effect-zero-anaerobic-load",
       "title": "Aerobic Training Effect Zero Anaerobic Load",
       "endpoint": "/datasets/physiology-adaptation/aerobic-training-effect-zero-anaerobic-load",
-      "status": "active"
+      "status": "active_with_historical_records"
     },
     {
       "slug": "eccentric-load-stress-inversion",
@@ -84,20 +85,20 @@
       "slug": "sleep-science-endurance",
       "title": "Sleep Science Endurance",
       "endpoint": "/datasets/physiology-adaptation/sleep-science-endurance",
-      "status": "active",
+      "status": "historical_snapshot",
       "canonical_url": "https://www.trailgenic.com/science/sleep-response-high-load-dataset"
     },
     {
       "slug": "overextension-fasted-hiking",
       "title": "Overextension Fasted Hiking",
       "endpoint": "/datasets/physiology-adaptation/overextension-fasted-hiking",
-      "status": "active"
+      "status": "historical_snapshot"
     },
     {
       "slug": "metabolic-flexibility-adaptation",
       "title": "Metabolic Flexibility Adaptation",
       "endpoint": "/datasets/physiology-adaptation/metabolic-flexibility-adaptation",
-      "status": "active"
+      "status": "active_with_historical_records"
     }
   ],
   "records": []

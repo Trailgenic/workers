@@ -2,14 +2,13 @@
   "dataset_id": "tg_running_conditioning_v1",
   "dataset_family": "conditioning",
   "title": "TrailGenic Running Conditioning Dataset",
-  "version": "v1",
+  "version": "1.1.0",
   "status": "active",
-  "last_updated": "2026-06-11",
-  "description": "Aggregate-only TrailGenic conditioning module for fasted running economy by distance tier. This dataset serves existence metadata, summary statistics, methodology, and claims only; it does not expose per-session rows or raw telemetry.",
+  "last_updated": "2026-08-15",
+  "description": "Canonical aggregate plus selected-session TrailGenic conditioning module for fasted running. Steady-state economy and intentional max-speed intervals are separate analytic tracks. It does not expose raw telemetry.",
   "privacy_scope": {
-    "data_granularity": "aggregate_only",
+    "data_granularity": "aggregate_plus_selected_sessions",
     "excluded_data": [
-      "per-session rows",
       "raw heart-rate telemetry",
       "raw power telemetry",
       "raw cadence telemetry",
@@ -17,14 +16,14 @@
       "raw stamina telemetry",
       "raw sleep telemetry",
       "raw sweat telemetry",
-      "individual session records"
+      "unpublished detailed session rows"
     ]
   },
   "existence_metadata": {
-    "session_count": 11,
+    "session_count": 15,
     "date_range": {
       "start": "2026-03-17",
-      "end": "2026-06-10"
+      "end": "2026-08-05"
     },
     "training_state": "fasted",
     "distance_tiers": [
@@ -34,10 +33,41 @@
       },
       {
         "distance_mi": 3.17,
-        "session_count": 6
+        "session_count": 10
       }
     ]
   },
+  "analytic_tracks": {
+    "steady_state": { "current_reference_session": 14, "sessions": "1-14" },
+    "max_speed_intervals": { "sessions": [15], "comparison_rule": "Do not compare directly with steady-state sessions." }
+  },
+  "selected_sessions": [
+    {
+      "session": 15,
+      "date": "2026-08-05",
+      "analytic_track": "max_speed_intervals",
+      "distance_miles": 3.19,
+      "duration_min": 41.1,
+      "run_time": "19:13",
+      "walk_time": "21:43",
+      "pace_min_per_mile": "12:53",
+      "avg_hr_bpm": 144,
+      "max_hr_bpm": 175,
+      "hr_drift_pct": 4.5,
+      "cadence_spm": 125,
+      "power_w": 172,
+      "anaerobic_training_effect": 1.2,
+      "aerobic_training_effect": 3.0,
+      "exercise_load": 75,
+      "ending_stamina_pct": 75,
+      "rpe": 3,
+      "environment": "very humid",
+      "estimated_sweat_loss_ml": 548,
+      "recovery_observation": "ready",
+      "garmin_vo2max": 45,
+      "interpretation": "Intentional max-speed interval branch; not comparable with steady-state economy sessions."
+    }
+  ],
   "records": [
     {
       "mechanism": "Running economy must be interpreted within distance tier because longer steady-state runs produce lower CEI readings than shorter run/walk efforts.",
@@ -79,7 +109,7 @@
       },
       "methodology": {
         "metric_formula": "CEI = average heart rate / distance in miles, interpreted within matched distance tier",
-        "distance_tier_framing": "Shorter 2.4-mile sessions and longer 3.17-mile sessions are reported separately because duration, steady-state settling, and run/walk composition change CEI behavior.",
+        "distance_tier_framing": "Shorter 2.4-mile sessions and longer 3.17-mile sessions are reported separately because duration, steady-state settling, and run/walk composition change CEI behavior. Intentional max-speed intervals are a separate analytic track.",
         "future_use": "Input layer for a future TrailGenic running biological-age compute tool.",
         "claim_boundary": "Conditioning tracking only; not itself a biological-age measure."
       },

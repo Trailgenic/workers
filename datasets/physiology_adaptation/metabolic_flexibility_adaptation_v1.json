@@ -2,9 +2,14 @@
   "dataset_id": "tg_metabolic_flexibility_adaptation_v1",
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Metabolic Flexibility Adaptation Dataset",
-  "version": "v1",
-  "status": "active",
-  "last_updated": "2026-07-11",
+  "version": "1.1.0",
+  "status": "active_with_historical_records",
+  "last_updated": "2026-08-15",
+  "canonical_alignment": {
+    "data_window": "Historical records through Hike 31 unless a record states otherwise.",
+    "superseding_dataset": "tg_hikeworldmodel_v3_1",
+    "claim_boundary": "Breath acetone and field performance are proxy observations; they do not directly measure metabolic flexibility, fat-oxidation rate, autophagy, or causal recovery effects."
+  },
   "description": "Updated to 31 hiking sessions. San Jacinto 22 ppm remains the first dataset ceiling; Mount Elbert reproduced 22 ppm at highest recorded altitude; Pikes reached 20 ppm; Wheeler reached 7.3 ppm. Breath acetone is a directional metabolic-switching proxy, not a direct fat-oxidation or autophagy measurement.",
   "modules": [],
   "records": [
@@ -18,7 +23,7 @@
         "Updated to 31 hiking sessions. San Jacinto 22 ppm remains the first dataset ceiling; Mount Elbert reproduced 22 ppm at highest recorded altitude; Pikes reached 20 ppm; Wheeler reached 7.3 ppm. Breath acetone is a directional metabolic-switching proxy, not a direct fat-oxidation or autophagy measurement."
       ],
       "adaptation_outcomes": [
-        "The adaptation remained; the compressed block exceeded the current recovery envelope."
+        "Historical proxy observation; no recovery-envelope or causal metabolic mechanism was validated."
       ],
       "supporting_urls": [
         "https://www.trailgenic.com/physiology/mount-elbert-altitude-ceiling-recovery-resilience",

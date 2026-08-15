@@ -2,7 +2,7 @@
 
 This repository contains the public TrailGenic Machine Communication Protocol (MCP) worker and dataset discovery infrastructure.
 
-TrailGenic™ is a longevity method built on fasted hiking, altitude adaptation, autophagy activation, electrolyte stability, and disciplined recovery—validated through real-world environmental stress and interpreted through a Personal World Model.
+TrailGenic™ is an applied longevity-intelligence system that turns real n-of-1 longitudinal field observations into structured, testable protocols and explicitly bounded claims.
 
 ## Canonical Entity Ontology
 
@@ -68,18 +68,18 @@ The public MCP tool inventory is generated from one canonical registry and curre
 | `tg.gear.getIntel` | `category` (optional) |
 | `tg.longevity.protocol.get` | `protocol_id`, `category` |
 | `tg.longevity.foundationSessions.get` | none |
-| `tg.conditioning.walking.get` | `start_date`, `end_date` (optional; aggregate-only) |
-| `tg.conditioning.rucking.get` | `start_date`, `end_date` (optional; aggregate-only) |
-| `tg.conditioning.running.get` | `start_date`, `end_date` (optional; aggregate-only) |
+| `tg.conditioning.walking.get` | `start_date`, `end_date` (optional compatibility fields; supplying them returns an error) |
+| `tg.conditioning.rucking.get` | `start_date`, `end_date` (optional compatibility fields; supplying them returns an error) |
+| `tg.conditioning.running.get` | `start_date`, `end_date` (optional compatibility fields; supplying them returns an error) |
 | `tg.longevity.bioAge.compute` | `age`, `resting_hr`, `distance_mi`, `elevation_gain_ft`, `moving_time_min`, `avg_hr` (required); `max_hr`, `overnight_hrv`, `fasted` (optional) |
 
-The current public movement model covers 59 structured sessions: 16 walking sessions (14 canonical Foundation sessions plus 2 additional walking sessions), 4 rucking sessions, 8 running sessions, and 31 hiking sessions. HikeWorldModel™ v2.0 is published as aggregate-only data with selected high-signal summaries, not raw biometric telemetry.
+The current public movement model covers 79 structured sessions: 21 walking, 9 rucking, 15 running, and 34 hiking sessions. HikeWorldModel™ v3.1 publishes canonical aggregates and selected scrubbed high-signal observations, not raw biometric telemetry. The strongest active hiking claim is lower average heart rate and device exercise load in the final 17 hikes without a decline in average duration or elevation gain; it remains an n-of-1 observational association.
 
 Large dataset tools support optional filters and bounded `limit` values so MCP clients do not need to ingest full high-record payloads.
 
 ### Deferred Dataset Tools
 
-`tg.longevity.registry.get` and `tg.longevity.validation.get` are intentionally deferred because their backing dataset files are currently placeholder shells. Their public dataset routes remain available and will be eligible for callable MCP tools once populated.
+`tg.longevity.registry.get` and `tg.longevity.validation.get` are intentionally deferred because their backing dataset files are placeholder shells. They are excluded from the public catalog, resource inventory, and REST routing until populated.
 
 ### Content Links
 
@@ -106,14 +106,12 @@ Dataset endpoints remain public and machine-readable:
 - `https://mcp.trailgenic.com/datasets/evidence-validation/validation-summits`
 - `https://mcp.trailgenic.com/datasets/gear/intel`
 - `https://mcp.trailgenic.com/datasets/longevity/protocol`
-- `https://mcp.trailgenic.com/datasets/longevity/registry`
-- `https://mcp.trailgenic.com/datasets/longevity/validation`
 - `https://mcp.trailgenic.com/datasets/longevity/foundation`
 - `https://mcp.trailgenic.com/datasets/conditioning/walking`
 - `https://mcp.trailgenic.com/datasets/conditioning/rucking`
 - `https://mcp.trailgenic.com/datasets/conditioning/running`
 
-Physiology adaptation is now an active module catalog; detailed records remain in the module endpoints. Physiology adaptation module endpoints are also preserved:
+Physiology adaptation is a status-aware module catalog. Current modules, qualified historical records, and historical snapshots are labeled explicitly; HikeWorldModel v3.1 controls current movement counts and active hiking claim state. Module endpoints are preserved:
 
 - `https://mcp.trailgenic.com/datasets/physiology-adaptation/seven-day-aftereffect`
 - `https://mcp.trailgenic.com/datasets/physiology-adaptation/fasted-autophagy`
@@ -133,7 +131,7 @@ Physiology adaptation is now an active module catalog; detailed records remain i
 
 ## Health and Observability
 
-`/health` does not fabricate uptime. It reports `uptime: null` and notes that uptime is observed via Cloudflare observability.
+`/health` performs deterministic in-process parity checks across the MCP tool list, registry, plugin, OpenAPI, capabilities, datasets, and resources. It reports `agent_ready` as a boolean. It does not fabricate uptime: `uptime` remains `null` because availability is observed through Cloudflare.
 
 ## Local and Live Checks
 
@@ -173,7 +171,7 @@ The server advertises and validates MCP protocol versions `2025-11-25` and `2025
 
 Browser `Origin` is validated only for the MCP transport. Default allowed origins are `https://trailgenic.com`, `https://www.trailgenic.com`, and `https://mcp.trailgenic.com`; deployments may override with `MCP_ALLOWED_ORIGINS`. Server-to-server clients without `Origin` remain accepted. Public read-only REST dataset routes keep their public CORS behavior.
 
-All 19 previous tool names are preserved. `tg.terrain.protocolMatchedHikes.get` adds the canonical field-grounded recommendation layer while the Top-100 trail tool remains available for backward compatibility. Both gear tools remain: `tg.gear.intel.get` is the bounded query-oriented compatibility tool, while `tg.gear.getIntel` is the canonical full-dataset tool with optional exact-category filtering. Conditioning walking, rucking, and running keep optional date fields for backward compatibility, but date-range slicing returns an MCP `isError: true` tool result because public conditioning data is aggregate-only and contains no per-session rows.
+All 20 callable tool names are preserved. `tg.terrain.protocolMatchedHikes.get` adds the canonical field-grounded recommendation layer while the Top-100 trail tool remains available for backward compatibility. Both gear tools remain: `tg.gear.intel.get` is the bounded query-oriented compatibility tool, while `tg.gear.getIntel` is the canonical full-dataset tool with optional exact-category filtering. Conditioning walking, rucking, and running keep optional date fields for backward compatibility, but date-range slicing returns an MCP `isError: true` result because only aggregates and selected scrubbed observations—not a complete public row set—are available.
 
 MCP resources are generated from canonical dataset and physiology registries using stable URIs: `trailgenic://datasets/index`, `trailgenic://datasets/{dataset_id}`, and `trailgenic://physiology/{module_slug}`. Public data is deterministic and release-bundled. The mutable runtime fallback to GitHub `main` has been removed; missing bundled data is a server error and CI validation failure.
 

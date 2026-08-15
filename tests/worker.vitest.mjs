@@ -255,7 +255,53 @@ describe('rest dataset routes and machine documents', () => {
     }
     const health = await (await get('/health')).json();
     expect(health.uptime).toBeNull();
-    expect(health.capabilities_status).toBe('not_checked');
+    expect(health.status).toBe('ready');
+    expect(health.capabilities_status).toBe('ready');
+    expect(health.infrastructure.agent_ready).toBe(true);
+    expect(health.checks.tool_count).toBe(DATA_TOOLS.length);
+  });
+
+  it('serves one reconciled canonical movement spine', async () => {
+    const hiking = await (await get('/datasets/hiking')).json();
+    expect(hiking.dataset_id).toBe('tg_hikeworldmodel_v3_1');
+    expect(hiking.summary_statistics.hiking_sessions).toBe(34);
+    expect(hiking.movement_architecture).toEqual(expect.objectContaining({
+      total_public_structured_sessions: 79,
+      walking_sessions: 21,
+      rucking_sessions: 9,
+      running_sessions: 15,
+      hiking_sessions: 34
+    }));
+    expect(hiking.withdrawn_interpretations).toContainEqual(expect.objectContaining({
+      claim_id: 'tg_fatigue_reveal_effort',
+      status: 'withdrawn'
+    }));
+
+    const walking = await (await get('/datasets/conditioning/walking')).json();
+    const rucking = await (await get('/datasets/conditioning/rucking')).json();
+    const running = await (await get('/datasets/conditioning/running')).json();
+    expect(walking.existence_metadata.session_count).toBe(21);
+    expect(rucking.existence_metadata.session_count).toBe(9);
+    expect(running.existence_metadata.session_count).toBe(15);
+    expect(running.analytic_tracks.max_speed_intervals.sessions).toEqual([15]);
+  });
+
+  it('excludes empty longevity shells and exposes claim qualification', async () => {
+    const index = await (await get('/datasets/index')).json();
+    const ids = index.datasets.map((dataset) => dataset.dataset_id);
+    expect(ids).not.toContain('tg_longevity_registry_v1');
+    expect(ids).not.toContain('tg_longevity_validation_v1');
+
+    const ontology = await (await get('/datasets/ontology')).json();
+    const fatigue = ontology.entities.find((entity) => entity.entity_id === 'tg_fatigue_reveal_effort');
+    const economy = ontology.entities.find((entity) => entity.entity_id === 'tg_longitudinal_hiking_economy');
+    expect(fatigue.status).toBe('withdrawn');
+    expect(economy.status).toBe('active');
+
+    const protocols = await (await get('/datasets/protocols')).json();
+    const serialized = JSON.stringify(protocols);
+    expect(serialized).not.toMatch(/permanent_mitochondrial|permanent_metabolic|full physiological autonomy/i);
+    expect(protocols.governor.evidence_boundary).toMatch(/not a validated physiological subsystem/i);
   });
 });
 

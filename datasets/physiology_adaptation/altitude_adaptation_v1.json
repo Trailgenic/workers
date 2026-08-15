@@ -2,9 +2,14 @@
   "dataset_id": "tg_altitude_adaptation_v1",
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Altitude Adaptation Dataset",
-  "version": "v1",
-  "status": "active",
-  "last_updated": "2026-07-11",
+  "version": "1.1.0",
+  "status": "active_with_historical_records",
+  "last_updated": "2026-08-15",
+  "canonical_alignment": {
+    "data_window": "Historical records through Hike 31 unless a record states otherwise.",
+    "superseding_dataset": "tg_hikeworldmodel_v3_1",
+    "claim_boundary": "Altitude tolerance observations are descriptive and do not validate a causal recovery envelope or clinical acclimatization outcome."
+  },
   "description": "Updated to 31 hiking sessions with Garmin-recorded altitude ceiling of 14,497 ft on Mount Elbert, Pikes Peak at 14,116 ft, and Wheeler Peak at 13,154 ft. Altitude-performance tolerance is distinct from recovery readiness.",
   "modules": [],
   "records": [
@@ -18,7 +23,7 @@
         "Updated to 31 hiking sessions with Garmin-recorded altitude ceiling of 14,497 ft on Mount Elbert, Pikes Peak at 14,116 ft, and Wheeler Peak at 13,154 ft. Altitude-performance tolerance is distinct from recovery readiness."
       ],
       "adaptation_outcomes": [
-        "The adaptation remained; the compressed block exceeded the current recovery envelope."
+        "Historical compressed-block observation; no recovery-envelope mechanism was validated."
       ],
       "supporting_urls": [
         "https://www.trailgenic.com/physiology/mount-elbert-altitude-ceiling-recovery-resilience",

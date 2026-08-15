@@ -2,6 +2,13 @@
   "schema_version": "1.0",
   "dataset_id": "tg_longevity_protocol_v1",
   "dataset_family": "TG Dataset Family 7 — Longevity Protocol Intelligence",
+  "status": "historical_snapshot_reconciliation_required",
+  "canonical_alignment": {
+    "data_window": "Protocol overlays were authored against earlier movement windows and are retained as historical records pending record-level reconciliation.",
+    "current_movement_dataset": "tg_hikeworldmodel_v3_1",
+    "current_public_movement_counts": { "walking": 21, "rucking": 9, "running": 15, "hiking": 34, "total": 79 },
+    "claim_boundary": "Do not treat legacy recovery-inflection, recovery-governor, biological-age, or causal adaptation language inside historical records as current validated claims."
+  },
   "description": "TrailGenic longevity protocol records. Each record contains mainstream scientific consensus, TG field validation overlay, six-pillar mapping, and practitioner implementation guidance. Populated incrementally as articles publish.",
   "authority": {
     "practitioner": "https://mikeye.com/#person",
@@ -2271,19 +2278,19 @@
       }
     }
   ],
-  "last_updated": "2026-07-11",
+  "last_updated": "2026-08-15",
   "analysis_period": "2025-12-04 to 2026-07-04",
-  "hikeworldmodel_v2": {
-    "hiking_sessions": 31,
-    "total_distance_miles": 339.4,
-    "total_elevation_gain_ft": 130166,
-    "total_field_duration_min": 10818,
+  "hikeworldmodel_v3_1": {
+    "hiking_sessions": 34,
+    "total_distance_miles": 371.95,
+    "total_elevation_gain_ft": 142532,
+    "total_field_duration_min": 11808.4,
     "canonical_url": "https://www.trailgenic.com/hiking"
   },
   "western_altitude_block": {
     "combined_distance_miles": 37.63,
     "combined_elevation_gain_ft": 15867,
     "combined_duration_min": 1452,
-    "interpretation": "Performance engine remained strong, while recovery governor failed at Pikes and partially rebounded at Wheeler after compressed stacking."
+    "interpretation": "Historical compressed-block observation. The prior recovery-governor and fatigue-reveal mechanisms are not validated and are not active canonical claims."
   }
 }
