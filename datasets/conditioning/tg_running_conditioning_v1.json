@@ -2,10 +2,11 @@
   "dataset_id": "tg_running_conditioning_v1",
   "dataset_family": "conditioning",
   "title": "TrailGenic Running Conditioning Dataset",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "status": "active",
-  "last_updated": "2026-08-15",
-  "description": "Canonical aggregate plus selected-session TrailGenic conditioning module for fasted running. Steady-state economy and intentional max-speed intervals are separate analytic tracks. It does not expose raw telemetry.",
+  "last_updated": "2026-08-18",
+  "description": "Canonical aggregate plus selected-session TrailGenic conditioning module for fasted running. Shorter run/walk sessions, matched-distance steady sessions, and the intentional max-speed interval session are separate analytic contexts. It does not expose raw telemetry.",
+  "correction_notice": "Heart-rate drift values were corrected on 2026-08-18. Prior drift values and derived interpretations are superseded. Drift is descriptive and is not a measure of metabolic flexibility or running economy.",
   "privacy_scope": {
     "data_granularity": "aggregate_plus_selected_sessions",
     "excluded_data": [
@@ -21,31 +22,26 @@
   },
   "existence_metadata": {
     "session_count": 15,
-    "date_range": {
-      "start": "2026-03-17",
-      "end": "2026-08-05"
-    },
+    "date_range": { "start": "2026-03-17", "end": "2026-08-05" },
     "training_state": "fasted",
-    "distance_tiers": [
-      {
-        "distance_mi": 2.4,
-        "session_count": 5
-      },
-      {
-        "distance_mi": 3.17,
-        "session_count": 10
-      }
+    "distance_contexts": [
+      { "context": "shorter_run_walk", "sessions": "1-5", "distance_miles_approx": 2.4 },
+      { "context": "matched_distance_steady", "sessions": "6-14", "distance_miles_approx": 3.17 },
+      { "context": "max_speed_intervals", "sessions": [15], "distance_miles": 3.19 }
     ]
   },
   "analytic_tracks": {
-    "steady_state": { "current_reference_session": 14, "sessions": "1-14" },
-    "max_speed_intervals": { "sessions": [15], "comparison_rule": "Do not compare directly with steady-state sessions." }
+    "shorter_run_walk": { "sessions": "1-5", "comparison_rule": "Compare only within the shorter-distance context." },
+    "matched_distance_steady": { "current_reference_session": 14, "sessions": "6-14", "comparison_rule": "Primary steady-state comparison set." },
+    "max_speed_intervals": { "sessions": [15], "comparison_rule": "Do not compare Session 15 directly with steady-state sessions." }
   },
   "selected_sessions": [
     {
       "session": 15,
       "date": "2026-08-05",
       "analytic_track": "max_speed_intervals",
+      "environment": "very humid",
+      "protocol_context": "Repeated self-directed maximum-speed run/walk intervals.",
       "distance_miles": 3.19,
       "duration_min": 41.1,
       "run_time": "19:13",
@@ -53,7 +49,8 @@
       "pace_min_per_mile": "12:53",
       "avg_hr_bpm": 144,
       "max_hr_bpm": 175,
-      "hr_drift_pct": 4.5,
+      "hr_per_mile_proxy": 45.1,
+      "hr_drift_pct": 2.0,
       "cadence_spm": 125,
       "power_w": 172,
       "anaerobic_training_effect": 1.2,
@@ -61,64 +58,65 @@
       "exercise_load": 75,
       "ending_stamina_pct": 75,
       "rpe": 3,
-      "environment": "very humid",
       "estimated_sweat_loss_ml": 548,
       "recovery_observation": "ready",
       "garmin_vo2max": 45,
-      "interpretation": "Intentional max-speed interval branch; not comparable with steady-state economy sessions."
+      "interpretation": "Intentional max-speed interval branch; lower average power and cadence include walking recoveries and are not directly comparable with steady-state sessions."
     }
   ],
   "records": [
     {
-      "mechanism": "Running economy must be interpreted within distance tier because longer steady-state runs produce lower CEI readings than shorter run/walk efforts.",
+      "mechanism": "The HR-per-mile proxy is distance- and protocol-dependent, so running comparisons require matched distance and session design.",
       "aggregate_finding": {
-        "metric": "Cardiac Efficiency Index by running distance tier",
-        "tier_findings": [
+        "metric": "HR-per-Mile Proxy by Running Context",
+        "contexts": [
           {
-            "distance_tier_mi": 2.4,
-            "cei_mean_hr_per_mile": 61.3,
-            "cei_range_hr_per_mile": {
-              "min": 58.3,
-              "max": 64.2
-            },
-            "hr_drift_percent_mean": 4.7,
-            "hr_drift_trend": "declining from 7.0% to 2.7%"
+            "name": "shorter_run_walk",
+            "sessions": "1-5",
+            "distance_miles_approx": 2.4,
+            "hr_per_mile_proxy_mean": 61.3,
+            "corrected_hr_drift_mean_pct": 2.96,
+            "average_power_w": 190.2,
+            "average_cadence_spm": 136.2,
+            "zone_4_plus_mean_pct": 30.4
           },
           {
-            "distance_tier_mi": 3.17,
-            "cei_mean_hr_per_mile": 46.7,
-            "cei_range_hr_per_mile": {
-              "min": 43.8,
-              "max": 48.7
-            },
-            "hr_drift_percent_mean": 2.8
+            "name": "matched_distance_steady",
+            "sessions": "6-14",
+            "distance_miles_approx": 3.17,
+            "hr_per_mile_proxy_mean": 47.51,
+            "corrected_hr_drift_mean_pct": 1.63,
+            "average_power_w": 205.3,
+            "average_cadence_spm": 145.8,
+            "zone_4_plus_mean_pct": 9.6
           }
         ],
-        "cross_tier_warning": "Cross-tier CEI is not comparable; within-tier movement is the signal."
+        "cross_context_warning": "HR-per-mile is distance- and protocol-dependent. Cross-context values are not direct measures of running economy."
       },
       "summary_statistics": {
-        "cadence_spm_change": {
-          "from": 136,
-          "to": 144,
-          "interpretation": "Cadence improved as running mechanics consolidated."
+        "session_count": 15,
+        "corrected_hr_drift_percent": {
+          "mean": 2.10,
+          "median": 2.5,
+          "min": -3.0,
+          "max": 6.8,
+          "values_by_session": [5.5, 1.0, 4.5, 3.3, 0.5, 2.7, 2.5, 6.8, -1.0, -1.5, 1.0, 3.2, 4.0, -3.0, 2.0]
         },
-        "run_walk_ratio_shift": "walk portion shrank from approximately 11-12 minutes to approximately 4 minutes, shifting strongly toward running",
-        "garmin_vo2max": 46,
-        "tier_2_4_mi_cei_mean": 61.3,
-        "tier_3_17_mi_cei_mean": 46.7
+        "garmin_vo2max": 45,
+        "recovery_observation": "ready in all 15 sessions",
+        "rpe": "3 in all 15 sessions"
       },
       "methodology": {
-        "metric_formula": "CEI = average heart rate / distance in miles, interpreted within matched distance tier",
-        "distance_tier_framing": "Shorter 2.4-mile sessions and longer 3.17-mile sessions are reported separately because duration, steady-state settling, and run/walk composition change CEI behavior. Intentional max-speed intervals are a separate analytic track.",
-        "future_use": "Input layer for a future TrailGenic running biological-age compute tool.",
-        "claim_boundary": "Conditioning tracking only; not itself a biological-age measure."
+        "metric_formula": "HR-per-mile proxy = average heart rate / distance in miles",
+        "comparison_frame": "Sessions 1-5, Sessions 6-14, and Session 15 are interpreted as separate protocol contexts.",
+        "session_15_boundary": "Very humid max-speed intervals with walking recovery; not a steady-state comparison.",
+        "claim_boundary": "Conditioning tracking only. Corrected HR drift and HR-per-mile values are descriptive and do not establish metabolic flexibility, running economy, biological age, causality, or clinical efficacy."
       },
       "claims": [
-        "Within-tier CEI is the valid running economy signal; cross-tier CEI should not be compared directly.",
-        "The 2.4-mile tier showed declining HR drift from 7.0% to 2.7%, with a 4.7% aggregate mean.",
-        "The 3.17-mile tier held a lower aggregate HR drift mean of 2.8%.",
-        "Cadence and run/walk composition improved, supporting additional economy gains beyond CEI.",
-        "This dataset is a conditioning input layer for future compute work and does not compute or imply biological age."
+        "Corrected HR drift averaged 2.10% across all 15 sessions, with a median of 2.5% and a range from -3.0% to 6.8%.",
+        "Within the matched-distance steady set, corrected HR drift averaged 1.63% across Sessions 6-14.",
+        "Session 15 produced the highest anaerobic training effect in the record at 1.2 while corrected HR drift remained 2.0%; it is an interval session, not a steady-state economy test.",
+        "No causal or metabolic-flexibility claim is supported by the corrected HR drift series."
       ]
     }
   ]

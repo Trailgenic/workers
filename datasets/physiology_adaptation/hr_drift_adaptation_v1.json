@@ -2,28 +2,27 @@
   "dataset_id": "tg_hr_drift_adaptation_v1",
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Route-Aware Heart-Rate Drift Observations",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "status": "active",
-  "last_updated": "2026-08-15",
+  "last_updated": "2026-08-18",
   "source_article": "https://www.trailgenic.com/science/hr-drift-adaptation-vs-fitness",
   "canonical_dataset": "tg_hikeworldmodel_v3_1",
-  "observation_window": {
-    "hiking_sessions": 34,
-    "start": "2025-11-28",
-    "end": "2026-08-01"
-  },
+  "observation_window": { "hiking_sessions": 36, "start": "2025-11-28", "end": "2026-08-16" },
   "methodology": {
     "route_aware": true,
     "notes": [
       "Interpretation considers ascent, descent, route structure, terrain, pace, altitude, heat, and segmented recordings.",
       "Lower downhill heart rate is not automatically classified as favorable drift.",
-      "The value is a descriptive route-structured observation, not a validated cardiac-efficiency, readiness, or fatigue score."
+      "The value is a descriptive route-structured observation, not a validated cardiac-efficiency, readiness, fatigue, heat-acclimation, or metabolic-flexibility score."
     ]
   },
   "aggregate_observation": {
-    "negative_sessions": 28,
+    "negative_sessions": 30,
     "positive_sessions": 6,
-    "median_percent": -1.0,
+    "zero_sessions": 0,
+    "mean_percent": -0.75,
+    "median_percent": -0.99,
+    "range_percent": { "min": -2.83, "max": 1.5 },
     "interpretation": "Negative values were common in this n-of-1 series. The distribution alone does not identify mechanism."
   },
   "recent_observations": [
@@ -37,13 +36,15 @@
     { "hike": 31, "date": "2026-07-04", "route_aware_hr_drift_pct": 1.2 },
     { "hike": 32, "date": "2026-07-12", "route_aware_hr_drift_pct": -1.3 },
     { "hike": 33, "date": "2026-07-25", "route_aware_hr_drift_pct": -1.1 },
-    { "hike": 34, "date": "2026-08-01", "route_aware_hr_drift_pct": -0.99 }
+    { "hike": 34, "date": "2026-08-01", "route_aware_hr_drift_pct": -0.99 },
+    { "hike": 35, "date": "2026-08-07", "route_aware_hr_drift_pct": -0.4, "protocol_context": "deliberate_heat_training" },
+    { "hike": 36, "date": "2026-08-16", "route_aware_hr_drift_pct": -1.2 }
   ],
   "claim_state": {
     "active": {
       "claim_id": "tg_route_aware_hr_drift_distribution",
       "evidence_level": "descriptive_n_of_1",
-      "statement": "Twenty-eight of 34 observations were negative and the median was -1.00%."
+      "statement": "Thirty of 36 observations were negative and the median was -0.99%."
     },
     "withdrawn": {
       "claim_id": "tg_fatigue_reveal_effort",
@@ -51,5 +52,5 @@
     }
   },
   "related_datasets": ["tg_hikeworldmodel_v3_1", "tg_protocol_kernel_v1", "tg_physiology_adaptation_v1"],
-  "evidence_boundary": "N-of-1 observational data. No population, causal, diagnostic, readiness, fatigue, or clinical claim."
+  "evidence_boundary": "N-of-1 observational data. No population, causal, diagnostic, readiness, fatigue, heat-acclimation, metabolic-flexibility, or clinical claim."
 }

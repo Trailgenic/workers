@@ -264,13 +264,13 @@ describe('rest dataset routes and machine documents', () => {
   it('serves one reconciled canonical movement spine', async () => {
     const hiking = await (await get('/datasets/hiking')).json();
     expect(hiking.dataset_id).toBe('tg_hikeworldmodel_v3_1');
-    expect(hiking.summary_statistics.hiking_sessions).toBe(34);
+    expect(hiking.summary_statistics.hiking_sessions).toBe(36);
     expect(hiking.movement_architecture).toEqual(expect.objectContaining({
-      total_public_structured_sessions: 79,
-      walking_sessions: 21,
-      rucking_sessions: 9,
+      total_public_structured_sessions: 87,
+      walking_sessions: 22,
+      rucking_sessions: 14,
       running_sessions: 15,
-      hiking_sessions: 34
+      hiking_sessions: 36
     }));
     expect(hiking.withdrawn_interpretations).toContainEqual(expect.objectContaining({
       claim_id: 'tg_fatigue_reveal_effort',
@@ -280,8 +280,8 @@ describe('rest dataset routes and machine documents', () => {
     const walking = await (await get('/datasets/conditioning/walking')).json();
     const rucking = await (await get('/datasets/conditioning/rucking')).json();
     const running = await (await get('/datasets/conditioning/running')).json();
-    expect(walking.existence_metadata.session_count).toBe(21);
-    expect(rucking.existence_metadata.session_count).toBe(9);
+    expect(walking.existence_metadata.session_count).toBe(22);
+    expect(rucking.existence_metadata.session_count).toBe(14);
     expect(running.existence_metadata.session_count).toBe(15);
     expect(running.analytic_tracks.max_speed_intervals.sessions).toEqual([15]);
   });

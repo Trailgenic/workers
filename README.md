@@ -73,7 +73,7 @@ The public MCP tool inventory is generated from one canonical registry and curre
 | `tg.conditioning.running.get` | `start_date`, `end_date` (optional compatibility fields; supplying them returns an error) |
 | `tg.longevity.bioAge.compute` | `age`, `resting_hr`, `distance_mi`, `elevation_gain_ft`, `moving_time_min`, `avg_hr` (required); `max_hr`, `overnight_hrv`, `fasted` (optional) |
 
-The current public movement model covers 79 structured sessions: 21 walking, 9 rucking, 15 running, and 34 hiking sessions. HikeWorldModel™ v3.1 publishes canonical aggregates and selected scrubbed high-signal observations, not raw biometric telemetry. The strongest active hiking claim is lower average heart rate and device exercise load in the final 17 hikes without a decline in average duration or elevation gain; it remains an n-of-1 observational association.
+The current public movement model covers 87 structured sessions: 22 walking, 14 rucking, 15 running, and 36 hiking sessions. The conditioning datasets contain corrected heart-rate drift values as of August 18, 2026, and Hike 35 is explicitly identified as a single deliberate heat-training exposure—not proof of heat acclimation. HikeWorldModel™ v3.1.1 publishes canonical aggregates and selected scrubbed high-signal observations, not raw biometric telemetry. The final 18 hikes show lower average heart rate and device exercise load alongside modestly lower average duration and elevation gain, so the half-series comparison remains descriptive rather than causal.
 
 Large dataset tools support optional filters and bounded `limit` values so MCP clients do not need to ingest full high-record payloads.
 

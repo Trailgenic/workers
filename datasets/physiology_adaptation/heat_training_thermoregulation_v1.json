@@ -2,99 +2,63 @@
   "dataset_id": "tg_heat_training_thermoregulation_v1",
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Heat Training Thermoregulation Dataset",
-  "version": "v1",
+  "version": "1.1.0",
   "status": "active",
-  "last_updated": "2026-07-11",
-  "description": "Shell dataset module for TrailGenic physiology adaptation science modeling thermoregulatory adaptation from repeated exercise in hot environments.",
+  "last_updated": "2026-08-18",
+  "canonical_alignment": {
+    "source_dataset": "tg_hikeworldmodel_v3_1",
+    "observation_window": "One deliberate heat-training exposure: Hike 35 on 2026-08-07.",
+    "claim_boundary": "The observation supports single-session heat tolerance only. It does not establish heat acclimation, core-temperature control, plasma-volume expansion, sweating adaptation, causality, or population effect."
+  },
+  "description": "Current TrailGenic thermoregulation module anchored to Hike 35, a deliberate heat-training session. General heat-acclimation mechanisms are scientific context, not measured outcomes in this n-of-1 observation.",
   "modules": [],
+  "selected_observations": [
+    {
+      "hike": 35,
+      "date": "2026-08-07",
+      "name": "Monserate Mountain Loop",
+      "protocol_context": "deliberate_heat_training",
+      "distance_miles": 6.25,
+      "elevation_gain_ft": 1601,
+      "duration_min": 129,
+      "peak_elevation_ft": 1554,
+      "temperature_f": { "average": 97, "maximum": 100 },
+      "avg_hr_bpm": 128,
+      "max_hr_bpm": 155,
+      "route_aware_hr_drift_pct": -0.4,
+      "aerobic_training_effect": 2.6,
+      "anaerobic_training_effect": 0,
+      "exercise_load": 45,
+      "overnight_hrv_ms": { "pre": 38, "post_1": 39 },
+      "resting_hr_bpm": { "pre": 58, "post_1": 55 },
+      "interpretation": "The deliberate thermal dose was completed without observed cardiovascular or next-night autonomic destabilization. One exposure does not prove acclimation."
+    }
+  ],
+  "claim_state": {
+    "active": {
+      "claim_id": "tg_single_session_heat_tolerance",
+      "evidence_level": "single_session_descriptive",
+      "statement": "Hike 35 was completed at 97°F average and 100°F maximum recorded temperature with -0.4% route-aware HR drift, zero anaerobic training effect, and stable next-night HRV."
+    },
+    "not_established": [
+      "heat acclimation",
+      "core-temperature reduction",
+      "plasma-volume expansion",
+      "earlier sweating onset",
+      "improved population-level heat resilience"
+    ]
+  },
   "records": [
     {
-      "mechanism": "Heat acts as the dominant environmental cardiac-cost driver after adaptation control",
-      "stimulus": {
-        "hiking_sessions": 22,
-        "temperature_range_f": "37-97",
-        "cardiac_cost_per_degree_f_bpm": 0.11,
-        "hot_chaparral_sessions": [
-          "Pleasants Peak",
-          "Hagador"
-        ],
-        "comparison_context": "hot chaparral sessions versus cool alpine sessions"
-      },
-      "physiological_response": [
-        "Average heart rate increased by approximately 0.11 bpm per \u00b0F after controlling for adaptation.",
-        "Hot chaparral routes produced elevated load and lower Day-2 HRV compared with cool alpine efforts.",
-        "Thermal exposure remained a stronger acute cardiac-cost driver than altitude once adaptation state was considered."
-      ],
-      "adaptation_outcomes": [
-        "Heat becomes a primary progression variable for load management.",
-        "Cool alpine routes can produce higher recovery quality despite greater altitude and elevation gain.",
-        "Thermoregulatory cost should be separated from terrain and altitude cost in future modeling."
+      "mechanism": "Heat stress increases thermoregulatory and cardiovascular demand during endurance exercise.",
+      "scientific_context": [
+        "Repeated, appropriately dosed heat exposure can produce thermoregulatory adaptations.",
+        "Those adaptations require repeated observations or direct physiological measurement; they cannot be inferred from one session."
       ],
       "supporting_science": [
-        {
-          "citation": "P\u00e9riard et al. 2015",
-          "finding": "Heat stress increases thermoregulatory and cardiovascular strain during exercise."
-        },
-        {
-          "citation": "Sawka et al. 2011",
-          "finding": "Heat adaptation improves physiological tolerance but does not eliminate the cardiac cost of thermal load."
-        }
-      ]
-    },
-    {
-      "mechanism": "Heat acclimation through repeated endurance exposure",
-      "stimulus": {
-        "exercise_type": "aerobic endurance training",
-        "environment": "warm to hot conditions",
-        "temperature": "25-40C"
-      },
-      "physiological_response": [
-        "increased plasma volume expansion",
-        "earlier onset of sweating",
-        "increased sweat rate",
-        "improved skin blood flow regulation"
-      ],
-      "adaptation_outcomes": [
-        "improved thermoregulatory efficiency",
-        "lower core temperature during exercise",
-        "reduced cardiovascular strain",
-        "improved endurance performance in heat"
-      ],
-      "supporting_science": [
-        {
-          "citation": "P\u00e9riard et al. 2015",
-          "finding": "Heat acclimation improves thermoregulatory control and cardiovascular stability during exercise in hot environments."
-        },
-        {
-          "citation": "Sawka et al. 2011",
-          "finding": "Heat adaptation improves sweating efficiency and reduces physiological strain during exercise."
-        }
-      ]
-    },
-    {
-      "mechanism": "Cardiovascular adaptations to repeated heat stress",
-      "stimulus": {
-        "exercise_type": "repeated endurance sessions in warm environments",
-        "duration_minutes": "60-180",
-        "temperature": "25-35C"
-      },
-      "physiological_response": [
-        "plasma volume expansion",
-        "improved stroke volume maintenance",
-        "reduced heart rate at submaximal workloads",
-        "improved peripheral circulation"
-      ],
-      "adaptation_outcomes": [
-        "greater cardiovascular stability",
-        "reduced heart rate drift in warm environments",
-        "improved endurance tolerance",
-        "enhanced heat resilience"
-      ],
-      "supporting_science": [
-        {
-          "citation": "Lorenzo et al. 2010",
-          "finding": "Heat acclimation improves cardiovascular function and endurance performance."
-        }
+        { "citation": "Périard et al. 2015", "finding": "Heat stress increases thermoregulatory and cardiovascular strain during exercise, and repeated exposure can support acclimation." },
+        { "citation": "Sawka et al. 2011", "finding": "Heat adaptation can improve physiological tolerance but does not eliminate the cardiovascular cost of thermal load." },
+        { "citation": "Lorenzo et al. 2010", "finding": "Repeated heat acclimation can improve cardiovascular function and endurance performance under studied conditions." }
       ]
     }
   ]

@@ -2,10 +2,10 @@
   "dataset_id": "tg_physiology_adaptation_v1",
   "dataset_family": "physiology_adaptation",
   "title": "TrailGenic Physiology Adaptation Dataset",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "status": "active",
-  "last_updated": "2026-08-15",
-  "canonical_policy": "Module-level historical observations remain accessible, but HikeWorldModel v3.1 controls current movement counts and active claim state. Module status and canonical_alignment define whether a record is current or historical.",
+  "last_updated": "2026-08-18",
+  "canonical_policy": "Module-level historical observations remain accessible, but HikeWorldModel v3.1.1 and the conditioning v1.2 datasets control current movement counts, corrected HR-drift values, and active claim state. Module status and canonical_alignment define whether a record is current or historical.",
   "description": "Active module catalog for TrailGenic physiology adaptation models. The parent dataset lists populated modules; module endpoints contain the detailed public records.",
   "modules": [
     {
