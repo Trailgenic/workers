@@ -129,10 +129,10 @@ const hikingCall = await postMcp("tools/call", { name: "tg.hiking.worldModel.get
 const hikingModel = hikingCall.json.result.structuredContent;
 assert(hikingModel.dataset_id === "tg_hikeworldmodel_v3_1", "hiking world model tool should return tg_hikeworldmodel_v3_1");
 assert(hikingModel.privacy_scope?.data_granularity === "aggregate_plus_selected_sessions", "hiking world model should publish aggregates plus selected sessions");
-assert(hikingModel.summary_statistics?.hiking_sessions === 34, "hiking world model should report 34 hiking sessions");
-assert(hikingModel.summary_statistics?.total_distance_miles === 371.95, "hiking world model should report 371.95 miles");
-assert(hikingModel.summary_statistics?.total_elevation_gain_ft === 142532, "hiking world model should report 142532 ft gain");
-assert(hikingModel.movement_architecture?.total_public_structured_sessions === 79, "movement architecture should report 79 structured sessions");
+assert(hikingModel.summary_statistics?.hiking_sessions === 36, "hiking world model should report 36 hiking sessions");
+assert(hikingModel.summary_statistics?.total_distance_miles === 387.45, "hiking world model should report 387.45 miles");
+assert(hikingModel.summary_statistics?.total_elevation_gain_ft === 148157, "hiking world model should report 148157 ft gain");
+assert(hikingModel.movement_architecture?.total_public_structured_sessions === 87, "movement architecture should report 87 structured sessions");
 assert(hikingModel.withdrawn_interpretations?.some((claim) => claim.claim_id === "tg_fatigue_reveal_effort" && claim.status === "withdrawn"), "hiking model should withdraw fatigue-reveal interpretation");
 const hikingRoute = await getJson("/datasets/hiking");
 assert(hikingRoute.response.ok && hikingRoute.json.dataset_id === "tg_hikeworldmodel_v3_1", "/datasets/hiking should return tg_hikeworldmodel_v3_1");
@@ -149,7 +149,8 @@ const indexCall = await postMcp("tools/call", { name: "tg.datasets.index.get", a
 assert(indexCall.json.result.structuredContent.datasets?.length > 0, "tg.datasets.index.get should return catalog datasets");
 
 const foundationCall = await postMcp("tools/call", { name: "tg.longevity.foundationSessions.get", arguments: {} });
-assert(foundationCall.json.result.structuredContent.sessions?.length === 14, "foundation sessions tool should return 14 sessions");
+assert(foundationCall.json.result.structuredContent.phase_summary?.total_sessions === 22, "foundation compatibility tool should align to 22 sessions");
+assert(foundationCall.json.result.structuredContent.status === "compatibility_record", "foundation compatibility tool should identify its bounded status");
 
 const gearIntelDataset = await getJson("/datasets/gear/intel");
 assert(gearIntelDataset.response.ok, "/datasets/gear/intel should return JSON");
@@ -177,6 +178,8 @@ for (const check of conditioningChecks) {
   const route = await getJson(check.route);
   assert(route.response.ok && route.json.dataset_id === check.datasetId, `${check.route} should return ${check.datasetId}`);
 }
+const runningRoute = await getJson("/datasets/conditioning/running");
+assert(runningRoute.json.selected_sessions?.[0]?.hr_drift_pct === 2, "running Session 15 should report corrected 2.0% HR drift");
 
 const bioAgeCall = await postMcp("tools/call", {
   name: "tg.longevity.bioAge.compute",

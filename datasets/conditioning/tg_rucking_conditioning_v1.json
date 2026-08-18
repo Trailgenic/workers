@@ -2,10 +2,11 @@
   "dataset_id": "tg_rucking_conditioning_v1",
   "dataset_family": "conditioning",
   "title": "TrailGenic Rucking Conditioning Dataset",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "status": "active",
-  "last_updated": "2026-08-15",
-  "description": "Canonical aggregate plus selected-session TrailGenic conditioning module for flat fasted rucking economy under progressive load. It does not expose raw telemetry.",
+  "last_updated": "2026-08-18",
+  "description": "Canonical aggregate plus selected-session TrailGenic conditioning module for flat fasted rucking under progressive external load. It does not expose raw telemetry.",
+  "correction_notice": "Heart-rate drift values were corrected on 2026-08-18. Prior drift values and derived interpretations are superseded. Drift is descriptive and is not a measure of metabolic flexibility.",
   "privacy_scope": {
     "data_granularity": "aggregate_plus_selected_sessions",
     "excluded_data": [
@@ -20,82 +21,72 @@
     ]
   },
   "existence_metadata": {
-    "session_count": 9,
-    "date_range": {
-      "start": "2026-04-21",
-      "end": "2026-07-14"
-    },
+    "session_count": 14,
+    "date_range": { "start": "2026-04-21", "end": "2026-08-18" },
     "training_state": "fasted",
     "terrain_context": "flat",
-    "load_progression_lb": {
-      "start": 10,
-      "end": 15,
-      "relative_increase_percent": 50
-    },
-    "load_as_bodyweight_percent_range": "approximately 7-10%"
+    "load_progression_lb": { "start": 10, "end": 20, "relative_increase_percent": 100 },
+    "load_as_bodyweight_percent_range": "approximately 7-14%"
   },
   "selected_sessions": [
     {
-      "session": 9,
-      "date": "2026-07-14",
-      "load_lb": 15,
-      "temperature_f": 93,
+      "session": 14,
+      "date": "2026-08-18",
+      "load_lb": 20,
+      "distance_miles": 3.18,
+      "duration_min": 59.6,
+      "temperature_f": 90,
       "electrolytes": false,
-      "avg_hr_bpm": 111,
-      "cei_hr_per_mile": 34.6,
-      "load_adjusted_efficiency": 31.3,
-      "zone_1_pct": 95,
-      "hr_drift_pct": 8.0,
-      "estimated_sweat_loss_ml": 821,
+      "avg_hr_bpm": 115,
+      "max_hr_bpm": 134,
+      "hr_per_mile_proxy": 36.2,
+      "load_adjusted_hr_per_mile_proxy": 31.8,
+      "hr_drift_pct": 1.3,
+      "estimated_sweat_loss_ml": 813,
+      "zone_1_pct": 84,
+      "zone_2_pct": 16,
       "rpe": 1,
       "anaerobic_training_effect": 0,
       "recovery_observation": "ready",
-      "interpretation": "Descriptive single-session result under heat and no-electrolyte context."
+      "interpretation": "Descriptive result at the highest recorded load; it does not isolate the effects of load, heat, sleep, hydration, or calendar time."
     }
   ],
   "records": [
     {
-      "mechanism": "Load-adjusted rucking efficiency held flat while external load increased, indicating maintained economy under added load.",
+      "mechanism": "The load-adjusted HR-per-mile proxy normalizes average heart rate for distance and carried load; it is a descriptive comparison aid rather than a validated economy score.",
       "aggregate_finding": {
-        "metric": "load-adjusted efficiency",
-        "definition": "heart rate divided by distance and relative load factor",
-        "load_adjusted_efficiency_range": {
-          "min": 30,
-          "max": 32
-        },
-        "load_adjusted_efficiency_mean": 31.1,
-        "load_progression_signal": "Load increased 50% from 10 lb to 15 lb while adjusted efficiency stayed approximately flat.",
-        "raw_cei_context": "Raw CEI rose to 35.6 at 15 lb, masking the held economy; load-adjusted efficiency is the true signal."
+        "metric": "Load-Adjusted HR-per-Mile Proxy",
+        "definition": "average heart rate divided by distance and relative load factor",
+        "load_adjusted_proxy": { "mean": 31.8, "min": 30.2, "max": 35.2 },
+        "hr_per_mile_proxy": { "mean": 35.1, "min": 32.8, "max": 39.4 },
+        "load_progression_signal": "External load increased from 10 lb to 20 lb while the load-adjusted proxy remained descriptive of the observed sessions.",
+        "interpretation": "The normalization reduces the mechanical effect of added load but does not prove improved economy or isolate causality."
       },
       "summary_statistics": {
-        "session_count": 9,
-        "load_range_lb": {
-          "min": 10,
-          "max": 15
+        "session_count": 14,
+        "load_range_lb": { "min": 10, "max": 20 },
+        "average_hr_bpm_mean": 111.4,
+        "corrected_hr_drift_percent": {
+          "mean": 1.27,
+          "median": 1.0,
+          "min": -2.0,
+          "max": 4.0,
+          "values_by_session": [3.0, 1.0, 0.0, 1.0, 2.0, -2.0, 0.0, 1.0, 2.0, 3.5, 0.5, 0.5, 4.0, 1.3]
         },
-        "load_adjusted_efficiency_mean": 31.1,
-        "load_adjusted_efficiency_typical_band": "approximately 30-32",
-        "average_hr_bpm": 108,
-        "average_hr_range_bpm": { "min": 104, "max": 113 },
-        "zone_1_pct_approx": 91,
-        "anaerobic_training_effect": "zero in all 9 sessions",
-        "rpe": "1 in all 9 sessions",
-        "hr_drift_percent_range": {
-          "min": 6.0,
-          "max": 8.5,
-          "direction": "all positive"
-        }
+        "recovery_observation": "ready in all 14 sessions",
+        "rpe": "1 in all 14 sessions",
+        "anaerobic_training_effect": "zero in all 14 sessions"
       },
       "methodology": {
-        "metric_formula": "load-adjusted efficiency = average heart rate / (distance miles x (1 + load lb / bodyweight lb))",
-        "purpose": "Isolates economy-under-load by normalizing cardiovascular cost for carried load relative to bodyweight.",
-        "caveat": "The signal should sharpen as loads reach 20-30% of bodyweight.",
-        "claim_boundary": "Conditioning tracking only; not a biological-age measure."
+        "metric_formula": "load-adjusted HR-per-mile proxy = average heart rate / (distance miles × (1 + load lb / bodyweight lb))",
+        "purpose": "Describes average cardiovascular cost after a simple carried-load normalization.",
+        "caveat": "The proxy is not validated and cannot isolate external load from temperature, pace, hydration, sleep, or accumulated training.",
+        "claim_boundary": "Conditioning tracking only. HR drift and proxy values do not establish metabolic flexibility, biological age, causality, or clinical efficacy."
       },
       "claims": [
-        "Rucking economy was maintained under a 50% external-load increase from 10 lb to 15 lb.",
-        "Raw CEI alone overstates cardiovascular cost because it does not account for carried load.",
-        "Positive HR drift remained present across the aggregate ruck block, ranging from +6.0% to +8.5%.",
+        "External load progressed from 10 lb to 20 lb across 14 recorded sessions.",
+        "Corrected HR drift averaged 1.27%, with a median of 1.0% and a range from -2.0% to 4.0%.",
+        "All 14 sessions were recorded as recovery-ready with RPE 1 and zero anaerobic training effect.",
         "This dataset is a conditioning signal and does not compute or imply biological age."
       ]
     }

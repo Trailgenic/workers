@@ -2,10 +2,11 @@
   "dataset_id": "tg_walking_conditioning_v1",
   "dataset_family": "conditioning",
   "title": "TrailGenic Walking Conditioning Dataset",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "status": "active",
-  "last_updated": "2026-08-15",
-  "description": "Canonical aggregate plus selected-session TrailGenic conditioning module for standardized Foundation walking economy. It does not expose raw telemetry.",
+  "last_updated": "2026-08-18",
+  "description": "Canonical aggregate plus selected-session TrailGenic conditioning module for standardized Foundation walking. It does not expose raw telemetry.",
+  "correction_notice": "Heart-rate drift values were corrected on 2026-08-18. Prior drift values and derived interpretations are superseded. Drift is descriptive and is not a measure of metabolic flexibility.",
   "privacy_scope": {
     "data_granularity": "aggregate_plus_selected_sessions",
     "excluded_data": [
@@ -20,72 +21,69 @@
     ]
   },
   "existence_metadata": {
-    "session_count": 21,
-    "date_range": {
-      "start": "2026-03-03",
-      "end": "2026-07-16"
-    },
+    "session_count": 22,
+    "date_range": { "start": "2026-03-03", "end": "2026-08-14" },
     "protocol_context": "Foundation protocol",
     "training_state": "fasted",
     "terrain_context": "flat",
-    "distance_standardization": "standardized approximately 3.17 miles"
+    "distance_standardization": "approximately 3.17 miles"
   },
   "selected_sessions": [
     {
-      "session": 21,
-      "date": "2026-07-16",
-      "temperature_f": 93,
+      "session": 22,
+      "date": "2026-08-14",
+      "distance_miles": 3.17,
+      "duration_min": 59,
+      "temperature_f": 88,
       "electrolytes": false,
-      "distance_miles_approx": 3.15,
-      "duration_min": 58.25,
-      "pace_min_per_mile": "18:30",
-      "avg_hr_bpm": 110,
-      "cei_hr_per_mile": 34.9,
-      "hr_drift_pct": 6.5,
-      "estimated_sweat_loss_ml": 775,
-      "zone_1_pct": 96,
+      "avg_hr_bpm": 107,
+      "max_hr_bpm": 125,
+      "hr_per_mile_proxy": 33.8,
+      "hr_drift_pct": 4.0,
+      "estimated_sweat_loss_ml": 635,
+      "zone_1_pct": 98,
+      "zone_2_pct": 2,
       "rpe": 1,
       "anaerobic_training_effect": 0,
       "recovery_observation": "ready",
-      "interpretation": "Descriptive single-session result under heat and no-electrolyte context."
+      "interpretation": "Descriptive single-session result under the recorded protocol and environmental context."
     }
   ],
   "records": [
     {
-      "mechanism": "Cardiac Efficiency Index improved across standardized fasted flat walking, indicating lower cardiovascular cost per mile at matched distance.",
+      "mechanism": "At approximately matched distance, the HR-per-mile proxy describes average cardiovascular cost per mile without establishing a causal fitness mechanism.",
       "aggregate_finding": {
-        "metric": "Cardiac Efficiency Index (CEI)",
-        "definition": "heart rate per mile",
-        "baseline_cei_hr_per_mile": 34.7,
-        "best_observed_cei_hr_per_mile": 30.3,
+        "metric": "HR-per-Mile Proxy",
+        "definition": "average heart rate divided by distance in miles",
+        "baseline_hr_per_mile": 34.7,
+        "best_observed_hr_per_mile": 30.3,
         "best_observed_session": 16,
-        "interpretation": "Lower CEI at a comparable distance is consistent with improved walking economy in this subject; context and repeatability remain necessary."
+        "interpretation": "Lower values at comparable distance are consistent with lower average cardiovascular cost in this subject; temperature, pace, sleep, hydration, and repeatability remain relevant."
       },
       "summary_statistics": {
-        "cei_overall_mean_hr_per_mile": 33.3,
-        "cei_range_hr_per_mile": {
-          "min": 30.3,
-          "max": 35.3
+        "session_count": 22,
+        "hr_per_mile_proxy": { "mean": 33.3, "min": 30.3, "max": 35.3 },
+        "corrected_hr_drift_percent": {
+          "mean": 2.07,
+          "median": 2.25,
+          "min": -3.0,
+          "max": 6.5,
+          "values_by_session": [-3.0, 2.0, -1.5, 3.0, 3.5, 2.5, 2.0, 4.0, 2.0, 2.5, 0.5, 2.0, 2.5, 1.5, -1.5, -0.5, 3.5, 2.5, 5.5, 2.0, 6.5, 4.0]
         },
-        "hr_drift_percent": {
-          "mean": 4.2,
-          "min": -1.5,
-          "max": 8.9,
-          "interpretation": "Small positive drift is normal for flat Zone-1 walking."
-        },
-        "average_hr_bpm_mean": 106,
-        "resting_hr_bpm_trend": "trending down to 51-54"
+        "average_hr_bpm_mean": 105.6,
+        "recovery_observation": "ready in all 22 sessions",
+        "rpe": "1 in all 22 sessions",
+        "anaerobic_training_effect": "zero in all 22 sessions"
       },
       "methodology": {
-        "metric_formula": "CEI = average heart rate / distance in miles",
-        "comparison_frame": "longitudinal comparison across 21 standardized walking sessions",
-        "control_frame": "fasted, flat Foundation walking at approximately matched 3.17-mile distance",
-        "claim_boundary": "Conditioning tracking only; not a biological-age measure."
+        "metric_formula": "HR-per-mile proxy = average heart rate / distance in miles",
+        "comparison_frame": "longitudinal comparison across 22 fasted flat walking sessions at approximately matched distance",
+        "claim_boundary": "Conditioning tracking only. HR drift and HR-per-mile are descriptive and do not establish metabolic flexibility, biological age, causality, or clinical efficacy."
       },
       "claims": [
-        "The best observed CEI was 30.3 HR/mi versus a 34.7 baseline at matched distance.",
-        "The aggregate CEI distribution remained in a tight 30.3-35.3 HR/mi range across the block.",
-        "All 21 published sessions were recorded as recovery-ready; this is an observational label, not clinical clearance.",
+        "The best observed HR-per-mile proxy was 30.3 versus a 34.7 baseline at approximately matched distance.",
+        "Corrected HR drift averaged 2.07%, with a median of 2.25% and a range from -3.0% to 6.5%.",
+        "All 22 published sessions were recorded as recovery-ready; this is an observational label, not clinical clearance.",
         "This dataset is a conditioning signal and does not compute or imply biological age."
       ]
     }

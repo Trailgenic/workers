@@ -2,9 +2,9 @@
   "dataset_id": "tg_hikeworldmodel_v3_1",
   "dataset_family": "TG Dataset Family — Hiking World Model",
   "title": "TrailGenic HikeWorldModel™ v3.1",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "status": "active",
-  "last_updated": "2026-08-05",
+  "last_updated": "2026-08-18",
   "canonical_url": "https://www.trailgenic.com/hiking",
   "scope": "Canonical public aggregate plus selected high-signal session records. This is an n-of-1 observational record, not a clinical or population model.",
   "privacy_scope": {
@@ -16,95 +16,97 @@
       "unpublished detailed session rows"
     ]
   },
-  "observation_window": {
-    "start": "2025-11-28",
-    "end": "2026-08-01"
-  },
+  "observation_window": { "start": "2025-11-28", "end": "2026-08-16" },
   "summary_statistics": {
-    "hiking_sessions": 34,
-    "total_distance_miles": 371.95,
-    "total_elevation_gain_ft": 142532,
-    "total_field_duration_min": 11808.4,
-    "first_17_vs_final_17": {
-      "average_hr_bpm": { "first": 127.9, "final": 124.0 },
-      "garmin_exercise_load": { "first": 127.5, "final": 64.6 },
-      "average_duration_min_approx": { "first": 340, "final": 354 },
-      "average_elevation_gain_ft_approx": { "first": 4136, "final": 4248 }
+    "hiking_sessions": 36,
+    "total_distance_miles": 387.45,
+    "total_elevation_gain_ft": 148157,
+    "total_field_duration_min": 12237.4,
+    "first_18_vs_final_18": {
+      "average_hr_bpm": { "first": 127.9, "final": 124.1 },
+      "garmin_exercise_load": { "first": 125.8, "final": 61.3 },
+      "average_duration_min": { "first": 341.7, "final": 338.2 },
+      "average_elevation_gain_ft": { "first": 4185, "final": 4046 },
+      "interpretation": "Average heart rate and device exercise load were lower in the final half, while average duration and elevation gain were also modestly lower. The comparison is descriptive and does not isolate adaptation from route mix, environment, pacing, or calendar effects."
     },
     "session_number_correlations": {
-      "average_hr_bpm_r": -0.465,
-      "garmin_exercise_load_r": -0.569
+      "average_hr_bpm_r": -0.398,
+      "garmin_exercise_load_r": -0.571
     },
     "route_aware_hr_drift": {
-      "negative_sessions": 28,
+      "negative_sessions": 30,
       "positive_sessions": 6,
-      "median_percent": -1.0
+      "zero_sessions": 0,
+      "mean_percent": -0.75,
+      "median_percent": -0.99,
+      "range_percent": { "min": -2.83, "max": 1.5 }
     },
     "post_hike_hrv_ms": {
-      "observations": 33,
-      "first_period_mean": 28.9,
-      "final_period_mean": 32.3,
-      "session_number_correlation_r": 0.282,
-      "p_value": 0.111,
-      "interpretation": "Directional but not persuasive in this n-of-1 series. Starting-value-coupled HRV deltas are retired."
+      "observations": 35,
+      "first_period_mean": 29.1,
+      "final_period_mean": 32.4,
+      "session_number_correlation_r": 0.296,
+      "p_value": 0.084,
+      "interpretation": "Directional but not statistically persuasive in this n-of-1 series. Starting-value-coupled HRV deltas remain retired."
     }
   },
   "movement_architecture": {
-    "total_public_structured_sessions": 79,
-    "walking_sessions": 21,
-    "rucking_sessions": 9,
+    "total_public_structured_sessions": 87,
+    "walking_sessions": 22,
+    "rucking_sessions": 14,
     "running_sessions": 15,
-    "hiking_sessions": 34,
+    "hiking_sessions": 36,
     "subject_age_years": 53
   },
   "methodology": {
     "design": "Longitudinal n-of-1 observational field dataset.",
     "route_aware_hr_drift": "Interpreted with ascent, descent, route structure, terrain, pace, altitude, heat, and segmented recordings in view; lower downhill heart rate is not automatically favorable drift.",
-    "comparison_frame": "First 17 versus final 17 hikes for stable half-series comparisons.",
-    "evidence_boundary": "Associations describe this subject and observation window. They do not establish population effects, causal mechanisms, clinical efficacy, readiness, fatigue, or cardiac efficiency."
+    "comparison_frame": "First 18 versus final 18 hikes for a stable half-series comparison.",
+    "evidence_boundary": "Associations describe this subject and observation window. They do not establish population effects, causal mechanisms, heat acclimation, clinical efficacy, readiness, fatigue, or cardiac efficiency."
   },
   "selected_sessions": [
-    { "hike": 24, "date": "2026-05-30", "name": "Mount Baldy — Ski Hut / Devils Backbone", "peak_ft": 10088, "avg_hr_bpm": 127, "exercise_load": 71, "route_aware_hr_drift_pct": 1.0 },
-    { "hike": 25, "date": "2026-06-06", "name": "Mount Baldy — Ski Hut / Devils Backbone", "peak_ft": 10079, "avg_hr_bpm": 122, "exercise_load": 71, "route_aware_hr_drift_pct": 1.0 },
-    { "hike": 26, "date": "2026-06-13", "name": "Mount Baldy and Mount Harwood", "peak_ft": 10077, "avg_hr_bpm": 125, "exercise_load": 85, "route_aware_hr_drift_pct": -1.8 },
-    { "hike": 27, "date": "2026-06-20", "name": "Mount Baldy", "peak_ft": 10091, "avg_hr_bpm": 117, "exercise_load": 62, "route_aware_hr_drift_pct": -1.9 },
+    { "hike": 24, "date": "2026-05-30", "name": "Mount Baldy — Ski Hut / Devil's Backbone", "peak_ft": 10088, "avg_hr_bpm": 127, "exercise_load": 71, "route_aware_hr_drift_pct": 1.0 },
+    { "hike": 25, "date": "2026-06-06", "name": "Mount Baldy — Ski Hut / Devil's Backbone", "peak_ft": 10079, "avg_hr_bpm": 122, "exercise_load": 71, "route_aware_hr_drift_pct": 1.0 },
+    { "hike": 26, "date": "2026-06-13", "name": "Mount Baldy and Mount Harwood", "peak_ft": 10077, "avg_hr_bpm": 125.1, "exercise_load": 85, "route_aware_hr_drift_pct": -1.8 },
+    { "hike": 27, "date": "2026-06-20", "name": "Mount Baldy", "peak_ft": 10091, "avg_hr_bpm": 117.5, "exercise_load": 62, "route_aware_hr_drift_pct": -1.9 },
     { "hike": 28, "date": "2026-06-27", "name": "North Mount Elbert", "peak_ft": 14497, "avg_hr_bpm": 127, "exercise_load": 59, "route_aware_hr_drift_pct": -1.3 },
     { "hike": 29, "date": "2026-06-28", "name": "Manitou Incline", "peak_ft": 8567, "avg_hr_bpm": 131, "exercise_load": 58, "route_aware_hr_drift_pct": -1.0 },
     { "hike": 30, "date": "2026-07-01", "name": "The Crags / Pikes Peak", "peak_ft": 14116, "avg_hr_bpm": 123, "exercise_load": 58, "route_aware_hr_drift_pct": -1.4 },
-    { "hike": 31, "date": "2026-07-04", "name": "Wheeler Peak", "peak_ft": 13154, "avg_hr_bpm": 123, "exercise_load": 53, "route_aware_hr_drift_pct": 1.2, "interpretation": "Observed positive drift; the prior fatigue-reveal explanation is withdrawn because it was not validated." },
+    { "hike": 31, "date": "2026-07-04", "name": "Wheeler Peak", "peak_ft": 13154, "avg_hr_bpm": 123.1, "exercise_load": 53, "route_aware_hr_drift_pct": 1.2, "interpretation": "Observed positive drift; the prior fatigue-reveal explanation remains withdrawn because mechanism was not validated." },
     { "hike": 32, "date": "2026-07-12", "name": "Mount Baldy", "peak_ft": 10093, "avg_hr_bpm": 123, "exercise_load": 56, "route_aware_hr_drift_pct": -1.3 },
     { "hike": 33, "date": "2026-07-25", "name": "Mount Baldy", "peak_ft": 10093, "avg_hr_bpm": 124, "exercise_load": 60, "route_aware_hr_drift_pct": -1.1 },
-    { "hike": 34, "date": "2026-08-01", "name": "Cucamonga Peak", "peak_ft": 8843, "distance_miles": 11.58, "elevation_gain_ft": 4229, "duration_min": 369, "temperature_f": 93, "avg_hr_bpm": 126, "exercise_load": 58, "route_aware_hr_drift_pct": -0.99, "overnight_hrv_ms": { "pre": 30, "post_1": 34, "post_2": 41 }, "rem_sleep_min": { "pre": 11, "post_1": 55, "post_2": 97 }, "breath_acetone_ppm": { "start": 1.9, "end": 3.9 }, "interpretation": "Descriptive single-session response only." }
+    { "hike": 34, "date": "2026-08-01", "name": "Cucamonga Peak", "peak_ft": 8843, "distance_miles": 11.58, "elevation_gain_ft": 4229, "duration_min": 369, "average_temperature_f": 80, "maximum_temperature_f": 93, "avg_hr_bpm": 126, "exercise_load": 58, "route_aware_hr_drift_pct": -0.99, "overnight_hrv_ms": { "pre": 30, "post_1": 34, "post_2": 41 }, "rem_sleep_min": { "pre": 11, "post_1": 55, "post_2": 97 }, "breath_acetone_ppm": { "start": 1.9, "end": 3.9 }, "interpretation": "Descriptive single-session response only." },
+    { "hike": 35, "date": "2026-08-07", "name": "Monserate Mountain Loop", "protocol_context": "deliberate_heat_training", "peak_ft": 1554, "distance_miles": 6.25, "elevation_gain_ft": 1601, "duration_min": 129, "average_temperature_f": 97, "maximum_temperature_f": 100, "avg_hr_bpm": 128, "max_hr_bpm": 155, "exercise_load": 45, "route_aware_hr_drift_pct": -0.4, "overnight_hrv_ms": { "pre": 38, "post_1": 39, "post_2": null }, "rem_sleep_min": { "pre": 104, "post_1": 34, "post_2": null }, "breath_acetone_ppm": { "start": 1.9, "end": 2.5 }, "interpretation": "One deliberate heat-training exposure was completed with controlled recorded cardiovascular strain. This supports single-session heat tolerance, not heat acclimation." },
+    { "hike": 36, "date": "2026-08-16", "name": "Mount Baldy — Ski Hut / Devil's Backbone", "protocol_context": "standard_hiking", "peak_ft": 10079, "distance_miles": 9.25, "elevation_gain_ft": 4024, "duration_min": 300, "average_temperature_f": 77, "maximum_temperature_f": 99, "avg_hr_bpm": 126, "max_hr_bpm": 148, "exercise_load": 57, "route_aware_hr_drift_pct": -1.2, "overnight_hrv_ms": { "pre": 35, "post_1": 28, "post_2": 32 }, "rem_sleep_min": { "pre": 28, "post_1": 26, "post_2": 1 }, "breath_acetone_ppm": { "start": 1.7, "end": 6.2 }, "interpretation": "Strong in-effort economy coexisted with a two-night recovery cost; performance capacity and recovery response are reported separately." }
   ],
   "claims": [
     {
       "claim_id": "tg_longitudinal_hiking_economy",
-      "statement": "Average heart rate and device exercise load were lower in the final 17 hikes while average duration and elevation gain did not decline.",
+      "statement": "Average heart rate and device exercise load were lower in the final 18 hikes, alongside modestly lower average duration and elevation gain.",
       "evidence_level": "n_of_1_observational",
-      "status": "supported_within_dataset"
+      "status": "supported_with_exposure_caveat",
+      "boundary": "The half-series comparison does not isolate training adaptation from route mix, environment, pace, or calendar effects."
     },
     {
       "claim_id": "tg_route_aware_hr_drift_distribution",
-      "statement": "Twenty-eight of 34 route-aware observations were negative and the median was -1.00%.",
+      "statement": "Thirty of 36 route-aware observations were negative and the median was -0.99%.",
       "evidence_level": "descriptive",
       "status": "supported_within_dataset",
       "boundary": "Not a validated cardiac-efficiency, readiness, or fatigue score."
+    },
+    {
+      "claim_id": "tg_single_session_heat_tolerance",
+      "statement": "Hike 35 was a deliberate heat-training exposure completed with -0.4% route-aware HR drift at 97°F average and 100°F maximum recorded temperature.",
+      "evidence_level": "single_session_descriptive",
+      "status": "supported_within_dataset",
+      "boundary": "Does not establish heat acclimation, core-temperature control, plasma-volume expansion, or population effect."
     }
   ],
   "withdrawn_interpretations": [
-    {
-      "claim_id": "tg_fatigue_reveal_effort",
-      "status": "withdrawn",
-      "reason": "The Wheeler Peak observation did not validate fatigue as the mechanism for positive heart-rate drift."
-    }
+    { "claim_id": "tg_fatigue_reveal_effort", "status": "withdrawn", "reason": "The Wheeler Peak observation did not validate fatigue as the mechanism for positive heart-rate drift." }
   ],
   "bounded_heuristics": [
-    {
-      "claim_id": "tg_engine_governor_model",
-      "status": "bounded_heuristic",
-      "statement": "Task completion does not establish that the dose was optimal, absorbed, or repeatable.",
-      "boundary": "Not a validated physiological split or diagnostic model."
-    }
+    { "claim_id": "tg_engine_governor_model", "status": "bounded_heuristic", "statement": "Task completion does not establish that the dose was optimal, absorbed, or repeatable.", "boundary": "Not a validated physiological split or diagnostic model." }
   ],
   "caveats": [
     "N-of-1 observational dataset; no population or causal claim.",
