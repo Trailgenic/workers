@@ -14,13 +14,20 @@ test("publishes discovery, health, registry, and a public dataset", async () => 
   assert.equal(root.status, "active");
   assert.equal((await req("/health")).status, 200);
   const registry = await (await req("/.well-known/tool-registry.json")).json();
-  assert.equal(registry.tools.length, 3);
+  assert.equal(registry.tools.length, 4);
+  assert.equal(registry.resources.length, 2);
   const dataset = await (await req("/datasets/methodology")).json();
   assert.equal(dataset.dataset_id, "sleepgenic-methodology-v1");
-  assert.ok(dataset.principles.length >= 5);
+  assert.equal(dataset.version, "1.1.0");
+  assert.ok(dataset.principles.length >= 7);
+  assert.equal(Object.keys(dataset.lexicon).length, 8);
+  assert.equal(Object.keys(dataset.screening_instruments).length, 5);
+  const screening = await (await req("/datasets/screening-instruments")).json();
+  assert.equal(screening.boundary.role, "screening_only");
+  assert.equal(Object.keys(screening.instruments).length, 5);
 });
 
-test("negotiates MCP and exposes three callable tools", async () => {
+test("negotiates MCP and exposes four callable tools", async () => {
   const initialized = await rpc("initialize", { protocolVersion: "2025-11-25", capabilities: {}, clientInfo: { name: "test", version: "1" } });
   assert.equal(initialized.response.status, 200);
   assert.equal(initialized.json.result.protocolVersion, "2025-11-25");
@@ -28,7 +35,8 @@ test("negotiates MCP and exposes three callable tools", async () => {
   assert.deepEqual(list.json.result.tools.map((tool) => tool.name), [
     "sleepgenic.sleepScore.contextualize",
     "sleepgenic.hrv.contextualize",
-    "sleepgenic.methodology.lookup"
+    "sleepgenic.methodology.lookup",
+    "sleepgenic.screening.lookup"
   ]);
 });
 
@@ -49,7 +57,19 @@ test("validates tool inputs and reads the methodology resource", async () => {
   assert.equal(unknown.json.error.code, -32602);
   const resource = await rpc("resources/read", { uri: "sleepgenic://methodology/v1" });
   const data = JSON.parse(resource.json.result.contents[0].text);
-  assert.equal(data.version, "1.0.0");
+  assert.equal(data.version, "1.1.0");
+  const screeningResource = await rpc("resources/read", { uri: "sleepgenic://screening-instruments/v1" });
+  const screening = JSON.parse(screeningResource.json.result.contents[0].text);
+  assert.equal(screening.instruments.stop_bang.diagnostic_status.includes("not a diagnosis"), true);
+});
+
+test("publishes rights-safe screening metadata without questionnaire content", async () => {
+  const lookup = await rpc("tools/call", { name: "sleepgenic.screening.lookup", arguments: { instrument: "psqi" } });
+  assert.equal(lookup.json.result.structuredContent.acronym, "PSQI");
+  assert.equal(lookup.json.result.structuredContent.boundary.role, "screening_only");
+  assert.match(lookup.json.result.structuredContent.reproduction_status, /not reproduced/i);
+  const invalid = await rpc("tools/call", { name: "sleepgenic.screening.lookup", arguments: { instrument: "unknown" } });
+  assert.equal(invalid.json.result.isError, true);
 });
 
 test("enforces transport methods, media types, and protocol headers", async () => {

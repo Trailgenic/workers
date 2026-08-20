@@ -63,6 +63,19 @@ const tools = [
       },
       required: ["topic"]
     }
+  },
+  {
+    name: "sleepgenic.screening.lookup",
+    title: "Look up sleep screening instrument metadata",
+    description: "Retrieve rights-safe purpose, population, recall-period, diagnostic-limit, official-source, and licensing metadata without reproducing questionnaire content.",
+    inputSchema: {
+      type: "object",
+      additionalProperties: false,
+      properties: {
+        instrument: { type: "string", enum: Object.keys(methodology.screening_instruments) }
+      },
+      required: ["instrument"]
+    }
   }
 ];
 
@@ -73,6 +86,13 @@ const resources = [
     name: "sleepgenic-methodology-v1",
     title: methodology.title,
     description: methodology.description,
+    mimeType: "application/json"
+  },
+  {
+    uri: "sleepgenic://screening-instruments/v1",
+    name: "sleepgenic-screening-instruments-v1",
+    title: "Sleepgenic Screening Instrument Metadata",
+    description: "Rights-safe metadata for PSQI, ASSQ, ESS, STOP-Bang, and ISI, with official links and explicit diagnostic boundaries.",
     mimeType: "application/json"
   }
 ];
@@ -169,6 +189,15 @@ function callTool(name, args) {
     }) };
   }
 
+  if (name === "sleepgenic.screening.lookup") {
+    return { result: toolResult({
+      instrument: args.instrument,
+      ...methodology.screening_instruments[args.instrument],
+      boundary: methodology.screening_boundary,
+      disclaimer: DISCLAIMER
+    }) };
+  }
+
   return { result: toolResult({ topic: args.topic, ...methodology.topics[args.topic], principles: methodology.principles, sources: methodology.sources, disclaimer: DISCLAIMER }) };
 }
 
@@ -184,6 +213,7 @@ function discovery() {
     registry: `${ORIGIN}/.well-known/tool-registry.json`,
     capabilities: `${ORIGIN}/capabilities.json`,
     dataset: `${ORIGIN}/datasets/methodology`,
+    datasets: `${ORIGIN}/datasets`,
     health: `${ORIGIN}/health`,
     last_updated: methodology.released
   };
@@ -196,7 +226,10 @@ function registry() {
     discovery: { protocol: "MCP Streamable HTTP", endpoint: `${ORIGIN}/mcp`, protocol_versions: PROTOCOL_VERSIONS },
     tools: tools.map((tool) => ({ ...tool, annotations })),
     resources,
-    datasets: [{ id: methodology.dataset_id, route: "/datasets/methodology", version: methodology.version }],
+    datasets: [
+      { id: methodology.dataset_id, route: "/datasets/methodology", version: methodology.version },
+      { id: "sleepgenic-screening-instruments-v1", route: "/datasets/screening-instruments", version: methodology.version }
+    ],
     last_updated: methodology.released
   };
 }
@@ -209,6 +242,7 @@ function openApi() {
     paths: {
       "/mcp": { post: { summary: "MCP Streamable HTTP transport", responses: { "200": { description: "JSON-RPC response" }, "202": { description: "Accepted notification" } } } },
       "/datasets/methodology": { get: { summary: methodology.title, responses: { "200": { description: "Methodology dataset" } } } },
+      "/datasets/screening-instruments": { get: { summary: "Rights-safe sleep screening instrument metadata", responses: { "200": { description: "Screening instrument metadata" } } } },
       "/health": { get: { summary: "Service health", responses: { "200": { description: "Healthy" } } } }
     }
   };
@@ -241,8 +275,17 @@ async function handleMcp(request) {
     error = called.rpcError;
   } else if (payload.method === "resources/list") result = { resources };
   else if (payload.method === "resources/read") {
-    if (payload.params?.uri !== resources[0].uri) error = { code: -32602, message: "Unknown resource" };
-    else result = { contents: [{ uri: resources[0].uri, mimeType: "application/json", text: JSON.stringify(methodology) }] };
+    if (payload.params?.uri === resources[0].uri) {
+      result = { contents: [{ uri: resources[0].uri, mimeType: "application/json", text: JSON.stringify(methodology) }] };
+    } else if (payload.params?.uri === resources[1].uri) {
+      result = { contents: [{ uri: resources[1].uri, mimeType: "application/json", text: JSON.stringify({
+        version: methodology.version,
+        released: methodology.released,
+        boundary: methodology.screening_boundary,
+        instruments: methodology.screening_instruments,
+        disclaimer: DISCLAIMER
+      }) }] };
+    } else error = { code: -32602, message: "Unknown resource" };
   } else error = { code: -32601, message: "Method not found" };
 
   return json(error ? { jsonrpc: "2.0", id: payload.id ?? null, error } : { jsonrpc: "2.0", id: payload.id ?? null, result }, { cache: CACHE.noStore });
@@ -257,12 +300,13 @@ export default {
 
     if (url.pathname === "/" || url.pathname === "") return json(discovery(), { cache: CACHE.discovery });
     if (url.pathname === "/health") return json({ entity: ENTITY.name, status: "healthy", infrastructure: { platform: "Cloudflare Workers", protocol: "MCP Streamable HTTP" }, uptime: null, checked_at: new Date().toISOString() }, { cache: CACHE.noStore });
-    if (url.pathname === "/capabilities.json") return json({ capability_version: "1.0", entity: ENTITY, mcp: { endpoint: `${ORIGIN}/mcp`, protocol_versions: PROTOCOL_VERSIONS }, tools: tools.map((tool) => ({ ...tool, annotations })), resources, datasets: [{ id: methodology.dataset_id, endpoint: `${ORIGIN}/datasets/methodology` }], last_updated: methodology.released }, { cache: CACHE.discovery });
+    if (url.pathname === "/capabilities.json") return json({ capability_version: "1.1", entity: ENTITY, mcp: { endpoint: `${ORIGIN}/mcp`, protocol_versions: PROTOCOL_VERSIONS }, tools: tools.map((tool) => ({ ...tool, annotations })), resources, datasets: [{ id: methodology.dataset_id, endpoint: `${ORIGIN}/datasets/methodology` }, { id: "sleepgenic-screening-instruments-v1", endpoint: `${ORIGIN}/datasets/screening-instruments` }], last_updated: methodology.released }, { cache: CACHE.discovery });
     if (url.pathname === "/.well-known/mcp.json") return json({ mcp_version: "1.0", name: ENTITY.name, description: ENTITY.description, endpoint: `${ORIGIN}/mcp`, protocol_versions: PROTOCOL_VERSIONS, resources: resources.map((resource) => resource.uri), last_updated: methodology.released }, { cache: CACHE.discovery });
     if (url.pathname === "/.well-known/tool-registry.json") return json(registry(), { cache: CACHE.discovery });
     if (url.pathname === "/.well-known/openapi.json") return json(openApi(), { cache: CACHE.discovery });
-    if (url.pathname === "/datasets" || url.pathname === "/datasets/index") return json({ datasets: [{ id: methodology.dataset_id, title: methodology.title, version: methodology.version, endpoint: `${ORIGIN}/datasets/methodology` }] });
+    if (url.pathname === "/datasets" || url.pathname === "/datasets/index") return json({ datasets: [{ id: methodology.dataset_id, title: methodology.title, version: methodology.version, endpoint: `${ORIGIN}/datasets/methodology` }, { id: "sleepgenic-screening-instruments-v1", title: "Sleepgenic Screening Instrument Metadata", version: methodology.version, endpoint: `${ORIGIN}/datasets/screening-instruments` }] });
     if (url.pathname === "/datasets/methodology") return json(methodology);
+    if (url.pathname === "/datasets/screening-instruments") return json({ version: methodology.version, released: methodology.released, boundary: methodology.screening_boundary, instruments: methodology.screening_instruments, disclaimer: DISCLAIMER });
     return json({ error: "Not found" }, { status: 404, cache: CACHE.noStore });
   }
 };
