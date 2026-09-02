@@ -32,9 +32,13 @@ check(dataset.response.status === 200 && dataset.json?.dataset_id === "sleepgeni
 const initialized = await rpc(1, "initialize", { protocolVersion: "2025-11-25", capabilities: {}, clientInfo: { name: "acceptance", version: "1" } });
 check(initialized.json?.result?.protocolVersion === "2025-11-25", "MCP initializes");
 const list = await rpc(2, "tools/list");
-check(list.json?.result?.tools?.length === 3, "MCP lists three tools");
+check(list.json?.result?.tools?.length === 4, "MCP lists four tools");
 const called = await rpc(3, "tools/call", { name: "sleepgenic.methodology.lookup", arguments: { topic: "hrv" } });
 check(called.json?.result?.structuredContent?.topic === "hrv", "methodology tool is callable");
+const screening = await rpc(4, "tools/call", { name: "sleepgenic.screening.lookup", arguments: { instrument: "stop_bang" } });
+check(screening.json?.result?.structuredContent?.boundary?.role === "screening_only", "screening metadata tool is callable and non-diagnostic");
+const screeningDataset = await get("/datasets/screening-instruments");
+check(screeningDataset.response.status === 200 && Object.keys(screeningDataset.json?.instruments || {}).length === 5, "screening metadata dataset is live");
 
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);

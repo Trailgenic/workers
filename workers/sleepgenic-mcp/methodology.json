@@ -1,9 +1,9 @@
 {
   "dataset_id": "sleepgenic-methodology-v1",
-  "version": "1.0.0",
-  "released": "2026-08-13",
+  "version": "1.1.0",
+  "released": "2026-08-19",
   "title": "Sleepgenic Longitudinal Sleep Interpretation Methodology",
-  "description": "A public, non-diagnostic methodology for interpreting consumer wearable sleep signals as longitudinal context rather than isolated verdicts.",
+  "description": "A public, non-diagnostic methodology for interpreting consumer wearable sleep signals, validated screening instruments, and clinical testing boundaries as longitudinal context rather than isolated verdicts.",
   "entity": {
     "name": "Sleepgenic",
     "canonical_id": "https://sleepgenic.ai/#sleepgenic",
@@ -25,17 +25,27 @@
     {
       "id": "device-context",
       "title": "Device and algorithm context",
-      "guidance": "Consumer sleep scores and derived stages are device-specific estimates. Avoid treating scores from different vendors as interchangeable."
+      "guidance": "Consumer sleep scores, stages, oxygen estimates, and breathing flags are device- and algorithm-specific outputs. Avoid treating values from different vendors or algorithms as interchangeable."
     },
     {
       "id": "context-before-causality",
       "title": "Context before causality",
-      "guidance": "Training load, illness, alcohol, travel, temperature, stress, timing, and measurement conditions can move sleep and HRV signals. A signal alone does not establish a cause."
+      "guidance": "Training load, illness, alcohol, travel, altitude, temperature, stress, timing, and measurement conditions can move sleep, oxygen, breathing, and HRV signals. A signal alone does not establish a cause."
+    },
+    {
+      "id": "clinical-signal-boundary",
+      "title": "Clinical Signal Boundary",
+      "guidance": "Consumer signals may prompt attention, validated questionnaires may estimate risk or symptom burden, and clinical testing may support diagnosis. These layers are related but are not interchangeable."
     },
     {
       "id": "non-diagnostic",
       "title": "Non-diagnostic boundary",
-      "guidance": "Wearable outputs support reflection and longitudinal observation; they do not diagnose or exclude a sleep, cardiac, or other medical condition."
+      "guidance": "Wearable outputs and questionnaire metadata support reflection, screening, and longitudinal observation; they do not diagnose or exclude a sleep, cardiac, respiratory, or other medical condition."
+    },
+    {
+      "id": "rights-safe-instruments",
+      "title": "Rights-safe screening instrument use",
+      "guidance": "Sleepgenic provides purpose, population, recall-period, diagnostic-limit, official-source, and licensing metadata. It does not reproduce protected questionnaire items, response options, or proprietary scoring instructions."
     }
   ],
   "topics": {
@@ -45,7 +55,8 @@
         "Use the device's own component breakdown when available.",
         "Compare like with like: same device, similar wear conditions, and a representative personal baseline.",
         "Do not translate a score directly into a diagnosis or universal sleep-quality grade."
-      ]
+      ],
+      "canonical_url": "https://sleepgenic.ai/interpretation"
     },
     "hrv": {
       "summary": "A timing-variation signal whose value depends on metric, device, posture, sampling window, physiology, and context.",
@@ -53,15 +64,27 @@
         "Confirm the device's HRV metric and sampling window before comparing values.",
         "Prioritize sustained within-person deviation over cross-person comparison.",
         "Treat a change as a prompt to inspect context, not as proof of a specific cause."
-      ]
+      ],
+      "canonical_url": "https://sleepgenic.ai/interpretation"
     },
     "sleep_stages": {
-      "summary": "Consumer stage estimates are model outputs rather than laboratory polysomnography.",
+      "summary": "Consumer deep-, REM-, light-, and wake-stage estimates are model classifications inferred from indirect signals rather than direct brain-wave measurement.",
       "interpretation": [
-        "Use stage estimates as directional context across repeated nights.",
+        "Use stage estimates as directional within-device context across repeated nights.",
+        "Avoid assuming a universal deep- or REM-stage bias; error varies by device, algorithm, population, and night.",
         "Avoid over-weighting small night-to-night stage changes.",
         "Persistent concerns or symptoms belong in clinical evaluation, independent of a reassuring wearable estimate."
-      ]
+      ],
+      "canonical_url": "https://sleepgenic.ai/interpretation/how-accurate-are-deep-and-rem-sleep-on-wearables"
+    },
+    "sleep_stage_classification_error": {
+      "summary": "The disagreement between a consumer device's assigned sleep stage and a clinical reference classification for the same period.",
+      "interpretation": [
+        "Sleep-versus-wake detection and individual stage classification have different error profiles.",
+        "Stage error can change after firmware, algorithm, sensor placement, illness, or population context changes.",
+        "Longitudinal interpretation is strongest when device, settings, and wear conditions remain stable."
+      ],
+      "canonical_url": "https://sleepgenic.ai/lexicon/sleep-stage-classification-error"
     },
     "sleep_timing": {
       "summary": "Bedtime, wake time, and regularity provide interpretable longitudinal context alongside duration.",
@@ -69,7 +92,8 @@
         "Review timing and regularity across the same local time zone.",
         "Mark travel, shift work, and daylight-saving transitions as context changes.",
         "Distinguish time in bed from estimated time asleep."
-      ]
+      ],
+      "canonical_url": "https://sleepgenic.ai/interpretation"
     },
     "recovery": {
       "summary": "Recovery is a multi-signal interpretation, not a single wearable number.",
@@ -77,7 +101,8 @@
         "Consider sleep timing, duration, symptoms, perceived readiness, recent load, resting heart rate, and HRV together.",
         "Use uncertainty explicitly when signals disagree.",
         "Escalate persistent symptoms or functional impairment to an appropriate clinician."
-      ]
+      ],
+      "canonical_url": "https://sleepgenic.ai/interpretation"
     },
     "longitudinal_trends": {
       "summary": "Repeated measurements become more meaningful when the comparison window and context are explicit.",
@@ -85,25 +110,198 @@
         "State the baseline window and observation window.",
         "Prefer median or representative baselines when isolated extremes would distort the comparison.",
         "Record material context changes before attributing direction to an intervention."
-      ]
+      ],
+      "canonical_url": "https://sleepgenic.ai/methodology"
+    },
+    "nocturnal_oxygen_and_breathing_disruption": {
+      "summary": "Wearable SpO2 estimates and breathing-disruption flags are consumer signals that may be affected by physiology, altitude, fit, motion, perfusion, and device algorithms.",
+      "interpretation": [
+        "Do not diagnose sleep apnea from a wearable oxygen value or breathing flag.",
+        "Inspect repeated patterns, symptoms, altitude, device fit, and measurement quality together.",
+        "Persistent low readings, repeated disruption, witnessed breathing pauses, gasping, or excessive daytime sleepiness warrant discussion with a qualified medical provider."
+      ],
+      "canonical_url": "https://sleepgenic.ai/interpretation/what-do-low-spo2-and-breathing-disruption-mean"
+    },
+    "sleep_apnea_boundary": {
+      "summary": "A consumer sleep tracker may surface signals compatible with sleep-disordered breathing, but it cannot establish or exclude obstructive or central sleep apnea.",
+      "interpretation": [
+        "Treat wearable signals as prompts for context and possible follow-up, not as an apnea-hypopnea index or diagnosis.",
+        "Validated screening instruments estimate risk or symptom burden but do not diagnose sleep apnea.",
+        "Polysomnography or an appropriate home sleep apnea test, interpreted within a clinical evaluation, provides the diagnostic layer."
+      ],
+      "canonical_url": "https://sleepgenic.ai/interpretation/can-a-sleep-tracker-detect-sleep-apnea"
+    },
+    "sleep_screening_instruments": {
+      "summary": "Validated questionnaires answer different questions about sleep quality, insomnia symptoms, daytime sleepiness, athlete sleep difficulty, or obstructive sleep-apnea risk.",
+      "interpretation": [
+        "Choose an instrument based on purpose and target population rather than convenience alone.",
+        "Use the official instrument and its authorized scoring and licensing conditions.",
+        "A screening score is not a diagnosis and should not overrule symptoms or clinical judgment."
+      ],
+      "canonical_url": "https://sleepgenic.ai/interpretation/which-sleep-screening-tool-should-i-use"
+    },
+    "polysomnography_and_hsat": {
+      "summary": "Polysomnography and home sleep apnea testing are clinical tests with different measurement breadth, indications, and limitations.",
+      "interpretation": [
+        "Polysomnography is the standard diagnostic test when obstructive sleep apnea is suspected after comprehensive sleep evaluation.",
+        "A technically adequate home sleep apnea test may be appropriate for selected uncomplicated adults at increased risk of moderate-to-severe obstructive sleep apnea.",
+        "Clinical tools, questionnaires, and consumer wearables should not replace diagnostic testing when diagnosis is the question."
+      ],
+      "canonical_url": "https://sleepgenic.ai/lexicon/polysomnography"
+    },
+    "excessive_daytime_sleepiness": {
+      "summary": "Difficulty maintaining alertness or an increased tendency to fall asleep during the day; it is a symptom with multiple possible causes rather than a diagnosis by itself.",
+      "interpretation": [
+        "Consider sleep opportunity, schedule, medications, medical conditions, and sleep disorders as possible context.",
+        "Do not use a reassuring wearable score to dismiss persistent daytime sleepiness.",
+        "Persistent or safety-relevant sleepiness warrants qualified clinical evaluation."
+      ],
+      "canonical_url": "https://sleepgenic.ai/lexicon/excessive-daytime-sleepiness"
     }
   },
-  "sources": [
-    {
-      "title": "Consumer Sleep Technology: An American Academy of Sleep Medicine Position Statement",
-      "url": "https://jcsm.aasm.org/doi/10.5664/jcsm.7128",
-      "doi": "10.5664/jcsm.7128"
+  "screening_boundary": {
+    "role": "screening_only",
+    "diagnostic_status": "does_not_diagnose_or_exclude_a_sleep_disorder",
+    "content_policy": "Metadata and official links only. Sleepgenic does not reproduce questionnaire items, response options, proprietary scoring instructions, or downloadable forms.",
+    "canonical_url": "https://sleepgenic.ai/interpretation/which-sleep-screening-tool-should-i-use"
+  },
+  "screening_instruments": {
+    "psqi": {
+      "name": "Pittsburgh Sleep Quality Index",
+      "acronym": "PSQI",
+      "purpose": "Assess multiple dimensions of self-reported sleep quality and disturbance.",
+      "target_population": "Adults in clinical or research contexts, subject to the instrument's validated use and official conditions.",
+      "recall_period": "One month.",
+      "diagnostic_status": "Screening and assessment instrument; not a standalone diagnosis.",
+      "official_url": "https://www.sleep.pitt.edu/psqi",
+      "rights_holder_or_distributor": "University of Pittsburgh",
+      "licensing_status": "The official owner permits specified non-commercial research and educational uses; commercial or commercially sponsored use requires permission. Confirm current conditions with the owner.",
+      "reproduction_status": "Questionnaire items and scoring instructions are not reproduced by Sleepgenic."
     },
-    {
-      "title": "Consumer sleep technology: accuracy and impact on behavior among healthy individuals",
-      "url": "https://jcsm.aasm.org/doi/10.5664/jcsm.8450",
-      "doi": "10.5664/jcsm.8450"
+    "assq": {
+      "name": "Athlete Sleep Screening Questionnaire",
+      "acronym": "ASSQ",
+      "purpose": "Identify athlete-specific sleep difficulty and potential need for sleep-focused intervention.",
+      "target_population": "Athletes.",
+      "recall_period": "Use the official instrument exactly as authorized; Sleepgenic does not restate or modify its administration period.",
+      "diagnostic_status": "Screening instrument; not a standalone diagnosis.",
+      "official_url": "https://centreforsleep.com/athletes/",
+      "rights_holder_or_distributor": "Centre for Sleep & Human Performance",
+      "licensing_status": "Use the official source and confirm current administration, reproduction, and electronic-implementation conditions with the owner.",
+      "reproduction_status": "Questionnaire items and scoring instructions are not reproduced by Sleepgenic."
     },
-    {
-      "title": "Heart rate variability: standards of measurement, physiological interpretation and clinical use",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/8598068/",
-      "pmid": "8598068"
+    "ess": {
+      "name": "Epworth Sleepiness Scale",
+      "acronym": "ESS",
+      "purpose": "Measure a person's usual level of daytime sleepiness or average sleep propensity.",
+      "target_population": "Primarily adults; use the appropriate authorized version for the intended population.",
+      "recall_period": "Usual level of daytime sleepiness.",
+      "diagnostic_status": "Symptom assessment and screening instrument; not a standalone diagnosis.",
+      "official_url": "https://eprovide.mapi-trust.org/instruments/epworth-sleepiness-scale",
+      "rights_holder_or_distributor": "Copyright holder represented through Mapi Research Trust",
+      "licensing_status": "Licensed instrument. Confirm the license required for the intended clinical, research, commercial, translated, or electronic use.",
+      "reproduction_status": "Questionnaire items and scoring instructions are not reproduced by Sleepgenic."
+    },
+    "stop_bang": {
+      "name": "STOP-Bang Questionnaire",
+      "acronym": "STOP-Bang",
+      "purpose": "Estimate risk of obstructive sleep apnea using a validated screening framework.",
+      "target_population": "Adults in populations for which the instrument and interpretation have been evaluated.",
+      "recall_period": "Not represented by Sleepgenic; use the current official instrument.",
+      "diagnostic_status": "Obstructive sleep-apnea risk screener; not a diagnosis and not designed to identify central sleep apnea.",
+      "official_url": "https://www.stopbang.ca/",
+      "rights_holder_or_distributor": "Official STOP-Bang program",
+      "licensing_status": "Use the official source and confirm current permissions for reproduction, translation, commercial use, or electronic implementation.",
+      "reproduction_status": "Questionnaire items, response options, and scoring instructions are not reproduced by Sleepgenic."
+    },
+    "isi": {
+      "name": "Insomnia Severity Index",
+      "acronym": "ISI",
+      "purpose": "Assess perceived insomnia symptoms and their severity and impact.",
+      "target_population": "Adults and other populations covered by an authorized version.",
+      "recall_period": "The official standard interval is the last month; authorized contexts may use other validated intervals.",
+      "diagnostic_status": "Symptom-severity assessment and screening instrument; not a standalone diagnosis.",
+      "official_url": "https://eprovide.mapi-trust.org/instruments/insomnia-severity-index",
+      "rights_holder_or_distributor": "Charles M. Morin; distributed by Mapi Research Trust",
+      "licensing_status": "Conditions vary by user and implementation; fees and formal review may apply for funded, commercial, healthcare, or electronic use.",
+      "reproduction_status": "Questionnaire items and scoring instructions are not reproduced by Sleepgenic."
     }
+  },
+  "lexicon": {
+    "apnea_hypopnea_index": {
+      "term": "Apnea–Hypopnea Index",
+      "slug": "apnea-hypopnea-index",
+      "definition": "The average number of scored apneas and hypopneas per hour of sleep or recording, calculated under the applicable clinical testing and scoring framework.",
+      "boundary": "A consumer wearable breathing flag or oxygen estimate is not an AHI.",
+      "canonical_url": "https://sleepgenic.ai/lexicon/apnea-hypopnea-index"
+    },
+    "obstructive_sleep_apnea": {
+      "term": "Obstructive Sleep Apnea",
+      "slug": "obstructive-sleep-apnea",
+      "definition": "A sleep-related breathing disorder characterized by recurrent partial or complete upper-airway obstruction during sleep.",
+      "boundary": "Wearables and questionnaires may surface signals or risk; diagnosis requires appropriate clinical evaluation and testing.",
+      "canonical_url": "https://sleepgenic.ai/lexicon/obstructive-sleep-apnea"
+    },
+    "central_sleep_apnea": {
+      "term": "Central Sleep Apnea",
+      "slug": "central-sleep-apnea",
+      "definition": "A sleep-related breathing disorder involving recurrent pauses in airflow associated with absent or reduced respiratory effort.",
+      "boundary": "An obstructive sleep-apnea risk questionnaire is not designed to diagnose central sleep apnea.",
+      "canonical_url": "https://sleepgenic.ai/lexicon/central-sleep-apnea"
+    },
+    "polysomnography": {
+      "term": "Polysomnography",
+      "slug": "polysomnography",
+      "definition": "A supervised sleep study that records multiple physiological signals and can identify sleep stages, arousals, respiratory events, oxygenation, movements, and cardiac activity.",
+      "boundary": "Consumer stage estimates are not substitutes for PSG measurement.",
+      "canonical_url": "https://sleepgenic.ai/lexicon/polysomnography"
+    },
+    "home_sleep_apnea_test": {
+      "term": "Home Sleep Apnea Test",
+      "slug": "home-sleep-apnea-test",
+      "definition": "A limited-channel clinical test used under medical direction to evaluate suspected obstructive sleep apnea in appropriately selected patients.",
+      "boundary": "An HSAT is a medical assessment, not a consumer wearable feature or general population screen.",
+      "canonical_url": "https://sleepgenic.ai/lexicon/home-sleep-apnea-test"
+    },
+    "sleep_screening_instrument": {
+      "term": "Sleep Screening Instrument",
+      "slug": "sleep-screening-instrument",
+      "definition": "A structured, validated questionnaire or tool used to estimate risk, symptoms, or functional burden and determine whether further assessment may be appropriate.",
+      "boundary": "Screening does not equal diagnosis.",
+      "canonical_url": "https://sleepgenic.ai/lexicon/sleep-screening-instrument"
+    },
+    "excessive_daytime_sleepiness": {
+      "term": "Excessive Daytime Sleepiness",
+      "slug": "excessive-daytime-sleepiness",
+      "definition": "Difficulty maintaining expected alertness or an increased tendency to fall asleep during the day.",
+      "boundary": "It is a symptom with multiple possible causes, not a diagnosis by itself.",
+      "canonical_url": "https://sleepgenic.ai/lexicon/excessive-daytime-sleepiness"
+    },
+    "sleep_stage_classification_error": {
+      "term": "Sleep-Stage Classification Error",
+      "slug": "sleep-stage-classification-error",
+      "definition": "A disagreement between a device-assigned sleep stage and a clinical reference classification for the same period.",
+      "boundary": "Error direction and magnitude vary by device, algorithm, population, and night.",
+      "canonical_url": "https://sleepgenic.ai/lexicon/sleep-stage-classification-error"
+    }
+  },
+  "interpretation_articles": [
+    { "title": "Can a Sleep Tracker Detect Sleep Apnea?", "url": "https://sleepgenic.ai/interpretation/can-a-sleep-tracker-detect-sleep-apnea" },
+    { "title": "How Accurate Are Deep and REM Sleep on Wearables?", "url": "https://sleepgenic.ai/interpretation/how-accurate-are-deep-and-rem-sleep-on-wearables" },
+    { "title": "What Do Low SpO2 and Breathing Disruption Mean?", "url": "https://sleepgenic.ai/interpretation/what-do-low-spo2-and-breathing-disruption-mean" },
+    { "title": "Which Sleep Screening Tool Should I Use?", "url": "https://sleepgenic.ai/interpretation/which-sleep-screening-tool-should-i-use" }
   ],
-  "disclaimer": "Educational and informational only. Sleepgenic does not provide medical diagnosis or treatment. Seek qualified care for persistent symptoms, suspected sleep disorders, concerning cardiac symptoms, or urgent health concerns."
+  "sources": [
+    { "title": "Consumer Sleep Technology: An American Academy of Sleep Medicine Position Statement", "url": "https://aasm.org/advocacy/position-statements/consumer-sleep-technology/" },
+    { "title": "Clinical Practice Guideline for Diagnostic Testing for Adult Obstructive Sleep Apnea", "url": "https://jcsm.aasm.org/doi/10.5664/jcsm.6506", "doi": "10.5664/jcsm.6506" },
+    { "title": "Clinical Use of a Home Sleep Apnea Test: An Updated AASM Position Statement", "url": "https://aasm.org/advocacy/position-statements/clinical-use-of-a-home-sleep-apnea-test-an-updated-american-academy-of-sleep-medicine-position-statement/" },
+    { "title": "Consumer sleep technology: accuracy and impact on behavior among healthy individuals", "url": "https://jcsm.aasm.org/doi/10.5664/jcsm.8450", "doi": "10.5664/jcsm.8450" },
+    { "title": "Heart rate variability: standards of measurement, physiological interpretation and clinical use", "url": "https://pubmed.ncbi.nlm.nih.gov/8598068/", "pmid": "8598068" },
+    { "title": "Official Pittsburgh Sleep Quality Index", "url": "https://www.sleep.pitt.edu/psqi" },
+    { "title": "Official Athlete Sleep Screening Questionnaire access", "url": "https://centreforsleep.com/athletes/" },
+    { "title": "Official Epworth Sleepiness Scale listing", "url": "https://eprovide.mapi-trust.org/instruments/epworth-sleepiness-scale" },
+    { "title": "Official STOP-Bang program", "url": "https://www.stopbang.ca/" },
+    { "title": "Official Insomnia Severity Index listing", "url": "https://eprovide.mapi-trust.org/instruments/insomnia-severity-index" }
+  ],
+  "disclaimer": "Educational and informational only. Sleepgenic does not provide medical diagnosis or treatment. Seek qualified care for persistent symptoms, suspected sleep disorders, concerning cardiac or respiratory symptoms, excessive daytime sleepiness, or urgent health concerns."
 }
