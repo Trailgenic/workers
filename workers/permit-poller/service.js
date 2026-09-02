@@ -78,7 +78,8 @@ const notificationText = ({ product, date, partySize, remaining }) => {
   const displayDate = new Intl.DateTimeFormat("en-US", {
     month: "short", day: "numeric", year: "numeric", timeZone: "UTC"
   }).format(new Date(`${date}T00:00:00.000Z`));
-  return `TrailGenic Alert: ${remaining} spot${remaining === 1 ? "" : "s"} available for ${product.name} on ${displayDate}. Your party: ${partySize}. Book now: ${product.booking_url} Reply STOP to opt out.`;
+  const safetyNotice = product.safety_notice ? ` Safety: ${product.safety_notice}` : "";
+  return `TrailGenic Alert: ${remaining} spot${remaining === 1 ? "" : "s"} available for ${product.name} on ${displayDate}. Your party: ${partySize}. Book now: ${product.booking_url}${safetyNotice} Reply STOP to opt out.`;
 };
 
 const insertNotification = async (env, { eventId, trackerId, now = new Date() }) => {
@@ -232,6 +233,19 @@ export const activePermitIds = async (env, now = new Date()) => {
   return rows.map((row) => row.permit_id).filter((id) => getPermitProduct(id));
 };
 
+export const pauseExpiredTrackers = async (env, now = new Date()) => {
+  const result = await env.DB.prepare(
+    `UPDATE trackers
+     SET status = 'paused', updated_at = ?
+     WHERE status = 'active'
+       AND NOT EXISTS (
+         SELECT 1 FROM tracker_dates d
+         WHERE d.tracker_id = trackers.id AND d.date >= ?
+       )`
+  ).bind(isoNow(now), dateOnly(now)).run();
+  return changedRows(result);
+};
+
 const activeDatesForPermit = async (env, permitId, now = new Date()) => {
   const rows = resultRows(await env.DB.prepare(
     `SELECT DISTINCT d.date
@@ -366,7 +380,13 @@ const sendTwilioSms = async (env, to, body, fetchImpl = fetch) => {
     signal: AbortSignal.timeout(15_000)
   });
   const data = await response.json().catch(() => ({}));
-  if (!response.ok) throw new Error(`Twilio returned ${response.status}: ${data.message || "send failed"}`);
+  if (!response.ok) {
+    const providerCode = Number.parseInt(data.code, 10);
+    const error = new Error(`Twilio returned ${response.status}: ${data.message || "send failed"}`);
+    error.code = providerCode === 21610 ? "recipient_opted_out" : `twilio_${Number.isInteger(providerCode) ? providerCode : response.status}`;
+    error.retryable = providerCode !== 21610;
+    throw error;
+  }
   return data.sid || null;
 };
 
@@ -404,6 +424,19 @@ export const deliverNotification = async (env, notificationId, { now = new Date(
     ).bind(providerId, isoNow(now), isoNow(now), notificationId).run();
     return { status: "sent", provider_message_id: providerId };
   } catch (error) {
+    if (error.code === "recipient_opted_out") {
+      await env.DB.batch([
+        env.DB.prepare(
+          `UPDATE notifications SET status = 'cancelled', last_error = ?, updated_at = ?
+           WHERE id = ?`
+        ).bind(error.message.slice(0, 500), isoNow(now), notificationId),
+        env.DB.prepare(
+          `UPDATE trackers SET status = 'paused', updated_at = ?
+           WHERE phone_e164 = ? AND status = 'active'`
+        ).bind(isoNow(now), row.phone_e164)
+      ]);
+      return { status: "cancelled", reason: "recipient_opted_out" };
+    }
     await env.DB.prepare(
       `UPDATE notifications SET status = 'retry', last_error = ?, updated_at = ? WHERE id = ?`
     ).bind(error.message.slice(0, 500), isoNow(now), notificationId).run();
@@ -413,8 +446,10 @@ export const deliverNotification = async (env, notificationId, { now = new Date(
 
 export const healthSnapshot = async (env, now = new Date()) => {
   const active = await env.DB.prepare(
-    "SELECT COUNT(*) AS count FROM trackers WHERE status = 'active'"
-  ).first();
+    `SELECT COUNT(DISTINCT t.id) AS count
+     FROM trackers t JOIN tracker_dates d ON d.tracker_id = t.id
+     WHERE t.status = 'active' AND d.date >= ?`
+  ).bind(dateOnly(now)).first();
   const lastSuccess = await env.DB.prepare(
     "SELECT MAX(completed_at) AS completed_at FROM poll_runs WHERE status = 'succeeded'"
   ).first();
