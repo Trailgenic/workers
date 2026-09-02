@@ -30,6 +30,15 @@ Canonical MCP discovery is hosted at:
 - `https://mcp.trailgenic.com/.well-known/openapi.json`
 - `https://mcp.trailgenic.com/capabilities.json`
 
+## WebMCP Browser Surface
+
+The TrailGenic Protocols hub has a deliberately small browser-facing WebMCP layer backed by the same public, deterministic datasets as the existing MCP server:
+
+- `get_trailgenic_protocol` returns one of the five canonical protocol levels with its Governor, progression gate, evidence boundary, and source page.
+- `compare_trailgenic_modalities` compares any two to four canonical modalities—Walking, Rucking, Running, and Hiking—using aggregate and selected scrubbed public evidence while preserving each dataset's methodology and limitations.
+
+The hosted browser bundle is available at `https://mcp.trailgenic.com/webmcp-protocols.js`. It is intended for page-level attachment to `https://www.trailgenic.com/protocols` through Webflow registered custom code. The layer is read-only and does not expose raw telemetry, private session rows, precise personal locations, permit-subscription infrastructure, credentials, diagnosis, prescription, or medical clearance.
+
 The MCP transport is now a real JSON-RPC 2.0 endpoint at `POST /mcp`:
 
 ```bash

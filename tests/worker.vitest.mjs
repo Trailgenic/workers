@@ -53,6 +53,16 @@ describe('worker http behavior', () => {
     expect(res.status).toBe(200);
     expect((await res.json()).tools.sort()).toEqual(DATA_TOOLS.map((tool) => tool.id).sort());
   });
+  it('serves the TrailGenic Protocols WebMCP browser bundle', async () => {
+    const res = await worker.fetch(new Request('https://mcp.trailgenic.com/webmcp-protocols.js'), {});
+    expect(res.status).toBe(200);
+    expect(res.headers.get('Content-Type')).toContain('application/javascript');
+    expect(res.headers.get('Cache-Control')).toBe('no-cache');
+    const source = await res.text();
+    expect(source).toContain('get_trailgenic_protocol');
+    expect(source).toContain('compare_trailgenic_modalities');
+    expect(source).toContain('document.modelContext.registerTool');
+  });
   it('keeps GET and OPTIONS /mcp contract', async () => {
     const get = await worker.fetch(new Request('https://mcp.trailgenic.com/mcp'), {});
     expect(get.status).toBe(405);
