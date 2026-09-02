@@ -4,7 +4,7 @@ import { DATA_TOOLS, SUPPORTED_MCP_PROTOCOL_VERSIONS, BUILD, mcpTools } from '..
 import { resourceInventory } from '../lib/resources.js';
 
 test('all registry tools are preserved and annotated', () => {
-  assert.equal(BUILD.version, '1.7.0');
+  assert.equal(BUILD.version, '1.8.0');
   assert.deepEqual(SUPPORTED_MCP_PROTOCOL_VERSIONS, ['2025-11-25','2025-06-18']);
   assert.deepEqual(mcpTools().map((tool) => tool.name).sort(), DATA_TOOLS.map((tool) => tool.id).sort());
   for (const tool of mcpTools()) assert.deepEqual(tool.annotations, { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false });

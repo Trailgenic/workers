@@ -16,6 +16,7 @@ import {
 import { DATASET_JSON_BY_SOURCE_PATH, datasetSourcePaths } from "../lib/queries.js";
 import { createTrailgenicMcpServer } from "../lib/mcp-server.js";
 import { resourceInventory } from "../lib/resources.js";
+import { TRAILGENIC_WEBMCP_PROTOCOLS } from "../lib/webmcp-protocols.js";
 import { emptyResponse, jsonResponse, optionsResponse, textResponse } from "../lib/http.js";
 
 const DEFAULT_ALLOWED_ORIGINS = ["https://trailgenic.com", "https://www.trailgenic.com", MCP_ORIGIN];
@@ -303,6 +304,16 @@ export default {
 
     if (normalizedPath === "/capabilities.json") {
       return jsonResponse(capabilitiesDocument(), { cacheControl: "no-cache" });
+    }
+
+    if (normalizedPath === "/webmcp-protocols.js") {
+      return new Response(TRAILGENIC_WEBMCP_PROTOCOLS, {
+        headers: {
+          "Content-Type": "application/javascript; charset=utf-8",
+          "Cache-Control": "no-cache",
+          "Access-Control-Allow-Origin": "*"
+        }
+      });
     }
 
     if (normalizedPath === "/datasets/index") {
