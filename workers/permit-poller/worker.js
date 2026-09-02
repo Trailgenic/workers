@@ -6,6 +6,7 @@ import {
   deliverNotification,
   getTrackerByToken,
   healthSnapshot,
+  pauseExpiredTrackers,
   pollPermit,
   startPhoneVerification,
   verifyTrackerPhone,
@@ -191,6 +192,8 @@ export default {
 
   async scheduled(_controller, env, ctx) {
     ctx.waitUntil((async () => {
+      const paused = await pauseExpiredTrackers(env);
+      if (paused > 0) console.log("Paused expired permit trackers", { tracker_count: paused });
       const permitIds = await activePermitIds(env);
       if (permitIds.length === 0) return;
       await env.POLL_QUEUE.sendBatch(permitIds.map((permitId) => ({

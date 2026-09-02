@@ -31,6 +31,18 @@ export const PERMIT_PRODUCTS = Object.freeze([
     division_name: "Half Dome Cables (Daily)",
     booking_url: "https://www.recreation.gov/permits/234652",
     max_party_size: 6
+  }),
+  Object.freeze({
+    id: "rec_gov_445864_overnight",
+    name: "King Range Wilderness (Lost Coast)",
+    provider: "recreation.gov",
+    adapter: "recreation_inyo",
+    facility_id: "445864",
+    division_id: "445864001",
+    division_name: "King Range Wilderness",
+    booking_url: "https://www.recreation.gov/permits/445864",
+    max_party_size: 3,
+    safety_notice: "Lost Coast dates can be impassable. Check tides, marine forecast, and weather before booking."
   })
 ]);
 
@@ -43,5 +55,6 @@ export const publicPermitCatalog = () => PERMIT_PRODUCTS.map((product) => ({
   name: product.name,
   division_name: product.division_name,
   booking_url: product.booking_url,
-  max_party_size: product.max_party_size
+  max_party_size: product.max_party_size,
+  safety_notice: product.safety_notice || null
 }));

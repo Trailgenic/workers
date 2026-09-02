@@ -8,6 +8,7 @@ permit inventory satisfies a tracker's exact permit, selected date, and party si
 - Mt. Whitney Day Use — Recreation.gov facility `445860`, division `406`
 - Mt. Whitney Overnight — Recreation.gov facility `445860`, division `166`
 - Half Dome Daily — Recreation.gov facility `234652`, division `31`
+- King Range Wilderness (Lost Coast) — Recreation.gov facility `445864`, division `445864001`
 
 Products without a verified bookable-inventory response are intentionally excluded.
 Lottery calendars and release-deadline reminders are out of scope.
@@ -23,6 +24,15 @@ Lottery calendars and release-deadline reminders are out of scope.
    when their first validated observation already has sufficient inventory.
 7. An idempotent notification outbox feeds the notification queue.
 8. The notification consumer sends Twilio SMS with retries and a dead-letter queue.
+
+Trackers with no current or future dates are automatically paused. They do not make
+the health endpoint degraded: a deployed poller with no actionable trackers reports
+`healthy` / `idle`. Twilio error `21610` is treated as a recipient opt-out, so the
+recipient's active trackers are paused and the notification is not retried.
+
+Lost Coast alerts include a safety reminder because Recreation.gov inventory does not
+mean the coastal route is passable. Hikers must check official tides, marine forecasts,
+and weather before booking.
 
 Missing dates and malformed payloads are treated as unknown. They never overwrite the
 last good snapshot or create availability alerts.

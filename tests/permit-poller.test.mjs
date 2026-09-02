@@ -45,6 +45,20 @@ test("missing Inyo dates remain unknown rather than becoming false zeroes", asyn
   assert.deepEqual(records, []);
 });
 
+test("Lost Coast parser reads the verified King Range division", () => {
+  const records = parseInyoAvailability({
+    payload: {
+      "2026-09-10": {
+        "445864001": {
+          quota_usage_by_member_daily: { total: 57, remaining: 3 },
+          is_walkup: false
+        }
+      }
+    }
+  }, getPermitProduct("rec_gov_445864_overnight"), ["2026-09-10"]);
+  assert.deepEqual(records, [{ date: "2026-09-10", remaining: 3 }]);
+});
+
 test("Half Dome parser reads only the Daily division", async () => {
   const payload = await fixture("division-availability.json");
   const records = parseDivisionMonthAvailability(
@@ -93,14 +107,25 @@ test("tracker validation normalizes dates and enforces consent and product limit
   assert.equal(validateTrackerInput({ ...valid.value, consent: false }, now).ok, false);
   assert.equal(validateTrackerInput({ ...valid.value, consent: true, party_size: 16 }, now).ok, false);
   assert.equal(validateTrackerInput({ ...valid.value, consent: true, dates: ["2026-07-18"] }, now).ok, false);
+  assert.equal(validateTrackerInput({
+    ...valid.value,
+    permit_id: "rec_gov_445864_overnight",
+    party_size: 4,
+    consent: true
+  }, now).ok, false);
 });
 
 test("catalog exposes only verified cancellation-inventory products", () => {
   assert.deepEqual(publicPermitCatalog().map((product) => product.id), [
     "rec_gov_445860_day_use",
     "rec_gov_445860_overnight",
-    "rec_gov_234652_daily"
+    "rec_gov_234652_daily",
+    "rec_gov_445864_overnight"
   ]);
+  assert.match(
+    publicPermitCatalog().find((product) => product.id === "rec_gov_445864_overnight").safety_notice,
+    /Check tides/
+  );
 });
 
 test("adapter URLs use the correct Recreation.gov API family", () => {
@@ -111,6 +136,10 @@ test("adapter URLs use the correct Recreation.gov API family", () => {
   assert.match(
     buildAvailabilityUrl(getPermitProduct("rec_gov_234652_daily"), "2026-07-01"),
     /api\/permits\/234652\/availability\/month/
+  );
+  assert.match(
+    buildAvailabilityUrl(getPermitProduct("rec_gov_445864_overnight"), "2026-09-01"),
+    /permitinyo\/445864\/availabilityv2\?start_date=2026-09-01&end_date=2026-09-30/
   );
 });
 
@@ -151,4 +180,6 @@ test("public signup and compliance pages are served by the alerts Worker", async
     assert.equal(response.status, 200);
     assert.equal(response.headers.get("Content-Type"), "text/html; charset=utf-8");
   }
+  const help = await handleHttp(new Request("https://alerts.trailgenic.com/help"), env);
+  assert.match(await help.text(), /START<\/strong> or <strong>UNSTOP/);
 });
