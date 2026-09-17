@@ -82,8 +82,14 @@ test('placeholder datasets are excluded from public discovery and routing', () =
 
 test('September release preserves source uncertainty and missing recovery', () => {
   const walking = getWalkingConditioning();
-  assert.equal(walking.selected_sessions.find(s => s.session === 25).quality_status, 'confirmation_pending');
-  assert.equal(walking.sensitivity_excluding_s25.session_count, 24);
+  assert.equal(walking.selected_sessions.find(s => s.session === 25).quality_status, 'corrected_from_user_source');
+  const s25 = walking.selected_sessions.find(s => s.session === 25);
+  assert.equal(s25.avg_hr_bpm, 115);
+  assert.equal(s25.distance_miles, 3.25);
+  assert.equal(s25.zone_1_pct, 70);
+  assert.equal(s25.zone_2_pct, 30);
+  assert.equal(walking.records[0].summary_statistics.average_hr_bpm_mean, 106.28);
+  assert.equal(walking.data_quality_notes[0].status, 'resolved');
   const running = getRunningConditioning();
   assert.equal(running.selected_sessions.find(s => s.session === 20).hr_drift_pct, -2);
   assert.equal(running.selected_sessions.find(s => s.session === 20).recovery_observation, 'not ready');
