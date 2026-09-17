@@ -51,8 +51,8 @@ assert.equal(focusedPath, "/protocols/trailgenic-adaptation-protocol-v1");
 
 const comparisonResult = await tools.get("compare_trailgenic_modalities").execute({ modalities: ["walking", "hiking"] });
 assert.deepEqual(comparisonResult.structuredContent.compared_modalities, ["walking", "hiking"]);
-assert.equal(comparisonResult.structuredContent.results[0].session_count, 22);
-assert.equal(comparisonResult.structuredContent.results[1].session_count, 36);
+assert.equal(comparisonResult.structuredContent.results[0].session_count, 25);
+assert.equal(comparisonResult.structuredContent.results[1].session_count, 40);
 assert.match(comparisonResult.structuredContent.comparison_boundary, /different session designs/i);
 assert.match(comparisonResult.structuredContent.privacy_boundary, /no raw telemetry/i);
 

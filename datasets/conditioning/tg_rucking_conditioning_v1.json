@@ -2,9 +2,9 @@
   "dataset_id": "tg_rucking_conditioning_v1",
   "dataset_family": "conditioning",
   "title": "TrailGenic Rucking Conditioning Dataset",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "status": "active",
-  "last_updated": "2026-08-18",
+  "last_updated": "2026-09-17",
   "description": "Canonical aggregate plus selected-session TrailGenic conditioning module for flat fasted rucking under progressive external load. It does not expose raw telemetry.",
   "correction_notice": "Heart-rate drift values were corrected on 2026-08-18. Prior drift values and derived interpretations are superseded. Drift is descriptive and is not a measure of metabolic flexibility.",
   "privacy_scope": {
@@ -21,34 +21,115 @@
     ]
   },
   "existence_metadata": {
-    "session_count": 14,
-    "date_range": { "start": "2026-04-21", "end": "2026-08-18" },
+    "session_count": 18,
+    "date_range": {
+      "start": "2026-04-21",
+      "end": "2026-09-15"
+    },
     "training_state": "fasted",
     "terrain_context": "flat",
-    "load_progression_lb": { "start": 10, "end": 20, "relative_increase_percent": 100 },
+    "load_progression_lb": {
+      "start": 10,
+      "end": 20,
+      "relative_increase_percent": 100
+    },
     "load_as_bodyweight_percent_range": "approximately 7-14%"
   },
   "selected_sessions": [
     {
       "session": 14,
       "date": "2026-08-18",
-      "load_lb": 20,
       "distance_miles": 3.18,
       "duration_min": 59.6,
-      "temperature_f": 90,
-      "electrolytes": false,
       "avg_hr_bpm": 115,
       "max_hr_bpm": 134,
-      "hr_per_mile_proxy": 36.2,
-      "load_adjusted_hr_per_mile_proxy": 31.8,
+      "hr_per_mile_proxy": 36.16,
       "hr_drift_pct": 1.3,
-      "estimated_sweat_loss_ml": 813,
-      "zone_1_pct": 84,
-      "zone_2_pct": 16,
       "rpe": 1,
+      "aerobic_training_effect": 1.5,
       "anaerobic_training_effect": 0,
       "recovery_observation": "ready",
-      "interpretation": "Descriptive result at the highest recorded load; it does not isolate the effects of load, heat, sleep, hydration, or calendar time."
+      "temperature_f": 90,
+      "zone_1_pct": 84,
+      "zone_2_pct": 16,
+      "load_lb": 20,
+      "load_adjusted_hr_per_mile_proxy": 31.78
+    },
+    {
+      "session": 15,
+      "date": "2026-08-24",
+      "distance_miles": 3.17,
+      "duration_min": 57.6,
+      "avg_hr_bpm": 115,
+      "max_hr_bpm": 138,
+      "hr_per_mile_proxy": 36.28,
+      "hr_drift_pct": 3.0,
+      "rpe": 1,
+      "aerobic_training_effect": 1.6,
+      "anaerobic_training_effect": 0,
+      "recovery_observation": "ready",
+      "temperature_f": 93,
+      "zone_1_pct": 73,
+      "zone_2_pct": 27,
+      "load_lb": 20,
+      "load_adjusted_hr_per_mile_proxy": 31.88
+    },
+    {
+      "session": 16,
+      "date": "2026-08-31",
+      "distance_miles": 3.25,
+      "duration_min": 59.1,
+      "avg_hr_bpm": 114,
+      "max_hr_bpm": 132,
+      "hr_per_mile_proxy": 35.08,
+      "hr_drift_pct": 2.0,
+      "rpe": 1,
+      "aerobic_training_effect": 1.6,
+      "anaerobic_training_effect": 0,
+      "recovery_observation": "ready",
+      "temperature_f": 89,
+      "zone_1_pct": 82,
+      "zone_2_pct": 18,
+      "load_lb": 20,
+      "load_adjusted_hr_per_mile_proxy": 30.83
+    },
+    {
+      "session": 17,
+      "date": "2026-09-07",
+      "distance_miles": 3.26,
+      "duration_min": 61.3,
+      "avg_hr_bpm": 107,
+      "max_hr_bpm": 128,
+      "hr_per_mile_proxy": 32.8,
+      "hr_drift_pct": 1.5,
+      "rpe": 1,
+      "aerobic_training_effect": 1.4,
+      "anaerobic_training_effect": 0,
+      "recovery_observation": "ready",
+      "temperature_f": 85,
+      "zone_1_pct": 84,
+      "zone_2_pct": 16,
+      "load_lb": 20,
+      "load_adjusted_hr_per_mile_proxy": 28.8
+    },
+    {
+      "session": 18,
+      "date": "2026-09-15",
+      "distance_miles": 3.25,
+      "duration_min": 58.6,
+      "avg_hr_bpm": 112,
+      "max_hr_bpm": 129,
+      "hr_per_mile_proxy": 34.5,
+      "hr_drift_pct": 2.5,
+      "rpe": 1,
+      "aerobic_training_effect": 1.5,
+      "anaerobic_training_effect": 0,
+      "recovery_observation": "ready",
+      "temperature_f": 82,
+      "zone_1_pct": 82,
+      "zone_2_pct": 18,
+      "load_lb": 20,
+      "load_adjusted_hr_per_mile_proxy": 30.3
     }
   ],
   "records": [
@@ -57,25 +138,55 @@
       "aggregate_finding": {
         "metric": "Load-Adjusted HR-per-Mile Proxy",
         "definition": "average heart rate divided by distance and relative load factor",
-        "load_adjusted_proxy": { "mean": 31.8, "min": 30.2, "max": 35.2 },
-        "hr_per_mile_proxy": { "mean": 35.1, "min": 32.8, "max": 39.4 },
+        "load_adjusted_proxy": {
+          "mean": 31.5,
+          "min": 28.8,
+          "max": 35.19
+        },
+        "hr_per_mile_proxy": {
+          "mean": 35.0,
+          "min": 32.8,
+          "max": 39.43
+        },
         "load_progression_signal": "External load increased from 10 lb to 20 lb while the load-adjusted proxy remained descriptive of the observed sessions.",
-        "interpretation": "The normalization reduces the mechanical effect of added load but does not prove improved economy or isolate causality."
+        "interpretation": "Arithmetic load normalization is exploratory and does not measure mechanical work or isolate causal economy."
       },
       "summary_statistics": {
-        "session_count": 14,
-        "load_range_lb": { "min": 10, "max": 20 },
-        "average_hr_bpm_mean": 111.4,
+        "session_count": 18,
+        "load_range_lb": {
+          "min": 10,
+          "max": 20
+        },
+        "average_hr_bpm_mean": 111.56,
         "corrected_hr_drift_percent": {
-          "mean": 1.27,
-          "median": 1.0,
+          "mean": 1.49,
+          "median": 1.4,
           "min": -2.0,
           "max": 4.0,
-          "values_by_session": [3.0, 1.0, 0.0, 1.0, 2.0, -2.0, 0.0, 1.0, 2.0, 3.5, 0.5, 0.5, 4.0, 1.3]
+          "values_by_session": [
+            3.0,
+            1.0,
+            0,
+            1.0,
+            2.0,
+            -2.0,
+            0,
+            1.0,
+            2.0,
+            3.5,
+            0.5,
+            0.5,
+            4.0,
+            1.3,
+            3.0,
+            2.0,
+            1.5,
+            2.5
+          ]
         },
-        "recovery_observation": "ready in all 14 sessions",
-        "rpe": "1 in all 14 sessions",
-        "anaerobic_training_effect": "zero in all 14 sessions"
+        "recovery_observation": "17 ready; 0 not ready; 1 missing. Source labels, not verified recovery.",
+        "rpe": "1 in all 18 sessions",
+        "anaerobic_training_effect": "zero in all 18 sessions"
       },
       "methodology": {
         "metric_formula": "load-adjusted HR-per-mile proxy = average heart rate / (distance miles × (1 + load lb / bodyweight lb))",
@@ -84,11 +195,36 @@
         "claim_boundary": "Conditioning tracking only. HR drift and proxy values do not establish metabolic flexibility, biological age, causality, or clinical efficacy."
       },
       "claims": [
-        "External load progressed from 10 lb to 20 lb across 14 recorded sessions.",
-        "Corrected HR drift averaged 1.27%, with a median of 1.0% and a range from -2.0% to 4.0%.",
-        "All 14 sessions were recorded as recovery-ready with RPE 1 and zero anaerobic training effect.",
-        "This dataset is a conditioning signal and does not compute or imply biological age."
+        "18 entries through September 15, with five repeated 20 lb exposures (S14–18).",
+        "The 20 lb block averaged 112.6 bpm, effort 1 and zero anaerobic effect; recovery flags do not independently establish load absorption.",
+        "17 ready flags and one missing flag (S12)."
       ]
     }
-  ]
+  ],
+  "source_provenance": {
+    "filename": "Trailgenic World Model Datasets - MASTER Values Only - Sep1726.xlsx",
+    "sha256": "c60e8e91dcb00de879d37ed8c63f62095cc56da8403dc3b478585355ee8f0f33",
+    "as_of": "2026-09-17",
+    "charter": "TG World Model Datasets Charter v1.0 — September 2026",
+    "author": "Mike Ye",
+    "interpretation": "Ella; final judgment remains with Mike Ye"
+  },
+  "evidence_labels": {
+    "recorded": "Field entries and wearable outputs; device estimates are not laboratory measurements.",
+    "derived": "Aggregates, drift and HR-per-mile proxies.",
+    "inferred": "Interpretation and provisional decision rules.",
+    "unmeasured": "No autophagy measurement; no recovery outcome inferred from missing follow-up."
+  },
+  "recovery_field_boundary": "Ready/not-ready are source classifications with unspecified timing and method; they do not independently establish post-session recovery.",
+  "data_quality_notes": [
+    {
+      "id": "ruck_s12_flag_missing",
+      "detail": "Session 12 recovery flag is missing; do not count it as ready."
+    }
+  ],
+  "decision_rule": {
+    "date": "2026-09-17",
+    "status": "provisional_practice_rule",
+    "rule": "Hold 20 lb; review repeated in-session tolerance, symptoms and timed recovery before increasing load."
+  }
 }
