@@ -2,7 +2,7 @@
 
 This repository contains the public TrailGenic Machine Communication Protocol (MCP) worker and dataset discovery infrastructure.
 
-TrailGenic™ is an applied longevity-intelligence system that turns real n-of-1 longitudinal field observations into structured, testable protocols and explicitly bounded claims.
+TrailGenic™ is a movement-based longevity and adaptation system supported by structured longitudinal human-response research: Context → Behavior → Physiological Response → Recovery → Adaptation → Decision Rule. Ella interprets the accumulated record; Mike Ye retains final judgment.
 
 ## Canonical Entity Ontology
 
@@ -82,7 +82,7 @@ The public MCP tool inventory is generated from one canonical registry and curre
 | `tg.conditioning.running.get` | `start_date`, `end_date` (optional compatibility fields; supplying them returns an error) |
 | `tg.longevity.bioAge.compute` | `age`, `resting_hr`, `distance_mi`, `elevation_gain_ft`, `moving_time_min`, `avg_hr` (required); `max_hr`, `overnight_hrv`, `fasted` (optional) |
 
-The current public movement model covers 87 structured sessions: 22 walking, 14 rucking, 15 running, and 36 hiking sessions. The conditioning datasets contain corrected heart-rate drift values as of August 18, 2026, and Hike 35 is explicitly identified as a single deliberate heat-training exposure—not proof of heat acclimation. HikeWorldModel™ v3.1.1 publishes canonical aggregates and selected scrubbed high-signal observations, not raw biometric telemetry. The final 18 hikes show lower average heart rate and device exercise load alongside modestly lower average duration and elevation gain, so the half-series comparison remains descriptive rather than causal.
+The September 17, 2026 workbook contains **103 ledger records: 25 walking, 18 rucking, 20 running, and 40 hiking**. Walking S25 matches S24 except date and remains pending confirmation; it is retained without being treated as independent replication. HikeWorldModel v3.2.0 and conditioning v1.3.0 expose aggregates and selected observations. Hike 40 recovery is unmeasured, Rucking S12 has no recovery flag, and Running S17–20 are marked not ready (source labels, not independent recovery measurements). See [release review](docs/world-model-2026-09-17.md) for findings and data-quality limits.
 
 Large dataset tools support optional filters and bounded `limit` values so MCP clients do not need to ingest full high-record payloads.
 

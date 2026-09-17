@@ -1,10 +1,10 @@
 {
   "dataset_id": "tg_hikeworldmodel_v3_1",
   "dataset_family": "TG Dataset Family — Hiking World Model",
-  "title": "TrailGenic HikeWorldModel™ v3.1",
-  "version": "3.1.1",
+  "title": "TrailGenic HikeWorldModel™ v3.2",
+  "version": "3.2.0",
   "status": "active",
-  "last_updated": "2026-08-18",
+  "last_updated": "2026-09-17",
   "canonical_url": "https://www.trailgenic.com/hiking",
   "scope": "Canonical public aggregate plus selected high-signal session records. This is an n-of-1 observational record, not a clinical or population model.",
   "privacy_scope": {
@@ -16,80 +16,374 @@
       "unpublished detailed session rows"
     ]
   },
-  "observation_window": { "start": "2025-11-28", "end": "2026-08-16" },
+  "observation_window": {
+    "start": "2025-11-28",
+    "end": "2026-09-12"
+  },
   "summary_statistics": {
-    "hiking_sessions": 36,
-    "total_distance_miles": 387.45,
-    "total_elevation_gain_ft": 148157,
-    "total_field_duration_min": 12237.4,
-    "first_18_vs_final_18": {
-      "average_hr_bpm": { "first": 127.9, "final": 124.1 },
-      "garmin_exercise_load": { "first": 125.8, "final": 61.3 },
-      "average_duration_min": { "first": 341.7, "final": 338.2 },
-      "average_elevation_gain_ft": { "first": 4185, "final": 4046 },
-      "interpretation": "Average heart rate and device exercise load were lower in the final half, while average duration and elevation gain were also modestly lower. The comparison is descriptive and does not isolate adaptation from route mix, environment, pacing, or calendar effects."
-    },
-    "session_number_correlations": {
-      "average_hr_bpm_r": -0.398,
-      "garmin_exercise_load_r": -0.571
-    },
+    "hiking_sessions": 40,
+    "total_distance_miles": 430.66,
+    "total_elevation_gain_ft": 164610,
+    "total_field_duration_min": 13515.4,
     "route_aware_hr_drift": {
-      "negative_sessions": 30,
+      "negative_sessions": 34,
       "positive_sessions": 6,
       "zero_sessions": 0,
-      "mean_percent": -0.75,
-      "median_percent": -0.99,
-      "range_percent": { "min": -2.83, "max": 1.5 }
+      "mean_percent": -0.81,
+      "median_percent": -1.0,
+      "range_percent": {
+        "min": -2.83,
+        "max": 1.5
+      }
     },
-    "post_hike_hrv_ms": {
-      "observations": 35,
-      "first_period_mean": 29.1,
-      "final_period_mean": 32.4,
-      "session_number_correlation_r": 0.296,
-      "p_value": 0.084,
-      "interpretation": "Directional but not statistically persuasive in this n-of-1 series. Starting-value-coupled HRV deltas remain retired."
+    "total_moving_duration_min": 10353.2,
+    "first_20_vs_latest_20": {
+      "average_hr_bpm": {
+        "first": 127.15,
+        "latest": 124.28
+      },
+      "garmin_exercise_load": {
+        "first": 118.75,
+        "latest": 60.55
+      },
+      "average_duration_min": {
+        "first": 340.4,
+        "latest": 335.37
+      },
+      "average_elevation_gain_ft": {
+        "first": 4176.3,
+        "latest": 4054.2
+      },
+      "interpretation": "Descriptive only; route, season, pacing, surface, duration and altitude vary."
+    },
+    "recovery_coverage": {
+      "Pre": {
+        "hrv_observations": 40,
+        "sleep_score_observations": 40
+      },
+      "Post": {
+        "hrv_observations": 38,
+        "sleep_score_observations": 38
+      },
+      "Day2": {
+        "hrv_observations": 36,
+        "sleep_score_observations": 36
+      }
     }
   },
   "movement_architecture": {
-    "total_public_structured_sessions": 87,
-    "walking_sessions": 22,
-    "rucking_sessions": 14,
-    "running_sessions": 15,
-    "hiking_sessions": 36,
+    "total_public_structured_sessions": 103,
+    "walking_sessions": 25,
+    "rucking_sessions": 18,
+    "running_sessions": 20,
+    "hiking_sessions": 40,
     "subject_age_years": 53
   },
   "methodology": {
     "design": "Longitudinal n-of-1 observational field dataset.",
     "route_aware_hr_drift": "Interpreted with ascent, descent, route structure, terrain, pace, altitude, heat, and segmented recordings in view; lower downhill heart rate is not automatically favorable drift.",
-    "comparison_frame": "First 18 versus final 18 hikes for a stable half-series comparison.",
+    "comparison_frame": "First 20 versus latest 20 hikes; historical 36-hike comparisons retained under an explicit dated snapshot.",
     "evidence_boundary": "Associations describe this subject and observation window. They do not establish population effects, causal mechanisms, heat acclimation, clinical efficacy, readiness, fatigue, or cardiac efficiency."
   },
   "selected_sessions": [
-    { "hike": 24, "date": "2026-05-30", "name": "Mount Baldy — Ski Hut / Devil's Backbone", "peak_ft": 10088, "avg_hr_bpm": 127, "exercise_load": 71, "route_aware_hr_drift_pct": 1.0 },
-    { "hike": 25, "date": "2026-06-06", "name": "Mount Baldy — Ski Hut / Devil's Backbone", "peak_ft": 10079, "avg_hr_bpm": 122, "exercise_load": 71, "route_aware_hr_drift_pct": 1.0 },
-    { "hike": 26, "date": "2026-06-13", "name": "Mount Baldy and Mount Harwood", "peak_ft": 10077, "avg_hr_bpm": 125.1, "exercise_load": 85, "route_aware_hr_drift_pct": -1.8 },
-    { "hike": 27, "date": "2026-06-20", "name": "Mount Baldy", "peak_ft": 10091, "avg_hr_bpm": 117.5, "exercise_load": 62, "route_aware_hr_drift_pct": -1.9 },
-    { "hike": 28, "date": "2026-06-27", "name": "North Mount Elbert", "peak_ft": 14497, "avg_hr_bpm": 127, "exercise_load": 59, "route_aware_hr_drift_pct": -1.3 },
-    { "hike": 29, "date": "2026-06-28", "name": "Manitou Incline", "peak_ft": 8567, "avg_hr_bpm": 131, "exercise_load": 58, "route_aware_hr_drift_pct": -1.0 },
-    { "hike": 30, "date": "2026-07-01", "name": "The Crags / Pikes Peak", "peak_ft": 14116, "avg_hr_bpm": 123, "exercise_load": 58, "route_aware_hr_drift_pct": -1.4 },
-    { "hike": 31, "date": "2026-07-04", "name": "Wheeler Peak", "peak_ft": 13154, "avg_hr_bpm": 123.1, "exercise_load": 53, "route_aware_hr_drift_pct": 1.2, "interpretation": "Observed positive drift; the prior fatigue-reveal explanation remains withdrawn because mechanism was not validated." },
-    { "hike": 32, "date": "2026-07-12", "name": "Mount Baldy", "peak_ft": 10093, "avg_hr_bpm": 123, "exercise_load": 56, "route_aware_hr_drift_pct": -1.3 },
-    { "hike": 33, "date": "2026-07-25", "name": "Mount Baldy", "peak_ft": 10093, "avg_hr_bpm": 124, "exercise_load": 60, "route_aware_hr_drift_pct": -1.1 },
-    { "hike": 34, "date": "2026-08-01", "name": "Cucamonga Peak", "peak_ft": 8843, "distance_miles": 11.58, "elevation_gain_ft": 4229, "duration_min": 369, "average_temperature_f": 80, "maximum_temperature_f": 93, "avg_hr_bpm": 126, "exercise_load": 58, "route_aware_hr_drift_pct": -0.99, "overnight_hrv_ms": { "pre": 30, "post_1": 34, "post_2": 41 }, "rem_sleep_min": { "pre": 11, "post_1": 55, "post_2": 97 }, "breath_acetone_ppm": { "start": 1.9, "end": 3.9 }, "interpretation": "Descriptive single-session response only." },
-    { "hike": 35, "date": "2026-08-07", "name": "Monserate Mountain Loop", "protocol_context": "deliberate_heat_training", "peak_ft": 1554, "distance_miles": 6.25, "elevation_gain_ft": 1601, "duration_min": 129, "average_temperature_f": 97, "maximum_temperature_f": 100, "avg_hr_bpm": 128, "max_hr_bpm": 155, "exercise_load": 45, "route_aware_hr_drift_pct": -0.4, "overnight_hrv_ms": { "pre": 38, "post_1": 39, "post_2": null }, "rem_sleep_min": { "pre": 104, "post_1": 34, "post_2": null }, "breath_acetone_ppm": { "start": 1.9, "end": 2.5 }, "interpretation": "One deliberate heat-training exposure was completed with controlled recorded cardiovascular strain. This supports single-session heat tolerance, not heat acclimation." },
-    { "hike": 36, "date": "2026-08-16", "name": "Mount Baldy — Ski Hut / Devil's Backbone", "protocol_context": "standard_hiking", "peak_ft": 10079, "distance_miles": 9.25, "elevation_gain_ft": 4024, "duration_min": 300, "average_temperature_f": 77, "maximum_temperature_f": 99, "avg_hr_bpm": 126, "max_hr_bpm": 148, "exercise_load": 57, "route_aware_hr_drift_pct": -1.2, "overnight_hrv_ms": { "pre": 35, "post_1": 28, "post_2": 32 }, "rem_sleep_min": { "pre": 28, "post_1": 26, "post_2": 1 }, "breath_acetone_ppm": { "start": 1.7, "end": 6.2 }, "interpretation": "Strong in-effort economy coexisted with a two-night recovery cost; performance capacity and recovery response are reported separately." }
+    {
+      "hike": 24,
+      "date": "2026-05-30",
+      "name": "Mount Baldy — Ski Hut / Devil's Backbone",
+      "peak_ft": 10088,
+      "avg_hr_bpm": 127,
+      "exercise_load": 71,
+      "route_aware_hr_drift_pct": 1.0
+    },
+    {
+      "hike": 25,
+      "date": "2026-06-06",
+      "name": "Mount Baldy — Ski Hut / Devil's Backbone",
+      "peak_ft": 10079,
+      "avg_hr_bpm": 122,
+      "exercise_load": 71,
+      "route_aware_hr_drift_pct": 1.0
+    },
+    {
+      "hike": 26,
+      "date": "2026-06-13",
+      "name": "Mount Baldy and Mount Harwood",
+      "peak_ft": 10077,
+      "avg_hr_bpm": 125.1,
+      "exercise_load": 85,
+      "route_aware_hr_drift_pct": -1.8
+    },
+    {
+      "hike": 27,
+      "date": "2026-06-20",
+      "name": "Mount Baldy",
+      "peak_ft": 10091,
+      "avg_hr_bpm": 117.5,
+      "exercise_load": 62,
+      "route_aware_hr_drift_pct": -1.9
+    },
+    {
+      "hike": 28,
+      "date": "2026-06-27",
+      "name": "North Mount Elbert",
+      "peak_ft": 14497,
+      "avg_hr_bpm": 127,
+      "exercise_load": 59,
+      "route_aware_hr_drift_pct": -1.3
+    },
+    {
+      "hike": 29,
+      "date": "2026-06-28",
+      "name": "Manitou Incline",
+      "peak_ft": 8567,
+      "avg_hr_bpm": 131,
+      "exercise_load": 58,
+      "route_aware_hr_drift_pct": -1.0
+    },
+    {
+      "hike": 30,
+      "date": "2026-07-01",
+      "name": "The Crags / Pikes Peak",
+      "peak_ft": 14116,
+      "avg_hr_bpm": 123,
+      "exercise_load": 58,
+      "route_aware_hr_drift_pct": -1.4
+    },
+    {
+      "hike": 31,
+      "date": "2026-07-04",
+      "name": "Wheeler Peak",
+      "peak_ft": 13154,
+      "avg_hr_bpm": 123.1,
+      "exercise_load": 53,
+      "route_aware_hr_drift_pct": 1.2,
+      "interpretation": "Observed positive drift; the prior fatigue-reveal explanation remains withdrawn because mechanism was not validated."
+    },
+    {
+      "hike": 32,
+      "date": "2026-07-12",
+      "name": "Mount Baldy",
+      "peak_ft": 10093,
+      "avg_hr_bpm": 123,
+      "exercise_load": 56,
+      "route_aware_hr_drift_pct": -1.3
+    },
+    {
+      "hike": 33,
+      "date": "2026-07-25",
+      "name": "Mount Baldy",
+      "peak_ft": 10093,
+      "avg_hr_bpm": 124,
+      "exercise_load": 60,
+      "route_aware_hr_drift_pct": -1.1
+    },
+    {
+      "hike": 34,
+      "date": "2026-08-01",
+      "name": "Cucamonga Peak",
+      "peak_ft": 8843,
+      "distance_miles": 11.58,
+      "elevation_gain_ft": 4229,
+      "duration_min": 369,
+      "average_temperature_f": 80,
+      "maximum_temperature_f": 93,
+      "avg_hr_bpm": 126,
+      "exercise_load": 58,
+      "route_aware_hr_drift_pct": -0.99,
+      "overnight_hrv_ms": {
+        "pre": 30,
+        "post_1": 34,
+        "post_2": 41
+      },
+      "rem_sleep_min": {
+        "pre": 11,
+        "post_1": 55,
+        "post_2": 97
+      },
+      "breath_acetone_ppm": {
+        "start": 1.9,
+        "end": 3.9
+      },
+      "interpretation": "Descriptive single-session response only."
+    },
+    {
+      "hike": 35,
+      "date": "2026-08-07",
+      "name": "Monserate Mountain Loop",
+      "protocol_context": "deliberate_heat_training",
+      "peak_ft": 1554,
+      "distance_miles": 6.25,
+      "elevation_gain_ft": 1601,
+      "duration_min": 129,
+      "average_temperature_f": 97,
+      "maximum_temperature_f": 100,
+      "avg_hr_bpm": 128,
+      "max_hr_bpm": 155,
+      "exercise_load": 45,
+      "route_aware_hr_drift_pct": -0.4,
+      "overnight_hrv_ms": {
+        "pre": 38,
+        "post_1": 39,
+        "post_2": null
+      },
+      "rem_sleep_min": {
+        "pre": 104,
+        "post_1": 34,
+        "post_2": null
+      },
+      "breath_acetone_ppm": {
+        "start": 1.9,
+        "end": 2.5
+      },
+      "interpretation": "One deliberate heat-training exposure was completed with controlled recorded cardiovascular strain. This supports single-session heat tolerance, not heat acclimation."
+    },
+    {
+      "hike": 36,
+      "date": "2026-08-16",
+      "name": "Mount Baldy — Ski Hut / Devil's Backbone",
+      "protocol_context": "standard_hiking",
+      "peak_ft": 10079,
+      "distance_miles": 9.25,
+      "elevation_gain_ft": 4024,
+      "duration_min": 300,
+      "average_temperature_f": 77,
+      "maximum_temperature_f": 99,
+      "avg_hr_bpm": 126,
+      "max_hr_bpm": 148,
+      "exercise_load": 57,
+      "route_aware_hr_drift_pct": -1.2,
+      "overnight_hrv_ms": {
+        "pre": 35,
+        "post_1": 28,
+        "post_2": 32
+      },
+      "rem_sleep_min": {
+        "pre": 28,
+        "post_1": 26,
+        "post_2": 1
+      },
+      "breath_acetone_ppm": {
+        "start": 1.7,
+        "end": 6.2
+      },
+      "interpretation": "Strong in-effort economy coexisted with a two-night recovery cost; performance capacity and recovery response are reported separately."
+    },
+    {
+      "hike": 37,
+      "date": "2026-08-22",
+      "name": "Ski Hut to Mount Baldy to Devil's Backbone to Trailhead",
+      "peak_ft": 10075,
+      "distance_miles": 10.32,
+      "elevation_gain_ft": 4042,
+      "duration_min": 338,
+      "moving_duration_min": 254,
+      "field_temperature_range": "72F to 102F",
+      "avg_hr_bpm": 121,
+      "max_hr_bpm": 142,
+      "exercise_load": 48,
+      "route_aware_hr_drift_pct": -1.4,
+      "overnight_hrv_ms": {
+        "pre": 31,
+        "post_1": 26,
+        "post_2": 42
+      },
+      "breath_acetone_ppm": {
+        "start": 1.9,
+        "end": 6.8
+      },
+      "recovery_status": "recorded_with_limitations",
+      "interpretation": "Controlled in-session response and recorded follow-up; weather, route and stop time remain confounders."
+    },
+    {
+      "hike": 38,
+      "date": "2026-08-29",
+      "name": "Trailhead to Devil's Backbone to Summit and back via Ski   Hut",
+      "peak_ft": 10067,
+      "distance_miles": 10.54,
+      "elevation_gain_ft": 4114,
+      "duration_min": 306,
+      "moving_duration_min": 266,
+      "field_temperature_range": "64–86°F",
+      "avg_hr_bpm": 124,
+      "max_hr_bpm": 146,
+      "exercise_load": 60,
+      "route_aware_hr_drift_pct": -1.3,
+      "overnight_hrv_ms": {
+        "pre": 38,
+        "post_1": 29,
+        "post_2": 59
+      },
+      "breath_acetone_ppm": {
+        "start": 1.7,
+        "end": 6.1
+      },
+      "recovery_status": "recorded_with_limitations",
+      "interpretation": "HRV 38 → 29 → 59 ms shows autonomic rebound; low Day-2 deep/REM sleep prevents declaring uniform recovery. Post-night sleep stages total 354 minutes versus stated total 304; discrepancy retained, not corrected."
+    },
+    {
+      "hike": 39,
+      "date": "2026-09-05",
+      "name": "Ice House Canyon to Ontario Peak",
+      "peak_ft": 8697,
+      "distance_miles": 11.9,
+      "elevation_gain_ft": 4239,
+      "duration_min": 324,
+      "moving_duration_min": 310,
+      "field_temperature_range": "57–84°F",
+      "avg_hr_bpm": 123,
+      "max_hr_bpm": 142,
+      "exercise_load": 56,
+      "route_aware_hr_drift_pct": -1.3,
+      "overnight_hrv_ms": {
+        "pre": 43,
+        "post_1": 34,
+        "post_2": 42
+      },
+      "breath_acetone_ppm": {
+        "start": 1.6,
+        "end": 6.3
+      },
+      "recovery_status": "recorded_with_limitations",
+      "interpretation": "HRV 43 → 34 → 42 ms with expanded deep/REM sleep is consistent with return toward baseline; not causal proof of adaptation."
+    },
+    {
+      "hike": 40,
+      "date": "2026-09-12",
+      "name": "Ski Hut to Mount Baldy to Devil's Backbone to Trailhead",
+      "peak_ft": 10089,
+      "distance_miles": 10.45,
+      "elevation_gain_ft": 4058,
+      "duration_min": 310,
+      "moving_duration_min": 250,
+      "field_temperature_range": "66–97°F",
+      "avg_hr_bpm": 124,
+      "max_hr_bpm": 150,
+      "exercise_load": 54,
+      "route_aware_hr_drift_pct": -1.2,
+      "overnight_hrv_ms": {
+        "pre": 44,
+        "post_1": null,
+        "post_2": null
+      },
+      "breath_acetone_ppm": {
+        "start": 1.8,
+        "end": 6.7
+      },
+      "recovery_status": "unmeasured",
+      "interpretation": "In-session response was controlled. Garmin battery loss left both recovery nights unmeasured; do not infer low recovery cost or completed recovery."
+    }
   ],
   "claims": [
     {
       "claim_id": "tg_longitudinal_hiking_economy",
-      "statement": "Average heart rate and device exercise load were lower in the final 18 hikes, alongside modestly lower average duration and elevation gain.",
+      "statement": "First 20 versus latest 20 hikes averaged 127.15 versus 124.28 bpm and device load 118.75 versus 60.55; exposure and calendar effects remain confounded.",
       "evidence_level": "n_of_1_observational",
       "status": "supported_with_exposure_caveat",
       "boundary": "The half-series comparison does not isolate training adaptation from route mix, environment, pace, or calendar effects."
     },
     {
       "claim_id": "tg_route_aware_hr_drift_distribution",
-      "statement": "Thirty of 36 route-aware observations were negative and the median was -0.99%.",
+      "statement": "34 of 40 whole-route drift observations were negative; median -1.0%.",
       "evidence_level": "descriptive",
       "status": "supported_within_dataset",
       "boundary": "Not a validated cardiac-efficiency, readiness, or fatigue score."
@@ -103,10 +397,19 @@
     }
   ],
   "withdrawn_interpretations": [
-    { "claim_id": "tg_fatigue_reveal_effort", "status": "withdrawn", "reason": "The Wheeler Peak observation did not validate fatigue as the mechanism for positive heart-rate drift." }
+    {
+      "claim_id": "tg_fatigue_reveal_effort",
+      "status": "withdrawn",
+      "reason": "The Wheeler Peak observation did not validate fatigue as the mechanism for positive heart-rate drift."
+    }
   ],
   "bounded_heuristics": [
-    { "claim_id": "tg_engine_governor_model", "status": "bounded_heuristic", "statement": "Task completion does not establish that the dose was optimal, absorbed, or repeatable.", "boundary": "Not a validated physiological split or diagnostic model." }
+    {
+      "claim_id": "tg_engine_governor_model",
+      "status": "bounded_heuristic",
+      "statement": "Task completion does not establish that the dose was optimal, absorbed, or repeatable.",
+      "boundary": "Not a validated physiological split or diagnostic model."
+    }
   ],
   "caveats": [
     "N-of-1 observational dataset; no population or causal claim.",
@@ -116,5 +419,69 @@
   "related_urls": [
     "https://www.trailgenic.com/hiking",
     "https://www.trailgenic.com/science/hr-drift-adaptation-vs-fitness"
+  ],
+  "source_provenance": {
+    "filename": "Trailgenic World Model Datasets - MASTER Values Only - Sep1726.xlsx",
+    "sha256": "c60e8e91dcb00de879d37ed8c63f62095cc56da8403dc3b478585355ee8f0f33",
+    "as_of": "2026-09-17",
+    "charter": "TG World Model Datasets Charter v1.0 — September 2026",
+    "author": "Mike Ye",
+    "interpretation": "Ella; final judgment remains with Mike Ye"
+  },
+  "historical_snapshot_2026_08_18": {
+    "scope": "Hikes 1–36; fixed historical calculations, not current-series statistics",
+    "first_18_vs_final_18": {
+      "average_hr_bpm": {
+        "first": 127.9,
+        "final": 124.1
+      },
+      "garmin_exercise_load": {
+        "first": 125.8,
+        "final": 61.3
+      },
+      "average_duration_min": {
+        "first": 341.7,
+        "final": 338.2
+      },
+      "average_elevation_gain_ft": {
+        "first": 4185,
+        "final": 4046
+      },
+      "interpretation": "Average heart rate and device exercise load were lower in the final half, while average duration and elevation gain were also modestly lower. The comparison is descriptive and does not isolate adaptation from route mix, environment, pacing, or calendar effects."
+    },
+    "session_number_correlations": {
+      "average_hr_bpm_r": -0.398,
+      "garmin_exercise_load_r": -0.571
+    },
+    "post_hike_hrv_ms": {
+      "observations": 35,
+      "first_period_mean": 29.1,
+      "final_period_mean": 32.4,
+      "session_number_correlation_r": 0.296,
+      "p_value": 0.084,
+      "interpretation": "Directional but not statistically persuasive in this n-of-1 series. Starting-value-coupled HRV deltas remain retired."
+    }
+  },
+  "ledger_quality_notes": [
+    {
+      "id": "walking_s25_matches_s24",
+      "status": "confirmation_pending",
+      "detail": "All populated Walking S25 values except date match S24 exactly. Retained as supplied; not independent replication evidence until confirmed.",
+      "affected_sessions": [
+        24,
+        25
+      ]
+    },
+    {
+      "id": "running_s20_audit_cell",
+      "status": "excluded_from_analysis",
+      "detail": "Run S20 has numeric 48 in the HR Drift Audit row. It is not used as drift or another physiological measurement; corrected drift is -2.0%."
+    }
+  ],
+  "data_quality_notes": [
+    {
+      "id": "h38_post_sleep_total",
+      "detail": "H38 PostSleep_Deep + REM + Light = 354 min, while PostSleep_Total = 304 min. No inferred correction; exclude this night from sleep-duration/stage-share comparisons pending confirmation."
+    }
   ]
 }
