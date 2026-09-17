@@ -3,7 +3,7 @@
   "last_updated": "2026-09-17",
   "dataset_id": "tg_foundation_sessions_v1",
   "dataset_family": "TG Dataset Family 7 — Longevity Protocol Intelligence",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "status": "compatibility_record",
   "description": "Compatibility record for the TrailGenic Foundation walking phase. Current movement truth is maintained in tg_walking_conditioning_v1 as aggregate plus selected sessions; this record does not expose raw telemetry or the retired derived interpretations.",
   "authority": {
@@ -43,15 +43,15 @@
     "anaerobic_training_effect": "zero in all 25 sessions",
     "perceived_effort": "1 in all 25 sessions",
     "recovery_observation": "25 ready; 0 not ready; 0 missing. Source labels, not verified recovery.",
-    "average_hr_bpm_mean": 106.08,
+    "average_hr_bpm_mean": 106.28,
     "hr_per_mile_proxy": {
       "baseline": 34.7,
       "best": 30.3,
       "best_session": 16,
-      "mean": 33.43,
+      "mean": 33.48,
       "range": [
         30.28,
-        35.33
+        35.4
       ]
     },
     "corrected_hr_drift_percent": {
@@ -147,27 +147,34 @@
     {
       "session": 25,
       "date": "2026-09-16",
-      "distance_miles": 3.22,
-      "duration_min": 53,
-      "avg_hr_bpm": 110,
-      "max_hr_bpm": 124,
-      "hr_per_mile_proxy": 34.16,
+      "distance_miles": 3.25,
+      "duration_min": 52.5,
+      "avg_hr_bpm": 115,
+      "max_hr_bpm": 133,
+      "hr_per_mile_proxy": 35.4,
       "hr_drift_pct": 2.5,
       "rpe": 1,
       "aerobic_training_effect": 1.7,
       "anaerobic_training_effect": 0,
       "recovery_observation": "ready",
-      "temperature_f": 86,
-      "zone_1_pct": 97,
-      "zone_2_pct": 3,
-      "quality_status": "confirmation_pending",
-      "interpretation": "Retained ledger entry; identical populated values to S24 except date. Do not treat as independent replication yet."
+      "temperature_f": 85,
+      "zone_1_pct": 70,
+      "zone_2_pct": 30,
+      "quality_status": "corrected_from_user_source",
+      "interpretation": "Highest average HR and Zone 2 share in the 25-session walking record. Pace was 1.9% faster than S24 with higher cardiovascular demand; effort 1, drift 2.5% and zero anaerobic effect persisted. One session does not establish adaptation, regression or completed recovery.",
+      "resting_hr_context_bpm": 60,
+      "sleep_context": {
+        "score": 74,
+        "duration_min": 465
+      },
+      "estimated_sweat_loss_ml": 604
     }
   ],
   "key_findings": [
-    "25 walking ledger entries through September 16; S25 requires confirmation before independent replication claims.",
-    "All entries record effort 1 and zero anaerobic effect; ready flags are contextual labels.",
-    "Corrected drift mean 2.14%; mean average HR 106.08 bpm. Excluding S25, 2.13% and 105.92 bpm."
+    "25 walking sessions through September 16; S25 was corrected from Mike Ye’s supplied source values.",
+    "All sessions record effort 1 and zero anaerobic effect; ready flags are contextual labels.",
+    "Mean average HR 106.28 bpm, corrected drift 2.14%, and Zone 1 share 93.36%.",
+    "S25 records the highest average HR (115 bpm) and Zone 2 share (30%) in this walking series. Its faster pace and higher entering resting HR remain context, not established causes."
   ],
   "related_datasets": [
     {
@@ -195,7 +202,7 @@
   },
   "source_provenance": {
     "filename": "Trailgenic World Model Datasets - MASTER Values Only - Sep1726.xlsx",
-    "sha256": "c60e8e91dcb00de879d37ed8c63f62095cc56da8403dc3b478585355ee8f0f33",
+    "sha256": "4e5ab69ed228e56712caac5992803d723728e799cb87bb6796489ae93e43d746",
     "as_of": "2026-09-17",
     "charter": "TG World Model Datasets Charter v1.0 — September 2026",
     "author": "Mike Ye",
@@ -204,12 +211,18 @@
   "data_quality_notes": [
     {
       "id": "walking_s25_matches_s24",
-      "status": "confirmation_pending",
-      "detail": "All populated Walking S25 values except date match S24 exactly. Retained as supplied; not independent replication evidence until confirmed.",
-      "affected_sessions": [
-        24,
-        25
-      ]
+      "date": "2026-09-17",
+      "source": "Mike Ye supplied corrected Walking S25 in conversation. Reconciled to the canonical values-only workbook.",
+      "status": "resolved",
+      "detail": "S25 was previously a copy of S24 except date. Actual S25 replaces that entry; record count remains 103.",
+      "corrected_workbook_sha256": "4e5ab69ed228e56712caac5992803d723728e799cb87bb6796489ae93e43d746"
     }
-  ]
+  ],
+  "source_correction": {
+    "date": "2026-09-17",
+    "source": "Mike Ye supplied corrected Walking S25 in conversation. Reconciled to the canonical values-only workbook.",
+    "status": "resolved",
+    "detail": "S25 was previously a copy of S24 except date. Actual S25 replaces that entry; record count remains 103.",
+    "corrected_workbook_sha256": "4e5ab69ed228e56712caac5992803d723728e799cb87bb6796489ae93e43d746"
+  }
 }

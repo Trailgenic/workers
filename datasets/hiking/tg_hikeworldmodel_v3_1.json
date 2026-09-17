@@ -2,7 +2,7 @@
   "dataset_id": "tg_hikeworldmodel_v3_1",
   "dataset_family": "TG Dataset Family — Hiking World Model",
   "title": "TrailGenic HikeWorldModel™ v3.2",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "status": "active",
   "last_updated": "2026-09-17",
   "canonical_url": "https://www.trailgenic.com/hiking",
@@ -422,7 +422,7 @@
   ],
   "source_provenance": {
     "filename": "Trailgenic World Model Datasets - MASTER Values Only - Sep1726.xlsx",
-    "sha256": "c60e8e91dcb00de879d37ed8c63f62095cc56da8403dc3b478585355ee8f0f33",
+    "sha256": "4e5ab69ed228e56712caac5992803d723728e799cb87bb6796489ae93e43d746",
     "as_of": "2026-09-17",
     "charter": "TG World Model Datasets Charter v1.0 — September 2026",
     "author": "Mike Ye",
@@ -465,12 +465,11 @@
   "ledger_quality_notes": [
     {
       "id": "walking_s25_matches_s24",
-      "status": "confirmation_pending",
-      "detail": "All populated Walking S25 values except date match S24 exactly. Retained as supplied; not independent replication evidence until confirmed.",
-      "affected_sessions": [
-        24,
-        25
-      ]
+      "date": "2026-09-17",
+      "source": "Mike Ye supplied corrected Walking S25 in conversation. Reconciled to the canonical values-only workbook.",
+      "status": "resolved",
+      "detail": "S25 was previously a copy of S24 except date. Actual S25 replaces that entry; record count remains 103.",
+      "corrected_workbook_sha256": "4e5ab69ed228e56712caac5992803d723728e799cb87bb6796489ae93e43d746"
     },
     {
       "id": "running_s20_audit_cell",
@@ -483,5 +482,12 @@
       "id": "h38_post_sleep_total",
       "detail": "H38 PostSleep_Deep + REM + Light = 354 min, while PostSleep_Total = 304 min. No inferred correction; exclude this night from sleep-duration/stage-share comparisons pending confirmation."
     }
-  ]
+  ],
+  "source_correction": {
+    "date": "2026-09-17",
+    "source": "Mike Ye supplied corrected Walking S25 in conversation. Reconciled to the canonical values-only workbook.",
+    "status": "resolved",
+    "detail": "S25 was previously a copy of S24 except date. Actual S25 replaces that entry; record count remains 103.",
+    "corrected_workbook_sha256": "4e5ab69ed228e56712caac5992803d723728e799cb87bb6796489ae93e43d746"
+  }
 }

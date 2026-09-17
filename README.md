@@ -82,7 +82,7 @@ The public MCP tool inventory is generated from one canonical registry and curre
 | `tg.conditioning.running.get` | `start_date`, `end_date` (optional compatibility fields; supplying them returns an error) |
 | `tg.longevity.bioAge.compute` | `age`, `resting_hr`, `distance_mi`, `elevation_gain_ft`, `moving_time_min`, `avg_hr` (required); `max_hr`, `overnight_hrv`, `fasted` (optional) |
 
-The September 17, 2026 workbook contains **103 ledger records: 25 walking, 18 rucking, 20 running, and 40 hiking**. Walking S25 matches S24 except date and remains pending confirmation; it is retained without being treated as independent replication. HikeWorldModel v3.2.0 and conditioning v1.3.0 expose aggregates and selected observations. Hike 40 recovery is unmeasured, Rucking S12 has no recovery flag, and Running S17–20 are marked not ready (source labels, not independent recovery measurements). See [release review](docs/world-model-2026-09-17.md) for findings and data-quality limits.
+The September 17, 2026 workbook contains **103 ledger records: 25 walking, 18 rucking, 20 running, and 40 hiking**. Walking S25 was corrected from Mike Ye’s supplied values: 3.25 mi, 52.5 min, HR 115 bpm and 70%/30% Z1/Z2. Its prior duplication warning is resolved. HikeWorldModel v3.2.1 and walking v1.3.1 and other conditioning v1.3.0 expose aggregates and selected observations. Hike 40 recovery is unmeasured, Rucking S12 has no recovery flag, and Running S17–20 are marked not ready (source labels, not independent recovery measurements). See [release review](docs/world-model-2026-09-17.md) for findings and data-quality limits.
 
 Large dataset tools support optional filters and bounded `limit` values so MCP clients do not need to ingest full high-record payloads.
 
