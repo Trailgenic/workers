@@ -1,3 +1,4 @@
+import methodology from "../workers/sleepgenic-mcp/methodology.json" with { type: "json" };
 const BASE = process.env.BASE || "https://mcp.sleepgenic.ai";
 const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 let passed = 0;
@@ -29,6 +30,7 @@ const health = await get("/health");
 check(health.response.status === 200 && health.json?.status === "healthy", "health is live");
 const dataset = await get("/datasets/methodology");
 check(dataset.response.status === 200 && dataset.json?.dataset_id === "sleepgenic-methodology-v1", "methodology dataset is live");
+check(dataset.json?.version === methodology.version && dataset.json?.released === methodology.released, "expected methodology release is deployed");
 const initialized = await rpc(1, "initialize", { protocolVersion: "2025-11-25", capabilities: {}, clientInfo: { name: "acceptance", version: "1" } });
 check(initialized.json?.result?.protocolVersion === "2025-11-25", "MCP initializes");
 const list = await rpc(2, "tools/list");
@@ -39,6 +41,10 @@ const screening = await rpc(4, "tools/call", { name: "sleepgenic.screening.looku
 check(screening.json?.result?.structuredContent?.boundary?.role === "screening_only", "screening metadata tool is callable and non-diagnostic");
 const screeningDataset = await get("/datasets/screening-instruments");
 check(screeningDataset.response.status === 200 && Object.keys(screeningDataset.json?.instruments || {}).length === 5, "screening metadata dataset is live");
+
+const resource = await rpc(5, "resources/read", { uri: "sleepgenic://screening-instruments/v1" });
+const resourceData = JSON.parse(resource.json?.result?.contents?.[0]?.text || "{}");
+check(resourceData.version === methodology.version && Object.keys(resourceData.instruments || {}).length === 5, "screening MCP resource is readable");
 
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);

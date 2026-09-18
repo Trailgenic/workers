@@ -2,7 +2,7 @@
 
 This repository contains the public TrailGenic Machine Communication Protocol (MCP) worker and dataset discovery infrastructure.
 
-TrailGenic™ is an applied longevity-intelligence system that turns real n-of-1 longitudinal field observations into structured, testable protocols and explicitly bounded claims.
+TrailGenic™ is a movement-based longevity and adaptation system supported by structured longitudinal human-response research: Context → Behavior → Physiological Response → Recovery → Adaptation → Decision Rule. Ella interprets the accumulated record; Mike Ye retains final judgment.
 
 ## Canonical Entity Ontology
 
@@ -29,6 +29,15 @@ Canonical MCP discovery is hosted at:
 - `https://mcp.trailgenic.com/.well-known/tool-registry.json`
 - `https://mcp.trailgenic.com/.well-known/openapi.json`
 - `https://mcp.trailgenic.com/capabilities.json`
+
+## WebMCP Browser Surface
+
+The TrailGenic Protocols hub has a deliberately small browser-facing WebMCP layer backed by the same public, deterministic datasets as the existing MCP server:
+
+- `get_trailgenic_protocol` returns one of the five canonical protocol levels with its Governor, progression gate, evidence boundary, and source page.
+- `compare_trailgenic_modalities` compares any two to four canonical modalities—Walking, Rucking, Running, and Hiking—using aggregate and selected scrubbed public evidence while preserving each dataset's methodology and limitations.
+
+The hosted browser bundle is available at `https://mcp.trailgenic.com/webmcp-protocols.js`. It is intended for page-level attachment to `https://www.trailgenic.com/protocols` through Webflow registered custom code. The layer is read-only and does not expose raw telemetry, private session rows, precise personal locations, permit-subscription infrastructure, credentials, diagnosis, prescription, or medical clearance.
 
 The MCP transport is now a real JSON-RPC 2.0 endpoint at `POST /mcp`:
 
@@ -73,7 +82,7 @@ The public MCP tool inventory is generated from one canonical registry and curre
 | `tg.conditioning.running.get` | `start_date`, `end_date` (optional compatibility fields; supplying them returns an error) |
 | `tg.longevity.bioAge.compute` | `age`, `resting_hr`, `distance_mi`, `elevation_gain_ft`, `moving_time_min`, `avg_hr` (required); `max_hr`, `overnight_hrv`, `fasted` (optional) |
 
-The current public movement model covers 87 structured sessions: 22 walking, 14 rucking, 15 running, and 36 hiking sessions. The conditioning datasets contain corrected heart-rate drift values as of August 18, 2026, and Hike 35 is explicitly identified as a single deliberate heat-training exposure—not proof of heat acclimation. HikeWorldModel™ v3.1.1 publishes canonical aggregates and selected scrubbed high-signal observations, not raw biometric telemetry. The final 18 hikes show lower average heart rate and device exercise load alongside modestly lower average duration and elevation gain, so the half-series comparison remains descriptive rather than causal.
+The September 17, 2026 workbook contains **103 ledger records: 25 walking, 18 rucking, 20 running, and 40 hiking**. Walking S25 was corrected from Mike Ye’s supplied values: 3.25 mi, 52.5 min, HR 115 bpm and 70%/30% Z1/Z2. Its prior duplication warning is resolved. HikeWorldModel v3.2.1 and walking v1.3.1 and other conditioning v1.3.0 expose aggregates and selected observations. Hike 40 recovery is unmeasured, Rucking S12 has no recovery flag, and Running S17–20 are marked not ready (source labels, not independent recovery measurements). See [release review](docs/world-model-2026-09-17.md) for findings and data-quality limits.
 
 Large dataset tools support optional filters and bounded `limit` values so MCP clients do not need to ingest full high-record payloads.
 

@@ -2,9 +2,9 @@
   "dataset_id": "tg_running_conditioning_v1",
   "dataset_family": "conditioning",
   "title": "TrailGenic Running Conditioning Dataset",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "status": "active",
-  "last_updated": "2026-08-18",
+  "last_updated": "2026-09-17",
   "description": "Canonical aggregate plus selected-session TrailGenic conditioning module for fasted running. Shorter run/walk sessions, matched-distance steady sessions, and the intentional max-speed interval session are separate analytic contexts. It does not expose raw telemetry.",
   "correction_notice": "Heart-rate drift values were corrected on 2026-08-18. Prior drift values and derived interpretations are superseded. Drift is descriptive and is not a measure of metabolic flexibility or running economy.",
   "privacy_scope": {
@@ -21,47 +21,196 @@
     ]
   },
   "existence_metadata": {
-    "session_count": 15,
-    "date_range": { "start": "2026-03-17", "end": "2026-08-05" },
+    "session_count": 20,
+    "date_range": {
+      "start": "2026-03-17",
+      "end": "2026-09-17"
+    },
     "training_state": "fasted",
     "distance_contexts": [
-      { "context": "shorter_run_walk", "sessions": "1-5", "distance_miles_approx": 2.4 },
-      { "context": "matched_distance_steady", "sessions": "6-14", "distance_miles_approx": 3.17 },
-      { "context": "max_speed_intervals", "sessions": [15], "distance_miles": 3.19 }
+      {
+        "context": "shorter_run_walk",
+        "sessions": "1-5",
+        "distance_miles_approx": 2.4
+      },
+      {
+        "context": "matched_distance_steady",
+        "sessions": "6-14",
+        "distance_miles_approx": 3.17
+      },
+      {
+        "context": "max_speed_intervals",
+        "sessions": [
+          15,
+          16,
+          17
+        ],
+        "distance_miles_approx": 3.17
+      },
+      {
+        "context": "mixed_run_walk",
+        "sessions": [
+          18,
+          19,
+          20
+        ],
+        "distance_miles_approx": 3.2
+      }
     ]
   },
   "analytic_tracks": {
-    "shorter_run_walk": { "sessions": "1-5", "comparison_rule": "Compare only within the shorter-distance context." },
-    "matched_distance_steady": { "current_reference_session": 14, "sessions": "6-14", "comparison_rule": "Primary steady-state comparison set." },
-    "max_speed_intervals": { "sessions": [15], "comparison_rule": "Do not compare Session 15 directly with steady-state sessions." }
+    "shorter_run_walk": {
+      "sessions": "1-5",
+      "comparison_rule": "Compare only within the shorter-distance context."
+    },
+    "matched_distance_steady": {
+      "current_reference_session": 14,
+      "sessions": "6-14",
+      "comparison_rule": "Primary steady-state comparison set."
+    },
+    "max_speed_intervals": {
+      "sessions": [
+        15,
+        16,
+        17
+      ],
+      "comparison_rule": "Declared maximal interval block S15–17; whole-session values include walking recovery."
+    },
+    "mixed_run_walk": {
+      "sessions": [
+        18,
+        19,
+        20
+      ],
+      "comparison_rule": "Mixed run/walk; maximum-speed intent and work/recovery splits are not inferred."
+    }
   },
   "selected_sessions": [
     {
       "session": 15,
       "date": "2026-08-05",
-      "analytic_track": "max_speed_intervals",
-      "environment": "very humid",
-      "protocol_context": "Repeated self-directed maximum-speed run/walk intervals.",
       "distance_miles": 3.19,
       "duration_min": 41.1,
-      "run_time": "19:13",
-      "walk_time": "21:43",
-      "pace_min_per_mile": "12:53",
       "avg_hr_bpm": 144,
       "max_hr_bpm": 175,
-      "hr_per_mile_proxy": 45.1,
+      "hr_per_mile_proxy": 45.14,
       "hr_drift_pct": 2.0,
+      "rpe": 3,
+      "aerobic_training_effect": 3,
+      "anaerobic_training_effect": 1.2,
+      "recovery_observation": "ready",
+      "analytic_track": "max_speed_intervals",
+      "run_walk": "19:13 run / walk 21:43",
+      "exercise_load": 75,
+      "garmin_vo2max": 45,
       "cadence_spm": 125,
       "power_w": 172,
-      "anaerobic_training_effect": 1.2,
-      "aerobic_training_effect": 3.0,
-      "exercise_load": 75,
-      "ending_stamina_pct": 75,
+      "zone_4_plus_pct": 3
+    },
+    {
+      "session": 16,
+      "date": "2026-08-19",
+      "distance_miles": 3.18,
+      "duration_min": 40.3,
+      "avg_hr_bpm": 150,
+      "max_hr_bpm": 172,
+      "hr_per_mile_proxy": 47.17,
+      "hr_drift_pct": -1.5,
       "rpe": 3,
-      "estimated_sweat_loss_ml": 548,
+      "aerobic_training_effect": 3.2,
+      "anaerobic_training_effect": 2.2,
       "recovery_observation": "ready",
-      "garmin_vo2max": 45,
-      "interpretation": "Intentional max-speed interval branch; lower average power and cadence include walking recoveries and are not directly comparable with steady-state sessions."
+      "analytic_track": "max_speed_intervals",
+      "run_walk": "15:29 run / walk 24:38",
+      "exercise_load": 104,
+      "garmin_vo2max": 46,
+      "cadence_spm": 120,
+      "power_w": 167,
+      "zone_4_plus_pct": 16
+    },
+    {
+      "session": 17,
+      "date": "2026-08-26",
+      "distance_miles": 3.15,
+      "duration_min": 40.5,
+      "avg_hr_bpm": 145,
+      "max_hr_bpm": 171,
+      "hr_per_mile_proxy": 46.03,
+      "hr_drift_pct": -2.5,
+      "rpe": 3,
+      "aerobic_training_effect": 3,
+      "anaerobic_training_effect": 2.3,
+      "recovery_observation": "not ready",
+      "analytic_track": "max_speed_intervals",
+      "run_walk": "15:01 run / walk 25:18",
+      "exercise_load": 96,
+      "garmin_vo2max": 46,
+      "cadence_spm": 117,
+      "power_w": 161,
+      "zone_4_plus_pct": 6
+    },
+    {
+      "session": 18,
+      "date": "2026-09-03",
+      "distance_miles": 3.17,
+      "duration_min": 37.7,
+      "avg_hr_bpm": 148,
+      "max_hr_bpm": 180,
+      "hr_per_mile_proxy": 46.7,
+      "hr_drift_pct": 4.5,
+      "rpe": 3,
+      "aerobic_training_effect": 3.1,
+      "anaerobic_training_effect": 1.3,
+      "recovery_observation": "not ready",
+      "analytic_track": "mixed_run_walk",
+      "run_walk": "22:26 run / walk 15:08",
+      "exercise_load": 87,
+      "garmin_vo2max": 46,
+      "cadence_spm": 130,
+      "power_w": 194,
+      "zone_4_plus_pct": 17
+    },
+    {
+      "session": 19,
+      "date": "2026-09-10",
+      "distance_miles": 3.15,
+      "duration_min": 40.6,
+      "avg_hr_bpm": 146,
+      "max_hr_bpm": 174,
+      "hr_per_mile_proxy": 46.3,
+      "hr_drift_pct": 5.0,
+      "rpe": 3,
+      "aerobic_training_effect": 3,
+      "anaerobic_training_effect": 0.5,
+      "recovery_observation": "not ready",
+      "analytic_track": "mixed_run_walk",
+      "run_walk": "17:55 run / walk 22:34",
+      "exercise_load": 66,
+      "garmin_vo2max": 48,
+      "cadence_spm": 126,
+      "power_w": 172,
+      "zone_4_plus_pct": 8
+    },
+    {
+      "session": 20,
+      "date": "2026-09-17",
+      "distance_miles": 3.23,
+      "duration_min": 39.3,
+      "avg_hr_bpm": 148,
+      "max_hr_bpm": 178,
+      "hr_per_mile_proxy": 45.82,
+      "hr_drift_pct": -2.0,
+      "rpe": 3,
+      "aerobic_training_effect": 3.1,
+      "anaerobic_training_effect": 0.9,
+      "recovery_observation": "not ready",
+      "analytic_track": "mixed_run_walk",
+      "run_walk": "17:01 run / walk 22:13",
+      "exercise_load": 79,
+      "garmin_vo2max": 48,
+      "cadence_spm": 123,
+      "power_w": 178,
+      "zone_4_plus_pct": 16
     }
   ],
   "records": [
@@ -94,30 +243,79 @@
         "cross_context_warning": "HR-per-mile is distance- and protocol-dependent. Cross-context values are not direct measures of running economy."
       },
       "summary_statistics": {
-        "session_count": 15,
+        "session_count": 20,
         "corrected_hr_drift_percent": {
-          "mean": 2.10,
-          "median": 2.5,
+          "mean": 1.75,
+          "median": 2.25,
           "min": -3.0,
           "max": 6.8,
-          "values_by_session": [5.5, 1.0, 4.5, 3.3, 0.5, 2.7, 2.5, 6.8, -1.0, -1.5, 1.0, 3.2, 4.0, -3.0, 2.0]
+          "values_by_session": [
+            5.5,
+            1.0,
+            4.5,
+            3.3,
+            0.5,
+            2.7,
+            2.5,
+            6.8,
+            -1.0,
+            -1.5,
+            1.0,
+            3.2,
+            4.0,
+            -3.0,
+            2.0,
+            -1.5,
+            -2.5,
+            4.5,
+            5.0,
+            -2.0
+          ]
         },
-        "garmin_vo2max": 45,
-        "recovery_observation": "ready in all 15 sessions",
-        "rpe": "3 in all 15 sessions"
+        "garmin_vo2max": 48,
+        "recovery_observation": "16 ready; 4 not ready; 0 missing. Source labels, not verified recovery.",
+        "rpe": "3 in all 20 sessions",
+        "average_hr_bpm_mean": 148.75
       },
       "methodology": {
         "metric_formula": "HR-per-mile proxy = average heart rate / distance in miles",
-        "comparison_frame": "Sessions 1-5, Sessions 6-14, and Session 15 are interpreted as separate protocol contexts.",
+        "comparison_frame": "S1–5 shorter run/walk; S6–14 historical steady run/walk; S15–17 declared max-speed intervals; S18–20 mixed run/walk.",
         "session_15_boundary": "Very humid max-speed intervals with walking recovery; not a steady-state comparison.",
         "claim_boundary": "Conditioning tracking only. Corrected HR drift and HR-per-mile values are descriptive and do not establish metabolic flexibility, running economy, biological age, causality, or clinical efficacy."
       },
       "claims": [
-        "Corrected HR drift averaged 2.10% across all 15 sessions, with a median of 2.5% and a range from -3.0% to 6.8%.",
-        "Within the matched-distance steady set, corrected HR drift averaged 1.63% across Sessions 6-14.",
-        "Session 15 produced the highest anaerobic training effect in the record at 1.2 while corrected HR drift remained 2.0%; it is an interval session, not a steady-state economy test.",
-        "No causal or metabolic-flexibility claim is supported by the corrected HR drift series."
+        "20 entries through September 17; S15–17 declared maximal intervals and S18–20 mixed run/walk remain separate.",
+        "S20: 3.23 miles in 39.3 minutes, HR 148/178 bpm, -2.0% drift, load 79, and a not-ready source flag.",
+        "Versus S19, S20 pace was about 5.6% faster while average HR rose 2 bpm and device load rose from 66 to 79. This is not proof of improved efficiency.",
+        "S17–20 are marked not ready; timing and physiological basis of the flags are not established."
       ]
     }
-  ]
+  ],
+  "source_provenance": {
+    "filename": "Trailgenic World Model Datasets - MASTER Values Only - Sep1726.xlsx",
+    "sha256": "c60e8e91dcb00de879d37ed8c63f62095cc56da8403dc3b478585355ee8f0f33",
+    "as_of": "2026-09-17",
+    "charter": "TG World Model Datasets Charter v1.0 — September 2026",
+    "author": "Mike Ye",
+    "interpretation": "Ella; final judgment remains with Mike Ye"
+  },
+  "evidence_labels": {
+    "recorded": "Field entries and wearable outputs; device estimates are not laboratory measurements.",
+    "derived": "Aggregates, drift and HR-per-mile proxies.",
+    "inferred": "Interpretation and provisional decision rules.",
+    "unmeasured": "No autophagy measurement; no recovery outcome inferred from missing follow-up."
+  },
+  "recovery_field_boundary": "Ready/not-ready are source classifications with unspecified timing and method; they do not independently establish post-session recovery.",
+  "data_quality_notes": [
+    {
+      "id": "running_s20_audit_cell",
+      "status": "excluded_from_analysis",
+      "detail": "Run S20 has numeric 48 in the HR Drift Audit row. It is not used as drift or another physiological measurement; corrected drift is -2.0%."
+    }
+  ],
+  "decision_rule": {
+    "date": "2026-09-17",
+    "status": "provisional_practice_rule",
+    "rule": "Consolidate the mixed run/walk dose; obtain timed recovery and comparable work/recovery splits before escalating maximum-effort volume."
+  }
 }

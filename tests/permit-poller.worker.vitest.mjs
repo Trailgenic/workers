@@ -2,10 +2,13 @@ import { beforeEach, describe, expect, it } from "vitest";
 import { env } from "cloudflare:test";
 import migration from "../workers/permit-poller/migrations/0001_initial.sql?raw";
 import {
+  activePermitIds,
   cancelTrackerByToken,
   createTracker,
   deliverNotification,
   getTrackerByToken,
+  healthSnapshot,
+  pauseExpiredTrackers,
   pollPermit,
   verifyTrackerPhone
 } from "../workers/permit-poller/service.js";
@@ -180,5 +183,56 @@ describe("permit cancellation service with D1", () => {
     });
     expect(duplicate).toEqual({ status: "skipped" });
     expect(sends).toBe(1);
+  });
+
+  it("treats trackers with only expired dates as healthy idle and pauses them", async () => {
+    const created = await createTracker(
+      serviceEnv,
+      trackerInput(1),
+      new Date("2026-07-19T12:00:00Z"),
+      { status: "active" }
+    );
+    const now = new Date("2026-07-21T12:00:00Z");
+
+    expect(await activePermitIds(serviceEnv, now)).toEqual([]);
+    expect(await healthSnapshot(serviceEnv, now)).toMatchObject({
+      status: "healthy",
+      poller_status: "idle",
+      active_trackers: 0
+    });
+    expect(await pauseExpiredTrackers(serviceEnv, now)).toBe(1);
+    expect((await getTrackerByToken(serviceEnv, created.manage_token)).status).toBe("paused");
+  });
+
+  it("pauses opted-out recipients without retrying Twilio error 21610", async () => {
+    const created = await createTracker(
+      serviceEnv,
+      trackerInput(1),
+      new Date("2026-07-19T12:00:00Z"),
+      { status: "active" }
+    );
+    await pollPermit(serviceEnv, "rec_gov_445860_day_use", {
+      now: new Date("2026-07-19T12:05:00Z"),
+      fetchImpl: inyoFetch(2)
+    });
+    const notificationId = queued[0].notification_id;
+    const result = await deliverNotification({
+      ...serviceEnv,
+      TWILIO_ACCOUNT_SID: "AC_test",
+      TWILIO_AUTH_TOKEN: "secret",
+      TWILIO_FROM_NUMBER: "+19515550999"
+    }, notificationId, {
+      now: new Date("2026-07-19T12:06:00Z"),
+      fetchImpl: async () => new Response(JSON.stringify({
+        code: 21610,
+        message: "Attempt to send to unsubscribed recipient"
+      }), { status: 400, headers: { "Content-Type": "application/json" } })
+    });
+
+    expect(result).toEqual({ status: "cancelled", reason: "recipient_opted_out" });
+    expect((await getTrackerByToken(serviceEnv, created.manage_token)).status).toBe("paused");
+    expect(await env.DB.prepare(
+      "SELECT status FROM notifications WHERE id = ?"
+    ).bind(notificationId).first()).toMatchObject({ status: "cancelled" });
   });
 });

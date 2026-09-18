@@ -53,6 +53,16 @@ describe('worker http behavior', () => {
     expect(res.status).toBe(200);
     expect((await res.json()).tools.sort()).toEqual(DATA_TOOLS.map((tool) => tool.id).sort());
   });
+  it('serves the TrailGenic Protocols WebMCP browser bundle', async () => {
+    const res = await worker.fetch(new Request('https://mcp.trailgenic.com/webmcp-protocols.js'), {});
+    expect(res.status).toBe(200);
+    expect(res.headers.get('Content-Type')).toContain('application/javascript');
+    expect(res.headers.get('Cache-Control')).toBe('no-cache');
+    const source = await res.text();
+    expect(source).toContain('get_trailgenic_protocol');
+    expect(source).toContain('compare_trailgenic_modalities');
+    expect(source).toContain('document.modelContext.registerTool');
+  });
   it('keeps GET and OPTIONS /mcp contract', async () => {
     const get = await worker.fetch(new Request('https://mcp.trailgenic.com/mcp'), {});
     expect(get.status).toBe(405);
@@ -264,13 +274,13 @@ describe('rest dataset routes and machine documents', () => {
   it('serves one reconciled canonical movement spine', async () => {
     const hiking = await (await get('/datasets/hiking')).json();
     expect(hiking.dataset_id).toBe('tg_hikeworldmodel_v3_1');
-    expect(hiking.summary_statistics.hiking_sessions).toBe(36);
+    expect(hiking.summary_statistics.hiking_sessions).toBe(40);
     expect(hiking.movement_architecture).toEqual(expect.objectContaining({
-      total_public_structured_sessions: 87,
-      walking_sessions: 22,
-      rucking_sessions: 14,
-      running_sessions: 15,
-      hiking_sessions: 36
+      total_public_structured_sessions: 103,
+      walking_sessions: 25,
+      rucking_sessions: 18,
+      running_sessions: 20,
+      hiking_sessions: 40
     }));
     expect(hiking.withdrawn_interpretations).toContainEqual(expect.objectContaining({
       claim_id: 'tg_fatigue_reveal_effort',
@@ -280,10 +290,10 @@ describe('rest dataset routes and machine documents', () => {
     const walking = await (await get('/datasets/conditioning/walking')).json();
     const rucking = await (await get('/datasets/conditioning/rucking')).json();
     const running = await (await get('/datasets/conditioning/running')).json();
-    expect(walking.existence_metadata.session_count).toBe(22);
-    expect(rucking.existence_metadata.session_count).toBe(14);
-    expect(running.existence_metadata.session_count).toBe(15);
-    expect(running.analytic_tracks.max_speed_intervals.sessions).toEqual([15]);
+    expect(walking.existence_metadata.session_count).toBe(25);
+    expect(rucking.existence_metadata.session_count).toBe(18);
+    expect(running.existence_metadata.session_count).toBe(20);
+    expect(running.analytic_tracks.max_speed_intervals.sessions).toEqual([15, 16, 17]);
   });
 
   it('excludes empty longevity shells and exposes claim qualification', async () => {

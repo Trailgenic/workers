@@ -1,7 +1,8 @@
 {
   "dataset_id": "sleepgenic-methodology-v1",
   "version": "1.1.0",
-  "released": "2026-08-19",
+  "released": "2026-09-18",
+  "content_origin_date": "2026-08-19",
   "title": "Sleepgenic Longitudinal Sleep Interpretation Methodology",
   "description": "A public, non-diagnostic methodology for interpreting consumer wearable sleep signals, validated screening instruments, and clinical testing boundaries as longitudinal context rather than isolated verdicts.",
   "entity": {
@@ -175,8 +176,13 @@
       "diagnostic_status": "Screening and assessment instrument; not a standalone diagnosis.",
       "official_url": "https://www.sleep.pitt.edu/psqi",
       "rights_holder_or_distributor": "University of Pittsburgh",
-      "licensing_status": "The official owner permits specified non-commercial research and educational uses; commercial or commercially sponsored use requires permission. Confirm current conditions with the owner.",
-      "reproduction_status": "Questionnaire items and scoring instructions are not reproduced by Sleepgenic."
+      "licensing_status": "Link to the official source. Reproduction, clinical, commercial, educational, and research uses have distinct conditions; consult the current owner request process and terms before use.",
+      "reproduction_status": "Questionnaire items and scoring instructions are not reproduced by Sleepgenic.",
+      "source_review": {
+        "attempted_on": "2026-09-18",
+        "status": "official_page_reviewed",
+        "note": "Official metadata page reviewed; this record grants no instrument-use permission."
+      }
     },
     "assq": {
       "name": "Athlete Sleep Screening Questionnaire",
@@ -188,7 +194,12 @@
       "official_url": "https://centreforsleep.com/athletes/",
       "rights_holder_or_distributor": "Centre for Sleep & Human Performance",
       "licensing_status": "Use the official source and confirm current administration, reproduction, and electronic-implementation conditions with the owner.",
-      "reproduction_status": "Questionnaire items and scoring instructions are not reproduced by Sleepgenic."
+      "reproduction_status": "Questionnaire items and scoring instructions are not reproduced by Sleepgenic.",
+      "source_review": {
+        "attempted_on": "2026-09-18",
+        "status": "official_page_reviewed",
+        "note": "Official metadata page reviewed; this record grants no instrument-use permission."
+      }
     },
     "ess": {
       "name": "Epworth Sleepiness Scale",
@@ -200,7 +211,12 @@
       "official_url": "https://eprovide.mapi-trust.org/instruments/epworth-sleepiness-scale",
       "rights_holder_or_distributor": "Copyright holder represented through Mapi Research Trust",
       "licensing_status": "Licensed instrument. Confirm the license required for the intended clinical, research, commercial, translated, or electronic use.",
-      "reproduction_status": "Questionnaire items and scoring instructions are not reproduced by Sleepgenic."
+      "reproduction_status": "Questionnaire items and scoring instructions are not reproduced by Sleepgenic.",
+      "source_review": {
+        "attempted_on": "2026-09-18",
+        "status": "official_page_content_unavailable",
+        "note": "Official source could not be read during this refresh. Confirm current administration and licensing conditions with the owner."
+      }
     },
     "stop_bang": {
       "name": "STOP-Bang Questionnaire",
@@ -212,19 +228,29 @@
       "official_url": "https://www.stopbang.ca/",
       "rights_holder_or_distributor": "Official STOP-Bang program",
       "licensing_status": "Use the official source and confirm current permissions for reproduction, translation, commercial use, or electronic implementation.",
-      "reproduction_status": "Questionnaire items, response options, and scoring instructions are not reproduced by Sleepgenic."
+      "reproduction_status": "Questionnaire items, response options, and scoring instructions are not reproduced by Sleepgenic.",
+      "source_review": {
+        "attempted_on": "2026-09-18",
+        "status": "official_page_content_unavailable",
+        "note": "Official source could not be read during this refresh. Confirm current administration and licensing conditions with the owner."
+      }
     },
     "isi": {
       "name": "Insomnia Severity Index",
       "acronym": "ISI",
       "purpose": "Assess perceived insomnia symptoms and their severity and impact.",
       "target_population": "Adults and other populations covered by an authorized version.",
-      "recall_period": "The official standard interval is the last month; authorized contexts may use other validated intervals.",
+      "recall_period": "Use the recall period specified by the current authorized version; Sleepgenic does not assert a universal interval.",
       "diagnostic_status": "Symptom-severity assessment and screening instrument; not a standalone diagnosis.",
       "official_url": "https://eprovide.mapi-trust.org/instruments/insomnia-severity-index",
       "rights_holder_or_distributor": "Charles M. Morin; distributed by Mapi Research Trust",
       "licensing_status": "Conditions vary by user and implementation; fees and formal review may apply for funded, commercial, healthcare, or electronic use.",
-      "reproduction_status": "Questionnaire items and scoring instructions are not reproduced by Sleepgenic."
+      "reproduction_status": "Questionnaire items and scoring instructions are not reproduced by Sleepgenic.",
+      "source_review": {
+        "attempted_on": "2026-09-18",
+        "status": "official_page_content_unavailable",
+        "note": "Official source could not be read during this refresh. Confirm current administration and licensing conditions with the owner."
+      }
     }
   },
   "lexicon": {
