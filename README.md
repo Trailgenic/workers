@@ -57,7 +57,7 @@ The permit SMS infrastructure is operationally separate from this MCP worker and
 
 ## Callable MCP Tools
 
-The public MCP tool inventory is generated from one canonical registry and currently includes 20 callable tools:
+The public MCP tool inventory is generated from one canonical registry and currently includes 21 callable tools:
 
 | Tool | Parameters |
 | --- | --- |
@@ -77,6 +77,7 @@ The public MCP tool inventory is generated from one canonical registry and curre
 | `tg.gear.getIntel` | `category` (optional) |
 | `tg.longevity.protocol.get` | `protocol_id`, `category` |
 | `tg.longevity.foundationSessions.get` | none |
+| `tg.longevity.foundationComparability.get` | `metric` (optional; seven public metrics) |
 | `tg.conditioning.walking.get` | `start_date`, `end_date` (optional compatibility fields; supplying them returns an error) |
 | `tg.conditioning.rucking.get` | `start_date`, `end_date` (optional compatibility fields; supplying them returns an error) |
 | `tg.conditioning.running.get` | `start_date`, `end_date` (optional compatibility fields; supplying them returns an error) |
@@ -85,6 +86,14 @@ The public MCP tool inventory is generated from one canonical registry and curre
 The September 17, 2026 workbook contains **103 ledger records: 25 walking, 18 rucking, 20 running, and 40 hiking**. Walking S25 was corrected from Mike Ye’s supplied values: 3.25 mi, 52.5 min, HR 115 bpm and 70%/30% Z1/Z2. Its prior duplication warning is resolved. HikeWorldModel v3.2.1 and walking v1.3.1 and other conditioning v1.3.0 expose aggregates and selected observations. Hike 40 recovery is unmeasured, Rucking S12 has no recovery flag, and Running S17–20 are marked not ready (source labels, not independent recovery measurements). See [release review](docs/world-model-2026-09-17.md) for findings and data-quality limits.
 
 Large dataset tools support optional filters and bounded `limit` values so MCP clients do not need to ingest full high-record payloads.
+
+### Foundation comparability — selected observations (2026-09-24.2)
+
+The `tg.longevity.foundationComparability.get` tool and the dataset endpoint expose a new versioned **evidence eligibility screen**, not a silent rewrite of September 17 records. The preserved historical MCP baseline has Walking 25 / Rucking 18 / Running 20 / Hiking 40 (103 total). The newer public Webflow Foundation release has 26 / 19 / 21 / 41 (107 total). Only its latest three previously public Foundation snapshots are reproduced; **no complete 107-row MCP backfill is claimed**.
+
+The deterministic pilot flags fed Walking S26, the extended 3.86-mile Rucking S19, and mixed run–walk Running S21. The 3.15–3.25 mi course band is a screening heuristic, not a clinical criterion or validated experimental equivalence test. REST, MCP tool and MCP resource use one canonical bundled response; private workbooks and precise locations remain excluded.
+
+See [Foundation release/method note](docs/foundation-comparability-2026-09-24.md).
 
 ### Deferred Dataset Tools
 
@@ -116,6 +125,7 @@ Dataset endpoints remain public and machine-readable:
 - `https://mcp.trailgenic.com/datasets/gear/intel`
 - `https://mcp.trailgenic.com/datasets/longevity/protocol`
 - `https://mcp.trailgenic.com/datasets/longevity/foundation`
+- `https://mcp.trailgenic.com/datasets/longevity/foundation/comparability`
 - `https://mcp.trailgenic.com/datasets/conditioning/walking`
 - `https://mcp.trailgenic.com/datasets/conditioning/rucking`
 - `https://mcp.trailgenic.com/datasets/conditioning/running`

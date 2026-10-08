@@ -152,6 +152,32 @@ const foundationCall = await postMcp("tools/call", { name: "tg.longevity.foundat
 assert(foundationCall.json.result.structuredContent.phase_summary?.total_sessions === 25, "foundation compatibility tool should align to 25 entries");
 assert(foundationCall.json.result.structuredContent.status === "compatibility_record", "foundation compatibility tool should identify its bounded status");
 
+const foundationComparabilityCall = await postMcp("tools/call", {
+  name: "tg.longevity.foundationComparability.get",
+  arguments: {}
+});
+const comparability = foundationComparabilityCall.json.result.structuredContent;
+assert(comparability.release === "2026-09-24.2", "Foundation comparability must identify the September 24 release");
+assert(comparability.assessment.screening_status === "not_comparable", "Foundation screen must reject matched three-way inference");
+assert(
+  JSON.stringify(comparability.assessment.evaluations.map(r => r.exceptions)) ===
+  JSON.stringify([["feeding_state_difference"], ["distance_outside_reference_band"], ["mixed_vs_steady_running"]]),
+  "Foundation screen must preserve all three observed exceptions"
+);
+assert(comparability.release_lineage.historical_mcp_baseline.counts.total === 103, "Historical MCP baseline must remain 103");
+assert(comparability.release_lineage.newer_public_webflow_snapshot.counts.total === 107, "Newer Webflow release must be labeled 107");
+const comparabilityRest = await getJson("/datasets/longevity/foundation/comparability");
+assert(comparabilityRest.response.ok, "Comparability REST endpoint must return 200");
+assert(JSON.stringify(comparabilityRest.json) === JSON.stringify(comparability), "REST and MCP comparability must be identical");
+const comparabilityMetricCall = await postMcp("tools/call", {
+  name: "tg.longevity.foundationComparability.get",
+  arguments: { metric: "avg_hr_bpm" }
+});
+assert(
+  JSON.stringify(comparabilityMetricCall.json.result.structuredContent.metric_projection.values.map(r => r.value)) === JSON.stringify([118,111,146]),
+  "MCP comparative HR projection must reproduce the three Webflow public observations"
+);
+
 const gearIntelDataset = await getJson("/datasets/gear/intel");
 assert(gearIntelDataset.response.ok, "/datasets/gear/intel should return JSON");
 assert(
