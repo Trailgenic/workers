@@ -6,6 +6,7 @@ import { datasetCatalog } from '../lib/registry.js';
 import {
   getHikingWorldModel,
   getLongevityFoundationSessions,
+  getFoundationComparability,
   getOntology,
   getProtocols,
   getRuckingConditioning,
@@ -99,4 +100,29 @@ test('September release preserves source uncertainty and missing recovery', () =
   assert.equal(hike40.overnight_hrv_ms.post_1, null);
   assert.equal(hike40.overnight_hrv_ms.post_2, null);
   assert.match(getRuckingConditioning().records[0].summary_statistics.recovery_observation, /1 missing/);
+});
+
+test('September 24 evidence is separate from the September 17 MCP historical baseline', () => {
+  const evidence = getFoundationComparability();
+  assert.equal(evidence.release, '2026-09-24.2');
+  assert.deepEqual(evidence.release_lineage.historical_mcp_baseline.counts, {
+    walking: 25, rucking: 18, running: 20, hiking: 40, total: 103
+  });
+  assert.deepEqual(evidence.release_lineage.newer_public_webflow_snapshot.counts, {
+    walking: 26, rucking: 19, running: 21, hiking: 41, total: 107
+  });
+  assert.equal(evidence.assessment.screening_status, 'not_comparable');
+  assert.equal(evidence.assessment.matched_three_way_experiment, false);
+  assert.deepEqual(evidence.assessment.evaluations.map(r => r.exceptions), [
+    ['feeding_state_difference'], ['distance_outside_reference_band'], ['mixed_vs_steady_running']
+  ]);
+  assert.deepEqual(getFoundationComparability({metric:'avg_hr_bpm'}).metric_projection.values.map(r => r.value), [118,111,146]);
+  assert.deepEqual(getFoundationComparability({metric:'zone1_pct'}).metric_projection.values.map(r => r.value), [49,87,1]);
+  assert.deepEqual(getFoundationComparability({metric:'corrected_hr_drift_pct'}).metric_projection.values.map(r => r.value), [4,3,4.5]);
+  assert.throws(() => getFoundationComparability({metric:'private_hrv'}), /Unsupported Foundation metric/);
+  assert.equal(evidence.selected_sessions.length, 3);
+  assert.equal(evidence.privacy_scope.data_granularity, 'aggregate_plus_three_selected_public_sessions');
+  assert.equal(getWalkingConditioning().existence_metadata.session_count, 25);
+  assert.equal(getRuckingConditioning().existence_metadata.session_count, 18);
+  assert.equal(getRunningConditioning().existence_metadata.session_count, 20);
 });
