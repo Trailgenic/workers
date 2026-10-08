@@ -41,6 +41,7 @@ const toolArgs = {
   'tg.gear.getIntel': {},
   'tg.longevity.protocol.get': {},
   'tg.longevity.foundationSessions.get': {},
+  'tg.longevity.foundationComparability.get': {metric:'avg_hr_bpm'},
   'tg.conditioning.walking.get': {},
   'tg.conditioning.rucking.get': {},
   'tg.conditioning.running.get': {},
@@ -52,6 +53,18 @@ describe('worker http behavior', () => {
     const res = await worker.fetch(new Request('https://mcp.trailgenic.com/'), {});
     expect(res.status).toBe(200);
     expect((await res.json()).tools.sort()).toEqual(DATA_TOOLS.map((tool) => tool.id).sort());
+  });
+  it('serves release-specific Foundation comparability data with preserved baseline lineage', async () => {
+    const res = await worker.fetch(new Request('https://mcp.trailgenic.com/datasets/longevity/foundation/comparability'), {});
+    expect(res.status).toBe(200);
+    const data = await res.json();
+    expect(data.release).toBe('2026-09-24.2');
+    expect(data.assessment.matched_three_way_experiment).toBe(false);
+    expect(data.assessment.evaluations.flatMap(r => r.exceptions)).toEqual([
+      'feeding_state_difference','distance_outside_reference_band','mixed_vs_steady_running'
+    ]);
+    expect(data.release_lineage.historical_mcp_baseline.counts.total).toBe(103);
+    expect(data.release_lineage.newer_public_webflow_snapshot.counts.total).toBe(107);
   });
   it('serves the TrailGenic Protocols WebMCP browser bundle', async () => {
     const res = await worker.fetch(new Request('https://mcp.trailgenic.com/webmcp-protocols.js'), {});

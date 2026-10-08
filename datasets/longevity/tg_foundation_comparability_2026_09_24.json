@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.0",
+  "dataset_id": "tg_foundation_comparability_2026_09_24",
+  "dataset_family": "TrailGenic Foundation comparability evidence",
+  "version": "0.1.0",
+  "release": "2026-09-24.2",
+  "as_of": "2026-09-24",
+  "status": "pilot_observational_evidence",
+  "canonical_url": "https://www.trailgenic.com/foundation-comparison#foundation-comparability-gate",
+  "evidence_url": "https://www.trailgenic.com/foundation-comparison#response-record",
+  "source_provenance": {
+    "type": "selected_public_webflow_observations",
+    "recorder": "Mike Ye",
+    "interpreter": "Ella (AI)",
+    "source_release": "2026-09-24.2",
+    "source_page": "https://www.trailgenic.com/foundation-comparison",
+    "private_source": "September 24 master workbook (not redistributed)",
+    "verified_at": "2026-10-08"
+  },
+  "privacy_scope": {
+    "data_granularity": "aggregate_plus_three_selected_public_sessions",
+    "excluded": [
+      "full private ledger",
+      "raw telemetry",
+      "precise personal locations",
+      "clinical or causal claims"
+    ]
+  },
+  "release_lineage": {
+    "historical_mcp_baseline": {
+      "as_of": "2026-09-17",
+      "status": "preserved_historical_snapshot",
+      "counts": {
+        "walking": 25,
+        "rucking": 18,
+        "running": 20,
+        "hiking": 40,
+        "total": 103
+      },
+      "endpoint": "/datasets/longevity/foundation"
+    },
+    "newer_public_webflow_snapshot": {
+      "as_of": "2026-09-24",
+      "release": "2026-09-24.2",
+      "status": "selected_observations_no_full_ledger_backfill",
+      "counts": {
+        "walking": 26,
+        "rucking": 19,
+        "running": 21,
+        "hiking": 41,
+        "total": 107
+      }
+    }
+  },
+  "screening_method": {
+    "purpose": "Screen eligibility for a matched three-way Foundation contrast; descriptive only.",
+    "operational_distance_band_mi": {
+      "min": 3.15,
+      "max": 3.25,
+      "qualification": "Pilot screening tolerance around the roughly 3.2-mile course, not a scientifically validated matching threshold."
+    },
+    "rules": [
+      {
+        "code": "feeding_state_difference",
+        "logic": "Explicitly fed observations cannot be pooled into the fasted-control comparison."
+      },
+      {
+        "code": "distance_outside_reference_band",
+        "logic": "Distances outside the pilot band are flagged. Similar distance alone would not establish comparability."
+      },
+      {
+        "code": "mixed_vs_steady_running",
+        "logic": "Mixed run–walk observations are not substituted for the steady-running S10–S14 historical window."
+      }
+    ],
+    "limitations": [
+      "One-person longitudinal observations, not randomization.",
+      "Different dates, training history, pace, hydration and sleep remain potential confounders.",
+      "Source ready flags do not provide independently timed post-session recovery.",
+      "September 24 full-ledger backfill is not part of this public dataset.",
+      "No clinical readiness, efficiency ranking or causal adaptation claims."
+    ]
+  },
+  "selected_sessions": [
+    {
+      "id": "walking26",
+      "modality": "walking",
+      "session_number": 26,
+      "date": "2026-09-21",
+      "feeding_state": "fed",
+      "distance_mi": 3.17,
+      "duration_min": 51.3,
+      "avg_hr_bpm": 118,
+      "corrected_hr_drift_pct": 4,
+      "zone1_pct": 49,
+      "sleep_score": 47,
+      "perceived_effort": 1,
+      "protocol_class": "foundation_walk"
+    },
+    {
+      "id": "rucking19",
+      "modality": "rucking",
+      "session_number": 19,
+      "date": "2026-09-24",
+      "feeding_state": "fasted",
+      "distance_mi": 3.86,
+      "duration_min": 69.5,
+      "avg_hr_bpm": 111,
+      "corrected_hr_drift_pct": 3,
+      "zone1_pct": 87,
+      "sleep_score": 83,
+      "perceived_effort": 1,
+      "protocol_class": "load_ruck",
+      "external_load_lb": 20
+    },
+    {
+      "id": "running21",
+      "modality": "running",
+      "session_number": 21,
+      "date": "2026-09-23",
+      "feeding_state": "fasted",
+      "distance_mi": 3.19,
+      "duration_min": 38.2,
+      "avg_hr_bpm": 146,
+      "corrected_hr_drift_pct": 4.5,
+      "zone1_pct": 1,
+      "sleep_score": 80,
+      "perceived_effort": 3,
+      "protocol_class": "mixed_run_walk"
+    }
+  ]
+}
