@@ -49,7 +49,8 @@ export const validateTrackerInput = (body, now = new Date()) => {
       phone: body.phone,
       permit_id: product.id,
       party_size: body.party_size,
-      dates
+      dates,
+      charm_offer_consent: body.charm_offer_consent === true
     }
   };
 };
@@ -79,7 +80,7 @@ const notificationText = ({ product, date, partySize, remaining }) => {
     month: "short", day: "numeric", year: "numeric", timeZone: "UTC"
   }).format(new Date(`${date}T00:00:00.000Z`));
   const safetyNotice = product.safety_notice ? ` Safety: ${product.safety_notice}` : "";
-  return `TrailGenic Alert: ${remaining} spot${remaining === 1 ? "" : "s"} available for ${product.name} on ${displayDate}. Your party: ${partySize}. Book now: ${product.booking_url}${safetyNotice} Reply STOP to opt out.`;
+  return `Summit Charms permit alert: ${remaining} spot${remaining === 1 ? "" : "s"} open for ${product.name} on ${displayDate} (your party: ${partySize}). Book fast on Recreation.gov: ${product.booking_url}${safetyNotice} Reply STOP to opt out.`;
 };
 
 const insertNotification = async (env, { eventId, trackerId, now = new Date() }) => {
@@ -124,9 +125,10 @@ export const createTracker = async (env, input, now = new Date(), { status = "pe
   const statements = [
     env.DB.prepare(
       `INSERT INTO trackers
-        (id, manage_token_hash, phone_e164, permit_id, party_size, status, consent_at, created_at, updated_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
-    ).bind(trackerId, tokenHash, input.phone, input.permit_id, input.party_size, status, timestamp, timestamp, timestamp),
+        (id, manage_token_hash, phone_e164, permit_id, party_size, status, consent_at, charm_offer_consent_at, created_at, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    ).bind(trackerId, tokenHash, input.phone, input.permit_id, input.party_size, status, timestamp,
+      input.charm_offer_consent ? timestamp : null, timestamp, timestamp),
     ...input.dates.map((date) => env.DB.prepare(
       "INSERT INTO tracker_dates (tracker_id, date) VALUES (?, ?)"
     ).bind(trackerId, date))
@@ -329,9 +331,18 @@ const finishPollRun = async (env, runId, fields, now) => {
   ).run();
 };
 
+// Recreation.gov asks automated visitors to wait 10 seconds between requests.
+export const SOURCE_DELAY_MS = 10_000;
+export const sourceDelayMs = (env) => {
+  const value = Number.parseInt(env?.SOURCE_DELAY_MS ?? "", 10);
+  return Number.isInteger(value) && value >= 0 ? value : SOURCE_DELAY_MS;
+};
+const sleep = (ms) => (ms > 0 ? new Promise((resolve) => setTimeout(resolve, ms)) : Promise.resolve());
+
 export const pollPermit = async (env, permitId, {
   now = new Date(),
-  fetchImpl = fetch
+  fetchImpl = fetch,
+  delayMs = sourceDelayMs(env)
 } = {}) => {
   const product = getPermitProduct(permitId);
   if (!product) throw new Error(`Unsupported permit: ${permitId}`);
@@ -341,7 +352,10 @@ export const pollPermit = async (env, permitId, {
   let lastHttpStatus = null;
   try {
     const dates = await activeDatesForPermit(env, permitId, now);
+    let first = true;
     for (const [month, monthDates] of groupDatesByMonth(dates)) {
+      if (!first) await sleep(delayMs);
+      first = false;
       const result = await fetchAvailability(product, month, monthDates, fetchImpl);
       lastHttpStatus = result.httpStatus;
       inventoryCount += result.records.length;
@@ -470,4 +484,52 @@ export const healthSnapshot = async (env, now = new Date()) => {
     last_failure: lastFailure || null,
     checked_at: isoNow(now)
   };
+};
+
+// One optional follow-up text, sent only to hikers who ticked the separate charm-offer box,
+// a few days after their last requested permit date. Off unless CHARM_FOLLOWUP_ENABLED is "true".
+export const CHARM_FOLLOWUP_URL = "https://mysummitcharms.com/?utm_source=sms&utm_medium=permit_alert&utm_campaign=permit_followup";
+
+export const charmFollowupText = (product) =>
+  `Summit Charms: hope your ${product.place || product.name} trip was a great one! Got a summit photo? We turn it into a pack charm cut to your outline: ${CHARM_FOLLOWUP_URL} Reply STOP to opt out.`;
+
+export const isFollowupWindow = (now = new Date()) => now.getUTCHours() === 17 && now.getUTCMinutes() < 5;
+
+export const sendCharmFollowups = async (env, { now = new Date(), fetchImpl = fetch, limit = 50 } = {}) => {
+  if (env.CHARM_FOLLOWUP_ENABLED !== "true") return 0;
+  const today = dateOnly(now);
+  const earliest = dateOnly(addUtcDays(now, -14));
+  const latest = dateOnly(addUtcDays(now, -2));
+  const due = resultRows(await env.DB.prepare(
+    `SELECT t.id, t.phone_e164, t.permit_id, MAX(d.date) AS last_date
+     FROM trackers t JOIN tracker_dates d ON d.tracker_id = t.id
+     WHERE t.charm_offer_consent_at IS NOT NULL AND t.charm_offer_sent_at IS NULL
+       AND t.status IN ('active', 'paused')
+     GROUP BY t.id
+     HAVING last_date BETWEEN ? AND ? AND last_date < ?
+     LIMIT ?`
+  ).bind(earliest, latest, today, limit).all());
+  const sentPhones = new Set();
+  let sent = 0;
+  for (const row of due) {
+    const product = getPermitProduct(row.permit_id);
+    // One follow-up per phone number, even when someone tracked several permits.
+    const skip = !product || sentPhones.has(row.phone_e164);
+    if (!skip) {
+      try {
+        await sendTwilioSms(env, row.phone_e164, charmFollowupText(product), fetchImpl);
+        sent += 1;
+        sentPhones.add(row.phone_e164);
+      } catch (error) {
+        if (error.code !== "recipient_opted_out") {
+          console.error("Charm follow-up failed", { tracker_id: row.id, code: error.code || null });
+          continue;
+        }
+      }
+    }
+    await env.DB.prepare(
+      "UPDATE trackers SET charm_offer_sent_at = ?, updated_at = ? WHERE phone_e164 = ? AND charm_offer_consent_at IS NOT NULL AND charm_offer_sent_at IS NULL"
+    ).bind(isoNow(now), isoNow(now), row.phone_e164).run();
+  }
+  return sent;
 };

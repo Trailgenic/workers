@@ -1,4 +1,5 @@
-const BROWSER_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
+// Identify ourselves honestly to Recreation.gov instead of posing as a browser.
+export const SOURCE_UA = "SummitCharmsPermitAlerts/1.0 (+https://mysummitcharms.com/permit-alerts/; support@mysummitcharms.com)";
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
 export class SourceResponseError extends Error {
@@ -83,14 +84,28 @@ export const parseDivisionMonthAvailability = (response, product, requestedDates
   if (!dateAvailability || typeof dateAvailability !== "object" || Array.isArray(dateAvailability)) {
     throw new SourceResponseError(`Date availability for division ${product.division_id} is missing`, { code: "invalid_schema" });
   }
+  const memberMap = division.quota_type_maps?.QuotaUsageByMember || null;
+  const groupMap = division.quota_type_maps?.ConstantQuotaUsageByStartDate || null;
   const records = [];
   for (const date of requestedDates) {
-    const slot = dateAvailability[`${date}T00:00:00Z`] || dateAvailability[date];
+    const key = `${date}T00:00:00Z`;
+    const slot = dateAvailability[key] || dateAvailability[date];
     // Missing dates remain unknown so parser/source changes cannot create false transitions.
     if (!slot || typeof slot !== "object") continue;
+    const remaining = normalizeRemaining(slot.remaining, `${product.division_id}.${date}.remaining`);
+    if (product.quota_unit !== "group") {
+      records.push({ date, remaining });
+      continue;
+    }
+    // Group-quota areas (the Enchantments) cap both people and group permits per day. A party
+    // fits only when both have room; people left come from QuotaUsageByMember.
+    const groups = groupMap?.[key] || groupMap?.[date];
+    const members = memberMap?.[key] || memberMap?.[date];
+    const groupsLeft = groups && Number.isInteger(groups.remaining) ? groups.remaining : remaining;
+    const peopleLeft = members && Number.isInteger(members.remaining) ? members.remaining : product.max_party_size;
     records.push({
       date,
-      remaining: normalizeRemaining(slot.remaining, `${product.division_id}.${date}.remaining`)
+      remaining: remaining >= 1 && groupsLeft >= 1 && peopleLeft >= 1 ? Math.min(peopleLeft, product.max_party_size) : 0
     });
   }
   return records;
@@ -111,7 +126,7 @@ export const fetchAvailability = async (product, monthDate, requestedDates, fetc
   let response;
   try {
     response = await fetchImpl(url, {
-      headers: { Accept: "application/json", "User-Agent": BROWSER_UA },
+      headers: { Accept: "application/json", "User-Agent": SOURCE_UA },
       signal: AbortSignal.timeout(15_000)
     });
   } catch (error) {
