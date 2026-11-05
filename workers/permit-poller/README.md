@@ -1,4 +1,4 @@
-# TrailGenic Permit Cancellation Alerts
+# Summit Charms Permit Cancellation Alerts (free)
 
 This Worker powers one product: SMS alerts when validated, immediately bookable
 permit inventory satisfies a tracker's exact permit, selected date, and party size.
@@ -9,6 +9,12 @@ permit inventory satisfies a tracker's exact permit, selected date, and party si
 - Mt. Whitney Overnight — Recreation.gov facility `445860`, division `166`
 - Half Dome Daily — Recreation.gov facility `234652`, division `31`
 - King Range Wilderness (Lost Coast) — Recreation.gov facility `445864`, division `445864001`
+- Mt. St. Helens Climbing Permit — Recreation.gov facility `4675309`, division `999` (added Nov 5, 2026)
+- Enchantments Core Zone — Recreation.gov facility `233273`, division `30`, group quota (added Nov 5, 2026)
+- Yosemite Wilderness, Happy Isles to Little Yosemite Valley (Half Dome overnight) — facility `445859`, entry point `44585917` (added Nov 5, 2026)
+
+Checked and left out because nothing cancelled becomes bookable: Angels Landing (lottery only;
+cancellations go back into the day-before lottery) and The Wave / Coyote Buttes North (lottery only).
 
 Products without a verified bookable-inventory response are intentionally excluded.
 Lottery calendars and release-deadline reminders are out of scope.
@@ -36,6 +42,19 @@ and weather before booking.
 
 Missing dates and malformed payloads are treated as unknown. They never overwrite the
 last good snapshot or create availability alerts.
+
+## Brand, pages and the off-season switch
+
+Public pages (sign-up, terms, privacy, help) live on mysummitcharms.com/permit-alerts/, which
+proxies `/api/permit-alerts/*` to this Worker. The Worker's own `/`, `/terms`, `/privacy` and
+`/help` redirect there. Internal names (Worker, D1, queues, alerts.trailgenic.com) are unchanged
+so the existing database and queues keep working; no visitor sees them.
+
+- `SIGNUPS_OPEN` — `"false"` closes `POST /trackers` with a 503 "open again in spring". Set to `"true"` to launch.
+- `CHARM_FOLLOWUP_ENABLED` — `"false"` by default. When `"true"`, hikers who ticked the separate
+  optional box get one text 2 to 14 days after their last permit date (sent 17:00 UTC) offering a charm.
+- `SOURCE_DELAY_MS` — gap between Recreation.gov requests (default 10,000 ms, matching its crawl delay).
+  Requests carry an honest `SummitCharmsPermitAlerts` user agent.
 
 ## Deployment
 

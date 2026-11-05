@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { env } from "cloudflare:test";
 import migration from "../workers/permit-poller/migrations/0001_initial.sql?raw";
+import charmFollowupMigration from "../workers/permit-poller/migrations/0002_charm_followup.sql?raw";
 import {
   activePermitIds,
   cancelTrackerByToken,
@@ -10,6 +11,7 @@ import {
   healthSnapshot,
   pauseExpiredTrackers,
   pollPermit,
+  sendCharmFollowups,
   verifyTrackerPhone
 } from "../workers/permit-poller/service.js";
 
@@ -22,7 +24,7 @@ const resetDatabase = async () => {
     DROP TABLE IF EXISTS trackers;
     DROP TABLE IF EXISTS poll_runs;
   `);
-  for (const statement of migration.split(";").map((part) => part.trim()).filter(Boolean)) {
+  for (const statement of `${migration};${charmFollowupMigration.replace(/^--.*$/gm, "")}`.split(";").map((part) => part.trim()).filter(Boolean)) {
     await env.DB.prepare(statement).run();
   }
 };
@@ -175,8 +177,9 @@ describe("permit cancellation service with D1", () => {
       }
     });
     expect(sent).toEqual({ status: "sent", provider_message_id: "SM_test" });
-    expect(smsBody).toContain("2 spots available for Mt. Whitney Day Use");
-    expect(smsBody).toContain("Your party: 1");
+    expect(smsBody).toMatch(/^Summit Charms permit alert: 2 spots open for Mt\. Whitney Day Use/);
+    expect(smsBody).not.toContain("TrailGenic");
+    expect(smsBody).toContain("your party: 1");
 
     const duplicate = await deliverNotification(deliveryEnv, notificationId, {
       fetchImpl: async () => { throw new Error("must not send twice"); }
@@ -234,5 +237,23 @@ describe("permit cancellation service with D1", () => {
     expect(await env.DB.prepare(
       "SELECT status FROM notifications WHERE id = ?"
     ).bind(notificationId).first()).toMatchObject({ status: "cancelled" });
+  });
+
+  it("sends one charm follow-up only to opted-in hikers, and only when switched on", async () => {
+    const twilio = { TWILIO_ACCOUNT_SID: "AC_test", TWILIO_AUTH_TOKEN: "secret", TWILIO_FROM_NUMBER: "+19515550999" };
+    await createTracker(serviceEnv, { ...trackerInput(1), charm_offer_consent: true }, new Date("2026-07-10T12:00:00Z"), { status: "active" });
+    await createTracker(serviceEnv, { ...trackerInput(2), charm_offer_consent: false }, new Date("2026-07-10T12:00:00Z"), { status: "active" });
+    const now = new Date("2026-07-23T17:01:00Z");
+    const sentTo = [];
+    const fetchImpl = async (_url, init) => {
+      sentTo.push(new URLSearchParams(init.body).get("To"));
+      return new Response(JSON.stringify({ sid: "SM_follow" }), { status: 201 });
+    };
+
+    expect(await sendCharmFollowups({ ...serviceEnv, ...twilio }, { now, fetchImpl })).toBe(0);
+    const on = { ...serviceEnv, ...twilio, CHARM_FOLLOWUP_ENABLED: "true" };
+    expect(await sendCharmFollowups(on, { now, fetchImpl })).toBe(1);
+    expect(sentTo).toEqual(["+19515550101"]);
+    expect(await sendCharmFollowups(on, { now, fetchImpl })).toBe(0);
   });
 });

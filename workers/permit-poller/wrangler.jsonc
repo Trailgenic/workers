@@ -53,7 +53,10 @@
     ]
   },
   "vars": {
-    "ALLOWED_ORIGINS": "https://trailgenic.com,https://www.trailgenic.com,https://alerts.trailgenic.com",
-    "REQUIRE_TURNSTILE": "true"
+    "ALLOWED_ORIGINS": "https://mysummitcharms.com",
+    "REQUIRE_TURNSTILE": "true",
+    "SIGNUPS_OPEN": "false",
+    "CHARM_FOLLOWUP_ENABLED": "false",
+    "SOURCE_DELAY_MS": "10000"
   }
 }

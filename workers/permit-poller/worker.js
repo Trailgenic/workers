@@ -7,17 +7,20 @@ import {
   getTrackerByToken,
   healthSnapshot,
   pauseExpiredTrackers,
+  isFollowupWindow,
   pollPermit,
+  sendCharmFollowups,
+  sourceDelayMs,
   startPhoneVerification,
   verifyTrackerPhone,
   validateTrackerInput
 } from "./service.js";
-import { publicPage } from "./public-site.js";
+import { publicRedirect } from "./public-site.js";
 
 const JSON_TYPE = "application/json; charset=utf-8";
 
 const allowedOrigins = (env) => new Set(
-  (env.ALLOWED_ORIGINS || "https://trailgenic.com,https://www.trailgenic.com")
+  (env.ALLOWED_ORIGINS || "https://mysummitcharms.com")
     .split(",")
     .map((origin) => origin.trim())
     .filter(Boolean)
@@ -42,6 +45,9 @@ const json = (request, env, body, status = 200) => new Response(JSON.stringify(b
     ...corsHeaders(request, env)
   }
 });
+
+// Sign-ups stay closed until SIGNUPS_OPEN is set to "true" (the off-season switch).
+export const signupsOpen = (env) => env.SIGNUPS_OPEN === "true";
 
 const readJson = async (request) => {
   try { return await request.json(); }
@@ -83,26 +89,20 @@ const handleHttp = async (request, env) => {
   }
 
   if (request.method === "GET") {
-    const page = publicPage(url.pathname, env);
-    if (page) {
-      return new Response(page, {
-        headers: {
-          "Content-Type": "text/html; charset=utf-8",
-          "Cache-Control": "no-store",
-          "X-Content-Type-Options": "nosniff",
-          "Referrer-Policy": "strict-origin-when-cross-origin"
-        }
-      });
+    // The sign-up and policy pages live on mysummitcharms.com now.
+    const target = publicRedirect(url.pathname);
+    if (target) {
+      return new Response(null, { status: 301, headers: { Location: target, "Cache-Control": "no-store" } });
     }
   }
 
   if (request.method === "GET" && url.pathname === "/health") {
     try {
       const health = await healthSnapshot(env);
-      return json(request, env, { entity: "TrailGenic", service: "permit-cancellation-alerts", ...health }, health.status === "healthy" ? 200 : 503);
+      return json(request, env, { entity: "Summit Charms", service: "permit-cancellation-alerts", signups_open: signupsOpen(env), ...health }, health.status === "healthy" ? 200 : 503);
     } catch (error) {
       return json(request, env, {
-        entity: "TrailGenic",
+        entity: "Summit Charms",
         service: "permit-cancellation-alerts",
         status: "unhealthy",
         database_status: "unavailable",
@@ -117,6 +117,9 @@ const handleHttp = async (request, env) => {
   }
 
   if (request.method === "POST" && url.pathname === "/trackers") {
+    if (!signupsOpen(env)) {
+      return json(request, env, { error: "Permit alerts are closed for the season. They open again in spring.", closed: true }, 503);
+    }
     const body = await readJson(request);
     if (!await verifyTurnstile(request, env, body?.turnstile_token)) {
       return json(request, env, { error: "Human verification failed." }, 403);
@@ -194,6 +197,10 @@ export default {
     ctx.waitUntil((async () => {
       const paused = await pauseExpiredTrackers(env);
       if (paused > 0) console.log("Paused expired permit trackers", { tracker_count: paused });
+      if (isFollowupWindow()) {
+        const followups = await sendCharmFollowups(env);
+        if (followups > 0) console.log("Sent charm follow-ups", { count: followups });
+      }
       const permitIds = await activePermitIds(env);
       if (permitIds.length === 0) return;
       await env.POLL_QUEUE.sendBatch(permitIds.map((permitId) => ({
@@ -205,8 +212,13 @@ export default {
 
   async queue(batch, env) {
     const isNotificationQueue = batch.queue === "trailgenic-permit-notifications";
+    let polled = 0;
     for (const message of batch.messages) {
       try {
+        // Keep at least the requested gap between Recreation.gov requests across a batch.
+        if (!isNotificationQueue && polled++ > 0) {
+          await new Promise((resolve) => setTimeout(resolve, sourceDelayMs(env)));
+        }
         if (isNotificationQueue) await handleNotificationMessage(message, env);
         else await handlePollMessage(message, env);
         message.ack();
